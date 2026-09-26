@@ -228,6 +228,18 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async (req, res) => {
    antwortet der Endpunkt mit 503 + freundlichem Hinweis (wie beim Checkout). */
 const AI_KEY = process.env.ANTHROPIC_API_KEY || '';
 const AI_MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
+// Hartes Tageslimit für den Berater (Kostenschutz). 0 = aus.
+const CHAT_DAILY_MAX = parseInt(process.env.CHAT_DAILY_MAX || '300', 10) || 0;
+const chatMem = { day: '', n: 0 };
+async function chatDayCount() {   // dauerhaft via Upstash, sonst im Speicher
+  const day = new Date().toISOString().slice(0, 10);
+  if (UPSTASH_URL) {
+    const res = await redisPipe([['INCR', 'chat:' + day], ['EXPIRE', 'chat:' + day, 172800]]);
+    return Number((res[0] && res[0].result) || 0);
+  }
+  if (chatMem.day !== day) { chatMem.day = day; chatMem.n = 0; }
+  return ++chatMem.n;
+}
 
 // Kompakte Produktliste als Wissensbasis (einmal beim Start gebaut).
 const CATALOG_TEXT = (CATALOG.order || Object.keys(CATALOG.products))
@@ -278,6 +290,13 @@ app.post('/api/chat', rateLimit(15, 5 * 60 * 1000), async function (req, res) {
       .map(function (m) { return { role: m.role, content: String(m.content).slice(0, 2000) }; });
     if (!msgs.length || msgs[msgs.length - 1].role !== 'user') {
       return res.status(400).json({ error: 'no_user_message' });
+    }
+
+    // Hartes Tageslimit (Kostenschutz) – zählt nur gültige Anfragen, blockt bei Fehler nicht.
+    if (CHAT_DAILY_MAX > 0) {
+      let used = 0;
+      try { used = await chatDayCount(); } catch (e) { used = 0; }
+      if (used > CHAT_DAILY_MAX) return res.status(429).json({ error: 'daily_limit' });
     }
 
     const r = await fetch('https://api.anthropic.com/v1/messages', {

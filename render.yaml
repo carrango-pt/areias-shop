@@ -23,5 +23,7 @@ services:
         sync: false   # Upstash Redis (REST) – dauerhafter Besucherzähler
       - key: UPSTASH_REDIS_REST_TOKEN
         sync: false
+      - key: CHAT_DAILY_MAX
+        value: "300"   # max. Berater-Anfragen pro Tag (Kostenschutz); 0 = aus
       - key: NODE_VERSION
         value: "20"

@@ -250,9 +250,9 @@
 
   // ---------- KI-Berater (Chat) ----------
   var CT = {
-    de: { open: 'Beraterin', title: 'Schmuck-Beratung', sub: 'meist in wenigen Sekunden', greet: 'Hallo! Ich helfe dir gern, das passende Stück zu finden – erzähl mir, für wen oder für welchen Anlass. 💛', ph: 'Schreib deine Frage…', send: 'Senden', offline: 'Die Beratung ist noch nicht aktiviert. Schreib uns gern an iracemasiqueira83@gmail.com – wir helfen dir persönlich.', error: 'Es gab ein Problem. Bitte versuch es später noch einmal oder schreib an iracemasiqueira83@gmail.com.', typing: 'schreibt…', close: 'Schließen' },
-    pt: { open: 'Consultora', title: 'Aconselhamento', sub: 'normalmente em segundos', greet: 'Olá! Ajudo-o com todo o gosto a encontrar a peça certa – diga-me para quem ou para que ocasião. 💛', ph: 'Escreva a sua pergunta…', send: 'Enviar', offline: 'O aconselhamento ainda não está ativo. Escreva-nos para iracemasiqueira83@gmail.com – ajudamos pessoalmente.', error: 'Ocorreu um problema. Tente novamente mais tarde ou escreva para iracemasiqueira83@gmail.com.', typing: 'a escrever…', close: 'Fechar' },
-    en: { open: 'Advisor', title: 'Jewellery advice', sub: 'usually within seconds', greet: 'Hi! I’m happy to help you find the right piece – tell me who it’s for or the occasion. 💛', ph: 'Type your question…', send: 'Send', offline: 'The advisor isn’t active yet. Email us at iracemasiqueira83@gmail.com – we’ll help you personally.', error: 'Something went wrong. Please try again later or email iracemasiqueira83@gmail.com.', typing: 'typing…', close: 'Close' }
+    de: { open: 'Beraterin', title: 'Schmuck-Beratung', sub: 'meist in wenigen Sekunden', greet: 'Hallo! Ich helfe dir gern, das passende Stück zu finden – erzähl mir, für wen oder für welchen Anlass. 💛', ph: 'Schreib deine Frage…', send: 'Senden', offline: 'Die Beratung ist noch nicht aktiviert. Schreib uns gern an iracemasiqueira83@gmail.com – wir helfen dir persönlich.', error: 'Es gab ein Problem. Bitte versuch es später noch einmal oder schreib an iracemasiqueira83@gmail.com.', typing: 'schreibt…', busy: 'Der Berater ist heute sehr gefragt und macht kurz Pause. Schreib uns gern an iracemasiqueira83@gmail.com – wir helfen persönlich.', close: 'Schließen' },
+    pt: { open: 'Consultora', title: 'Aconselhamento', sub: 'normalmente em segundos', greet: 'Olá! Ajudo-o com todo o gosto a encontrar a peça certa – diga-me para quem ou para que ocasião. 💛', ph: 'Escreva a sua pergunta…', send: 'Enviar', offline: 'O aconselhamento ainda não está ativo. Escreva-nos para iracemasiqueira83@gmail.com – ajudamos pessoalmente.', error: 'Ocorreu um problema. Tente novamente mais tarde ou escreva para iracemasiqueira83@gmail.com.', typing: 'a escrever…', busy: 'O nosso consultor está muito solicitado hoje e faz uma pausa. Escreva-nos para iracemasiqueira83@gmail.com – ajudamos pessoalmente.', close: 'Fechar' },
+    en: { open: 'Advisor', title: 'Jewellery advice', sub: 'usually within seconds', greet: 'Hi! I’m happy to help you find the right piece – tell me who it’s for or the occasion. 💛', ph: 'Type your question…', send: 'Send', offline: 'The advisor isn’t active yet. Email us at iracemasiqueira83@gmail.com – we’ll help you personally.', error: 'Something went wrong. Please try again later or email iracemasiqueira83@gmail.com.', typing: 'typing…', busy: 'Our advisor is very busy today and is taking a short break. Email us at iracemasiqueira83@gmail.com – we’ll help you personally.', close: 'Close' }
   }[LANG];
 
   var chatMsgs = [];       // Verlauf {role, content}
@@ -353,6 +353,7 @@
       typing.remove();
       // 503 = Schlüssel fehlt · 404/405 = kein Backend (z. B. statische Vorschau) → beides: „noch nicht aktiv"
       if (r.status === 503 || r.status === 404 || r.status === 405){ addBubble('bot', CT.offline); chatBusy = false; return; }
+      if (r.status === 429){ addBubble('bot', CT.busy); chatBusy = false; return; }
       if (!r.ok){ addBubble('bot', CT.error); chatBusy = false; return; }
       var data;
       try { data = await r.json(); }
