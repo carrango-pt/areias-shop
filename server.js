@@ -49,8 +49,8 @@ app.use(function (_req, res, next) {
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   res.setHeader('Content-Security-Policy',
     "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; " +
-    "img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-    "font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; form-action 'self'");
+    "img-src 'self' data:; style-src 'self' 'unsafe-inline'; " +
+    "font-src 'self'; script-src 'self'; connect-src 'self'; form-action 'self'");
   next();
 });
 
