@@ -10,6 +10,12 @@ const stripe = process.env.STRIPE_SECRET_KEY
   ? require('stripe')(process.env.STRIPE_SECRET_KEY)
   : null;
 
+// Bestell-Benachrichtigung (Stripe-Webhook → E-Mail via Brevo)
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || '';
+const BREVO_KEY = process.env.BREVO_API_KEY || '';
+const ORDER_EMAIL = process.env.ORDER_EMAIL || 'iracemasiqueira83@gmail.com';   // Empfänger
+const ORDER_FROM = process.env.ORDER_FROM_EMAIL || ORDER_EMAIL;                  // Absender (in Brevo verifiziert)
+
 // Hinter Render/Proxy: korrekte Client-IP (für Rate-Limit) und https-Erkennung.
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
@@ -38,6 +44,74 @@ app.use(function (req, res, next) {
   if (BLOCKED.some(function (re) { return re.test(req.path); })) return res.status(404).end();
   next();
 });
+
+/* Stripe-Webhook: bei jeder bezahlten Bestellung eine Übersicht per E-Mail an den Shop.
+   MUSS vor express.json stehen – die Signaturprüfung braucht den unveränderten Rohtext. */
+app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async function (req, res) {
+  if (!stripe || !STRIPE_WEBHOOK_SECRET) return res.status(200).json({ skipped: true });
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, req.headers['stripe-signature'], STRIPE_WEBHOOK_SECRET);
+  } catch (e) {
+    console.error('webhook signature error:', e.message);
+    return res.status(400).send('bad signature');
+  }
+  res.json({ received: true }); // Stripe sofort bestätigen
+  if (event.type !== 'checkout.session.completed') return;
+  try {
+    const s = await stripe.checkout.sessions.retrieve(event.data.object.id, { expand: ['line_items'] });
+    await sendOrderEmail(s);
+  } catch (e) {
+    console.error('order email error:', e.message);
+  }
+});
+
+function esc(x) {
+  return String(x == null ? '' : x).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+  });
+}
+async function sendOrderEmail(s) {
+  if (!BREVO_KEY) { console.log('Bestellung', s.id, '– kein BREVO_API_KEY, keine E-Mail gesendet'); return; }
+  const cur = (s.currency || 'eur').toUpperCase();
+  const money = function (c) { return (Number(c || 0) / 100).toFixed(2).replace('.', ',') + ' ' + cur; };
+  const items = (s.line_items && s.line_items.data) || [];
+  const cust = s.customer_details || {};
+  const ship = s.shipping_details || (s.collected_information && s.collected_information.shipping_details) || {};
+  const addr = ship.address || cust.address || {};
+  const rows = items.map(function (li) {
+    return '<tr><td style="padding:6px 10px;border-bottom:1px solid #eee">' + (li.quantity || 1) + '×</td>' +
+      '<td style="padding:6px 10px;border-bottom:1px solid #eee">' + esc(li.description || '') + '</td>' +
+      '<td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right">' + money(li.amount_total) + '</td></tr>';
+  }).join('');
+  const addrLines = [ship.name || cust.name || '', addr.line1 || '', addr.line2 || '',
+    ((addr.postal_code || '') + ' ' + (addr.city || '')).trim(), addr.country || '']
+    .filter(Boolean).map(esc).join('<br>');
+  const html =
+    '<div style="font:14px -apple-system,Segoe UI,sans-serif;color:#1E1B18">' +
+    '<h2 style="font-family:Georgia,serif">Neue Bestellung – Areias</h2>' +
+    '<p><strong>Bestell-Nr.:</strong> ' + esc(s.id) + '</p>' +
+    '<table style="border-collapse:collapse;width:100%;max-width:520px">' + rows +
+    '<tr><td></td><td style="padding:8px 10px;text-align:right"><strong>Gesamt</strong></td>' +
+    '<td style="padding:8px 10px;text-align:right"><strong>' + money(s.amount_total) + '</strong></td></tr>' +
+    '</table>' +
+    '<h3>Lieferadresse</h3><p>' + (addrLines || '—') + '</p>' +
+    '<h3>Kontakt</h3><p>E-Mail: ' + esc(cust.email || '—') + '<br>Telefon: ' + esc(cust.phone || '—') + '</p>' +
+    '<p style="color:#5E564D;font-size:12px">Details & Rückerstattung im Stripe-Dashboard.</p></div>';
+  const r = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'api-key': BREVO_KEY },
+    body: JSON.stringify({
+      sender: { email: ORDER_FROM, name: 'Areias Shop' },
+      to: [{ email: ORDER_EMAIL }],
+      replyTo: cust.email ? { email: cust.email } : undefined,
+      subject: 'Neue Bestellung – ' + money(s.amount_total),
+      htmlContent: html
+    })
+  });
+  if (!r.ok) { const t = await r.text(); console.error('brevo send error', r.status, t.slice(0, 200)); }
+  else console.log('Bestell-Mail gesendet für', s.id);
+}
 
 // Body klein halten (DoS-Schutz); der Chat kürzt zusätzlich pro Nachricht.
 app.use(express.json({ limit: '32kb' }));

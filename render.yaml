@@ -11,5 +11,11 @@ services:
         sync: false   # im Render-Dashboard eintragen (Secret), NICHT hier committen
       - key: ANTHROPIC_API_KEY
         sync: false   # im Render-Dashboard eintragen (Secret) – aktiviert den KI-Berater
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false   # aus Stripe → Webhooks (whsec_…) – aktiviert die Bestell-Mail
+      - key: BREVO_API_KEY
+        sync: false   # aus Brevo (SMTP/API) – verschickt die Bestell-Mail
+      - key: ORDER_EMAIL
+        value: iracemasiqueira83@gmail.com   # Empfänger der Bestell-Benachrichtigung
       - key: NODE_VERSION
         value: "20"
