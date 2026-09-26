@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: areias-shop
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: STRIPE_SECRET_KEY
+        sync: false   # im Render-Dashboard eintragen (Secret), NICHT hier committen
+      - key: ANTHROPIC_API_KEY
+        sync: false   # im Render-Dashboard eintragen (Secret) – aktiviert den KI-Berater
+      - key: NODE_VERSION
+        value: "20"
