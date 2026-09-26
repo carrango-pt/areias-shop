@@ -383,7 +383,8 @@ async function gatherStats() {
     // Selbsttest: kann der Token schreiben? (deckt Read-Only-Token auf)
     try {
       const w = await redisPipe([['INCR', 'diag:writes']]);
-      out.writeTest = (w && w[0] && w[0].result != null) ? ('OK (' + w[0].result + ')') : 'kein Ergebnis';
+      out.writeTest = (w && w[0] && w[0].result != null) ? ('OK (' + w[0].result + ')')
+        : (w && w[0] && w[0].error ? ('ABGELEHNT: ' + w[0].error) : ('unerwartet: ' + JSON.stringify(w).slice(0, 120)));
     } catch (e) { out.writeTest = 'FEHLER: ' + e.message + ' → vermutlich Read-Only-Token'; }
   }
   if (stripe) {
