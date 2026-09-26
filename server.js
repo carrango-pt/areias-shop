@@ -16,6 +16,13 @@ const BREVO_KEY = process.env.BREVO_API_KEY || '';
 const ORDER_EMAIL = process.env.ORDER_EMAIL || 'iracemasiqueira83@gmail.com';   // Empfänger
 const ORDER_FROM = process.env.ORDER_FROM_EMAIL || ORDER_EMAIL;                  // Absender (in Brevo verifiziert)
 
+// Admin-Seite
+const crypto = require('crypto');
+const ADMIN_USER = process.env.ADMIN_USER || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';   // in Render setzen; leer = Admin deaktiviert
+// Besucherzähler (im Speicher, seit letztem Neustart/Deploy)
+const stats = { pageviews: 0, today: 0, todayKey: '', ips: new Set() };
+
 // Hinter Render/Proxy: korrekte Client-IP (für Rate-Limit) und https-Erkennung.
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
@@ -308,6 +315,111 @@ app.post('/api/chat', rateLimit(15, 5 * 60 * 1000), async function (req, res) {
 
 app.get('/api/health', function (_req, res) {
   res.json({ ok: true, stripe: !!stripe, ai: !!AI_KEY, products: Object.keys(CATALOG.products).length });
+});
+
+// Besucher zählen (nur echte Seitenaufrufe, keine Assets/API)
+app.use(function (req, res, next) {
+  if (req.method === 'GET') {
+    const p = req.path;
+    const isAsset = /\.(css|js|jpg|jpeg|png|webp|svg|ico|xml|txt|map|woff2?|ttf|json)$/i.test(p);
+    if (!isAsset && p.indexOf('/api/') !== 0 && p !== '/admin') {
+      const day = new Date().toISOString().slice(0, 10);
+      if (stats.todayKey !== day) { stats.todayKey = day; stats.today = 0; }
+      stats.pageviews++; stats.today++;
+      try { stats.ips.add((req.ip || '') + '|' + day); } catch (e) {}
+    }
+  }
+  next();
+});
+
+// ---------- Admin-Seite (passwortgeschützt) ----------
+function safeEq(a, b) {
+  const ba = Buffer.from(String(a)), bb = Buffer.from(String(b));
+  if (ba.length !== bb.length) return false;
+  try { return crypto.timingSafeEqual(ba, bb); } catch (e) { return false; }
+}
+function adminAuth(req, res, next) {
+  if (!ADMIN_PASSWORD) return res.status(404).end(); // deaktiviert, solange kein Passwort gesetzt
+  const m = (req.headers.authorization || '').match(/^Basic (.+)$/);
+  if (m) {
+    try {
+      const dec = Buffer.from(m[1], 'base64').toString('utf8');
+      const i = dec.indexOf(':');
+      if (i >= 0 && safeEq(dec.slice(0, i), ADMIN_USER) & safeEq(dec.slice(i + 1), ADMIN_PASSWORD)) return next();
+    } catch (e) {}
+  }
+  res.setHeader('WWW-Authenticate', 'Basic realm="Areias Admin"');
+  return res.status(401).send('Anmeldung erforderlich');
+}
+async function gatherStats() {
+  const out = { pageviews: stats.pageviews, today: stats.today, unique: stats.ips.size,
+    orders: null, revenue: 0, recent: [], contacts: null, errors: [] };
+  if (stripe) {
+    try {
+      const list = await stripe.checkout.sessions.list({ limit: 100 });
+      const paid = list.data.filter(function (s) { return s.payment_status === 'paid' || s.status === 'complete'; });
+      out.orders = paid.length;
+      out.revenue = paid.reduce(function (a, s) { return a + (s.amount_total || 0); }, 0);
+      out.recent = paid.slice(0, 12).map(function (s) {
+        return { date: new Date((s.created || 0) * 1000).toISOString().slice(0, 16).replace('T', ' '),
+          email: (s.customer_details && s.customer_details.email) || '—',
+          amount: s.amount_total || 0, currency: (s.currency || 'eur').toUpperCase() };
+      });
+    } catch (e) { out.errors.push('Stripe: ' + e.message); }
+  }
+  if (BREVO_KEY) {
+    try {
+      const r = await fetch('https://api.brevo.com/v3/contacts?limit=1', { headers: { 'api-key': BREVO_KEY } });
+      if (r.ok) { const d = await r.json(); out.contacts = (d.count != null) ? d.count : null; }
+    } catch (e) { out.errors.push('Brevo: ' + e.message); }
+  }
+  return out;
+}
+function eur(c) { return (Number(c || 0) / 100).toFixed(2).replace('.', ',') + ' €'; }
+function esc2(x) { return String(x == null ? '' : x).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function renderAdmin(d) {
+  const rows = d.recent.length ? d.recent.map(function (o) {
+    return '<tr><td>' + esc2(o.date) + '</td><td>' + esc2(o.email) + '</td><td style="text-align:right">' + eur(o.amount) + '</td></tr>';
+  }).join('') : '<tr><td colspan="3" style="color:#8a8178">Noch keine Bestellungen.</td></tr>';
+  const card = function (label, value, sub) {
+    return '<div class="c"><div class="l">' + label + '</div><div class="v">' + value + '</div>' + (sub ? '<div class="s">' + sub + '</div>' : '') + '</div>';
+  };
+  const errs = d.errors.length ? '<p class="err">Hinweis: ' + esc2(d.errors.join(' · ')) + '</p>' : '';
+  return '<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<meta name="robots" content="noindex,nofollow"><title>Areias · Admin</title><style>' +
+    ':root{--g:#F6F1EA;--i:#1E1B18;--m:#5E564D;--l:#E2D8CA;--a:#8A6A2F}' +
+    '*{box-sizing:border-box}body{margin:0;background:var(--g);color:var(--i);font:15px/1.5 -apple-system,Segoe UI,sans-serif;padding:24px}' +
+    '.wrap{max-width:900px;margin:0 auto}h1{font-family:Georgia,serif;font-size:30px;margin:0 0 4px}.sub{color:var(--m);margin:0 0 24px}' +
+    '.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}' +
+    '.c{background:#fff;border:1px solid var(--l);border-radius:12px;padding:16px}.l{color:var(--m);font-size:12px;letter-spacing:.04em;text-transform:uppercase}' +
+    '.v{font-family:Georgia,serif;font-size:28px;margin-top:6px}.s{color:var(--m);font-size:12px;margin-top:2px}' +
+    'table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--l);border-radius:12px;overflow:hidden}' +
+    'th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--l);font-size:14px}th{background:#efe7db;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--m)}' +
+    'h2{font-family:Georgia,serif;font-size:20px;margin:0 0 12px}.err{color:#9a3b2f;font-size:13px}a{color:var(--a)}' +
+    '@media(max-width:640px){.cards{grid-template-columns:repeat(2,1fr)}}</style></head><body><div class="wrap">' +
+    '<h1>Areias · Admin</h1><p class="sub">Übersicht · Live-Daten aus Stripe/Brevo · Besucher seit letztem Neustart</p>' +
+    '<div class="cards">' +
+    card('Bestellungen', d.orders == null ? '–' : d.orders, 'bezahlt (letzte 100)') +
+    card('Umsatz', eur(d.revenue), 'letzte 100 Bestellungen') +
+    card('Newsletter', d.contacts == null ? '–' : d.contacts, 'Brevo-Kontakte') +
+    card('Besucher', d.pageviews, d.unique + ' eindeutig · heute ' + d.today) +
+    '</div>' + errs +
+    '<h2>Letzte Bestellungen</h2><table><thead><tr><th>Datum</th><th>Kunde</th><th style="text-align:right">Betrag</th></tr></thead><tbody>' +
+    rows + '</tbody></table>' +
+    '<p class="sub" style="margin-top:24px">Vollständige Details & Rückerstattungen im <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Stripe-Dashboard</a>.</p>' +
+    '</div></body></html>';
+}
+app.get('/admin', rateLimit(30, 5 * 60 * 1000), adminAuth, async function (req, res) {
+  try {
+    const d = await gatherStats();
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    res.send(renderAdmin(d));
+  } catch (e) {
+    console.error('admin error:', e.message);
+    res.status(500).send('Fehler beim Laden der Admin-Daten.');
+  }
 });
 
 app.use(express.static(__dirname, { extensions: ['html'], dotfiles: 'deny' }));

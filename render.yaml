@@ -17,5 +17,7 @@ services:
         sync: false   # aus Brevo (SMTP/API) – verschickt die Bestell-Mail
       - key: ORDER_EMAIL
         value: iracemasiqueira83@gmail.com   # Empfänger der Bestell-Benachrichtigung
+      - key: ADMIN_PASSWORD
+        sync: false   # im Render-Dashboard setzen – schützt /admin (leer = /admin deaktiviert)
       - key: NODE_VERSION
         value: "20"
