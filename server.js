@@ -209,10 +209,13 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async (req, res) => {
       locale: locale,
       billing_address_collection: 'auto',
       phone_number_collection: { enabled: true },
+      customer_creation: 'always',       // legt je Kauf einen Stripe-Kunden an → Stammkunden im Dashboard, Basis für gespeicherte Zahlungsdaten
       shipping_address_collection: { allowed_countries: CATALOG.allowedCountries },
       shipping_options: shipping_options,
       success_url: origin + langPath + '?checkout=success',
       cancel_url: origin + langPath + '?checkout=cancel'
+      // Wiederkehrende Käufer: Stripe „Link" (in Checkout standardmäßig aktiv) füllt Karte+Adresse
+      // beim nächsten Mal automatisch aus – ohne eigene Kundenkonten. In Stripe → Einstellungen → Zahlungsmethoden prüfen.
       // Optional später: automatic_tax (benötigt Stripe Tax), Rabatt-Codes (allow_promotion_codes) …
     });
     res.json({ url: session.url });
