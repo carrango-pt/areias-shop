@@ -20,8 +20,20 @@ const ORDER_FROM = process.env.ORDER_FROM_EMAIL || ORDER_EMAIL;                 
 const crypto = require('crypto');
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';   // in Render setzen; leer = Admin deaktiviert
-// Besucherzähler (im Speicher, seit letztem Neustart/Deploy)
+// Besucherzähler: dauerhaft via Upstash Redis (REST) falls konfiguriert, sonst im Speicher.
 const stats = { pageviews: 0, today: 0, todayKey: '', ips: new Set() };
+const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL || '';
+const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || '';
+function ipHash(ip) { return crypto.createHash('sha256').update(String(ip || '') + '|areias').digest('hex').slice(0, 24); }
+async function redisPipe(cmds) {
+  const r = await fetch(UPSTASH_URL.replace(/\/$/, '') + '/pipeline', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + UPSTASH_TOKEN, 'content-type': 'application/json' },
+    body: JSON.stringify(cmds)
+  });
+  if (!r.ok) throw new Error('redis ' + r.status);
+  return r.json(); // Array von {result}
+}
 
 // Hinter Render/Proxy: korrekte Client-IP (für Rate-Limit) und https-Erkennung.
 app.set('trust proxy', 1);
@@ -327,6 +339,11 @@ app.use(function (req, res, next) {
       if (stats.todayKey !== day) { stats.todayKey = day; stats.today = 0; }
       stats.pageviews++; stats.today++;
       try { stats.ips.add((req.ip || '') + '|' + day); } catch (e) {}
+      if (UPSTASH_URL) {  // dauerhaft, feuern und vergessen (IP nur gehasht, DSGVO)
+        const h = ipHash(req.ip);
+        redisPipe([['INCR', 'pv:total'], ['INCR', 'pv:' + day], ['PFADD', 'uv:all', h], ['PFADD', 'uv:' + day, h]])
+          .catch(function () {});
+      }
     }
   }
   next();
@@ -352,8 +369,18 @@ function adminAuth(req, res, next) {
   return res.status(401).send('Anmeldung erforderlich');
 }
 async function gatherStats() {
-  const out = { pageviews: stats.pageviews, today: stats.today, unique: stats.ips.size,
+  const out = { pageviews: stats.pageviews, today: stats.today, unique: stats.ips.size, persistent: false,
     orders: null, revenue: 0, recent: [], contacts: null, errors: [] };
+  if (UPSTASH_URL) {
+    try {
+      const day = new Date().toISOString().slice(0, 10);
+      const res = await redisPipe([['GET', 'pv:total'], ['GET', 'pv:' + day], ['PFCOUNT', 'uv:all']]);
+      out.pageviews = Number((res[0] && res[0].result) || 0);
+      out.today = Number((res[1] && res[1].result) || 0);
+      out.unique = Number((res[2] && res[2].result) || 0);
+      out.persistent = true;
+    } catch (e) { out.errors.push('Zähler: ' + e.message); }
+  }
   if (stripe) {
     try {
       const list = await stripe.checkout.sessions.list({ limit: 100 });
@@ -402,7 +429,7 @@ function renderAdmin(d) {
     card('Bestellungen', d.orders == null ? '–' : d.orders, 'bezahlt (letzte 100)') +
     card('Umsatz', eur(d.revenue), 'letzte 100 Bestellungen') +
     card('Newsletter', d.contacts == null ? '–' : d.contacts, 'Brevo-Kontakte') +
-    card('Besucher', d.pageviews, d.unique + ' eindeutig · heute ' + d.today) +
+    card('Besucher', d.pageviews, d.unique + ' eindeutig · heute ' + d.today + (d.persistent ? '' : ' · seit Neustart')) +
     '</div>' + errs +
     '<h2>Letzte Bestellungen</h2><table><thead><tr><th>Datum</th><th>Kunde</th><th style="text-align:right">Betrag</th></tr></thead><tbody>' +
     rows + '</tbody></table>' +
