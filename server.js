@@ -380,12 +380,6 @@ async function gatherStats() {
       out.unique = Number((res[2] && res[2].result) || 0);
       out.persistent = true;
     } catch (e) { out.errors.push('Zähler lesen: ' + e.message); }
-    // Selbsttest: kann der Token schreiben? (deckt Read-Only-Token auf)
-    try {
-      const w = await redisPipe([['INCR', 'diag:writes']]);
-      out.writeTest = (w && w[0] && w[0].result != null) ? ('OK (' + w[0].result + ')')
-        : (w && w[0] && w[0].error ? ('ABGELEHNT: ' + w[0].error) : ('unerwartet: ' + JSON.stringify(w).slice(0, 120)));
-    } catch (e) { out.writeTest = 'FEHLER: ' + e.message + ' → vermutlich Read-Only-Token'; }
   }
   if (stripe) {
     try {
@@ -417,8 +411,7 @@ function renderAdmin(d) {
   const card = function (label, value, sub) {
     return '<div class="c"><div class="l">' + label + '</div><div class="v">' + value + '</div>' + (sub ? '<div class="s">' + sub + '</div>' : '') + '</div>';
   };
-  const diag = d.writeTest ? '<p class="err">Zähler-Schreibtest: ' + esc2(d.writeTest) + '</p>' : '';
-  const errs = (d.errors.length ? '<p class="err">Hinweis: ' + esc2(d.errors.join(' · ')) + '</p>' : '') + diag;
+  const errs = d.errors.length ? '<p class="err">Hinweis: ' + esc2(d.errors.join(' · ')) + '</p>' : '';
   return '<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
     '<meta name="robots" content="noindex,nofollow"><title>Areias · Admin</title><style>' +
     ':root{--g:#F6F1EA;--i:#1E1B18;--m:#5E564D;--l:#E2D8CA;--a:#8A6A2F}' +
