@@ -379,7 +379,12 @@ async function gatherStats() {
       out.today = Number((res[1] && res[1].result) || 0);
       out.unique = Number((res[2] && res[2].result) || 0);
       out.persistent = true;
-    } catch (e) { out.errors.push('Zähler: ' + e.message); }
+    } catch (e) { out.errors.push('Zähler lesen: ' + e.message); }
+    // Selbsttest: kann der Token schreiben? (deckt Read-Only-Token auf)
+    try {
+      const w = await redisPipe([['INCR', 'diag:writes']]);
+      out.writeTest = (w && w[0] && w[0].result != null) ? ('OK (' + w[0].result + ')') : 'kein Ergebnis';
+    } catch (e) { out.writeTest = 'FEHLER: ' + e.message + ' → vermutlich Read-Only-Token'; }
   }
   if (stripe) {
     try {
@@ -411,7 +416,8 @@ function renderAdmin(d) {
   const card = function (label, value, sub) {
     return '<div class="c"><div class="l">' + label + '</div><div class="v">' + value + '</div>' + (sub ? '<div class="s">' + sub + '</div>' : '') + '</div>';
   };
-  const errs = d.errors.length ? '<p class="err">Hinweis: ' + esc2(d.errors.join(' · ')) + '</p>' : '';
+  const diag = d.writeTest ? '<p class="err">Zähler-Schreibtest: ' + esc2(d.writeTest) + '</p>' : '';
+  const errs = (d.errors.length ? '<p class="err">Hinweis: ' + esc2(d.errors.join(' · ')) + '</p>' : '') + diag;
   return '<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
     '<meta name="robots" content="noindex,nofollow"><title>Areias · Admin</title><style>' +
     ':root{--g:#F6F1EA;--i:#1E1B18;--m:#5E564D;--l:#E2D8CA;--a:#8A6A2F}' +
@@ -424,7 +430,7 @@ function renderAdmin(d) {
     'th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--l);font-size:14px}th{background:#efe7db;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--m)}' +
     'h2{font-family:Georgia,serif;font-size:20px;margin:0 0 12px}.err{color:#9a3b2f;font-size:13px}a{color:var(--a)}' +
     '@media(max-width:640px){.cards{grid-template-columns:repeat(2,1fr)}}</style></head><body><div class="wrap">' +
-    '<h1>Areias · Admin</h1><p class="sub">Übersicht · Live-Daten aus Stripe/Brevo · Besucher seit letztem Neustart</p>' +
+    '<h1>Areias · Admin</h1><p class="sub">Übersicht · Live-Daten aus Stripe/Brevo · Zähler ' + (d.persistent ? 'dauerhaft (Upstash)' : 'im Speicher (seit Neustart)') + '</p>' +
     '<div class="cards">' +
     card('Bestellungen', d.orders == null ? '–' : d.orders, 'bezahlt (letzte 100)') +
     card('Umsatz', eur(d.revenue), 'letzte 100 Bestellungen') +
