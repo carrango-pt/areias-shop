@@ -256,7 +256,7 @@ const CATALOG_TEXT = (CATALOG.order || Object.keys(CATALOG.products))
 
 const POLICIES = [
   'MARKE: Areias – kuratierter Schmuck aus der Algarve (ausgewählte Stücke, kein Eigenatelier).',
-  'MATERIALIEN: Silber 925, Silber vergoldet, Gold (333/585 je nach Artikel), Edelstahl.',
+  'MATERIALIEN (Farbbezeichnungen, KEIN Edelmetall-Titel behaupten): goldfarben, silberfarben, vergoldet (goldbeschichtet), Edelstahl. Beschreibe die Stuecke als Modeschmuck nach Farbe, mache keine Aussagen zu Feingehalt/Gold- oder Silbertiteln.',
   'VERSAND: Portugal 4 €, 3–6 Werktage · übrige EU 9 €, 6–10 Werktage · kostenlos ab 150 €. Lieferländer: PT, DE, AT, ES, FR, IT, NL, BE, LU, IE. Versand mit CTT.',
   'RÜCKGABE: 14 Tage Widerrufsrecht ab Erhalt. Rücksendekosten trägt der Kunde. Erstattung innerhalb von 14 Tagen. Details unter „Versand & Rückgabe".',
   'RINGGRÖSSEN: eigene Ringgrößen-Seite mit Mess-Anleitung und Tabelle (EU/US/UK).',
