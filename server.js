@@ -351,12 +351,17 @@ app.get('/api/health', function (_req, res) {
   res.json({ ok: true, stripe: !!stripe, ai: !!AI_KEY, products: Object.keys(CATALOG.products).length });
 });
 
-// Besucher zählen (nur echte Seitenaufrufe, keine Assets/API)
+// Bots/Crawler/Scanner erkennen (werden nicht als Besucher gezählt)
+function isBot(ua) {
+  if (!ua) return true; // ohne User-Agent = Skript/Bot
+  return /bot|crawl|spider|slurp|mediapartners|facebookexternalhit|bingpreview|preview|monitor|uptime|pingdom|semrush|ahrefs|mj12|dotbot|petalbot|yandex|baidu|duckduck|applebot|googlebot|scan|feedfetch|rss|curl|wget|python|go-http|java\/|okhttp|axios|node-fetch|headless|phantom|lighthouse|libwww|httpclient/i.test(ua);
+}
+// Besucher zählen (nur echte Seitenaufrufe von echten Menschen, keine Assets/API/Bots)
 app.use(function (req, res, next) {
   if (req.method === 'GET') {
     const p = req.path;
     const isAsset = /\.(css|js|jpg|jpeg|png|webp|svg|ico|xml|txt|map|woff2?|ttf|json)$/i.test(p);
-    if (!isAsset && p.indexOf('/api/') !== 0 && p !== '/admin') {
+    if (!isAsset && p.indexOf('/api/') !== 0 && p !== '/admin' && !isBot(req.headers['user-agent'] || '')) {
       const day = new Date().toISOString().slice(0, 10);
       if (stats.todayKey !== day) { stats.todayKey = day; stats.today = 0; }
       stats.pageviews++; stats.today++;
@@ -460,6 +465,15 @@ function renderAdmin(d) {
 }
 app.get('/admin', rateLimit(30, 5 * 60 * 1000), adminAuth, async function (req, res) {
   try {
+    // Besucherzähler zurücksetzen: /admin?reset=1
+    if (req.query.reset === '1') {
+      const day = new Date().toISOString().slice(0, 10);
+      stats.pageviews = 0; stats.today = 0; stats.todayKey = day; stats.ips = new Set();
+      if (UPSTASH_URL) {
+        try { await redisPipe([['DEL', 'pv:total'], ['DEL', 'uv:all'], ['DEL', 'pv:' + day], ['DEL', 'uv:' + day]]); } catch (e) {}
+      }
+      return res.redirect('/admin');
+    }
     const d = await gatherStats();
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
