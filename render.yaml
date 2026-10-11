@@ -2,7 +2,7 @@ services:
   - type: web
     name: areias-shop
     runtime: node
-    plan: free
+    plan: starter
     buildCommand: npm install
     startCommand: node server.js
     healthCheckPath: /api/health
