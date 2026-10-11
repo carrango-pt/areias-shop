@@ -212,6 +212,7 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async (req, res) => {
       customer_creation: 'always',       // legt je Kauf einen Stripe-Kunden an → Stammkunden im Dashboard, Basis für gespeicherte Zahlungsdaten
       shipping_address_collection: { allowed_countries: CATALOG.allowedCountries },
       shipping_options: shipping_options,
+      allow_promotion_codes: true,        // Rabattcodes an der Kasse aktiv (z. B. Erstkäufer-Code AREIAS10, in Stripe angelegt)
       success_url: origin + langPath + '?checkout=success',
       cancel_url: origin + langPath + '?checkout=cancel'
       // Wiederkehrende Käufer: Stripe „Link" (in Checkout standardmäßig aktiv) füllt Karte+Adresse

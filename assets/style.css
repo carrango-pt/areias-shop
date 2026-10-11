@@ -162,6 +162,24 @@ a.logo{display:inline-flex;align-items:center;gap:10px}
   .footer-in>div:first-child{grid-column:1/-1}
 }
 
+/* Ankündigungsleiste (Erstkäufer-Rabatt) */
+.promo-bar{background:var(--accent);color:#fff;text-align:center;font-size:14px;letter-spacing:.03em;padding:9px 16px}
+.promo-bar strong{font-weight:600;letter-spacing:.06em}
+
+/* Vertrauens-Block */
+.assurance{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--line)}
+.assurance-head{text-align:center;margin-bottom:40px}
+.assurance-head h2{font-size:40px;margin-top:6px}
+.assurance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.assurance-card{background:#fff;border:1px solid var(--line);padding:30px 28px}
+.assurance-card svg{width:30px;height:30px;color:var(--accent);stroke-width:1.4;fill:none;margin-bottom:14px}
+.assurance-card h3{font-size:22px;margin-bottom:8px}
+.assurance-card p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+@media (max-width:1100px){
+  .assurance-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .assurance-head h2{font-size:34px}
+}
+
 /* Warenkorb */
 .cart-backdrop{position:fixed;inset:0;background:rgba(30,27,24,.42);opacity:0;visibility:hidden;transition:opacity .25s;z-index:40}
 .cart-backdrop.open{opacity:1;visibility:visible}
