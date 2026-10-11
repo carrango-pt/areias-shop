@@ -16,7 +16,9 @@ services:
       - key: BREVO_API_KEY
         sync: false   # aus Brevo (SMTP/API) – verschickt die Bestell-Mail
       - key: ORDER_EMAIL
-        value: iracemasiqueira83@gmail.com   # Empfänger der Bestell-Benachrichtigung
+        value: areiasalgarve@outlook.com   # Empfänger der Bestell-Benachrichtigung (neue Shop-Adresse)
+      - key: ORDER_FROM_EMAIL
+        value: iracemasiqueira83@gmail.com   # Absender der Bestell-Mail (in Brevo verifiziert) – bleibt unveraendert
       - key: ADMIN_PASSWORD
         sync: false   # im Render-Dashboard setzen – schützt /admin (leer = /admin deaktiviert)
       - key: UPSTASH_REDIS_REST_URL
