@@ -262,7 +262,7 @@ const POLICIES = [
   'RÜCKGABE: 14 Tage Widerrufsrecht ab Erhalt. Rücksendekosten trägt der Kunde. Erstattung innerhalb von 14 Tagen. Details unter „Versand & Rückgabe".',
   'RINGGRÖSSEN: eigene Ringgrößen-Seite mit Mess-Anleitung und Tabelle (EU/US/UK).',
   'PFLEGE: eigene Pflegehinweise-Seite je Material.',
-  'KONTAKT: iracemasiqueira83@gmail.com, Antwort in 1–2 Werktagen.'
+  'KONTAKT: areiasalgarve@outlook.com, Antwort in 1–2 Werktagen.'
 ].join('\n');
 
 function systemPrompt(lang) {
@@ -272,7 +272,7 @@ function systemPrompt(lang) {
     'Du hilfst bei der Auswahl von Schmuck (Geschenke, Anlass, Stil, Material, Budget) und beantwortest Fragen zu Versand, Rückgabe, Pflege und Größen.\n\n' +
     'STRIKTE REGELN:\n' +
     '- Empfiehl NUR Produkte aus der Produktliste unten. Erfinde keine Artikel, Preise oder Eigenschaften.\n' +
-    '- Nenne Preise nur exakt wie in der Liste. Bist du unsicher, sag es ehrlich und verweise auf ' + 'iracemasiqueira83@gmail.com.\n' +
+    '- Nenne Preise nur exakt wie in der Liste. Bist du unsicher, sag es ehrlich und verweise auf ' + 'areiasalgarve@outlook.com.\n' +
     '- Gib KEINE verbindliche Rechts-, Steuer- oder Finanzberatung.\n' +
     '- Frag bei Bedarf kurz nach (Budget, für wen, Anlass, Material), aber halte dich knapp und herzlich.\n' +
     '- Antworte IMMER auf ' + langName + ', in 1–4 kurzen Sätzen.\n' +
