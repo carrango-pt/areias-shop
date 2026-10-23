@@ -12,7 +12,9 @@ const BASE = 'https://www.camping-profi.de';
 const OUT = path.join(__dirname, 'data', 'camping-profi-raw.json');
 const DELAY_MS = 400;
 const UA = 'Mozilla/5.0 (compatible; CasteloMotorhomes-Katalogimport; +https://www.castelomotorhomesandcaravanrepairs.com)';
-// Hauptbereiche des Sortiments plus Outlet. Eigenmarken/Monatsangebot/TOP-Marken sind Querschnitte davon und werden übersprungen.
+// Hauptbereiche des Sortiments plus Outlet und TOP-Marken (dort nur Artikel, die sonst fehlen).
+// Eigenmarken/Monatsangebot sind reine Querschnitte und werden übersprungen.
+//   --add <Pfad>  liest nur diesen Bereich nach und ergänzt die vorhandene Datei
 const ROOTS = [
   '/de/shop/Zelte-und-Markisen~c15702',
   '/de/shop/Campingmoebel~c15732',
@@ -22,7 +24,8 @@ const ROOTS = [
   '/de/shop/Gas--Wasser-und-Sanitaer~c15852',
   '/de/shop/Elektro-und-Multimedia~c15911',
   '/de/shop/Fahrzeugtechnik~c15945',
-  '/de/shop/Outlet~c106241'          // Restposten – gibt es nur hier
+  '/de/shop/Outlet~c106241',         // Restposten – gibt es nur hier
+  '/de/shop/TOP-Marken~c170479'      // zuletzt: Artikel, die nur über die Markenseiten erreichbar sind
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -124,8 +127,9 @@ async function crawlCategory(url, trail, products, stats) {
 
 (async function main() {
   const lim = process.argv.indexOf('--limit');
-  const roots = lim > 0 ? ROOTS.slice(0, parseInt(process.argv[lim + 1], 10) || 1) : ROOTS;
-  const products = {};
+  const add = process.argv.indexOf('--add');
+  const roots = add > 0 ? [process.argv[add + 1]] : (lim > 0 ? ROOTS.slice(0, parseInt(process.argv[lim + 1], 10) || 1) : ROOTS);
+  const products = add > 0 ? JSON.parse(fs.readFileSync(OUT, 'utf8')).products : {};
   const stats = { count: 0 };
   const started = Date.now();
   for (const root of roots) await crawlCategory(root, [], products, stats);
