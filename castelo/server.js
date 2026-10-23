@@ -27,7 +27,7 @@ app.use(function (_req, res, next) {
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   res.setHeader('Content-Security-Policy',
     "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; " +
-    "img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; " +
+    "img-src 'self' data: https://www.livroreclamacoes.pt; style-src 'self'; font-src 'self'; script-src 'self'; " +
     "connect-src 'self'; form-action 'self' https://checkout.stripe.com");
   next();
 });
