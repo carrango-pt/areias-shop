@@ -147,6 +147,10 @@
 "en": "Camping lamps",
 "pt": "Candeeiros de campismo"
 },
+"Campingmöbel": {
+"en": "Camping furniture",
+"pt": "Mobiliário de campismo"
+},
 "Campingzelte": {
 "en": "Camping tents",
 "pt": "Tendas de campismo"
@@ -215,6 +219,10 @@
 "en": "Entry aids & manual steps",
 "pt": "Ajudas de entrada e degraus manuais"
 },
+"Elektro und Multimedia": {
+"en": "Electrics & multimedia",
+"pt": "Eletricidade & multimédia"
+},
 "Elektro-Heizungen": {
 "en": "Electric heaters",
 "pt": "Aquecedores elétricos"
@@ -274,6 +282,10 @@
 "Fahrzeugsitze und Drehkonsolen": {
 "en": "Vehicle seats & swivel bases",
 "pt": "Bancos e bases giratórias"
+},
+"Fahrzeugtechnik": {
+"en": "Vehicle technology",
+"pt": "Técnica do veículo"
 },
 "Faltkanister": {
 "en": "Collapsible water carriers",
@@ -347,6 +359,10 @@
 "en": "Garage carriers",
 "pt": "Suportes para garagem"
 },
+"Gas, Wasser und Sanitär": {
+"en": "Gas, water & sanitary",
+"pt": "Gás, água & sanitários"
+},
 "Gas-Heizungen": {
 "en": "Gas heaters",
 "pt": "Aquecedores a gás"
@@ -414,6 +430,10 @@
 "Gläser, Becher und Tassen": {
 "en": "Glasses, mugs & cups",
 "pt": "Copos, canecas e chávenas"
+},
+"Grillen, Kochen und Haushalt": {
+"en": "Barbecue, cooking & household",
+"pt": "Grelhar, cozinhar & casa"
 },
 "Grillzubehör": {
 "en": "Barbecue accessories",
@@ -559,6 +579,10 @@
 "en": "Cool box & bag accessories",
 "pt": "Acessórios para geleiras"
 },
+"Kühlen und Heizen": {
+"en": "Cooling & heating",
+"pt": "Frio & aquecimento"
+},
 "Kühlschrank-Zubehör": {
 "en": "Fridge accessories",
 "pt": "Acessórios para frigoríficos"
@@ -654,6 +678,14 @@
 "Navigationssysteme": {
 "en": "Navigation systems",
 "pt": "Sistemas de navegação"
+},
+"Outdoor, Freizeit und Tierwelt": {
+"en": "Outdoor, leisure & pets",
+"pt": "Outdoor, lazer & animais"
+},
+"Outlet": {
+"en": "Outlet",
+"pt": "Outlet"
 },
 "Passive Kühltaschen": {
 "en": "Passive cool bags",
@@ -858,6 +890,10 @@
 "Stützsysteme": {
 "en": "Support systems",
 "pt": "Sistemas de apoio"
+},
+"TOP-Marken": {
+"en": "Top brands",
+"pt": "Marcas de topo"
 },
 "TV Geräte": {
 "en": "TVs",
@@ -1106,6 +1142,10 @@
 "Zeltaufbau-Zubehör": {
 "en": "Tent pitching accessories",
 "pt": "Acessórios de montagem de tendas"
+},
+"Zelte und Markisen": {
+"en": "Tents & awnings",
+"pt": "Tendas & toldos"
 },
 "Zeltreparatur": {
 "en": "Tent repair",

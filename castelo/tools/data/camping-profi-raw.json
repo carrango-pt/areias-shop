@@ -1,5 +1,5 @@
 {
- "fetched": "2026-10-23T17:40:25.246Z",
+ "fetched": "2026-10-23T18:12:33.470Z",
  "source": "https://www.camping-profi.de",
  "products": {
   "28291": {
@@ -76589,6 +76589,26 @@
     "Gaskocher"
    ]
   },
+  "36490": {
+   "id": "36490",
+   "href": "/de/p/Camping-Kitchen-2-DE-R-36490",
+   "img": "/Artikelabbildungen/2033/image-thumb__2033__KartenbildBreitVolleProduktansicht/44332.bc9aa90d.png",
+   "name": "Camping Kitchen 2 DE (R)",
+   "brand": "Campingaz",
+   "art": "44332",
+   "uvp": 6995,
+   "attrs": {
+    "Länge": "35 cm",
+    "Breite / Tiefe": "49 cm",
+    "Höhe": "10 cm",
+    "Gewicht": "3,8 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Campingaz"
+   ],
+   "parent": "33577"
+  },
   "36491": {
    "id": "36491",
    "href": "/de/p/Camping-Kitchen-2-CV-36491",
@@ -80363,6 +80383,27 @@
     "Haushalts- und Reinigungsartikel"
    ],
    "parent": "33699"
+  },
+  "36831": {
+   "id": "36831",
+   "href": "/de/p/Waschschuessel-Holdall-grau-schwarz-36831",
+   "img": "/Artikelabbildungen/3159/image-thumb__3159__KartenbildBreitVolleProduktansicht/49142.a47475aa.png",
+   "name": "Waschschüssel Holdall grau-schwarz",
+   "brand": "Brunner",
+   "art": "49142",
+   "uvp": 1774,
+   "attrs": {
+    "Länge": "46,1 cm",
+    "Breite / Tiefe": "34,2 cm",
+    "Höhe": "18,4 cm",
+    "Gewicht": "0,55 kg",
+    "Inhalt": "16 l"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Brunner"
+   ],
+   "parent": "33700"
   },
   "36832": {
    "id": "36832",
@@ -103098,6 +103139,22 @@
    ],
    "parent": "33205"
   },
+  "38297": {
+   "id": "38297",
+   "href": "/de/p/Erdnagel-20-cm-200er-Pack-NV-38297",
+   "img": "/Artikelabbildungen/683/image-thumb__683__KartenbildBreitVolleProduktansicht/9000085.2ebb14e0.png",
+   "name": "Erdnagel 20 cm 200er Pack NV",
+   "brand": "Grove",
+   "art": "68059",
+   "uvp": 0,
+   "attrs": {
+    "Länge": "20 cm"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Grove"
+   ]
+  },
   "38299": {
    "id": "38299",
    "href": "/de/p/mycleanhome-Intensivreiniger-38299",
@@ -109667,6 +109724,23 @@
    ],
    "parent": "34627"
   },
+  "38866": {
+   "id": "38866",
+   "href": "/de/p/Aussenlueftungs-System-C-200-38866",
+   "img": "/Artikelabbildungen/5204/image-thumb__5204__KartenbildBreitVolleProduktansicht/9000946.c82987c6.png",
+   "name": "Außenlüftungs-System C 200",
+   "brand": "Thetford",
+   "art": "75160",
+   "uvp": 4994,
+   "attrs": {
+    "Gewicht": "0,202 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Thetford"
+   ],
+   "parent": "34034"
+  },
   "38867": {
    "id": "38867",
    "href": "/de/p/Aussenlueftungs-System-C-400-38867",
@@ -109684,6 +109758,23 @@
     "Wasserversorgung",
     "Wasserversorgung-Zubehör"
    ]
+  },
+  "38868": {
+   "id": "38868",
+   "href": "/de/p/Ventilator-C-250-38868",
+   "img": "/Artikelabbildungen/5208/image-thumb__5208__KartenbildBreitVolleProduktansicht/75164.0417288b.png",
+   "name": "Ventilator C 250",
+   "brand": "Thetford",
+   "art": "75164",
+   "uvp": 17500,
+   "attrs": {
+    "Gewicht": "0,296 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Thetford"
+   ],
+   "parent": "34032"
   },
   "38869": {
    "id": "38869",
@@ -109723,6 +109814,23 @@
     "Toiletten und Zubehör",
     "Toiletten"
    ]
+  },
+  "38872": {
+   "id": "38872",
+   "href": "/de/p/Ersatzfilter-C-250-Ventilator-38872",
+   "img": "/Artikelabbildungen/5214/image-thumb__5214__KartenbildBreitVolleProduktansicht/75176.1675ca56.png",
+   "name": "Ersatzfilter C 250 Ventilator",
+   "brand": "Thetford",
+   "art": "75176",
+   "uvp": 1895,
+   "attrs": {
+    "Gewicht": "0,13 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Thetford"
+   ],
+   "parent": "34033"
   },
   "38873": {
    "id": "38873",
@@ -207555,6 +207663,20 @@
     "F45s Deep Black 190-450 - F45s Stellantis Deep Black 260]Export Spare Parts"
    ]
   },
+  "101789": {
+   "id": "101789",
+   "href": "/de/p/Ersatztuch-300-Deluxe-Grey-F45S-101789",
+   "img": null,
+   "name": "Ersatztuch 300 Deluxe Grey F45S",
+   "brand": "Fiamma",
+   "art": "9912568",
+   "uvp": 29600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101790": {
    "id": "101790",
    "href": "/de/p/RECHTES-STUeTZFUSSGELENK-F45ILF65-101790",
@@ -208307,6 +208429,34 @@
     "Caravanstore 190-255 Version 07"
    ]
   },
+  "101837": {
+   "id": "101837",
+   "href": "/de/p/Rechte-SpannstangeStuetzfCs190-07-101837",
+   "img": null,
+   "name": "Rechte Spannstange+Stuetzf.Cs190 07",
+   "brand": "Fiamma",
+   "art": "9911589",
+   "uvp": 19800,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101838": {
+   "id": "101838",
+   "href": "/de/p/Linke-SpannstangeStuetzfCs-225-07-101838",
+   "img": null,
+   "name": "Linke Spannstange+Stuetzf.Cs 225 07",
+   "brand": "Fiamma",
+   "art": "9911590",
+   "uvp": 19800,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101839": {
    "id": "101839",
    "href": "/de/p/Rechte-SpannstangeStuetzfCs225-07-101839",
@@ -208529,6 +208679,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45L Titanium 450-550]Export Spare Parts"
+   ]
+  },
+  "101853": {
+   "id": "101853",
+   "href": "/de/p/ERSATZTUCH-400-ROYAL-GREY-F45ITI-101853",
+   "img": null,
+   "name": "ERSATZTUCH 400 ROYAL GREY F45I/TI",
+   "brand": "Fiamma",
+   "art": "9912570",
+   "uvp": 39000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "101854": {
@@ -208867,6 +209031,34 @@
     "F1 Ti Titanium 250-400"
    ]
   },
+  "101875": {
+   "id": "101875",
+   "href": "/de/p/GEHAeUSEDECKEL-400-F45TIF1-TITAN-101875",
+   "img": null,
+   "name": "GEHÄUSEDECKEL 400 F45TI/F1 TITAN.",
+   "brand": "Fiamma",
+   "art": "9911164",
+   "uvp": 16100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101876": {
+   "id": "101876",
+   "href": "/de/p/GEHAeUSEDECKEL-450-F45TIF1-TITAN-101876",
+   "img": null,
+   "name": "GEHÄUSEDECKEL 450 F45TI/F1 TITAN.",
+   "brand": "Fiamma",
+   "art": "9911167",
+   "uvp": 24100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101877": {
    "id": "101877",
    "href": "/de/p/GEHAeUSEDECKEL-250-F45I-TI-POLAR-101877",
@@ -208881,6 +209073,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45 Ti Polar White 190-450"
+   ]
+  },
+  "101878": {
+   "id": "101878",
+   "href": "/de/p/GEHAeUSEDECKEL-280-F45I-TI-POLAR-101878",
+   "img": null,
+   "name": "GEHÄUSEDECKEL 280 F45I-TI POLAR",
+   "brand": "Fiamma",
+   "art": "9911169",
+   "uvp": 13500,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "101879": {
@@ -208963,6 +209169,20 @@
     "F1 Ti Titanium 250-400"
    ]
   },
+  "101884": {
+   "id": "101884",
+   "href": "/de/p/ELOXIERTES-GEHAEUSE-450-F45TI-TIT-101884",
+   "img": null,
+   "name": "ELOXIERTES GEHAEUSE 450 F45TI TIT",
+   "brand": "Fiamma",
+   "art": "9911285",
+   "uvp": 42000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101885": {
    "id": "101885",
    "href": "/de/p/GEHAeUSE-POLAR-250-F45TIF45I-101885",
@@ -208977,6 +209197,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45 Ti Polar White 190-450"
+   ]
+  },
+  "101886": {
+   "id": "101886",
+   "href": "/de/p/GEHAeUSE-POLAR-280-F45TI-101886",
+   "img": null,
+   "name": "GEHÄUSE POLAR 280 F45TI",
+   "brand": "Fiamma",
+   "art": "9911287",
+   "uvp": 25100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "101887": {
@@ -209315,6 +209549,62 @@
     "F1 Ti Titanium 250-400"
    ]
   },
+  "101909": {
+   "id": "101909",
+   "href": "/de/p/ELOXIERTES-GEHAeUSE-250-F45PLUSF1F50-101909",
+   "img": null,
+   "name": "ELOXIERTES GEHÄUSE 250 F45PLUS/F1/F50",
+   "brand": "Fiamma",
+   "art": "9914056",
+   "uvp": 23400,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101910": {
+   "id": "101910",
+   "href": "/de/p/ELOXIERTES-GEHAeUSE-300-F45PLUSF1F50-101910",
+   "img": null,
+   "name": "ELOXIERTES GEHÄUSE 300 F45PLUS/F1/F50",
+   "brand": "Fiamma",
+   "art": "9914057",
+   "uvp": 28000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101911": {
+   "id": "101911",
+   "href": "/de/p/ELOXIERTES-GEHAeUSE-350-F45PLUSF1F50-101911",
+   "img": null,
+   "name": "ELOXIERTES GEHÄUSE 350 F45PLUS/F1/F50",
+   "brand": "Fiamma",
+   "art": "9914058",
+   "uvp": 33000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101912": {
+   "id": "101912",
+   "href": "/de/p/ELOXIERTES-GEHAeUSE-400-F45PLUSF1F50-101912",
+   "img": null,
+   "name": "ELOXIERTES GEHÄUSE 400 F45PLUS/F1/F50",
+   "brand": "Fiamma",
+   "art": "9914059",
+   "uvp": 36000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101914": {
    "id": "101914",
    "href": "/de/p/ERSATZTUCH-250-BORDEAUX-F45ITI-101914",
@@ -209329,6 +209619,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F1 Ti Titanium 250-400"
+   ]
+  },
+  "101915": {
+   "id": "101915",
+   "href": "/de/p/ERSATZTUCH-300-EVERGREEN-F45ITI-101915",
+   "img": null,
+   "name": "ERSATZTUCH 300 EVERGREEN F45I/TI",
+   "brand": "Fiamma",
+   "art": "9914214",
+   "uvp": 32300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "101916": {
@@ -209459,6 +209763,34 @@
     "F45 Ti Polar White 190-450"
    ]
   },
+  "101926": {
+   "id": "101926",
+   "href": "/de/p/FRONTBLENDE-TITANIUM-F45TI-250-101926",
+   "img": null,
+   "name": "FRONTBLENDE TITANIUM F45TI 250",
+   "brand": "Fiamma",
+   "art": "9911110",
+   "uvp": 13000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101927": {
+   "id": "101927",
+   "href": "/de/p/FRONTBLENDE-TITANIUM-F45TI-300-101927",
+   "img": null,
+   "name": "FRONTBLENDE TITANIUM F45TI 300",
+   "brand": "Fiamma",
+   "art": "9911111",
+   "uvp": 17300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101928": {
    "id": "101928",
    "href": "/de/p/FRONTBLENDE-TITANIUM-F45TI-350-101928",
@@ -209473,6 +209805,132 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F1 Ti Titanium 250-400"
+   ]
+  },
+  "101929": {
+   "id": "101929",
+   "href": "/de/p/FRONTBLENDE-TITANIUM-F45TI-400-101929",
+   "img": null,
+   "name": "FRONTBLENDE TITANIUM F45TI 400",
+   "brand": "Fiamma",
+   "art": "9911113",
+   "uvp": 23800,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101930": {
+   "id": "101930",
+   "href": "/de/p/FRONTBLENDE-TITANIUM-F45TI-280-101930",
+   "img": null,
+   "name": "FRONTBLENDE TITANIUM F45TI 280",
+   "brand": "Fiamma",
+   "art": "9911115",
+   "uvp": 17300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101931": {
+   "id": "101931",
+   "href": "/de/p/FRONTBLENDE-TITANIUM-F45TI-450-101931",
+   "img": null,
+   "name": "FRONTBLENDE TITANIUM F45TI 450",
+   "brand": "Fiamma",
+   "art": "9911116",
+   "uvp": 32700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101932": {
+   "id": "101932",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45I-TI-250-101932",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45I-TI 250",
+   "brand": "Fiamma",
+   "art": "9911117",
+   "uvp": 16100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101933": {
+   "id": "101933",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45TI-280-101933",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45TI 280",
+   "brand": "Fiamma",
+   "art": "9911118",
+   "uvp": 19300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101934": {
+   "id": "101934",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45I-TI-300-101934",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45I-TI 300",
+   "brand": "Fiamma",
+   "art": "9911119",
+   "uvp": 19300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101935": {
+   "id": "101935",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45I-TI-350-101935",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45I-TI 350",
+   "brand": "Fiamma",
+   "art": "9911121",
+   "uvp": 22900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101936": {
+   "id": "101936",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45I-TI-400-101936",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45I-TI 400",
+   "brand": "Fiamma",
+   "art": "9911122",
+   "uvp": 25300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101937": {
+   "id": "101937",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45TI-450-101937",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45TI 450",
+   "brand": "Fiamma",
+   "art": "9911123",
+   "uvp": 33500,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "101938": {
@@ -209859,6 +210317,20 @@
     "F45 Ti Polar White 190-450"
    ]
   },
+  "101962": {
+   "id": "101962",
+   "href": "/de/p/FRONTBLENDE-POLAR-F45I-TI-190-101962",
+   "img": null,
+   "name": "FRONTBLENDE POLAR F45I-TI 190",
+   "brand": "Fiamma",
+   "art": "9912958",
+   "uvp": 16100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101963": {
    "id": "101963",
    "href": "/de/p/RAFTERHALT-FUeR-GEHAeUSE-F45I-TIF1-101963",
@@ -209955,6 +210427,20 @@
     "F1 Ti Titanium 250-400"
    ]
   },
+  "101969": {
+   "id": "101969",
+   "href": "/de/p/RAFTERHALT-IN-FRONTBLENDE-F45TIF1L-101969",
+   "img": null,
+   "name": "RAFTERHALT. IN FRONTBLENDE F45TI/F1L",
+   "brand": "Fiamma",
+   "art": "9914350",
+   "uvp": 1250,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101970": {
    "id": "101970",
    "href": "/de/p/Gehaeusedeckel-260-F1F45Ti-Titan-101970",
@@ -210035,6 +210521,34 @@
     "F1 Ti Titanium 260"
    ]
   },
+  "101975": {
+   "id": "101975",
+   "href": "/de/p/Frontblende-Titanium-F45Ti-265-101975",
+   "img": null,
+   "name": "Frontblende Titanium F45Ti 265",
+   "brand": "Fiamma",
+   "art": "9912566",
+   "uvp": 17300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101976": {
+   "id": "101976",
+   "href": "/de/p/Aufkleber-Fiamma-F1-Ti-Titanium-101976",
+   "img": null,
+   "name": "Aufkleber Fiamma F1 Ti Titanium",
+   "brand": "Fiamma",
+   "art": "9912959",
+   "uvp": 1095,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101977": {
    "id": "101977",
    "href": "/de/p/Gehaeusedeckel-Polar-F45TilZIP-450-101977",
@@ -210083,6 +210597,62 @@
     "F45 Ti L Polar White 450-550"
    ]
   },
+  "101980": {
+   "id": "101980",
+   "href": "/de/p/Frontblende-450-Polar-F45iLTiLZIP-101980",
+   "img": null,
+   "name": "Frontblende 450 Polar F45iL/TiL/ZIP",
+   "brand": "Fiamma",
+   "art": "9911374",
+   "uvp": 29200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101981": {
+   "id": "101981",
+   "href": "/de/p/Frontblende-500-Polar-F45iLTiLZIP-101981",
+   "img": null,
+   "name": "Frontblende 500 Polar F45iL/TiL/ZIP",
+   "brand": "Fiamma",
+   "art": "9911375",
+   "uvp": 32200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101982": {
+   "id": "101982",
+   "href": "/de/p/Frontblende-550-Polar-F45iLTiLZIP-101982",
+   "img": null,
+   "name": "Frontblende 550 Polar F45iL/TiL/ZIP",
+   "brand": "Fiamma",
+   "art": "9911376",
+   "uvp": 33900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101983": {
+   "id": "101983",
+   "href": "/de/p/R-Endanschlagsvorrichtg-D63-F45TiLF65-101983",
+   "img": null,
+   "name": "R. Endanschlagsvorrichtg. D63 F45TiL/F65",
+   "brand": "Fiamma",
+   "art": "9911415",
+   "uvp": 4695,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101984": {
    "id": "101984",
    "href": "/de/p/Abdeckung-Presto-Fix-F45TiLF65-D63-101984",
@@ -210097,6 +210667,62 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45 Ti L Polar White 450-550"
+   ]
+  },
+  "101985": {
+   "id": "101985",
+   "href": "/de/p/Rechter-Gehaeueseverschluss-F45TiL-101985",
+   "img": null,
+   "name": "Rechter Gehäueseverschluss F45TiL",
+   "brand": "Fiamma",
+   "art": "9911494",
+   "uvp": 3395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101986": {
+   "id": "101986",
+   "href": "/de/p/Gehaeuse-Polar-F45TiLZIP-450-101986",
+   "img": null,
+   "name": "Gehäuse Polar F45TiL/ZIP 450",
+   "brand": "Fiamma",
+   "art": "9911603",
+   "uvp": 47700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101987": {
+   "id": "101987",
+   "href": "/de/p/Gehaeuse-Polar-F45TiL-500-101987",
+   "img": null,
+   "name": "Gehäuse Polar F45TiL 500",
+   "brand": "Fiamma",
+   "art": "9911604",
+   "uvp": 50200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101988": {
+   "id": "101988",
+   "href": "/de/p/Gehaeuse-Polar-F45TiL-550-101988",
+   "img": null,
+   "name": "Gehäuse Polar F45TiL 550",
+   "brand": "Fiamma",
+   "art": "9911605",
+   "uvp": 54800,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "101989": {
@@ -210179,6 +210805,48 @@
     "F45 Ti L Polar White 450-550"
    ]
   },
+  "101994": {
+   "id": "101994",
+   "href": "/de/p/R-Verschlussstueck-F45TiL-101994",
+   "img": null,
+   "name": "R. Verschlussstück F45TiL",
+   "brand": "Fiamma",
+   "art": "9911629",
+   "uvp": 465,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101995": {
+   "id": "101995",
+   "href": "/de/p/Linker-Gehaeuseverschluss-F45TiL-101995",
+   "img": null,
+   "name": "Linker Gehäuseverschluss F45TiL",
+   "brand": "Fiamma",
+   "art": "9911630",
+   "uvp": 3395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "101996": {
+   "id": "101996",
+   "href": "/de/p/Kit-linke-innere-Halterung-F45TiL-101996",
+   "img": null,
+   "name": "Kit linke innere Halterung F45TiL",
+   "brand": "Fiamma",
+   "art": "9911636",
+   "uvp": 5450,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "101997": {
    "id": "101997",
    "href": "/de/p/Linker-Arm-F45TiL-450-550400-ZIP-101997",
@@ -210259,6 +210927,104 @@
     "Fiammastore Common Parts]Export Spare Parts"
    ]
   },
+  "102002": {
+   "id": "102002",
+   "href": "/de/p/Rechtes-inneres-Halt-Kit-F45TiL-102002",
+   "img": null,
+   "name": "Rechtes inneres Halt. Kit F45TiL",
+   "brand": "Fiamma",
+   "art": "9911806",
+   "uvp": 5450,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102003": {
+   "id": "102003",
+   "href": "/de/p/GEHAeUSEDECKEL-F45TIL-450-TITANIUM-102003",
+   "img": null,
+   "name": "GEHÄUSEDECKEL F45TIL 450 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911370",
+   "uvp": 33200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102004": {
+   "id": "102004",
+   "href": "/de/p/GEHAeUSEDECKEL-F45IL-TIL-500-TITANIUM-102004",
+   "img": null,
+   "name": "GEHÄUSEDECKEL F45IL-TIL 500 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911371",
+   "uvp": 35200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102005": {
+   "id": "102005",
+   "href": "/de/p/GEHAEUSEDECKEL-F45TIL-550-TITANIUM-102005",
+   "img": null,
+   "name": "GEHAEUSEDECKEL F45TIL 550 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911372",
+   "uvp": 37000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102006": {
+   "id": "102006",
+   "href": "/de/p/FRONTBLENDE-F45ILTILZIP-450-TITANIUM-102006",
+   "img": null,
+   "name": "FRONTBLENDE F45IL/TIL/ZIP 450 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911377",
+   "uvp": 34900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102007": {
+   "id": "102007",
+   "href": "/de/p/FRONTBLENDE-F45ILTILZIP-500-TITANIUM-102007",
+   "img": null,
+   "name": "FRONTBLENDE F45IL/TIL/ZIP 500 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911378",
+   "uvp": 38100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102008": {
+   "id": "102008",
+   "href": "/de/p/FRONTBLENDE-F45ILTILZIP-550-TITANIUM-102008",
+   "img": null,
+   "name": "FRONTBLENDE F45IL/TIL/ZIP 550 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911379",
+   "uvp": 40900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102009": {
    "id": "102009",
    "href": "/de/p/AUFKLEBER-FIAMMA-F45TIL-102009",
@@ -210275,6 +211041,48 @@
     "F45 Ti L Polar White 450-550"
    ]
   },
+  "102010": {
+   "id": "102010",
+   "href": "/de/p/ELOX-GEHAeUSE-F45TIL-450-TITANIUM-102010",
+   "img": null,
+   "name": "ELOX. GEHÄUSE F45TIL 450 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911606",
+   "uvp": 47700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102011": {
+   "id": "102011",
+   "href": "/de/p/ELOX-GEHAeUSE-F45TIL-500-TITANIUM-102011",
+   "img": null,
+   "name": "ELOX. GEHÄUSE F45TIL 500 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911607",
+   "uvp": 50200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102012": {
+   "id": "102012",
+   "href": "/de/p/ELOX-GEHAeUSE-F45TIL-550-TITANIUM-102012",
+   "img": null,
+   "name": "ELOX. GEHÄUSE F45TIL 550 TITANIUM",
+   "brand": "Fiamma",
+   "art": "9911608",
+   "uvp": 54800,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102013": {
    "id": "102013",
    "href": "/de/p/RECHTE-ENDKAPPE-F45TIL-TITANIUM-102013",
@@ -210289,6 +211097,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45 Ti L Titanium 450-550"
+   ]
+  },
+  "102014": {
+   "id": "102014",
+   "href": "/de/p/LINKER-FRONTBLENDENVERS-F45TIL-TIT-102014",
+   "img": null,
+   "name": "LINKER FRONTBLENDENVERS. F45TIL TIT.",
+   "brand": "Fiamma",
+   "art": "9911622",
+   "uvp": 1750,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102015": {
@@ -210483,6 +211305,34 @@
     "F45 i L 450-550"
    ]
   },
+  "102029": {
+   "id": "102029",
+   "href": "/de/p/AUFKLEBER-FIAMMA-F45IL-102029",
+   "img": null,
+   "name": "AUFKLEBER FIAMMA F45IL",
+   "brand": "Fiamma",
+   "art": "9911330",
+   "uvp": 1095,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102030": {
+   "id": "102030",
+   "href": "/de/p/LINKES-STUeTZFUSSGELENK-F65F45IL-102030",
+   "img": null,
+   "name": "LINKES STÜTZFUSSGELENK F65/F45IL",
+   "brand": "Fiamma",
+   "art": "9913220",
+   "uvp": 1995,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102031": {
    "id": "102031",
    "href": "/de/p/R-FLANSCH-F45IL-SN-9438700-102031",
@@ -210497,6 +211347,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45 i L 450-550"
+   ]
+  },
+  "102032": {
+   "id": "102032",
+   "href": "/de/p/L-WALZENVERSCHLUSS-D-60-102032",
+   "img": null,
+   "name": "L. WALZENVERSCHLUSS D. 60",
+   "brand": "Fiamma",
+   "art": "9911355",
+   "uvp": 930,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102033": {
@@ -210529,6 +211393,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F45 Plus L 400-550"
+   ]
+  },
+  "102035": {
+   "id": "102035",
+   "href": "/de/p/R-FLANSCH-F45IL-SN-9438700-102035",
+   "img": null,
+   "name": "R. FLANSCH F45IL S/N>9438700",
+   "brand": "Fiamma",
+   "art": "9911423",
+   "uvp": 3395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102036": {
@@ -210643,6 +211521,20 @@
     "F45 i L 450-550"
    ]
   },
+  "102043": {
+   "id": "102043",
+   "href": "/de/p/R-FRONTBLENDENVERSCHL-F45IL-POLAR-102043",
+   "img": null,
+   "name": "R. FRONTBLENDENVERSCHL. F45IL POLAR",
+   "brand": "Fiamma",
+   "art": "9914336",
+   "uvp": 1250,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102044": {
    "id": "102044",
    "href": "/de/p/SPANNSTANGE-BEFESTIGUNGSKIT-102044",
@@ -210723,6 +211615,20 @@
     "F65s Deep Black 290-320-370-400 Version 015]Export Spare Parts"
    ]
   },
+  "102049": {
+   "id": "102049",
+   "href": "/de/p/VERZINKTE-WALZE-D60-400-F65S-102049",
+   "img": null,
+   "name": "VERZINKTE WALZE D.60 400 F65S",
+   "brand": "Fiamma",
+   "art": "9911811",
+   "uvp": 15400,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102050": {
    "id": "102050",
    "href": "/de/p/KIT-ARMRUTSCHE-F65F65S-1-ST-102050",
@@ -210785,6 +211691,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F65s Polar White 260-400 Version 011]Export Spare Parts"
+   ]
+  },
+  "102054": {
+   "id": "102054",
+   "href": "/de/p/GEHAeUSE-340-F65S-POLAR-102054",
+   "img": null,
+   "name": "GEHÄUSE 340 F65S POLAR",
+   "brand": "Fiamma",
+   "art": "9911824",
+   "uvp": 33900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102055": {
@@ -211155,6 +212075,20 @@
     "F65L Deep Black 400-490 Version 018]Export Spare Parts"
    ]
   },
+  "102078": {
+   "id": "102078",
+   "href": "/de/p/FRONTBLENDENRUTSCHE-F65S-400-102078",
+   "img": null,
+   "name": "FRONTBLENDENRUTSCHE F65S 400",
+   "brand": "Fiamma",
+   "art": "9911882",
+   "uvp": 720,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102079": {
    "id": "102079",
    "href": "/de/p/BLOCKIERUNGSKIT-STUeTZFUSS-F65SL-102079",
@@ -211507,6 +212441,20 @@
     "F65s Titanium 290-400 Version 015]Export Spare Parts"
    ]
   },
+  "102101": {
+   "id": "102101",
+   "href": "/de/p/FRONTBL--2-VERSCHL-F65S-320-TITAN-102101",
+   "img": null,
+   "name": "FRONTBL. + 2 VERSCHL. F65S 320 TITAN.",
+   "brand": "Fiamma",
+   "art": "9911893",
+   "uvp": 33600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102102": {
    "id": "102102",
    "href": "/de/p/FRONTBL--2-VERSCHL-F65S-340-TITAN-102102",
@@ -211795,6 +212743,20 @@
     "F65L Polar White 400-490]Export Spare Parts"
    ]
   },
+  "102120": {
+   "id": "102120",
+   "href": "/de/p/RECHTER-GELENKARM-F65S-260-290-A200-102120",
+   "img": null,
+   "name": "RECHTER GELENKARM F65S 260-290 A.200",
+   "brand": "Fiamma",
+   "art": "9911870",
+   "uvp": 26200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102121": {
    "id": "102121",
    "href": "/de/p/RECHTER-GELENKARM-F65S-320-400-A250-102121",
@@ -211971,6 +212933,20 @@
     "F65 (F65 Top) Polar White - Titanium 450-490"
    ]
   },
+  "102132": {
+   "id": "102132",
+   "href": "/de/p/RECHTE-INNERE-HALTERUNG-F65F65-L-102132",
+   "img": null,
+   "name": "RECHTE INNERE HALTERUNG F65/F65 L",
+   "brand": "Fiamma",
+   "art": "9911638",
+   "uvp": 4595,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102133": {
    "id": "102133",
    "href": "/de/p/VERZINKTE-WALZE-D60-490-F65-102133",
@@ -211985,6 +212961,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F65 (F65 Top) Polar White - Titanium 450-490"
+   ]
+  },
+  "102134": {
+   "id": "102134",
+   "href": "/de/p/WALZENRUTSCHE-IM-GEHAeUSE-F65LEAGLE-102134",
+   "img": null,
+   "name": "WALZENRUTSCHE IM GEHÄUSE F65/L/EAGLE",
+   "brand": "Fiamma",
+   "art": "9912984",
+   "uvp": 1150,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102135": {
@@ -212547,6 +213537,20 @@
     "F65s Polar White 260-400 Version 011]Export Spare Parts"
    ]
   },
+  "102170": {
+   "id": "102170",
+   "href": "/de/p/RECHTER-FRONTBLENDENVERS-F65-POLAR-102170",
+   "img": null,
+   "name": "RECHTER FRONTBLENDENVERS. F65 POLAR",
+   "brand": "Fiamma",
+   "art": "9911323",
+   "uvp": 1650,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102171": {
    "id": "102171",
    "href": "/de/p/GEHAeUSE-POLAR-370-F65-102171",
@@ -212689,6 +213693,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F65 (F65 Top) Polar White 260-400"
+   ]
+  },
+  "102180": {
+   "id": "102180",
+   "href": "/de/p/LINKER-FRONTBLENDENVERS-F65-POLAR-102180",
+   "img": null,
+   "name": "LINKER FRONTBLENDENVERS. F65 POLAR",
+   "brand": "Fiamma",
+   "art": "9911321",
+   "uvp": 1651,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102181": {
@@ -213057,6 +214075,34 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F65 Titanium 290-400]Export Spare Parts"
+   ]
+  },
+  "102204": {
+   "id": "102204",
+   "href": "/de/p/LINKER-FRONTBLENDENVERS-F65-TITAN-102204",
+   "img": null,
+   "name": "LINKER FRONTBLENDENVERS. F65 TITAN.",
+   "brand": "Fiamma",
+   "art": "9911322",
+   "uvp": 2396,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102205": {
+   "id": "102205",
+   "href": "/de/p/RECHTER-FRONTBLENDENVERS-F65-TITAN-102205",
+   "img": null,
+   "name": "RECHTER FRONTBLENDENVERS. F65 TITAN.",
+   "brand": "Fiamma",
+   "art": "9911324",
+   "uvp": 2395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102206": {
@@ -215363,6 +216409,20 @@
     "Fiamma ZIP F45 Ti 250-350x]Export Spare Parts"
    ]
   },
+  "102352": {
+   "id": "102352",
+   "href": "/de/p/GEHAeUSEDECKEL-POLAR-ZIP-400-102352",
+   "img": null,
+   "name": "GEHÄUSEDECKEL POLAR ZIP 400",
+   "brand": "Fiamma",
+   "art": "9911365",
+   "uvp": 27700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102353": {
    "id": "102353",
    "href": "/de/p/FRONTBLENDE-400-POLAR-F45ILTILZIP-102353",
@@ -215377,6 +216437,48 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Fiamma ZIP F45 Ti L 400-450x]Export Spare Parts"
+   ]
+  },
+  "102354": {
+   "id": "102354",
+   "href": "/de/p/L-ROLLENABDECKUNG-D63-F45TILZIP-102354",
+   "img": null,
+   "name": "L. ROLLENABDECKUNG D.63 F45TIL/ZIP",
+   "brand": "Fiamma",
+   "art": "9911403",
+   "uvp": 3350,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102355": {
+   "id": "102355",
+   "href": "/de/p/R-ROLLENABDECKUNG-D63-F45TILZIP-102355",
+   "img": null,
+   "name": "R. ROLLENABDECKUNG D.63 F45TIL/ZIP",
+   "brand": "Fiamma",
+   "art": "9911404",
+   "uvp": 3350,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102356": {
+   "id": "102356",
+   "href": "/de/p/ROLLENUNTERSTUeTZUNG-F45TIL-102356",
+   "img": null,
+   "name": "ROLLENUNTERSTÜTZUNG F45TIL",
+   "brand": "Fiamma",
+   "art": "9911639",
+   "uvp": 5050,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102357": {
@@ -215505,6 +216607,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Caravanstore ZIP Enclosure - ≤ 2015"
+   ]
+  },
+  "102365": {
+   "id": "102365",
+   "href": "/de/p/FRONTWAND-400-PROOMZIPCS-ZIP-410-102365",
+   "img": null,
+   "name": "FRONTWAND 400 P.ROOM/ZIP/CS ZIP 410",
+   "brand": "Fiamma",
+   "art": "17212",
+   "uvp": 62100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102366": {
@@ -215651,6 +216767,76 @@
     "Caravanstore ZIP Enclosure - ≤ 2015"
    ]
   },
+  "102375": {
+   "id": "102375",
+   "href": "/de/p/TUeR-FUeR-PRROOMCS-ZIPFIAMMA-ZIP-102375",
+   "img": null,
+   "name": "TÜR FÜR PR.ROOM/CS ZIP/FIAMMA ZIP",
+   "brand": "Fiamma",
+   "art": "9913050",
+   "uvp": 11700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102376": {
+   "id": "102376",
+   "href": "/de/p/FRONTWAND-250-VAN-PRIVACY-ROOMZIP-102376",
+   "img": null,
+   "name": "FRONTWAND 250 VAN PRIVACY ROOM/ZIP",
+   "brand": "Fiamma",
+   "art": "9913051",
+   "uvp": 44700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102377": {
+   "id": "102377",
+   "href": "/de/p/FRONTWAND-300-VAN-PRIVACY-ROOMZIP-102377",
+   "img": null,
+   "name": "FRONTWAND 300 VAN PRIVACY ROOM/ZIP",
+   "brand": "Fiamma",
+   "art": "9913052",
+   "uvp": 48900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102378": {
+   "id": "102378",
+   "href": "/de/p/TUeR-PRIVACY-ROOMFIAMMA-ZIP-VAN-102378",
+   "img": null,
+   "name": "TÜR PRIVACY ROOM/FIAMMA ZIP VAN",
+   "brand": "Fiamma",
+   "art": "9913053",
+   "uvp": 11700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102379": {
+   "id": "102379",
+   "href": "/de/p/FRONTWAND-450-PRROOMFIAMMA-ZIP-102379",
+   "img": null,
+   "name": "FRONTWAND 450 PR.ROOM/FIAMMA ZIP",
+   "brand": "Fiamma",
+   "art": "9913054",
+   "uvp": 69000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102380": {
    "id": "102380",
    "href": "/de/p/LINKE-SEITENWAND-ZIP-250-VAN-102380",
@@ -215729,6 +216915,34 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Fiamma ZIP Enclosure - ≤ 2015x]Export Spare Parts"
+   ]
+  },
+  "102385": {
+   "id": "102385",
+   "href": "/de/p/RECHTE-SEITENWAND-ZIP-MEDIUM-102385",
+   "img": null,
+   "name": "RECHTE SEITENWAND ZIP MEDIUM",
+   "brand": "Fiamma",
+   "art": "9913060",
+   "uvp": 57700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102386": {
+   "id": "102386",
+   "href": "/de/p/LINKE-SEITENWAND-ZIP-LARGE-102386",
+   "img": null,
+   "name": "LINKE SEITENWAND ZIP LARGE",
+   "brand": "Fiamma",
+   "art": "9913061",
+   "uvp": 57700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102387": {
@@ -215859,6 +217073,20 @@
     "Caravanstore ZIP Enclosure - ≤ 2015"
    ]
   },
+  "102395": {
+   "id": "102395",
+   "href": "/de/p/ERSATZFRONTWAND-140-CM-102395",
+   "img": null,
+   "name": "ERSATZFRONTWAND 140 CM",
+   "brand": "Fiamma",
+   "art": "9913067",
+   "uvp": 22400,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102396": {
    "id": "102396",
    "href": "/de/p/FRONTWAND-255-CARAVANSTORE-ZIP-102396",
@@ -215873,6 +217101,48 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Caravanstore ZIP Enclosure - ≤ 2015"
+   ]
+  },
+  "102397": {
+   "id": "102397",
+   "href": "/de/p/FRONTWAND-280-CARAVANSTORE-ZIP-102397",
+   "img": null,
+   "name": "FRONTWAND 280 CARAVANSTORE ZIP",
+   "brand": "Fiamma",
+   "art": "9913073",
+   "uvp": 53500,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102398": {
+   "id": "102398",
+   "href": "/de/p/FRONTWAND-440-CARAVANSTORE-ZIP-102398",
+   "img": null,
+   "name": "FRONTWAND 440 CARAVANSTORE ZIP",
+   "brand": "Fiamma",
+   "art": "9913076",
+   "uvp": 69000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102399": {
+   "id": "102399",
+   "href": "/de/p/LINKE-SEITENWAND-PRIVACY-CS-ZIP-102399",
+   "img": null,
+   "name": "LINKE SEITENWAND PRIVACY CS ZIP",
+   "brand": "Fiamma",
+   "art": "9913077",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102400": {
@@ -215971,6 +217241,20 @@
     "Privacy Room F45 ≤ 2015]Export Spare Parts"
    ]
   },
+  "102406": {
+   "id": "102406",
+   "href": "/de/p/Linke-Seitenwand-Privacy-Room-250-102406",
+   "img": null,
+   "name": "Linke Seitenwand Privacy Room 250",
+   "brand": "Fiamma",
+   "art": "9913095",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102407": {
    "id": "102407",
    "href": "/de/p/Linke-Seitenwand-Privacy-Room-300-Van-102407",
@@ -215985,6 +217269,48 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Privacy Room F45 ≤ 2015]Export Spare Parts"
+   ]
+  },
+  "102408": {
+   "id": "102408",
+   "href": "/de/p/Rechte-Seitenwand-Privacy-Room-250-102408",
+   "img": null,
+   "name": "Rechte Seitenwand Privacy Room 250",
+   "brand": "Fiamma",
+   "art": "9913097",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102409": {
+   "id": "102409",
+   "href": "/de/p/Befestigung-Fast-Clip-F45Ti-2-53-m-102409",
+   "img": null,
+   "name": "Befestigung Fast Clip F45Ti 2,5/3 m",
+   "brand": "Fiamma",
+   "art": "9913131",
+   "uvp": 3150,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102410": {
+   "id": "102410",
+   "href": "/de/p/Linke-Seitenwand-Privacy-Room-Medium-102410",
+   "img": null,
+   "name": "Linke Seitenwand Privacy Room Medium",
+   "brand": "Fiamma",
+   "art": "17187",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102411": {
@@ -216019,6 +217345,76 @@
     "Privacy Room F45 ≤ 2015]Export Spare Parts"
    ]
   },
+  "102413": {
+   "id": "102413",
+   "href": "/de/p/Rechte-Seitenwand-Privacy-Room-Medium-102413",
+   "img": null,
+   "name": "Rechte Seitenwand Privacy Room Medium",
+   "brand": "Fiamma",
+   "art": "9913101",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102414": {
+   "id": "102414",
+   "href": "/de/p/Linke-Seitenwand-Privacy-Room-Large-102414",
+   "img": null,
+   "name": "Linke Seitenwand Privacy Room Large",
+   "brand": "Fiamma",
+   "art": "9913102",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102415": {
+   "id": "102415",
+   "href": "/de/p/Rechte-Seitenwand-Privacy-Room-Large-102415",
+   "img": null,
+   "name": "Rechte Seitenwand Privacy Room Large",
+   "brand": "Fiamma",
+   "art": "9913103",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102416": {
+   "id": "102416",
+   "href": "/de/p/Frontwand-500-Privacy-Room-Large-102416",
+   "img": null,
+   "name": "Frontwand 500 Privacy Room Large",
+   "brand": "Fiamma",
+   "art": "9913104",
+   "uvp": 85000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102417": {
+   "id": "102417",
+   "href": "/de/p/Frontwand-260-Privacy-Room-VW-T5-102417",
+   "img": null,
+   "name": "Frontwand 260 Privacy Room VW T5",
+   "brand": "Fiamma",
+   "art": "9913106",
+   "uvp": 45300,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102418": {
    "id": "102418",
    "href": "/de/p/Frontwand-400-Privacy-Room-XL-102418",
@@ -216049,6 +217445,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Privacy Room F45 ≤ 2015]Export Spare Parts"
+   ]
+  },
+  "102420": {
+   "id": "102420",
+   "href": "/de/p/Frontwand-500-Privacy-Room-XL-102420",
+   "img": null,
+   "name": "Frontwand 500 Privacy Room XL",
+   "brand": "Fiamma",
+   "art": "9913109",
+   "uvp": 85700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102421": {
@@ -216115,6 +217525,34 @@
     "Privacy Room F65 - ≤ 2015]Export Spare Parts"
    ]
   },
+  "102425": {
+   "id": "102425",
+   "href": "/de/p/Frontwand-320-PR-F65-Ducato--0606-102425",
+   "img": null,
+   "name": "Frontwand 320 P.R. F65 Ducato >06/06",
+   "brand": "Fiamma",
+   "art": "9913115",
+   "uvp": 53500,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102426": {
+   "id": "102426",
+   "href": "/de/p/Frontwand-340-PR-F65-Ducato--0606-102426",
+   "img": null,
+   "name": "Frontwand 340 P.R. F65 Ducato <06/06",
+   "brand": "Fiamma",
+   "art": "9913116",
+   "uvp": 56100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102427": {
    "id": "102427",
    "href": "/de/p/Frontwand-370-PR-F65-Ducato--0606-102427",
@@ -216129,6 +217567,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Privacy Room F65 - ≤ 2015]Export Spare Parts"
+   ]
+  },
+  "102428": {
+   "id": "102428",
+   "href": "/de/p/Frontwand-400-PR-F65-DucatoKreos-102428",
+   "img": null,
+   "name": "Frontwand 400 P.R. F65 Ducato/Kreos",
+   "brand": "Fiamma",
+   "art": "9913118",
+   "uvp": 62100,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102429": {
@@ -216161,6 +217613,48 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Privacy Room F65 - ≤ 2015]Export Spare Parts"
+   ]
+  },
+  "102431": {
+   "id": "102431",
+   "href": "/de/p/Tuer-fuer-PR-F65-DucatoKreos-102431",
+   "img": null,
+   "name": "Tür für P.R. F65 Ducato/Kreos",
+   "brand": "Fiamma",
+   "art": "9913121",
+   "uvp": 11700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102432": {
+   "id": "102432",
+   "href": "/de/p/L-Seitenwand-PR-320340370-F65-Duc-102432",
+   "img": null,
+   "name": "L. Seitenwand P.R. 320/340/370 F65 Duc.",
+   "brand": "Fiamma",
+   "art": "9913122",
+   "uvp": 57700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102433": {
+   "id": "102433",
+   "href": "/de/p/R-Seitenwand-PR-320340370-F65-Duc-102433",
+   "img": null,
+   "name": "R. Seitenwand P.R. 320/340/370 F65 Duc.",
+   "brand": "Fiamma",
+   "art": "9913123",
+   "uvp": 57700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102434": {
@@ -216211,6 +217705,34 @@
     "Privacy Room F65 - ≤ 2015]Export Spare Parts"
    ]
   },
+  "102437": {
+   "id": "102437",
+   "href": "/de/p/Rseitenwand-PR-F65-MB-Sprinter-102437",
+   "img": null,
+   "name": "R.seitenwand P.R. F65 MB Sprinter",
+   "brand": "Fiamma",
+   "art": "9913127",
+   "uvp": 57700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102438": {
+   "id": "102438",
+   "href": "/de/p/Tuer-fuer-Privacy-Room-F65-Ducato-102438",
+   "img": null,
+   "name": "Tür für Privacy Room F65 Ducato",
+   "brand": "Fiamma",
+   "art": "9913128",
+   "uvp": 11700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102439": {
    "id": "102439",
    "href": "/de/p/Kit-Front-PR-400-F65-Ducato-MB-Sprinter-102439",
@@ -216241,6 +217763,48 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Fiamma ZIP Enclosure - ≥ 2023x]Export Spare Parts"
+   ]
+  },
+  "102441": {
+   "id": "102441",
+   "href": "/de/p/Ersatzfrontwand-200-cm-Privacy-Room-F45-102441",
+   "img": null,
+   "name": "Ersatzfrontwand 200 cm Privacy Room F45",
+   "brand": "Fiamma",
+   "art": "9916223",
+   "uvp": 26200,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102442": {
+   "id": "102442",
+   "href": "/de/p/Kit-S-Right-PR-F65S-H-245-280-102442",
+   "img": null,
+   "name": "Kit S. Right P.R. F65/S H:245-280",
+   "brand": "Fiamma",
+   "art": "9916225",
+   "uvp": 920,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102443": {
+   "id": "102443",
+   "href": "/de/p/Kit-S-Left-PR-F65S-H-245-280-102443",
+   "img": null,
+   "name": "Kit S. Left P.R. F65/S H:245-280",
+   "brand": "Fiamma",
+   "art": "9916226",
+   "uvp": 4995,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102444": {
@@ -216371,6 +217935,62 @@
     "Privacy Room CS Light - XL ≤ 2022]Export Spare Parts"
    ]
   },
+  "102452": {
+   "id": "102452",
+   "href": "/de/p/L-Seitenwand-Privacy-Room-Light-Medium-102452",
+   "img": null,
+   "name": "L. Seitenwand Privacy Room Light Medium",
+   "brand": "Fiamma",
+   "art": "9913145",
+   "uvp": 34000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102453": {
+   "id": "102453",
+   "href": "/de/p/R-Seitenwand-Privacy-Room-Light-Medium-102453",
+   "img": null,
+   "name": "R. Seitenwand Privacy Room Light Medium",
+   "brand": "Fiamma",
+   "art": "9913146",
+   "uvp": 34000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102454": {
+   "id": "102454",
+   "href": "/de/p/L-Seitenwand-Privacy-Room-Light-Large-102454",
+   "img": null,
+   "name": "L. Seitenwand Privacy Room Light Large",
+   "brand": "Fiamma",
+   "art": "9913147",
+   "uvp": 34000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102455": {
+   "id": "102455",
+   "href": "/de/p/R-Seitenwand-Privacy-Room-Light-Large-102455",
+   "img": null,
+   "name": "R. Seitenwand Privacy Room Light Large",
+   "brand": "Fiamma",
+   "art": "9913148",
+   "uvp": 34000,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102456": {
    "id": "102456",
    "href": "/de/p/Frontwand-Privacy-Room-450-Light-102456",
@@ -216419,6 +218039,20 @@
     "Privacy Room CS Light - XL ≤ 2022]Export Spare Parts"
    ]
   },
+  "102459": {
+   "id": "102459",
+   "href": "/de/p/Kit-Fast-Clip-Light-20-Ext250-102459",
+   "img": null,
+   "name": "Kit Fast Clip Light 2.0 Ext.250",
+   "brand": "Fiamma",
+   "art": "9913154",
+   "uvp": 46800,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "102460": {
    "id": "102460",
    "href": "/de/p/Kit-Door-Privacy-Room-CS-Light-Van-102460",
@@ -216465,6 +218099,76 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Fiammastore Common Parts]Export Spare Parts"
+   ]
+  },
+  "102463": {
+   "id": "102463",
+   "href": "/de/p/R-Endst-Clip-System-Gehaeusekasten-102463",
+   "img": null,
+   "name": "R. Endst. Clip System Gehäusekasten",
+   "brand": "Fiamma",
+   "art": "9911562",
+   "uvp": 1395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102464": {
+   "id": "102464",
+   "href": "/de/p/L-Endst-Clip-System-Gehaeusekasten-102464",
+   "img": null,
+   "name": "L. Endst. Clip System Gehäusekasten",
+   "brand": "Fiamma",
+   "art": "9911587",
+   "uvp": 1395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102465": {
+   "id": "102465",
+   "href": "/de/p/R-Halterung-Clip-System-Frontblende-102465",
+   "img": null,
+   "name": "R. Halterung Clip System Frontblende",
+   "brand": "Fiamma",
+   "art": "9911679",
+   "uvp": 1395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102466": {
+   "id": "102466",
+   "href": "/de/p/L-Halterung-Clip-System-Frontblende-102466",
+   "img": null,
+   "name": "L. Halterung Clip System Frontblende",
+   "brand": "Fiamma",
+   "art": "9911680",
+   "uvp": 1395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "102467": {
+   "id": "102467",
+   "href": "/de/p/Frontwand-255-Privacy-Room-CS-Light-10-102467",
+   "img": null,
+   "name": "Frontwand 255 Privacy Room CS Light 1.0",
+   "brand": "Fiamma",
+   "art": "9913156",
+   "uvp": 31500,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "102468": {
@@ -239941,6 +241645,20 @@
     "Omnistor 6300"
    ]
   },
+  "108176": {
+   "id": "108176",
+   "href": "/de/p/Thule-Pitch-Control-TO5200-108176",
+   "img": null,
+   "name": "Thule Pitch Control TO5200",
+   "brand": "Thule",
+   "art": "9913391",
+   "uvp": 350,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Thule"
+   ]
+  },
   "108177": {
    "id": "108177",
    "href": "/de/p/LHRH-ENDCAP-MAINHOUSING-6300-WHITE-108177",
@@ -240339,6 +242057,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "Caravanstore ZIP XL 360-550"
+   ]
+  },
+  "108203": {
+   "id": "108203",
+   "href": "/de/p/KIT-GETRIEBEOESE-CC-3-1-F80-S-A-108203",
+   "img": null,
+   "name": "KIT GETRIEBE+OESE CC 3:1 F80 S (A)",
+   "brand": "Fiamma",
+   "art": "9914098",
+   "uvp": 9650,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "108204": {
@@ -241092,6 +242824,20 @@
     "Ersatzteile Zelte und Markisen",
     "Fiamma Zelte & Markisen Ersatzteil-Sortiment",
     "F80s Polar White 290-450 - F80s Ducato Polar White 320-370-400 ≤ 2025]Export Spare Parts"
+   ]
+  },
+  "108253": {
+   "id": "108253",
+   "href": "/de/p/LINKE-ENDKAPPE-F80S-POLAR-A-108253",
+   "img": null,
+   "name": "LINKE ENDKAPPE F80S POLAR (A)",
+   "brand": "Fiamma",
+   "art": "9913306",
+   "uvp": 5395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "108254": {
@@ -256558,6 +258304,48 @@
     "Turbo-Vent - Turbo-Vent P3 White - Crystal"
    ]
   },
+  "109278": {
+   "id": "109278",
+   "href": "/de/p/Rechte-Seitenwand-CARAVANSTORE-ZIP-109278",
+   "img": null,
+   "name": "Rechte Seitenwand CARAVANSTORE ZIP",
+   "brand": "Fiamma",
+   "art": "9910312",
+   "uvp": 55600,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "109279": {
+   "id": "109279",
+   "href": "/de/p/Kunststoffteil-links-Dual-Shock-109279",
+   "img": null,
+   "name": "Kunststoffteil links Dual Shock",
+   "brand": "Fiamma",
+   "art": "9910315",
+   "uvp": 910,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "109280": {
+   "id": "109280",
+   "href": "/de/p/Kunststoffteil-rechts-Dual-Shock-109280",
+   "img": null,
+   "name": "Kunststoffteil rechts Dual Shock",
+   "brand": "Fiamma",
+   "art": "9910316",
+   "uvp": 910,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "109281": {
    "id": "109281",
    "href": "/de/p/Zugfeder-f-innere-Halterung-F45-S-109281",
@@ -258999,6 +260787,34 @@
     "Ersatzteile Zelte und Markisen",
     "Thule Ersatzteil-Sortiment",
     "Omnistor 6300"
+   ]
+  },
+  "125641": {
+   "id": "125641",
+   "href": "/de/p/Logo-OMNISTOR-schwarze-Markise-125641",
+   "img": null,
+   "name": "Logo OMNISTOR schwarze Markise",
+   "brand": "Thule",
+   "art": "9913398",
+   "uvp": 1178,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Thule"
+   ]
+  },
+  "125642": {
+   "id": "125642",
+   "href": "/de/p/Linke-Endkappe-F45S-Black-125642",
+   "img": null,
+   "name": "Linke Endkappe F45S Black",
+   "brand": "Fiamma",
+   "art": "9913399",
+   "uvp": 6486,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
    ]
   },
   "125643": {
@@ -270784,6 +272600,46 @@
    ],
    "parent": "139197"
   },
+  "139248": {
+   "id": "139248",
+   "href": "/de/p/Certec-Inline-Komplettset-gewinkelt-139248",
+   "img": null,
+   "name": "Certec Inline Komplettset gewinkelt",
+   "brand": "Lilie",
+   "art": "78241",
+   "uvp": 19900,
+   "attrs": {
+    "Länge": "12,7 cm",
+    "Breite / Tiefe": "32,5 cm",
+    "Höhe": "18,9 cm",
+    "Gewicht": "1,295 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Lilie"
+   ],
+   "parent": "139198"
+  },
+  "139249": {
+   "id": "139249",
+   "href": "/de/p/Certec-Inline-Komplettset-Tauchpumpen-139249",
+   "img": null,
+   "name": "Certec Inline Komplettset Tauchpumpen",
+   "brand": "Lilie",
+   "art": "78242",
+   "uvp": 18900,
+   "attrs": {
+    "Länge": "12,7 cm",
+    "Breite / Tiefe": "32,5 cm",
+    "Höhe": "18,9 cm",
+    "Gewicht": "1,295 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Lilie"
+   ],
+   "parent": "139198"
+  },
   "139250": {
    "id": "139250",
    "href": "/de/p/Flaschenlampe-FIOCCO-grau-CCT-139250",
@@ -274791,6 +276647,127 @@
    ],
    "parent": "141103"
   },
+  "141117": {
+   "id": "141117",
+   "href": "/de/p/Desinfektionseinheit-UV-8-ECO-141117",
+   "img": "/Artikelabbildungen/29182/image-thumb__29182__KartenbildBreit/78280.40495618.jpg",
+   "name": "Desinfektionseinheit UV-8 ECO",
+   "brand": "WMaquatec",
+   "art": "78280",
+   "uvp": 29900,
+   "attrs": {
+    "Länge": "7 cm",
+    "Breite / Tiefe": "9,6 cm",
+    "Höhe": "14,3 cm",
+    "Gewicht": "0,23 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "WMaquatec"
+   ],
+   "parent": "141104"
+  },
+  "141118": {
+   "id": "141118",
+   "href": "/de/p/Desinfektionseinheit-UV-8-SAFE-141118",
+   "img": "/Artikelabbildungen/29197/image-thumb__29197__KartenbildBreit/78282.e6c57c07.jpg",
+   "name": "Desinfektionseinheit UV-8 SAFE",
+   "brand": "WMaquatec",
+   "art": "78282",
+   "uvp": 39900,
+   "attrs": {
+    "Gewicht": "0,4 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "WMaquatec"
+   ],
+   "parent": "141104"
+  },
+  "141119": {
+   "id": "141119",
+   "href": "/de/p/Desinfektionseinheit-UV-8-ECO-KLW-141119",
+   "img": "/Artikelabbildungen/29166/image-thumb__29166__KartenbildBreit/78284.d9d0d152.jpg",
+   "name": "Desinfektionseinheit UV-8 ECO KLW",
+   "brand": "WMaquatec",
+   "art": "78284",
+   "uvp": 39900,
+   "attrs": {
+    "Länge": "30 cm",
+    "Breite / Tiefe": "17,7 cm",
+    "Höhe": "12,7 cm",
+    "Gewicht": "1,31 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "WMaquatec"
+   ],
+   "parent": "141104"
+  },
+  "141120": {
+   "id": "141120",
+   "href": "/de/p/Desinfektionseinheit-UV-8-STEEL-KLW-141120",
+   "img": "/Artikelabbildungen/29228/image-thumb__29228__KartenbildBreit/78285.8275593e.jpg",
+   "name": "Desinfektionseinheit UV-8 STEEL KLW",
+   "brand": "WMaquatec",
+   "art": "78285",
+   "uvp": 59900,
+   "attrs": {
+    "Länge": "26 cm",
+    "Breite / Tiefe": "17,7 cm",
+    "Höhe": "23,5 cm",
+    "Gewicht": "2,79 kg"
+   },
+   "cat": [
+    "TOP-Marken",
+    "WMaquatec"
+   ],
+   "parent": "141104"
+  },
+  "141121": {
+   "id": "141121",
+   "href": "/de/p/Katadyn-BeFree-AC-Bottle-0-7l---Smoke-141121",
+   "img": "/Artikelabbildungen/29214/image-thumb__29214__KartenbildBreit/78351.1ac981b3.jpg",
+   "name": "Katadyn BeFree AC Bottle 0,7l - Smoke",
+   "brand": "Certiman",
+   "art": "78351",
+   "uvp": 4994,
+   "attrs": {
+    "Farbe": "Smoke",
+    "Länge": "9,5 cm",
+    "Breite / Tiefe": "7,5 cm",
+    "Höhe": "23,6 cm",
+    "Gewicht": "0,095 kg",
+    "Inhalt": "0,7 ml"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Certiman"
+   ],
+   "parent": "141105"
+  },
+  "141122": {
+   "id": "141122",
+   "href": "/de/p/Katadyn-BeFree-AC-Bottle-0-7l---Blue-141122",
+   "img": "/Artikelabbildungen/29233/image-thumb__29233__KartenbildBreit/78352.58c1c0ae.jpg",
+   "name": "Katadyn BeFree AC Bottle 0,7l - Blue",
+   "brand": "Certiman",
+   "art": "78352",
+   "uvp": 4994,
+   "attrs": {
+    "Farbe": "Blue",
+    "Länge": "9,5 cm",
+    "Breite / Tiefe": "7,5 cm",
+    "Höhe": "23,6 cm",
+    "Gewicht": "0,095 kg",
+    "Inhalt": "0,7 ml"
+   },
+   "cat": [
+    "TOP-Marken",
+    "Certiman"
+   ],
+   "parent": "141105"
+  },
   "141123": {
    "id": "141123",
    "href": "/de/p/LED-Regenrinne-RainTec-RT200-MBS-141123",
@@ -277552,6 +279529,20 @@
     "Omnistor 8000"
    ]
   },
+  "150112": {
+   "id": "150112",
+   "href": "/de/p/Ersatzluftschlauch-Vorzelt-Airtravel-II-150112",
+   "img": null,
+   "name": "Ersatzluftschlauch Vorzelt Airtravel II",
+   "brand": "Brunner",
+   "art": "9913416",
+   "uvp": 8150,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Brunner"
+   ]
+  },
   "150113": {
    "id": "150113",
    "href": "/de/p/LEAD-RAIL-6300-3-75M-WHITE-150113",
@@ -279299,6 +281290,90 @@
     "Wasseranschlüsse, Steckdosen und Einfüllstutzen"
    ]
   },
+  "161503": {
+   "id": "161503",
+   "href": "/de/p/AK-161-mit-Distanzstuecken--Druckschloss-161503",
+   "img": null,
+   "name": "AK 161 mit Distanzstücken, Druckschloss",
+   "brand": "AL-KO",
+   "art": "93447",
+   "uvp": 14500,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "AL-KO"
+   ]
+  },
+  "161504": {
+   "id": "161504",
+   "href": "/de/p/Rollenunterstuetzung-F45TiL-161504",
+   "img": null,
+   "name": "Rollenunterstützung F45TiL",
+   "brand": "Fiamma",
+   "art": "9911667",
+   "uvp": 4210,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "161505": {
+   "id": "161505",
+   "href": "/de/p/Zugfeder-fuer-innere-Halterung-F45S-161505",
+   "img": null,
+   "name": "Zugfeder für innere Halterung F45S",
+   "brand": "Fiamma",
+   "art": "9912476",
+   "uvp": 820,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "161509": {
+   "id": "161509",
+   "href": "/de/p/Fuehrung-Arm-mitte-161509",
+   "img": null,
+   "name": "Führung Arm mitte",
+   "brand": "Dometic",
+   "art": "9913996",
+   "uvp": 2150,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Dometic"
+   ]
+  },
+  "161510": {
+   "id": "161510",
+   "href": "/de/p/Rafterhalt-am-Gehaeuse-F80S-161510",
+   "img": null,
+   "name": "Rafterhalt. am Gehäuse F80S",
+   "brand": "Fiamma",
+   "art": "9914095",
+   "uvp": 2396,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
+  "161511": {
+   "id": "161511",
+   "href": "/de/p/RECHTE-ABDECKKAPPE-F45IL-POLAR-161511",
+   "img": null,
+   "name": "RECHTE ABDECKKAPPE F45IL POLAR",
+   "brand": "Fiamma",
+   "art": "9914330",
+   "uvp": 2360,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "161512": {
    "id": "161512",
    "href": "/de/p/Ersatzfusskappen-Westfield-Advancer-4er-161512",
@@ -280519,6 +282594,20 @@
     "Omnistor 6200"
    ]
   },
+  "168348": {
+   "id": "168348",
+   "href": "/de/p/RECHTE-ABDECKKAPPE-F45I-POLAR-168348",
+   "img": null,
+   "name": "RECHTE ABDECKKAPPE F45I POLAR",
+   "brand": "Fiamma",
+   "art": "9914236",
+   "uvp": 2350,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Fiamma"
+   ]
+  },
   "168356": {
    "id": "168356",
    "href": "/de/p/Verlaengerungsfeder-168356",
@@ -280657,6 +282746,118 @@
    "cat": [
     "Gas, Wasser und Sanitär",
     "Ersatzteile Wasser und Sanitär"
+   ]
+  },
+  "168399": {
+   "id": "168399",
+   "href": "/de/p/Alden-Universal-digital-Single-LNB-schw-168399",
+   "img": null,
+   "name": "Alden Universal digital Single-LNB schw",
+   "brand": "Alden",
+   "art": "9980678",
+   "uvp": 3395,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Alden"
+   ]
+  },
+  "168420": {
+   "id": "168420",
+   "href": "/de/p/Klemmplatte-easydriver-SMART-168420",
+   "img": null,
+   "name": "Klemmplatte easydriver SMART\"\"",
+   "brand": "Reich",
+   "art": "9990872",
+   "uvp": 27700,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Reich"
+   ]
+  },
+  "168423": {
+   "id": "168423",
+   "href": "/de/p/Ersatzriemen-2-Stueck-168423",
+   "img": null,
+   "name": "Ersatzriemen (2 Stück)",
+   "brand": "Alu-Line",
+   "art": "9991712",
+   "uvp": 670,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Alu-Line"
+   ]
+  },
+  "168424": {
+   "id": "168424",
+   "href": "/de/p/Elite-G2-Platform-Without-Rails-168424",
+   "img": "/Artikeldokumente/Explosionszeichnungen/Thule/34962/image-thumb__34962__KartenbildBreit/Elite%20G2%20LV%20-%20Elite%20G2%20SV%20-%20Elite%20G2%20HH%20-%20Elite%20G2%20One%20Bike.daa56020.png",
+   "name": "Elite G2 Platform Without Rails",
+   "brand": "Thule",
+   "art": "9991716",
+   "uvp": 14900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Thule"
+   ]
+  },
+  "168435": {
+   "id": "168435",
+   "href": "/de/p/Schnellverschluss-Befestigungssystem-168435",
+   "img": null,
+   "name": "Schnellverschluss-Befestigungssystem",
+   "brand": "Reich",
+   "art": "9992797",
+   "uvp": 2250,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Reich"
+   ]
+  },
+  "168447": {
+   "id": "168447",
+   "href": "/de/p/Fernbedienung-Mover%25C2%25AE-ab-0108-168447",
+   "img": null,
+   "name": "Fernbedienung Mover® ab 01/08",
+   "brand": "Truma",
+   "art": "9993511",
+   "uvp": 21900,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Truma"
+   ]
+  },
+  "168455": {
+   "id": "168455",
+   "href": "/de/p/ET-Set-Reibbelaege-AKS-2004-168455",
+   "img": null,
+   "name": "ET-Set Reibbeläge AKS 2004",
+   "brand": "AL-KO",
+   "art": "9993906",
+   "uvp": 3995,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "AL-KO"
+   ]
+  },
+  "168463": {
+   "id": "168463",
+   "href": "/de/p/Teleskopfuehrung-Ducato-IV--Transit-168463",
+   "img": null,
+   "name": "Teleskopführung Ducato IV / Transit",
+   "brand": "Remis",
+   "art": "9995259",
+   "uvp": 3550,
+   "attrs": {},
+   "cat": [
+    "TOP-Marken",
+    "Remis"
    ]
   },
   "170190": {

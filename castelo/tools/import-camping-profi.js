@@ -150,6 +150,9 @@ async function crawlCategory(url, trail, products, stats) {
     }
     if (++n % 50 === 0) console.log('  ', n, '/', parents.length, '→', Object.keys(products).length, 'Artikel');
   }
+  // Hauptartikel, deren Varianten schon einzeln vorhanden sind, nicht doppelt führen
+  const parentIds = new Set(Object.values(products).map((p) => p.parent).filter(Boolean));
+  for (const id of Object.keys(products)) if (products[id].uvp == null && parentIds.has(id)) delete products[id];
   stats.count = Object.keys(products).length;
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify({ fetched: new Date().toISOString(), source: BASE, products: products }, null, 1));
