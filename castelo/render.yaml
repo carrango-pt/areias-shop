@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: castelo-motorhomes
+    runtime: node
+    plan: free            # zum Testen; für den Livebetrieb auf "starter" stellen (schläft nicht ein)
+    rootDir: castelo
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: STRIPE_SECRET_KEY
+        sync: false   # im Render-Dashboard eintragen (Secret) – aktiviert die Kasse
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false   # aus Stripe → Webhooks (whsec_…) – aktiviert die Bestell-Mail
+      - key: BREVO_API_KEY
+        sync: false   # aus Brevo – aktiviert Kontaktformular und Bestell-Mail
+      - key: SHOP_EMAIL
+        value: info@castelomotorhomes.com
