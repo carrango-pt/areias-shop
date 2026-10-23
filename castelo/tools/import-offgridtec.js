@@ -62,11 +62,12 @@ function parseProduct(html, url) {
   let m;
   while ((m = re.exec(html))) crumbs.push(clean(m[1]));
   const gm = /Gewicht[^<]{0,5}<\/[^>]+>\s*(?:<[^>]+>\s*)*(\d+(?:[.,]\d+)?)\s*kg/i.exec(html);
-  return {
+  // JSON-Rundreise: löst alle Teil-Strings von der großen Seite, sonst bleibt jede Seite im Speicher hängen
+  return JSON.parse(JSON.stringify({
     sku: et[1], name: name, brand: clean(brand), gross: gross, vat: vat, img: img ? img.split('?')[0] : null,
     crumbs: crumbs, tags: tags, freight: tags.indexOf('Versand per Spedition') >= 0,
     kg: gm ? parseFloat(gm[1].replace(',', '.')) : null, url: url
-  };
+  }));
 }
 
 (async function main() {
@@ -86,17 +87,30 @@ function parseProduct(html, url) {
   urls = urls.filter((u) => /^https:\/\/www\.offgridtec\.com\/[^/]+\.html$/.test(u));
   if (limit) urls = urls.slice(0, limit);
   console.log(urls.length, 'Seiten zu prüfen');
-  const products = {};
+  // Zwischenstand: alle 100 Seiten sichern; --resume macht dort weiter
+  const PART = OUT + '.part';
+  let products = {}, done = new Set();
+  if (process.argv.indexOf('--resume') > 0 && fs.existsSync(PART)) {
+    const st = JSON.parse(fs.readFileSync(PART, 'utf8'));
+    products = st.products; done = new Set(st.done);
+    console.log('Weiter ab Zwischenstand:', done.size, 'Seiten,', Object.keys(products).length, 'Artikel');
+  }
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  const save = () => fs.writeFileSync(PART, JSON.stringify({ products: products, done: [...done] }));
   let n = 0;
   for (const u of urls) {
-    const html = await get(u);
+    n++;
+    if (done.has(u)) continue;
+    let html = await get(u);
     if (html) {
       const p = parseProduct(html, u);
       if (p && p.gross) products[p.sku] = p;
     }
-    if (++n % 100 === 0) console.log(String(n).padStart(5), '/', urls.length, '→', Object.keys(products).length, 'Artikel');
+    html = null;
+    done.add(u);
+    if (n % 100 === 0) { save(); console.log(String(n).padStart(5), '/', urls.length, '→', Object.keys(products).length, 'Artikel'); }
   }
-  fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify({ fetched: new Date().toISOString(), source: BASE, products: products }, null, 1));
+  if (fs.existsSync(PART)) fs.unlinkSync(PART);
   console.log('Fertig:', Object.keys(products).length, 'Artikel →', OUT);
 })();
