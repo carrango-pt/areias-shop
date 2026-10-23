@@ -130,7 +130,7 @@ function rateLimit(max, windowMs) {
 app.get('/api/shop/categories', shop.categories);
 app.get('/api/shop/info', shop.info);
 app.get('/api/shop/products', rateLimit(300, 60 * 1000), shop.products);
-app.get('/img/cp/*', rateLimit(600, 60 * 1000), shop.image);
+app.get('/img/:src(cp|og)/*', rateLimit(600, 60 * 1000), shop.image);
 app.get('/sitemap-products.xml', shop.sitemap);
 shop.LANGS.forEach(function (l) { app.get(shop.ITEM_PATH[l] + ':slug', shop.productPage(l)); });
 

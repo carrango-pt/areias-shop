@@ -9,7 +9,14 @@ const CONFIG = require('./shop-config.js');
 const LANGS = ['de', 'en', 'pt'];
 const SHOP_PATH = { de: '/campingshop', en: '/en/shop', pt: '/pt/loja' };
 const ITEM_PATH = { de: '/campingshop/artikel/', en: '/en/shop/item/', pt: '/pt/loja/artigo/' };
-const IMG_ORIGIN = 'https://www.camping-profi.de/';
+// Bildquellen je Lieferant: erlaubte Pfade und Reihenfolge der Abrufversuche
+const IMG_SOURCES = {
+  cp: { origin: 'https://www.camping-profi.de/', ok: /^(Artikelabbildungen|Artikeldokumente)\/[\w\-.@~/ ()&+,]+$/,
+        tries: function (rel) { return /\.(png|jpe?g)$/i.test(rel) ? [rel.replace(/\.(png|jpe?g)$/i, '.webp'), rel] : [rel]; } },
+  og: { origin: 'https://www.offgridtec.com/', ok: /^media\/[\w\-.@~/]+$/,
+        // Shopware-Vorschaubild (800 px) statt Original in voller Größe
+        tries: function (rel) { return [rel.replace(/^media\//, 'thumbnail/').replace(/(\.\w+)$/, '_800x800$1'), rel]; } }
+};
 const PAGE_SIZE = 24;
 
 const TX = {
@@ -57,7 +64,7 @@ ids.forEach(function (id) {
 
 function catName(c, lang) { return (c.i18n && c.i18n[lang]) || c.name; }
 function itemUrl(id, lang) { return ITEM_PATH[lang] + id + '-' + slug(CAT.products[id].n); }
-function imgUrl(p) { return p.i ? '/img/cp/' + p.i : '/img/shop-zubehoer.jpg'; }
+function imgUrl(p) { return p.i ? (p.i.indexOf('og/') === 0 ? '/img/' + p.i : '/img/cp/' + p.i) : '/img/shop-zubehoer.jpg'; }
 function langOf(x) { return LANGS.indexOf(x) >= 0 ? x : 'de'; }
 
 // ---------------------------------------------------------------- API
@@ -107,19 +114,19 @@ function products(req, res) {
 const CACHE_DIR = path.join(os.tmpdir(), 'castelo-img');
 fs.mkdirSync(CACHE_DIR, { recursive: true });
 const inflight = {};
-async function fetchImage(rel) {
-  const urls = /\.(png|jpe?g)$/i.test(rel) ? [rel.replace(/\.(png|jpe?g)$/i, '.webp'), rel] : [rel];
-  for (const u of urls) {
-    const r = await fetch(IMG_ORIGIN + encodeURI(u));
+async function fetchImage(src, rel) {
+  for (const u of src.tries(rel)) {
+    const r = await fetch(src.origin + encodeURI(u));
     if (r.ok) return { type: r.headers.get('content-type') || 'image/png', buf: Buffer.from(await r.arrayBuffer()) };
   }
   return null;
 }
 async function image(req, res) {
+  const src = IMG_SOURCES[req.params.src];
   const rel = req.params[0] || '';
-  if (!/^(Artikelabbildungen|Artikeldokumente)\/[\w\-.@~/ ()&+,]+$/.test(rel) || rel.indexOf('..') >= 0 ||
+  if (!src || !src.ok.test(rel) || rel.indexOf('..') >= 0 ||
       !/\.(png|jpe?g|webp|gif)$/i.test(rel)) return res.status(404).end();
-  const key = crypto.createHash('sha1').update(rel).digest('hex');
+  const key = crypto.createHash('sha1').update(req.params.src + '/' + rel).digest('hex');
   const file = path.join(CACHE_DIR, key);
   res.set('Cache-Control', 'public, max-age=2592000, immutable');
   try {
@@ -128,7 +135,7 @@ async function image(req, res) {
     return res.sendFile(file);
   } catch (e) { /* noch nicht im Cache */ }
   try {
-    const img = await (inflight[key] = inflight[key] || fetchImage(rel));
+    const img = await (inflight[key] = inflight[key] || fetchImage(src, rel));
     delete inflight[key];
     if (!img) return res.redirect(302, '/img/shop-zubehoer.jpg');
     fs.writeFile(file, img.buf, function () { fs.writeFile(file + '.json', JSON.stringify({ type: img.type }), function () {}); });
@@ -155,7 +162,7 @@ function euro(c, lang) {
 
 function productPage(lang) {
   return function (req, res, next) {
-    const id = (/^(\d+)/.exec(req.params.slug || '') || [])[1];
+    const id = (/^(og[0-9a-z]+|\d+)(?=-|$)/i.exec(req.params.slug || '') || [])[1];   // Camping-Profi: Zahl, Offgridtec: og…
     const p = id && CAT.products[id];
     const tpl = TEMPLATES[lang];
     if (!p || !tpl) return next();
@@ -250,7 +257,7 @@ function checkoutData(items, lang) {
     if (isBulky(id)) bulky = true;
     return {
       quantity: qty,
-      price_data: { currency: CONFIG.currency, unit_amount: p.p, product_data: { name: p.n + (p.a ? ' (Art. ' + p.a + ')' : '') } }
+      price_data: { currency: CONFIG.currency, unit_amount: p.p, product_data: { name: p.n + (p.a ? ' (' + (p.s === 'og' ? 'Offgridtec ' : '') + 'Art. ' + p.a + ')' : '') } }
     };
   });
   function rate(label, amount, d) {

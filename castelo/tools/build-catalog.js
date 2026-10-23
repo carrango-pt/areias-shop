@@ -23,7 +23,8 @@ const TOP_I18N = {
   'Kühlen und Heizen': { en: 'Cooling & heating', pt: 'Frio & aquecimento' },
   'Gas, Wasser und Sanitär': { en: 'Gas, water & sanitary', pt: 'Gás, água & sanitários' },
   'Elektro und Multimedia': { en: 'Electrics & multimedia', pt: 'Eletricidade & multimédia' },
-  'Fahrzeugtechnik': { en: 'Vehicle technology', pt: 'Técnica do veículo' }
+  'Fahrzeugtechnik': { en: 'Vehicle technology', pt: 'Técnica do veículo' },
+  'Solar & Energie': { en: 'Solar & power', pt: 'Solar & energia' }
 };
 
 // Übersetzungen der zweiten Ebene
@@ -95,8 +96,8 @@ function translate(name) {
   return null;
 }
 
-function price(uvpCents) {
-  let c = uvpCents / (1 + SRC_VAT) * (1 + DST_VAT) * (1 + MARKUP_PERCENT / 100);
+function price(uvpCents, srcVat) {
+  let c = uvpCents / (1 + (srcVat == null ? SRC_VAT : srcVat)) * (1 + DST_VAT) * (1 + MARKUP_PERCENT / 100);
   c = Math.round(c);
   if (ROUND_TO) {
     const euros = Math.floor(c / 100);
@@ -159,6 +160,47 @@ for (const p of Object.values(raw.products)) {
   };
 }
 
+// ---------------------------------------------------------------- Offgridtec (zweiter Lieferant)
+// Eigener Hauptbereich „Solar & Energie“, darunter die Offgridtec-Kategorien.
+// Preis: angezeigter Endpreis inkl. deutscher MwSt. (Satz von der Seite) → netto → 23 %.
+const OG_RAW = path.join(__dirname, 'data', 'offgridtec-raw.json');
+let ogCount = 0;
+if (fs.existsSync(OG_RAW)) {
+  const og = JSON.parse(fs.readFileSync(OG_RAW, 'utf8'));
+  for (const p of Object.values(og.products)) {
+    if (!p.gross) { skipped++; continue; }
+    let crumbs = p.crumbs.slice();
+    if (crumbs[0] === 'Marken') crumbs = crumbs.slice(2);         // „Marken › Victron Energy › …“ → nur die Fachkategorie
+    const trail = ['Solar & Energie'].concat(crumbs.slice(0, 2));
+    let parent = '';
+    for (let i = 0; i < trail.length; i++) {
+      const id = slug(trail.slice(0, i + 1).join(' '));
+      if (!cats[id]) {
+        const name = cleanName(trail[i]);
+        cats[id] = { id: id, name: name, parent: parent, count: 0 };
+        const tr = (i === 0 && TOP_I18N[name]) || translate(name);
+        if (tr) cats[id].i18n = tr;
+      }
+      cats[id].count++;
+      parent = id;
+    }
+    const id = 'og' + p.sku.replace(/[^0-9a-z]/gi, '').toLowerCase();
+    products[id] = {
+      n: p.name,
+      f: p.freight ? 'S' : undefined,
+      b: p.brand || undefined,
+      a: p.sku,
+      s: 'og',                          // Lieferant Offgridtec (für Bestell-Mail und Bilder)
+      p: price(p.gross, p.vat),
+      u: p.gross,
+      w: p.kg || undefined,
+      c: parent,
+      i: p.img ? 'og/' + p.img.replace(/^https:\/\/www\.offgridtec\.com\//, '') : undefined
+    };
+    ogCount++;
+  }
+}
+
 const catList = Object.values(cats).sort((a, b) => a.parent === b.parent ? a.name.localeCompare(b.name, 'de') : 0);
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, JSON.stringify({
@@ -169,5 +211,5 @@ fs.writeFileSync(OUT, JSON.stringify({
   products: products
 }));
 const size = fs.statSync(OUT).size;
-console.log(Object.keys(products).length, 'Artikel,', catList.length, 'Kategorien,', skipped, 'ohne Preis übersprungen →',
+console.log(Object.keys(products).length, 'Artikel (davon Offgridtec ' + ogCount + '),', catList.length, 'Kategorien,', skipped, 'ohne Preis übersprungen →',
   OUT, '(' + (size / 1e6).toFixed(1) + ' MB)');
