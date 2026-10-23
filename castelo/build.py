@@ -192,6 +192,7 @@ def page(key, lang, title, desc, body):
   </div>
   <p class="partner-foot"><span>{L['partner']}</span> <a href="{url('shop', lang)}"><img src="/img/camping-profi-weiss.svg" alt="CAMPING-PROFI" width="120" height="49" loading="lazy"></a></p>
   <p class="towns">{L['f_towns']} {TOWNS}</p>
+  <p class="lre"><a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noopener"><img src="https://www.livroreclamacoes.pt/Inicio/img/LRE_Theme.Logo_White.png" alt="Livro de Reclamações" width="219" height="40" loading="lazy"></a></p>
   <div class="bottom"><span>© <span data-year>2026</span> {NAME}</span><span><a href="{pp}">{L['imprint']}</a> · <a href="{pp}#datenschutz">{L['privacy']}</a> · <a href="https://www.livroreclamacoes.pt/">Livro de Reclamações</a></span></div>
 </div></footer>
 <a class="float-wa" href="https://wa.me/{WA}" aria-label="{L['wa_label']}">{WA_ICON}</a>
