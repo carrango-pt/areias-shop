@@ -369,7 +369,7 @@ def home(lang):
 def services(lang):
     C = {
     'de': dict(title='Unsere Leistungen', desc='Wohnmobil-Reparaturen, Caravan-Wartung und Spezialanfertigungen an der Algarve – mit 20 Jahren Erfahrung und hochwertigen Ersatzteilen.',
-        eye='Unsere Leistungen', h1='Reparatur, Wartung und Umbau', lead='Unser erfahrenes Team sorgt dafür, dass Ihr Fahrzeug schnell und sorgfältig wieder fit für die nächste Reise ist.',
+        eye='Unsere Leistungen', h1='Reparatur, Wartung und Umbau', lead='Unser Team aus Caravan-Technikern sorgt dafür, dass Ihr Fahrzeug schnell und sorgfältig wieder fit für die nächste Reise ist.',
         r=('Radmontage an einem Fahrzeug', 'Motorhome', 'Wohnmobil-Reparaturen', 'Unsere Erfahrung aus 20 Jahren ermöglicht hochwertige Reparaturen an Reise- und Wohnmobilen. Wir arbeiten schnell und präzise, damit Sie sich wieder sorgenfrei auf Ihre Reisen begeben können.',
            ['Fehlersuche und Diagnose', 'Elektrik 12 V / 230 V', 'Gas- und Wasserinstallation', 'Aufbau, Fenster, Dachluken, Dichtungen']),
         w=('Wohnwagen mit Vorzelt', 'Caravan', 'Caravan-Wartung', 'Mit einer gründlichen Wartung bleibt Ihr Wohnwagen lange zuverlässig. Wir prüfen Technik und Aufbau und verwenden nur gute Materialien und Ersatzteile.',
@@ -379,7 +379,7 @@ def services(lang):
         t_eye='Termin', t_h='Vereinbaren Sie jetzt einen Termin',
         t_p='Rufen Sie uns an unter <a href="tel:{tel}">{telh}</a>, schreiben Sie per <a href="https://wa.me/{wa}">WhatsApp</a> oder nutzen Sie das Formular. Je genauer Sie das Problem beschreiben (gerne mit Foto), desto schneller können wir helfen.'),
     'en': dict(title='Our services', desc='Motorhome repairs, caravan servicing and custom builds in the Algarve – 20 years of experience and high-quality parts.',
-        eye='Our services', h1='Repairs, servicing and conversions', lead='Our experienced team makes sure your vehicle is quickly and carefully ready for the next trip.',
+        eye='Our services', h1='Repairs, servicing and conversions', lead='Our team of caravan technicians makes sure your vehicle is quickly and carefully ready for the next trip.',
         r=('Fitting a wheel on a vehicle', 'Motorhome', 'Motorhome repairs', 'Twenty years of experience allow us to deliver high-quality repairs on motorhomes and campervans. We work quickly and precisely so you can get back on the road without worries.',
            ['Fault finding and diagnostics', 'Electrics 12 V / 230 V', 'Gas and water installations', 'Bodywork, windows, roof vents, seals']),
         w=('Caravan with awning', 'Caravan', 'Caravan servicing', 'Thorough servicing keeps your caravan reliable for years. We check the running gear and the habitation area and only use good materials and parts.',
@@ -389,7 +389,7 @@ def services(lang):
         t_eye='Appointment', t_h='Book an appointment now',
         t_p='Call us on <a href="tel:{tel}">{telh}</a>, send a <a href="https://wa.me/{wa}">WhatsApp</a> message or use the form. The more precisely you describe the problem (a photo helps), the faster we can help.'),
     'pt': dict(title='Os nossos serviços', desc='Reparação de autocaravanas, manutenção de caravanas e construções especiais no Algarve – 20 anos de experiência e peças de qualidade.',
-        eye='Os nossos serviços', h1='Reparação, manutenção e transformação', lead='A nossa equipa experiente garante que o seu veículo fica rapidamente e com cuidado pronto para a próxima viagem.',
+        eye='Os nossos serviços', h1='Reparação, manutenção e transformação', lead='A nossa equipa de técnicos de caravanas garante que o seu veículo fica rapidamente e com cuidado pronto para a próxima viagem.',
         r=('Montagem de roda num veículo', 'Autocaravana', 'Reparação de autocaravanas', 'Os nossos 20 anos de experiência permitem reparações de qualidade em autocaravanas. Trabalhamos com rapidez e precisão para que possa voltar a viajar sem preocupações.',
            ['Deteção de avarias e diagnóstico', 'Eletricidade 12 V / 230 V', 'Instalações de gás e água', 'Carroçaria, janelas, claraboias, vedantes']),
         w=('Caravana com toldo', 'Caravana', 'Manutenção de caravanas', 'Uma manutenção cuidada mantém a sua caravana fiável durante muitos anos. Verificamos o chassis e a célula e usamos apenas bons materiais e peças.',
