@@ -14,7 +14,7 @@ TEL_M, TEL_M_H = '+351933917633', '+351 933 917 633'
 WA, WA_H = '351933917633', '+351 933 917 633'
 MAIL = 'caravantechnologypera@hotmail.com'
 NIF = 'PT297662414'
-MAPS = 'https://www.google.com/maps/search/?api=1&query=Castelo+Motorhomes+P%C3%AAra+Portugal'
+MAPS = 'https://www.google.com/maps/search/?api=1&query=Areias+de+Pera+700A%2C+8365-201+P%C3%AAra%2C+Portugal'
 TOWNS = ('Sagres · Lagos · Aljezur · Alvor · Portimão · Monchique · Lagoa · Carvoeiro · Silves · Armação de Pêra · '
          'Albufeira · Vilamoura · Quarteira · Almancil · Loulé · Faro · Olhão · Tavira · Monte Gordo · '
          'Vila Real de Santo António · Beja')
@@ -43,7 +43,7 @@ T = {
 'de': dict(
     nav=['Home', 'Leistungen', 'Technik', 'Campingshop', 'Öffnungszeiten', 'Kontakt'],
     langname='Deutsch', skip='Zum Inhalt springen', menu='Menü', mainmenu='Hauptmenü', cart='Warenkorb',
-    tagline='&amp; Caravan Repairs · Algarve', place='Pêra, Algarve (Portugal)',
+    tagline='&amp; Caravan Repairs · Algarve', place='Areias de Pera 700A, 8365-201 Pêra (Silves), Portugal',
     workshop='Werkstatt', mobile='Telefon', email='E-Mail', location='Standort',
     f_about='Reparatur, Elektrik und Umbau von Wohnmobilen und Wohnwagen an der Algarve – seit 20 Jahren.',
     f_contact='Kontakt', f_hours='Öffnungszeiten', f_pages='Seiten', f_legal='Impressum &amp; Datenschutz', f_ship='Versand &amp; Lieferung',
@@ -64,7 +64,7 @@ T = {
 'en': dict(
     nav=['Home', 'Services', 'Technology', 'Camping shop', 'Opening hours', 'Contact'],
     langname='English', skip='Skip to content', menu='Menu', mainmenu='Main menu', cart='Basket',
-    tagline='&amp; Caravan Repairs · Algarve', place='Pêra, Algarve (Portugal)',
+    tagline='&amp; Caravan Repairs · Algarve', place='Areias de Pera 700A, 8365-201 Pêra (Silves), Portugal',
     workshop='Workshop', mobile='Phone', email='Email', location='Location',
     f_about='Repairs, electrics and conversions for motorhomes and caravans in the Algarve – for 20 years.',
     f_contact='Contact', f_hours='Opening hours', f_pages='Pages', f_legal='Legal notice &amp; privacy', f_ship='Shipping &amp; delivery',
@@ -85,7 +85,7 @@ T = {
 'pt': dict(
     nav=['Início', 'Serviços', 'Técnica', 'Loja de campismo', 'Horário', 'Contacto'],
     langname='Português', skip='Saltar para o conteúdo', menu='Menu', mainmenu='Menu principal', cart='Carrinho',
-    tagline='&amp; Caravan Repairs · Algarve', place='Pêra, Algarve (Portugal)',
+    tagline='&amp; Caravan Repairs · Algarve', place='Areias de Pera 700A, 8365-201 Pêra (Silves), Portugal',
     workshop='Oficina', mobile='Telefone', email='E-mail', location='Localização',
     f_about='Reparação, eletricidade e transformação de autocaravanas e caravanas no Algarve – há 20 anos.',
     f_contact='Contacto', f_hours='Horário', f_pages='Páginas', f_legal='Informação legal &amp; privacidade', f_ship='Envio &amp; entrega',
