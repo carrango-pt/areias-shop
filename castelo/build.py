@@ -277,7 +277,7 @@ def home(lang):
                ('Mobile Solarpanels auf einer Wiese', 'Solar, Batterie &amp; Umbau', 'Solaranlagen, Lithium- und AGM-Batterien sowie individuelle Anpassungen und Spezialanfertigungen.')],
         w_eye='Warum Castelo', w_h='Ihr Partner für Reparatur und Wartung in Portugal',
         facts=[('20 Jahre', 'Erfahrung mit Reise- und Wohnmobilen'), ('Deutsch', 'Beratung in Ihrer Sprache – auch Englisch und Portugiesisch'),
-               ('Ganze Algarve', 'Von Sagres bis Vila Real de Santo António'), ('Campingshop', 'Zubehör, Ersatzteile – und was fehlt, bestellen wir')],
+               ('Ganze Algarve', 'Von Sagres bis Vila Real de Santo António'), ('Onlineshop', 'Über 13.000 Zubehör- und Ersatzteile')],
         a_alt='Werkzeugwand in der Werkstatt', a_eye='Über uns', a_h='Damit Sie sich auf das Wesentliche konzentrieren können: Ihre Reise',
         a_p='Castelo Motorhomes and Caravan Repairs ist Ihr vertrauenswürdiger Partner für alle Reparatur- und Wartungsarbeiten an Wohnmobilen und Caravans in Portugal. Mit 20 Jahren Erfahrung bieten wir fachkundige Arbeit, die auf Ihr Fahrzeug und Ihre Bedürfnisse zugeschnitten ist.',
         a_checks=['Nur hochwertige Materialien und Ersatzteile', 'Klare Absprache vor jeder Reparatur', 'Elektrik, Mechanik, Gas, Wasser, Aufbau'],
@@ -286,7 +286,7 @@ def home(lang):
         faq=[('Welche Arbeiten übernehmen Sie?', 'Reparaturen am Wohnmobil, Caravan-Wartung, Solaranlagen, Batterieeinbau (AGM und Lithium), Elektrik und individuelle Umbauten. Fragen Sie einfach – wir finden eine Lösung.'),
              ('Wie bekomme ich einen Termin?', f'Per Telefon, WhatsApp oder über unser <a href="{u("contact")}">Kontaktformular</a>. Für Inspektionen und größere Reparaturen empfehlen wir einen Termin, damit keine Wartezeit entsteht.'),
              ('Helfen Sie auch Urlaubern mit einer Panne?', 'Ja. Melden Sie sich am besten per WhatsApp mit einer kurzen Beschreibung und einem Foto – wir sagen Ihnen schnell, wann wir helfen können.'),
-             ('Bekomme ich bei Ihnen auch Ersatzteile und Zubehör?', f'Ja, in unserem <a href="{u("shop")}">Campingshop</a> vor Ort und online. Was nicht vorrätig ist, bestellen wir für Sie.')],
+             ('Bekomme ich bei Ihnen auch Ersatzteile und Zubehör?', f'Ja, in unserem <a href="{u("shop")}">Onlineshop</a> mit über 13.000 Artikeln. Bestellen Sie online und holen Sie die Ware kostenlos in der Werkstatt ab – oder lassen Sie sie liefern.')],
         h_eye='Öffnungszeiten', h_h='Wann wir für Sie da sind',
         h_note=f'Feiertage und Betriebsurlaub geben wir auf der Seite <a href="{u("hours")}">Öffnungszeiten</a> bekannt.'),
     'en': dict(
@@ -302,7 +302,7 @@ def home(lang):
                ('Portable solar panels in a meadow', 'Solar, batteries &amp; conversions', 'Solar systems, lithium and AGM batteries, plus custom modifications and special builds.')],
         w_eye='Why Castelo', w_h='Your partner for repairs and servicing in Portugal',
         facts=[('20 years', 'of experience with motorhomes and campervans'), ('Multilingual', 'Advice in German, English and Portuguese'),
-               ('All of the Algarve', 'From Sagres to Vila Real de Santo António'), ('Camping shop', 'Accessories and spare parts – and we order what we do not stock')],
+               ('All of the Algarve', 'From Sagres to Vila Real de Santo António'), ('Online shop', 'More than 13,000 accessories and spare parts')],
         a_alt='Tool wall in the workshop', a_eye='About us', a_h='So you can focus on what really matters: your journey',
         a_p='Castelo Motorhomes and Caravan Repairs is your trusted partner for all repair and maintenance work on motorhomes and caravans in Portugal. With 20 years of experience, we deliver expert work tailored to your vehicle and your needs.',
         a_checks=['Only high-quality materials and spare parts', 'Clear agreement before every repair', 'Electrics, mechanics, gas, water, bodywork'],
@@ -311,7 +311,7 @@ def home(lang):
         faq=[('What work do you do?', 'Motorhome repairs, caravan servicing, solar systems, battery installation (AGM and lithium), electrics and custom conversions. Just ask – we will find a solution.'),
              ('How do I book an appointment?', f'By phone, WhatsApp or through our <a href="{u("contact")}">contact form</a>. For inspections and larger repairs we recommend booking ahead so you do not have to wait.'),
              ('Do you also help holidaymakers who break down?', 'Yes. Ideally send us a WhatsApp message with a short description and a photo – we will quickly tell you when we can help.'),
-             ('Can I get spare parts and accessories from you?', f'Yes, in our <a href="{u("shop")}">camping shop</a> at the workshop and online. If something is not in stock, we will order it for you.')],
+             ('Can I get spare parts and accessories from you?', f'Yes, in our <a href="{u("shop")}">online shop</a> with more than 13,000 items. Order online and collect free of charge at the workshop – or have it delivered.')],
         h_eye='Opening hours', h_h='When we are here for you',
         h_note=f'Public holidays and closures are announced on our <a href="{u("hours")}">opening hours</a> page.'),
     'pt': dict(
@@ -327,7 +327,7 @@ def home(lang):
                ('Painéis solares portáteis num prado', 'Solar, baterias &amp; transformações', 'Sistemas solares, baterias de lítio e AGM, adaptações personalizadas e construções especiais.')],
         w_eye='Porquê a Castelo', w_h='O seu parceiro para reparação e manutenção em Portugal',
         facts=[('20 anos', 'de experiência com autocaravanas'), ('Multilingue', 'Atendimento em português, alemão e inglês'),
-               ('Todo o Algarve', 'De Sagres a Vila Real de Santo António'), ('Loja de campismo', 'Acessórios e peças – e encomendamos o que não houver em stock')],
+               ('Todo o Algarve', 'De Sagres a Vila Real de Santo António'), ('Loja online', 'Mais de 13 000 acessórios e peças')],
         a_alt='Parede de ferramentas na oficina', a_eye='Sobre nós', a_h='Para que se possa concentrar no essencial: a sua viagem',
         a_p='A Castelo Motorhomes and Caravan Repairs é o seu parceiro de confiança para todos os trabalhos de reparação e manutenção de autocaravanas e caravanas em Portugal. Com 20 anos de experiência, fazemos um trabalho especializado e adaptado ao seu veículo e às suas necessidades.',
         a_checks=['Apenas materiais e peças de qualidade', 'Orçamento claro antes de cada reparação', 'Eletricidade, mecânica, gás, água, carroçaria'],
@@ -336,7 +336,7 @@ def home(lang):
         faq=[('Que trabalhos fazem?', 'Reparação de autocaravanas, manutenção de caravanas, sistemas solares, instalação de baterias (AGM e lítio), eletricidade e transformações personalizadas. Pergunte – encontramos uma solução.'),
              ('Como faço uma marcação?', f'Por telefone, WhatsApp ou através do nosso <a href="{u("contact")}">formulário de contacto</a>. Para inspeções e reparações maiores recomendamos marcação, para evitar esperas.'),
              ('Também ajudam turistas com uma avaria?', 'Sim. O ideal é enviar uma mensagem por WhatsApp com uma breve descrição e uma fotografia – dizemos-lhe rapidamente quando podemos ajudar.'),
-             ('Também vendem peças e acessórios?', f'Sim, na nossa <a href="{u("shop")}">loja de campismo</a> na oficina e online. O que não houver em stock, encomendamos para si.')],
+             ('Também vendem peças e acessórios?', f'Sim, na nossa <a href="{u("shop")}">loja online</a> com mais de 13 000 artigos. Encomende online e levante gratuitamente na oficina – ou receba em casa.')],
         h_eye='Horário', h_h='Quando estamos disponíveis',
         h_note=f'Feriados e férias são anunciados na página <a href="{u("hours")}">Horário</a>.'),
     }[lang]
@@ -466,25 +466,19 @@ def shop(lang):
         notice='Über 13.000 Artikel aus dem Sortiment – vom Sanitärzusatz bis zum Ersatzteil. <strong>Nicht gefunden, was Sie suchen?</strong> Rufen Sie an oder schreiben Sie per <a href="https://wa.me/{wa}">WhatsApp</a> – wir können fast alles bestellen.',
         cats='Kategorien', fine='Alle Preise in Euro inkl. 23 % MwSt., zzgl. Versand. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Abholung in der Werkstatt kostenlos; Versand innerhalb Portugals nach Gewicht, siehe Kasse.',
         q_ph='Suchen: Artikel, Marke oder Artikelnummer …', q_btn='Suchen', all_brands='Alle Marken',
-        sort=['Relevanz', 'Preis aufsteigend', 'Preis absteigend', 'Name A–Z'],
-        alt='Unser Campingshop in Pêra', v_eye='Vor Ort', v_h='Unser Shop in der Werkstatt',
-        v_p='Zubehör und Sanitär, Küche und Kühlung, Solar und Gas: Vieles haben wir direkt vorrätig. Kommen Sie während der <a href="{hours}">Öffnungszeiten</a> vorbei.'),
+        sort=['Relevanz', 'Preis aufsteigend', 'Preis absteigend', 'Name A–Z'],),
     'en': dict(title='Camping shop', desc='Camping accessories, toilet additives, fridge fans, gas alarms and solar controllers – order online or collect at our workshop in Pêra.',
         eye='Camping shop', h1='Accessories for your next trip', lead='Order online and collect at our workshop – or have it delivered by post within Portugal.',
         notice='More than 13,000 items – from toilet additives to spare parts. <strong>Cannot find what you need?</strong> Call us or send a <a href="https://wa.me/{wa}">WhatsApp</a> message – we can order almost anything.',
         cats='Categories', fine='All prices in euros incl. 23% VAT, plus delivery. Secure payment via Stripe (card, Multibanco, MB WAY and more). Collection at the workshop is free; delivery within Portugal by weight, see checkout.',
         q_ph='Search: item, brand or item number …', q_btn='Search', all_brands='All brands',
-        sort=['Relevance', 'Price ascending', 'Price descending', 'Name A–Z'],
-        alt='Our camping shop in Pêra', v_eye='In store', v_h='Our shop at the workshop',
-        v_p='Accessories and sanitary, kitchen and cooling, solar and gas: we keep a lot in stock. Drop in during our <a href="{hours}">opening hours</a>.'),
+        sort=['Relevance', 'Price ascending', 'Price descending', 'Name A–Z'],),
     'pt': dict(title='Loja de campismo', desc='Acessórios de campismo, aditivos sanitários, ventiladores para frigorífico, detetores de gás e reguladores solares – encomende online ou levante na oficina em Pêra.',
         eye='Loja de campismo', h1='Acessórios para a sua próxima viagem', lead='Encomende online e levante na nossa oficina – ou receba por correio em Portugal.',
         notice='Mais de 13 000 artigos – do aditivo sanitário à peça de substituição. <strong>Não encontra o que procura?</strong> Ligue-nos ou envie uma mensagem por <a href="https://wa.me/{wa}">WhatsApp</a> – conseguimos encomendar quase tudo.',
         cats='Categorias', fine='Todos os preços em euros com IVA de 23 % incluído, portes à parte. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Levantamento na oficina gratuito; envio em Portugal conforme o peso, ver no pagamento.',
         q_ph='Pesquisar: artigo, marca ou referência …', q_btn='Pesquisar', all_brands='Todas as marcas',
-        sort=['Relevância', 'Preço crescente', 'Preço decrescente', 'Nome A–Z'],
-        alt='A nossa loja de campismo em Pêra', v_eye='Na loja', v_h='A nossa loja na oficina',
-        v_p='Acessórios e sanitários, cozinha e frio, solar e gás: temos muita coisa em stock. Visite-nos dentro do <a href="{hours}">horário</a>.'),
+        sort=['Relevância', 'Preço crescente', 'Preço decrescente', 'Nome A–Z'],),
     }[lang]
     body = hero(lang, 'hero-shop', C['eye'], C['h1'], C['lead'], actions=False) + f'''
 <section class="block"><div class="wrap">
@@ -508,8 +502,7 @@ def shop(lang):
   </div>
   <p class="note mt">{C['fine']}</p>
 </div></section>
-''' + split('shop-zelt.jpg', C['alt'], 798, 359,
-            f'<span class="eyebrow">{C["v_eye"]}</span><h2>{C["v_h"]}</h2><p>{C["v_p"].format(hours=url("hours", lang))}</p>')
+'''
     return page('shop', lang, C['title'], C['desc'], body)
 
 

@@ -15,15 +15,15 @@ const PAGE_SIZE = 24;
 const TX = {
   de: { shop: 'Campingshop', art: 'Artikelnummer', brand: 'Marke', vat: 'inkl. 23 % MwSt., zzgl. Versand',
     add: 'In den Warenkorb', data: 'Produktdaten', back: 'Zurück zum Shop', notfound: 'Artikel nicht gefunden',
-    supply: 'Nicht jeder Artikel liegt bei uns im Regal – fehlende Ware bestellen wir für Sie beim Großhändler. Die Lieferzeit teilen wir Ihnen nach der Bestellung mit. Abholung in der Werkstatt ist kostenlos.',
+    supply: 'Wir bestellen den Artikel nach Ihrem Kauf bei unserem Großhändler. Die Lieferzeit teilen wir Ihnen nach der Bestellung mit. Abholung in der Werkstatt ist kostenlos.',
     ask: 'Fragen zum Artikel?', askText: 'Schreiben Sie uns per WhatsApp oder rufen Sie an.' },
   en: { shop: 'Camping shop', art: 'Item number', brand: 'Brand', vat: 'incl. 23% VAT, plus delivery',
     add: 'Add to basket', data: 'Product data', back: 'Back to the shop', notfound: 'Item not found',
-    supply: 'Not every item is on our shelves – we order missing goods for you from our wholesaler. We will tell you the delivery time after you order. Collection at the workshop is free.',
+    supply: 'We order the item from our wholesaler after your purchase. We will tell you the delivery time after you order. Collection at the workshop is free.',
     ask: 'Questions about this item?', askText: 'Send us a WhatsApp message or give us a call.' },
   pt: { shop: 'Loja de campismo', art: 'Referência', brand: 'Marca', vat: 'IVA de 23 % incluído, portes à parte',
     add: 'Adicionar ao carrinho', data: 'Dados do produto', back: 'Voltar à loja', notfound: 'Artigo não encontrado',
-    supply: 'Nem todos os artigos estão em stock – encomendamos ao nosso fornecedor o que faltar. Indicamos o prazo de entrega após a encomenda. O levantamento na oficina é gratuito.',
+    supply: 'Encomendamos o artigo ao nosso fornecedor após a sua compra. Indicamos o prazo de entrega após a encomenda. O levantamento na oficina é gratuito.',
     ask: 'Dúvidas sobre este artigo?', askText: 'Envie-nos uma mensagem por WhatsApp ou ligue-nos.' }
 };
 

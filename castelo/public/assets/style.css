@@ -80,7 +80,7 @@ nav.main a:hover, nav.main a[aria-current="page"] { background: var(--sand); col
 .hero-home { background-image: url(/img/hero-wohnmobil.jpg); }
 .hero-leistungen { background-image: url(/img/werkstatt.jpg); }
 .hero-technik { background-image: url(/img/solar.jpg); }
-.hero-shop { background-image: url(/img/shop-zelt.jpg); }
+.hero-shop { background-image: url(/img/stellplatz.jpg); }
 .hero-zeiten { background-image: url(/img/caravan.jpg); }
 .hero-kontakt { background-image: url(/img/bulli.jpg); }
 
