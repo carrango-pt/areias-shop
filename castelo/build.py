@@ -117,6 +117,25 @@ def filepath(key, lang):
     return os.path.join(ROOT, s + '.html')
 
 
+def business_jsonld(lang):
+    """Strukturierte Daten für Google (Werkstatt mit Adresse, Telefon, Öffnungszeiten)."""
+    import json
+    data = {
+        '@context': 'https://schema.org', '@type': 'AutoRepair',
+        '@id': DOMAIN + '/#business', 'name': NAME, 'url': DOMAIN + url('home', lang),
+        'image': DOMAIN + '/img/hero-wohnmobil.jpg', 'logo': DOMAIN + '/img/favicon.svg',
+        'telephone': TEL_M, 'email': MAIL, 'vatID': NIF, 'priceRange': '€€',
+        'address': {'@type': 'PostalAddress', 'streetAddress': 'Areias de Pera 700A', 'postalCode': '8365-201',
+                    'addressLocality': 'Pêra', 'addressRegion': 'Faro', 'addressCountry': 'PT'},
+        'areaServed': 'Algarve',
+        'openingHoursSpecification': [
+            {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], 'opens': '10:00', 'closes': '17:00'},
+            {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Friday', 'opens': '10:00', 'closes': '13:00'}],
+        'knowsLanguage': ['de', 'en', 'pt'],
+    }
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + '</script>'
+
+
 def page(key, lang, title, desc, body):
     L = T[lang]
     nav = ''.join(f'<li><a href="{url(k, lang)}">{n}</a></li>' for k, n in zip(NAV_KEYS, L['nav']))
@@ -143,6 +162,7 @@ def page(key, lang, title, desc, body):
 <meta property="og:image" content="{DOMAIN}/img/hero-wohnmobil.jpg">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
+{business_jsonld(lang) if key in ('home', 'contact') else ''}
 </head>
 <body>
 <a class="skip" href="#main">{L['skip']}</a>

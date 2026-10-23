@@ -167,7 +167,15 @@ function productPage(lang) {
     }).join('');
     const rows = Object.keys(p.at || {}).map(function (k) { return '<tr><td>' + esc(k) + '</td><td>' + esc(p.at[k]) + '</td></tr>'; }).join('');
     const item = { id: id, n: p.n, a: p.a, p: p.p, img: imgUrl(p), url: itemUrl(id, lang), s: isBulky(id) ? 1 : undefined };
+    // Strukturierte Daten für Google (Produkt mit Preis); „<“ escapen, damit nichts aus dem Script ausbricht
+    const ld = {
+      '@context': 'https://schema.org', '@type': 'Product', name: p.n, sku: p.a || id,
+      image: 'https://' + req.get('host') + item.img, brand: p.b ? { '@type': 'Brand', name: p.b } : undefined,
+      offers: { '@type': 'Offer', price: (p.p / 100).toFixed(2), priceCurrency: 'EUR',
+        url: 'https://' + req.get('host') + itemUrl(id, lang), seller: { '@type': 'Organization', name: 'Castelo Motorhomes and Caravan Repairs' } }
+    };
     const body =
+      '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>' +
       '<section class="block"><div class="wrap">' +
       '<nav class="crumbs" aria-label="Breadcrumb">' + crumbHtml + '</nav>' +
       '<div class="grid c2 top item">' +
