@@ -48,7 +48,8 @@ ids.forEach(function (id) {
   for (let c = catById[p.c]; c; c = catById[c.parent]) (byCat[c.id] = byCat[c.id] || []).push(id);
   // Suchtext: Name, Marke, Artikelnummer und nur die eigene (unterste) Kategorie –
   // sonst träfe z. B. „Markise“ jeden Artikel unter „Zelte und Markisen“.
-  haystack[id] = norm([p.n, p.b, p.a, catById[p.c] ? catById[p.c].name : ''].join(' '));
+  const h = norm([p.n, p.b, p.a, catById[p.c] ? catById[p.c].name : ''].join(' '));
+  haystack[id] = h + ' ' + h.replace(/[^a-z0-9]+/g, '');   // auch ohne Bindestriche/Leerzeichen: „gaswarner“ findet „Gas-Warner“
 });
 
 function catName(c, lang) { return (c.i18n && c.i18n[lang]) || c.name; }

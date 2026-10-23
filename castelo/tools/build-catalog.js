@@ -26,6 +26,62 @@ const TOP_I18N = {
   'Fahrzeugtechnik': { en: 'Vehicle technology', pt: 'Técnica do veículo' }
 };
 
+// Übersetzungen der zweiten Ebene
+const SUB_I18N = {
+  'Zelte': { en: 'Tents', pt: 'Tendas' },
+  'Markisenzubehör': { en: 'Awning accessories', pt: 'Acessórios para toldos' },
+  'Tierwelt': { en: 'Pets', pt: 'Animais' },
+  'Wetter-Schutz': { en: 'Weather protection', pt: 'Proteção contra o tempo' },
+  'Markisen': { en: 'Awnings', pt: 'Toldos' },
+  'Ersatzteile Zelte und Markisen': { en: 'Spare parts tents & awnings', pt: 'Peças para tendas e toldos' },
+  'Beinauflagen und Hocker': { en: 'Footrests & stools', pt: 'Apoios para pernas e bancos' },
+  'Faltmöbel': { en: 'Folding furniture', pt: 'Mobiliário dobrável' },
+  'Liegen': { en: 'Loungers', pt: 'Espreguiçadeiras' },
+  'Sessel und Stühle': { en: 'Chairs', pt: 'Cadeiras' },
+  'Tische': { en: 'Tables', pt: 'Mesas' },
+  'Zubehör': { en: 'Accessories', pt: 'Acessórios' },
+  'Fahrzeug-Ausstattung': { en: 'Vehicle equipment', pt: 'Equipamento do veículo' },
+  'Haushaltsartikel und -helfer': { en: 'Household items', pt: 'Artigos de casa' },
+  'Küchenschränke und -boxen': { en: 'Kitchen cupboards & boxes', pt: 'Armários e caixas de cozinha' },
+  'Wind- und Sonnenschutz': { en: 'Wind & sun protection', pt: 'Proteção contra vento e sol' },
+  'Insektenschutz': { en: 'Insect protection', pt: 'Proteção contra insetos' },
+  'Schlafkomfort': { en: 'Sleeping comfort', pt: 'Conforto para dormir' },
+  'Literatur': { en: 'Books & maps', pt: 'Livros e mapas' },
+  'Strandartikel': { en: 'Beach items', pt: 'Artigos de praia' },
+  'Grillen': { en: 'Barbecue', pt: 'Grelhar' },
+  'Gasversorgung': { en: 'Gas supply', pt: 'Abastecimento de gás' },
+  'Campingkocher und Zubehör': { en: 'Camping stoves & accessories', pt: 'Fogareiros e acessórios' },
+  'Beleuchtung': { en: 'Lighting', pt: 'Iluminação' },
+  'Kochen und Spülen': { en: 'Cooking & washing up', pt: 'Cozinhar e lavar loiça' },
+  'Besteck und Geschirr': { en: 'Cutlery & tableware', pt: 'Talheres e loiça' },
+  'Elektrogeräte': { en: 'Electrical appliances', pt: 'Eletrodomésticos' },
+  'Sanitär': { en: 'Sanitary', pt: 'Sanitários' },
+  'Reinigung und Imprägnierung': { en: 'Cleaning & waterproofing', pt: 'Limpeza e impermeabilização' },
+  'Klimaanlagen': { en: 'Air conditioners', pt: 'Ar condicionado' },
+  'Kühlboxen und Kühltaschen': { en: 'Cool boxes & bags', pt: 'Geleiras e sacos térmicos' },
+  'Heizgeräte': { en: 'Heaters', pt: 'Aquecedores' },
+  'Kühlschränke': { en: 'Fridges', pt: 'Frigoríficos' },
+  'Wasser': { en: 'Water', pt: 'Água' },
+  'Klima-Steuerung': { en: 'Climate control', pt: 'Controlo de clima' },
+  'Reinigung, Pflege und Reparatur': { en: 'Cleaning, care & repair', pt: 'Limpeza, cuidado e reparação' },
+  'Ersatzteile Wasser und Sanitär': { en: 'Spare parts water & sanitary', pt: 'Peças para água e sanitários' },
+  'Energieversorgung': { en: 'Power supply', pt: 'Energia' },
+  'Sicherheit': { en: 'Security', pt: 'Segurança' },
+  'SAT Anlagen, Antennen und Internet': { en: 'Satellite, antennas & internet', pt: 'Satélite, antenas e internet' },
+  'TV und Audio': { en: 'TV & audio', pt: 'TV e áudio' },
+  'TV-Sat Pakete': { en: 'TV & satellite bundles', pt: 'Pacotes TV e satélite' },
+  'Navigation und Kamerasysteme': { en: 'Navigation & cameras', pt: 'Navegação e câmaras' },
+  'Standsicherung und Stabilisierung': { en: 'Levelling & stabilising', pt: 'Nivelamento e estabilização' },
+  'Transport': { en: 'Transport', pt: 'Transporte' },
+  'Kleben und Dichten': { en: 'Adhesives & sealants', pt: 'Colas e vedantes' },
+  'Pakete und Sets': { en: 'Bundles & sets', pt: 'Pacotes e conjuntos' },
+  'Fahrerhaus-Ausstattung': { en: 'Cab equipment', pt: 'Equipamento da cabine' },
+  'Ersatzteile Elektro und Multimedia': { en: 'Spare parts electrics & multimedia', pt: 'Peças para eletricidade e multimédia' },
+  'Ersatzteile Kühlen und Heizen': { en: 'Spare parts cooling & heating', pt: 'Peças para frio e aquecimento' },
+  'Ersatzteile Grillen, Kochen und Haushalt': { en: 'Spare parts barbecue, cooking & household', pt: 'Peças para grelhar, cozinhar e casa' },
+  'Ersatzteile Fahrzeugtechnik': { en: 'Spare parts vehicle technology', pt: 'Peças para técnica do veículo' }
+};
+
 function price(uvpCents) {
   let c = uvpCents / (1 + SRC_VAT) * (1 + DST_VAT) * (1 + MARKUP_PERCENT / 100);
   c = Math.round(c);
@@ -65,6 +121,7 @@ for (const p of Object.values(raw.products)) {
     if (!cats[id]) {
       cats[id] = { id: id, name: p.cat[i], parent: parent, count: 0 };
       if (i === 0 && TOP_I18N[p.cat[i]]) cats[id].i18n = TOP_I18N[p.cat[i]];
+      if (i === 1 && SUB_I18N[p.cat[i]]) cats[id].i18n = SUB_I18N[p.cat[i]];
     }
     cats[id].count++;
     parent = id;
