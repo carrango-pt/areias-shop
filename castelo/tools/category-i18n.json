@@ -1,4 +1,8 @@
 {
+"AGM Batterien": {
+"en": "AGM batteries",
+"pt": "Baterias AGM"
+},
 "Ab- und Grauwassertank": {
 "en": "Waste & grey water tanks",
 "pt": "Depósitos de águas residuais"
@@ -51,6 +55,10 @@
 "en": "Exterior lighting",
 "pt": "Iluminação exterior"
 },
+"Backup-Kits": {
+"en": "Backup kits",
+"pt": "Kits de backup"
+},
 "Backöfen": {
 "en": "Ovens",
 "pt": "Fornos"
@@ -59,9 +67,25 @@
 "en": "Bathroom & washroom equipment",
 "pt": "Equipamento de casa de banho"
 },
+"Balkonkraftwerke": {
+"en": "Balcony solar systems",
+"pt": "Kits solares de varanda"
+},
+"Batterieladegeräte": {
+"en": "Battery chargers",
+"pt": "Carregadores de baterias"
+},
+"Batterien": {
+"en": "Batteries",
+"pt": "Baterias"
+},
 "Batterien und Ladegeräte": {
 "en": "Batteries & chargers",
 "pt": "Baterias e carregadores"
+},
+"Befestigung & Montage": {
+"en": "Mounting & fixing",
+"pt": "Fixação e montagem"
 },
 "Behälter": {
 "en": "Containers",
@@ -231,9 +255,21 @@
 "en": "Electric grills",
 "pt": "Grelhadores elétricos"
 },
+"Elektroinstallation": {
+"en": "Electrical installation",
+"pt": "Instalação elétrica"
+},
 "Elektrokocher": {
 "en": "Electric cookers",
 "pt": "Fogões elétricos"
+},
+"Elektromobilität": {
+"en": "E-mobility",
+"pt": "Mobilidade elétrica"
+},
+"Elektronik": {
+"en": "Electronics",
+"pt": "Eletrónica"
 },
 "Energieversorgungs-Zubehör": {
 "en": "Power supply accessories",
@@ -287,6 +323,10 @@
 "en": "Vehicle technology",
 "pt": "Técnica do veículo"
 },
+"Faltbare Solarmodule": {
+"en": "Folding solar panels",
+"pt": "Painéis solares dobráveis"
+},
 "Faltkanister": {
 "en": "Collapsible water carriers",
 "pt": "Jerricãs dobráveis"
@@ -338,6 +378,10 @@
 "Fiamma Zelte & Markisen Ersatzteil-Sortiment": {
 "en": "Fiamma tents & awnings – spare parts",
 "pt": "Fiamma tendas & toldos – peças"
+},
+"Flexible Solarmodule": {
+"en": "Flexible solar panels",
+"pt": "Painéis solares flexíveis"
 },
 "Frischwassertanks": {
 "en": "Fresh water tanks",
@@ -415,6 +459,18 @@
 "en": "Gas supply bundles",
 "pt": "Pacotes de abastecimento de gás"
 },
+"Gel Batterien": {
+"en": "Gel batteries",
+"pt": "Baterias de gel"
+},
+"Gerahmte Solarmodule": {
+"en": "Framed solar panels",
+"pt": "Painéis solares com moldura"
+},
+"Gerätekombinationen": {
+"en": "Inverter/charger combis",
+"pt": "Inversores/carregadores combinados"
+},
 "Geschirr-Sets": {
 "en": "Tableware sets",
 "pt": "Conjuntos de loiça"
@@ -487,6 +543,10 @@
 "en": "Charcoal barbecues",
 "pt": "Grelhadores a carvão"
 },
+"Hybrid-Wechselrichter": {
+"en": "Hybrid inverters",
+"pt": "Inversores híbridos"
+},
 "Hängematten und Zubehör": {
 "en": "Hammocks & accessories",
 "pt": "Redes de descanso e acessórios"
@@ -498,6 +558,10 @@
 "Innenbeleuchtung": {
 "en": "Interior lighting",
 "pt": "Iluminação interior"
+},
+"Installation": {
+"en": "Installation",
+"pt": "Instalação"
 },
 "Internet, WiFi und Smart Home": {
 "en": "Internet, WiFi & smart home",
@@ -559,6 +623,10 @@
 "en": "Pot sets",
 "pt": "Conjuntos de tachos"
 },
+"Komplettsysteme": {
+"en": "Complete systems",
+"pt": "Sistemas completos"
+},
 "Kompressor-Kühlboxen": {
 "en": "Compressor cool boxes",
 "pt": "Geleiras de compressor"
@@ -591,6 +659,10 @@
 "en": "LED camping lamps",
 "pt": "Candeeiros LED de campismo"
 },
+"Ladewandler": {
+"en": "DC-DC chargers",
+"pt": "Carregadores DC-DC"
+},
 "Ladungssicherheit": {
 "en": "Load securing",
 "pt": "Fixação de carga"
@@ -614,6 +686,10 @@
 "Leuchtmittel": {
 "en": "Bulbs",
 "pt": "Lâmpadas"
+},
+"Lithium Batterien": {
+"en": "Lithium batteries",
+"pt": "Baterias de lítio"
 },
 "Luftbetten": {
 "en": "Air beds",
@@ -647,6 +723,10 @@
 "en": "Awning rooms",
 "pt": "Avançados para toldos"
 },
+"Mess- & Anzeigegeräte": {
+"en": "Monitoring & displays",
+"pt": "Monitorização e mostradores"
+},
 "Mestic Ersatzteil-Sortiment": {
 "en": "Mestic spare parts",
 "pt": "Mestic peças"
@@ -667,6 +747,10 @@
 "en": "Portable satellite systems",
 "pt": "Sistemas de satélite portáteis"
 },
+"Modulwechselrichter": {
+"en": "Micro-inverters",
+"pt": "Microinversores"
+},
 "Multimedia": {
 "en": "Multimedia",
 "pt": "Multimédia"
@@ -679,6 +763,10 @@
 "en": "Navigation systems",
 "pt": "Sistemas de navegação"
 },
+"Netz-Wechselrichter": {
+"en": "Grid-tie inverters",
+"pt": "Inversores de rede"
+},
 "Outdoor, Freizeit und Tierwelt": {
 "en": "Outdoor, leisure & pets",
 "pt": "Outdoor, lazer & animais"
@@ -686,6 +774,10 @@
 "Outlet": {
 "en": "Outlet",
 "pt": "Outlet"
+},
+"PV-Speicher": {
+"en": "Solar storage",
+"pt": "Armazenamento solar"
 },
 "Passive Kühltaschen": {
 "en": "Passive cool bags",
@@ -699,6 +791,10 @@
 "en": "Gazebos",
 "pt": "Pavilhões"
 },
+"Peripheriegeräte": {
+"en": "Peripherals",
+"pt": "Periféricos"
+},
 "Petroleumlampen": {
 "en": "Paraffin lamps",
 "pt": "Candeeiros a petróleo"
@@ -706,6 +802,10 @@
 "Pfannen": {
 "en": "Frying pans",
 "pt": "Frigideiras"
+},
+"Powerstations": {
+"en": "Power stations",
+"pt": "Estações de energia"
 },
 "Profile": {
 "en": "Profiles",
@@ -799,6 +899,26 @@
 "en": "Solar systems",
 "pt": "Sistemas solares"
 },
+"Solaranlagen Autark": {
+"en": "Off-grid solar systems",
+"pt": "Sistemas solares autónomos"
+},
+"Solaranlagen Wohnmobil": {
+"en": "Motorhome solar systems",
+"pt": "Sistemas solares para autocaravanas"
+},
+"Solaranlagen mit Boiler": {
+"en": "Solar systems with water heater",
+"pt": "Sistemas solares com termoacumulador"
+},
+"Solarladeregler": {
+"en": "Solar charge controllers",
+"pt": "Reguladores de carga solar"
+},
+"Solarmodule": {
+"en": "Solar panels",
+"pt": "Painéis solares"
+},
 "Sonnenschirme": {
 "en": "Parasols",
 "pt": "Guarda-sóis"
@@ -811,6 +931,10 @@
 "en": "Sun canopies",
 "pt": "Toldos de sol"
 },
+"Sonstige Elektronik": {
+"en": "Other electronics",
+"pt": "Outra eletrónica"
+},
 "Sonstige Fahrzeugsicherheit": {
 "en": "Other vehicle safety",
 "pt": "Outra segurança do veículo"
@@ -818,6 +942,10 @@
 "Sonstige Kanister": {
 "en": "Other containers",
 "pt": "Outros jerricãs"
+},
+"Sonstiges": {
+"en": "Other",
+"pt": "Outros"
 },
 "Sonstiges Markisen-Zubehör": {
 "en": "Other awning accessories",
@@ -834,6 +962,10 @@
 "Spanngurte": {
 "en": "Tie-down straps",
 "pt": "Cintas de fixação"
+},
+"Spannungswandler": {
+"en": "Inverters (DC-AC)",
+"pt": "Inversores (DC-AC)"
 },
 "Spiegel für Caravan und Reisemobile": {
 "en": "Mirrors for caravans & motorhomes",
@@ -1007,6 +1139,14 @@
 "en": "Connectors & distributors",
 "pt": "Ligadores e distribuidores"
 },
+"Verbindungstechnik": {
+"en": "Connectors",
+"pt": "Conectores"
+},
+"Verkabeln & Anschließen": {
+"en": "Cabling & connecting",
+"pt": "Cablagem e ligação"
+},
 "Vollautomatische Sat-Anlagen": {
 "en": "Fully automatic satellite systems",
 "pt": "Sistemas de satélite automáticos"
@@ -1022,6 +1162,10 @@
 "Wandmarkisen": {
 "en": "Wall awnings",
 "pt": "Toldos de parede"
+},
+"Warmwasserbereiter": {
+"en": "Water heaters",
+"pt": "Aquecedores de água"
 },
 "Warntafeln": {
 "en": "Warning signs",
@@ -1158,6 +1302,10 @@
 "Zubehör": {
 "en": "Accessories",
 "pt": "Acessórios"
+},
+"Zubehör Solarmodule": {
+"en": "Solar panel accessories",
+"pt": "Acessórios para painéis solares"
 },
 "Zubehör für Navigations- und Kamerasysteme": {
 "en": "Navigation & camera accessories",

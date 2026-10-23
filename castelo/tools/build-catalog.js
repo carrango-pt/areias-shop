@@ -164,6 +164,65 @@ for (const p of Object.values(raw.products)) {
 // Eigener Hauptbereich „Solar & Energie“, darunter die Offgridtec-Kategorien.
 // Preis: angezeigter Endpreis inkl. deutscher MwSt. (Satz von der Seite) → netto → 23 %.
 const OG_RAW = path.join(__dirname, 'data', 'offgridtec-raw.json');
+// Offgridtec benennt dieselbe Kategorie je nach Marken-Pfad unterschiedlich → auf eine feste Struktur abbilden.
+// Schlüssel: „Oberkategorie › Unterkategorie“ (oder nur eine Ebene), Wert: [Oberkategorie, Unterkategorie].
+const OG_MAP = {
+  'Installation › verkabeln & anschließen': ['Installation', 'Verkabeln & Anschließen'],
+  'Installation › Verkabeln & Anschließen': ['Installation', 'Verkabeln & Anschließen'],
+  'Installation › Befestigung / Montage': ['Installation', 'Befestigung & Montage'],
+  'Installation › Montieren & Befestigen': ['Installation', 'Befestigung & Montage'],
+  'Installation › Zubehör Batterie': ['Batterien', 'Zubehör'],
+  'Installation › Zubehör Elektronik': ['Elektronik', 'Zubehör'],
+  'Elektronik › Zubehör Elektronik': ['Elektronik', 'Zubehör'],
+  'Batterien › Zubehör Batterien': ['Batterien', 'Zubehör'],
+  'Komplettsysteme › BackUp-Kits': ['Komplettsysteme', 'Backup-Kits'],
+  'Komplettsysteme › Backup-Kit': ['Komplettsysteme', 'Backup-Kits'],
+  'Batterieladegeräte': ['Elektronik', 'Batterieladegeräte'],
+  'Batterieladegeräte › Zubehör': ['Elektronik', 'Batterieladegeräte'],
+  'Ladestromverteiler': ['Elektronik', 'Zubehör'],
+  'Bedienung u. Systemüberwachung': ['Elektronik', 'Mess- & Anzeigegeräte'],
+  'Mess- und Anzeigegeräte': ['Elektronik', 'Mess- & Anzeigegeräte'],
+  'Batterieüberwachung Batterieschutz': ['Elektronik', 'Mess- & Anzeigegeräte'],
+  'Speicher': ['Batterien', 'PV-Speicher'],
+  'Batterieschränke': ['Batterien', 'Zubehör'],
+  'Powerstation': ['Batterien', 'Powerstations'],
+  'DC DC Wandler': ['Elektronik', 'Ladewandler'],
+  'DC DC Wandler › Orion DC DC Serie': ['Elektronik', 'Ladewandler'],
+  'Wandler & Regler': ['Elektronik', 'Ladewandler'],
+  'Solarregler': ['Elektronik', 'Solarladeregler'],
+  'Solarregler › VE Laderegler Zubehör': ['Elektronik', 'Solarladeregler'],
+  'Solarregler › Blue PWM Light': ['Elektronik', 'Solarladeregler'],
+  'Solar Laderegler › MPP Solarladeregler': ['Elektronik', 'Solarladeregler'],
+  'Wechselrichter': ['Elektronik', 'Spannungswandler'],
+  'PV-Wechselrichter › Netz-Wechselrichter': ['Elektronik', 'Netz-Wechselrichter'],
+  'PV-Wechselrichter › Hybrid-Wechselrichter': ['Elektronik', 'Hybrid-Wechselrichter'],
+  'Elektronik › Off-Grid Speicher-Wechselrichter': ['Elektronik', 'Hybrid-Wechselrichter'],
+  'Microinverter': ['Elektronik', 'Modulwechselrichter'],
+  'Gerätekombinationen': ['Elektronik', 'Gerätekombinationen'],
+  'Gerätekombinationen › Multi 500-1200VA': ['Elektronik', 'Gerätekombinationen'],
+  'Gerätekombinationen › Multiplus Serie': ['Elektronik', 'Gerätekombinationen'],
+  'Gerätekombinationen › Quattro Serie': ['Elektronik', 'Gerätekombinationen'],
+  'Solaranlagen mit Boiler': ['Komplettsysteme', 'Solaranlagen mit Boiler'],
+  'Wasser-Boiler': ['Elektronik', 'Warmwasserbereiter'],
+  'Zubehör': ['Elektronik', 'Zubehör'],
+  'Zubehör › Landstromkabel': ['Installation', 'Verkabeln & Anschließen'],
+  'Zubehör › DC Sicherungen': ['Installation', 'Elektroinstallation'],
+  'Stromkreisverteiler': ['Installation', 'Elektroinstallation'],
+  'ZaunPV': ['Komplettsysteme'],
+  'Elektronik › DIY Elektrotechnik': ['Elektronik', 'Sonstige Elektronik'],
+  'Installation › Klebe- & Dichtmittel': ['Installation', 'Sonstiges'],
+  'Bauelemente': ['Installation', 'Sonstiges'],
+  'Betonsockel': ['Installation', 'Befestigung & Montage'],
+  'SolarFlow': ['Batterien', 'PV-Speicher'],
+  'Vernetzung u. Kommunikation': ['Elektronik', 'Mess- & Anzeigegeräte'],
+  'Vernetzung u. Kommunikation › VE.Can': ['Elektronik', 'Mess- & Anzeigegeräte']
+};
+function ogCategory(crumbs) {
+  const key = crumbs.join(' › ');
+  if (OG_MAP[key]) return OG_MAP[key];
+  if (OG_MAP[crumbs[0]]) return OG_MAP[crumbs[0]];
+  return crumbs.filter(Boolean).length ? crumbs.filter(Boolean) : [];
+}
 let ogCount = 0;
 if (fs.existsSync(OG_RAW)) {
   const og = JSON.parse(fs.readFileSync(OG_RAW, 'utf8'));
@@ -171,7 +230,7 @@ if (fs.existsSync(OG_RAW)) {
     if (!p.gross) { skipped++; continue; }
     let crumbs = p.crumbs.slice();
     if (crumbs[0] === 'Marken') crumbs = crumbs.slice(2);         // „Marken › Victron Energy › …“ → nur die Fachkategorie
-    const trail = ['Solar & Energie'].concat(crumbs.slice(0, 2));
+    const trail = ['Solar & Energie'].concat(ogCategory(crumbs.slice(0, 2)));
     let parent = '';
     for (let i = 0; i < trail.length; i++) {
       const id = slug(trail.slice(0, i + 1).join(' '));

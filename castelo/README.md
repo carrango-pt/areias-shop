@@ -36,6 +36,16 @@ Danach committen und pushen; Render veröffentlicht automatisch.
 Beispiel: UVP 69,95 € → 72,30 €. Optional `MARKUP_PERCENT` (Auf-/Abschlag) und `ROUND_TO` (auf x,90/x,95/x,99 runden).
 Nur `build-catalog.js` erneut ausführen – dafür ist kein neuer Import nötig.
 
+## Sortiment von Offgridtec (zweiter Lieferant)
+Wir sind auch Offgridtec-Händler. Import aus dem Endkunden-Shop www.offgridtec.com (Sitemap → Artikelseiten):
+```
+node tools/import-offgridtec.js --resume   # ca. 1½–2 Std., Zwischenstand alle 100 Seiten → tools/data/offgridtec-raw.json
+node tools/build-catalog.js                # führt Camping-Profi + Offgridtec zusammen
+```
+Preis: angezeigter Endpreis inkl. dt. MwSt. (Satz von der Seite) → netto → 23 %. Kategorien unter „Solar & Energie“,
+Offgridtecs uneinheitliche Kategorienamen werden in `build-catalog.js` → `OG_MAP` vereinheitlicht. „Versand per Spedition“
+von Offgridtec wird als Speditionsware übernommen. Artikel-IDs beginnen mit `og`, Bilder laufen über `/img/og/…`.
+
 **Kategorie-Übersetzungen** (EN/PT) stehen in `tools/category-i18n.json`. Taucht nach einem Import eine neue deutsche
 Kategorie auf, dort ergänzen und `build-catalog.js` erneut ausführen. Modellnamen (z. B. „Omnistor 5200“) bleiben unübersetzt.
 
