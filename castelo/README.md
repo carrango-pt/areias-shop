@@ -36,6 +36,9 @@ Danach committen und pushen; Render veröffentlicht automatisch.
 Beispiel: UVP 69,95 € → 72,30 €. Optional `MARKUP_PERCENT` (Auf-/Abschlag) und `ROUND_TO` (auf x,90/x,95/x,99 runden).
 Nur `build-catalog.js` erneut ausführen – dafür ist kein neuer Import nötig.
 
+**Kategorie-Übersetzungen** (EN/PT) stehen in `tools/category-i18n.json`. Taucht nach einem Import eine neue deutsche
+Kategorie auf, dort ergänzen und `build-catalog.js` erneut ausführen. Modellnamen (z. B. „Omnistor 5200“) bleiben unübersetzt.
+
 **Bilder** werden über unseren Server von camping-profi.de geladen und zwischengespeichert (`/img/cp/…`),
 damit Besucher keine Verbindung zu Dritten aufbauen.
 

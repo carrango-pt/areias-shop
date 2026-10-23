@@ -82,6 +82,19 @@ const SUB_I18N = {
   'Ersatzteile Fahrzeugtechnik': { en: 'Spare parts vehicle technology', pt: 'Peças para técnica do veículo' }
 };
 
+// Übersetzungen aller tieferen Kategorien (Deutsch → en/pt); Modellnamen bleiben unverändert
+const CAT_I18N = JSON.parse(fs.readFileSync(path.join(__dirname, 'category-i18n.json'), 'utf8'));
+
+// Kategorienamen aus dem Import säubern: „…]Export Spare Parts“ entfernen
+function cleanName(s) { return s.replace(/\]?\s*Export Spare Parts\s*$/i, '').replace(/\]\s*$/, '').replace(/\s+/g, ' ').trim(); }
+function translate(name) {
+  if (CAT_I18N[name]) return CAT_I18N[name];
+  if (/ ab | bis /.test(name)) {   // Modellnamen: nur „ab“/„bis“ übersetzen
+    return { en: name.replace(/ ab /g, ' from ').replace(/ bis /g, ' to '), pt: name.replace(/ ab /g, ' a partir de ').replace(/ bis /g, ' até ') };
+  }
+  return null;
+}
+
 function price(uvpCents) {
   let c = uvpCents / (1 + SRC_VAT) * (1 + DST_VAT) * (1 + MARKUP_PERCENT / 100);
   c = Math.round(c);
@@ -119,9 +132,10 @@ for (const p of Object.values(raw.products)) {
   for (let i = 0; i < p.cat.length; i++) {
     const id = slug(p.cat.slice(0, i + 1).join(' '));
     if (!cats[id]) {
-      cats[id] = { id: id, name: p.cat[i], parent: parent, count: 0 };
-      if (i === 0 && TOP_I18N[p.cat[i]]) cats[id].i18n = TOP_I18N[p.cat[i]];
-      if (i === 1 && SUB_I18N[p.cat[i]]) cats[id].i18n = SUB_I18N[p.cat[i]];
+      const name = cleanName(p.cat[i]);
+      cats[id] = { id: id, name: name, parent: parent, count: 0 };
+      const tr = (i === 0 && TOP_I18N[name]) || (i === 1 && SUB_I18N[name]) || translate(name);
+      if (tr) cats[id].i18n = tr;
     }
     cats[id].count++;
     parent = id;
