@@ -65,6 +65,6 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
    schwerer → nur Abholung). Artikel ohne Gewichtsangabe zählen mit 1 kg.
 2. **Preise** stichprobenartig prüfen (Preisregel oben).
 3. **Adresse:** Überall steht nur „Pêra, Algarve“. Für Impressum und Google bitte Straße + PLZ ergänzen (`build.py` → `place`).
-4. **Telefonnummern:** Werkstatt +351 282 044 808, Mobil + WhatsApp +351 933 917 633 – bitte bestätigen (`build.py` oben).
+4. **Telefonnummern:** Telefon + WhatsApp +351 933 917 633 (einzige Nummer) (`build.py` oben).
 5. **Öffnungszeiten:** Mo–Do 10–17, Fr 10–13 (in `build.py` und in `app.js` → `HOURS`).
 6. **Rechtstexte** im Impressum (Datenschutz, Widerruf) sind eine solide Vorlage, aber keine Rechtsberatung.

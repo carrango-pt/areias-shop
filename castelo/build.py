@@ -10,7 +10,6 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 DOMAIN = 'https://www.castelomotorhomesandcaravanrepairs.com'
 
 NAME = 'Castelo Motorhomes and Caravan Repairs'
-TEL_W, TEL_W_H = '+351282044808', '+351 282 044 808'
 TEL_M, TEL_M_H = '+351933917633', '+351 933 917 633'
 WA, WA_H = '351933917633', '+351 933 917 633'
 MAIL = 'info@castelomotorhomes.com'
@@ -44,7 +43,7 @@ T = {
     nav=['Home', 'Leistungen', 'Technik', 'Campingshop', 'Öffnungszeiten', 'Kontakt'],
     langname='Deutsch', skip='Zum Inhalt springen', menu='Menü', mainmenu='Hauptmenü', cart='Warenkorb',
     tagline='&amp; Caravan Repairs · Algarve', place='Pêra, Algarve (Portugal)',
-    workshop='Werkstatt', mobile='Mobil', email='E-Mail', location='Standort',
+    workshop='Werkstatt', mobile='Telefon', email='E-Mail', location='Standort',
     f_about='Reparatur, Wartung und Umbau von Wohnmobilen und Wohnwagen an der Algarve – seit 20 Jahren.',
     f_contact='Kontakt', f_hours='Öffnungszeiten', f_pages='Seiten', f_legal='Impressum &amp; Datenschutz',
     f_towns='Wir betreuen Camper aus der ganzen Algarve:', partner='Offizieller Fachhändler von', imprint='Impressum', privacy='Datenschutz',
@@ -64,7 +63,7 @@ T = {
     nav=['Home', 'Services', 'Technology', 'Camping shop', 'Opening hours', 'Contact'],
     langname='English', skip='Skip to content', menu='Menu', mainmenu='Main menu', cart='Basket',
     tagline='&amp; Caravan Repairs · Algarve', place='Pêra, Algarve (Portugal)',
-    workshop='Workshop', mobile='Mobile', email='Email', location='Location',
+    workshop='Workshop', mobile='Phone', email='Email', location='Location',
     f_about='Repair, servicing and conversion of motorhomes and caravans in the Algarve – for 20 years.',
     f_contact='Contact', f_hours='Opening hours', f_pages='Pages', f_legal='Legal notice &amp; privacy',
     f_towns='We look after campers from all over the Algarve:', partner='Official dealer of', imprint='Legal notice', privacy='Privacy',
@@ -84,7 +83,7 @@ T = {
     nav=['Início', 'Serviços', 'Técnica', 'Loja de campismo', 'Horário', 'Contacto'],
     langname='Português', skip='Saltar para o conteúdo', menu='Menu', mainmenu='Menu principal', cart='Carrinho',
     tagline='&amp; Caravan Repairs · Algarve', place='Pêra, Algarve (Portugal)',
-    workshop='Oficina', mobile='Telemóvel', email='E-mail', location='Localização',
+    workshop='Oficina', mobile='Telefone', email='E-mail', location='Localização',
     f_about='Reparação, manutenção e transformação de autocaravanas e caravanas no Algarve – há 20 anos.',
     f_contact='Contacto', f_hours='Horário', f_pages='Páginas', f_legal='Informação legal &amp; privacidade',
     f_towns='Apoiamos campistas de todo o Algarve:', partner='Revendedor oficial', imprint='Informação legal', privacy='Privacidade',
@@ -144,7 +143,7 @@ def page(key, lang, title, desc, body):
 <body>
 <a class="skip" href="#main">{L['skip']}</a>
 <div class="topbar"><div class="wrap">
-  <a href="tel:{TEL_W}">☎ {TEL_W_H}</a>
+  <a href="tel:{TEL_M}">☎ {TEL_M_H}</a>
   <a href="https://wa.me/{WA}">WhatsApp</a>
   <a href="mailto:{MAIL}">{MAIL}</a>
   <span class="langs">{switch}</span>
@@ -161,7 +160,6 @@ def page(key, lang, title, desc, body):
   <div class="grid c4">
     <div><h3>Castelo Motorhomes</h3><p>{L['f_about']}</p></div>
     <div><h3>{L['f_contact']}</h3><ul>
-      <li><a href="tel:{TEL_W}">{TEL_W_H}</a> ({L['workshop']})</li>
       <li><a href="tel:{TEL_M}">{TEL_M_H}</a> ({L['mobile']} / WhatsApp)</li>
       <li><a href="mailto:{MAIL}">{MAIL}</a></li>
       <li>{L['place']}</li></ul></div>
@@ -194,7 +192,7 @@ def page(key, lang, title, desc, body):
 def hero(lang, cls, eyebrow, h1, lead, actions=True, small=True):
     L = T[lang]
     a = (f'<div class="actions"><a class="btn" href="{url("contact", lang)}">{L["btn_appt"]}</a>'
-         f'<a class="btn ghost" href="tel:{TEL_W}">{L["btn_call"]} {TEL_W_H}</a></div>') if actions else ''
+         f'<a class="btn ghost" href="tel:{TEL_M}">{L["btn_call"]} {TEL_M_H}</a></div>') if actions else ''
     return f'''<section class="hero {cls}{' small' if small else ''}"><div class="wrap">
   <span class="eyebrow">{eyebrow}</span>
   <h1>{h1}</h1>
@@ -411,7 +409,7 @@ def services(lang):
             sec(C['w'], 'caravan.jpg', 1000, 667, False, 'block', 'wartung') + '\n' +
             sec(C['m'], 'umbau.jpg', 1000, 666, True, 'block white', 'umbau') + f'''
 <section class="block"><div class="wrap grid c2">
-  <div><span class="eyebrow">{C['t_eye']}</span><h2>{C['t_h']}</h2><p>{C['t_p'].format(tel=TEL_W, telh=TEL_W_H, wa=WA)}</p></div>
+  <div><span class="eyebrow">{C['t_eye']}</span><h2>{C['t_h']}</h2><p>{C['t_p'].format(tel=TEL_M, telh=TEL_M_H, wa=WA)}</p></div>
   {form(lang)}
 </div></section>
 ''')
@@ -565,7 +563,6 @@ def contact(lang):
 <section class="block"><div class="wrap grid c2 top">
   <div><h2>{C['h']}</h2>
   <ul class="contact-list">
-    <li><span>{L['workshop']}</span><a href="tel:{TEL_W}">{TEL_W_H}</a></li>
     <li><span>{L['mobile']} / WhatsApp</span><a href="tel:{TEL_M}">{TEL_M_H}</a></li>
     <li><span>{L['email']}</span><a href="mailto:{MAIL}">{MAIL}</a></li>
     <li><span>{L['location']}</span>{L['place']}</li>
@@ -587,7 +584,7 @@ def legal(lang):
     C = {
     'de': f'''<h1>Impressum</h1>
 <p><strong>{NAME}</strong><br>Werkstatt für Wohnmobile und Wohnwagen<br>{place}<br>NIF / USt-IdNr.: {NIF}</p>
-<p>Telefon: <a href="tel:{TEL_M}">{TEL_M_H}</a><br>Werkstatt: <a href="tel:{TEL_W}">{TEL_W_H}</a><br>E-Mail: {mail}</p>
+<p>Telefon: <a href="tel:{TEL_M}">{TEL_M_H}</a><br>E-Mail: {mail}</p>
 <h2>Streitbeilegung</h2>
 <p>Im Streitfall können Verbraucher die zuständige Schlichtungsstelle anrufen: {cimaal}. Weitere Stellen unter <a href="https://www.consumidor.gov.pt/">consumidor.gov.pt</a>. Das Beschwerdebuch (Livro de Reclamações) finden Sie online unter <a href="https://www.livroreclamacoes.pt/">livroreclamacoes.pt</a>.</p>
 <h2 id="datenschutz">Datenschutz</h2>
@@ -602,7 +599,7 @@ def legal(lang):
 <p>Verbraucher können Online-Bestellungen innerhalb von 14 Tagen ab Erhalt der Ware ohne Angabe von Gründen widerrufen. Eine formlose Mitteilung per E-Mail genügt. Wir erstatten den Kaufpreis innerhalb von 14 Tagen nach Eingang des Widerrufs; die Kosten der Rücksendung trägt der Kunde. Ausgenommen sind geöffnete Hygieneartikel und speziell für Sie bestellte Ware.</p>''',
     'en': f'''<h1>Legal notice</h1>
 <p><strong>{NAME}</strong><br>Workshop for motorhomes and caravans<br>{place}<br>NIF / VAT no.: {NIF}</p>
-<p>Phone: <a href="tel:{TEL_M}">{TEL_M_H}</a><br>Workshop: <a href="tel:{TEL_W}">{TEL_W_H}</a><br>Email: {mail}</p>
+<p>Phone: <a href="tel:{TEL_M}">{TEL_M_H}</a><br>Email: {mail}</p>
 <h2>Dispute resolution</h2>
 <p>In the event of a dispute, consumers may contact the competent alternative dispute resolution body: {cimaal}. Further bodies are listed at <a href="https://www.consumidor.gov.pt/">consumidor.gov.pt</a>. The official complaints book (Livro de Reclamações) is available online at <a href="https://www.livroreclamacoes.pt/">livroreclamacoes.pt</a>.</p>
 <h2 id="datenschutz">Privacy</h2>
@@ -617,7 +614,7 @@ def legal(lang):
 <p>Consumers may withdraw from online orders within 14 days of receiving the goods without giving reasons. An informal email is sufficient. We refund the purchase price within 14 days of receiving the withdrawal; the customer bears the cost of return shipping. Opened hygiene products and goods ordered specially for you are excluded.</p>''',
     'pt': f'''<h1>Informação legal</h1>
 <p><strong>{NAME}</strong><br>Oficina de autocaravanas e caravanas<br>{place}<br>NIF: {NIF}</p>
-<p>Telefone: <a href="tel:{TEL_M}">{TEL_M_H}</a><br>Oficina: <a href="tel:{TEL_W}">{TEL_W_H}</a><br>E-mail: {mail}</p>
+<p>Telefone: <a href="tel:{TEL_M}">{TEL_M_H}</a><br>E-mail: {mail}</p>
 <h2>Resolução alternativa de litígios</h2>
 <p>Em caso de litígio, o consumidor pode recorrer à entidade de resolução alternativa de litígios competente: {cimaal}. Mais informações em <a href="https://www.consumidor.gov.pt/">consumidor.gov.pt</a>. O Livro de Reclamações eletrónico está disponível em <a href="https://www.livroreclamacoes.pt/">livroreclamacoes.pt</a>.</p>
 <h2 id="datenschutz">Privacidade</h2>
