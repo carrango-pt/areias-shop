@@ -193,3 +193,6 @@ footer.site .bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 3
 .float-wa svg { width: 30px; height: 30px; fill: #fff; }
 .mt { margin-top: 16px; }
 .grid.c2.top { align-items: start; }
+.topbar .langs { display: inline-flex; gap: 4px; }
+.topbar .langs a { padding: 0 6px; border-radius: 4px; color: #cfe0ec; }
+.topbar .langs a[aria-current] { background: rgba(255,255,255,.15); color: #fff; font-weight: 700; }

@@ -3,6 +3,45 @@
   'use strict';
   var C = window.CASTELO_CATALOG;
   var CART_KEY = 'castelo_cart';
+  var LANG = (document.documentElement.lang || 'de').slice(0, 2);
+  if (['de', 'en', 'pt'].indexOf(LANG) < 0) LANG = 'de';
+  var TX = {
+    de: { open: 'Jetzt geöffnet', closed: 'Derzeit geschlossen', sending: 'Wird gesendet …',
+      sent: 'Danke! Ihre Nachricht ist angekommen – wir melden uns so schnell wie möglich.',
+      invalid: 'Bitte Name, eine gültige E-Mail-Adresse und Ihre Nachricht angeben.',
+      failed: 'Senden hat leider nicht geklappt. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.',
+      empty: 'Ihr Warenkorb ist leer.', less: 'Weniger', more: 'Mehr',
+      notLive: 'Die Online-Bezahlung ist noch nicht freigeschaltet. Bitte bestellen Sie telefonisch oder per WhatsApp.',
+      noCheckout: 'Die Kasse konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.',
+      offline: 'Keine Verbindung. Bitte versuchen Sie es erneut.',
+      all: 'Alle', add: 'In den Warenkorb', added: '✓ Hinzugefügt',
+      success: 'Vielen Dank für Ihre Bestellung! Sie erhalten eine Bestätigung per E-Mail. Bei Abholung melden wir uns, sobald alles bereitliegt.',
+      cancel: 'Die Bezahlung wurde abgebrochen – Ihr Warenkorb ist noch da.' },
+    en: { open: 'Open now', closed: 'Currently closed', sending: 'Sending …',
+      sent: 'Thank you! Your message has arrived – we will get back to you as soon as possible.',
+      invalid: 'Please enter your name, a valid email address and your message.',
+      failed: 'Sorry, sending failed. Please call us or send a WhatsApp message.',
+      empty: 'Your basket is empty.', less: 'Less', more: 'More',
+      notLive: 'Online payment is not active yet. Please order by phone or WhatsApp.',
+      noCheckout: 'The checkout could not be opened. Please try again.',
+      offline: 'No connection. Please try again.',
+      all: 'All', add: 'Add to basket', added: '✓ Added',
+      success: 'Thank you for your order! You will receive a confirmation by email. For collection, we will let you know as soon as everything is ready.',
+      cancel: 'Payment was cancelled – your basket is still there.' },
+    pt: { open: 'Aberto agora', closed: 'Fechado neste momento', sending: 'A enviar …',
+      sent: 'Obrigado! A sua mensagem foi recebida – responderemos o mais rapidamente possível.',
+      invalid: 'Indique o seu nome, um e-mail válido e a sua mensagem.',
+      failed: 'Não foi possível enviar. Ligue-nos ou envie uma mensagem por WhatsApp.',
+      empty: 'O seu carrinho está vazio.', less: 'Menos', more: 'Mais',
+      notLive: 'O pagamento online ainda não está ativo. Encomende por telefone ou WhatsApp.',
+      noCheckout: 'Não foi possível abrir o pagamento. Tente novamente.',
+      offline: 'Sem ligação. Tente novamente.',
+      all: 'Todos', add: 'Adicionar ao carrinho', added: '✓ Adicionado',
+      success: 'Obrigado pela sua encomenda! Receberá uma confirmação por e-mail. Em caso de levantamento, avisamos quando estiver tudo pronto.',
+      cancel: 'O pagamento foi cancelado – o seu carrinho continua guardado.' }
+  }[LANG];
+  function tr(p, key) { return (LANG !== 'de' && p.i18n && p.i18n[LANG] && p.i18n[LANG][key]) || p[key]; }
+  function lbl(x) { return typeof x === 'string' ? x : (x[LANG] || x.de); }
 
   function $(s, el) { return (el || document).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
@@ -41,7 +80,7 @@
       var mins = parseInt(parts.hour, 10) * 60 + parseInt(parts.minute, 10);
       var h = HOURS[day];
       var open = h && mins >= h[0] && mins < h[1];
-      badge.textContent = open ? 'Jetzt geöffnet' : 'Derzeit geschlossen';
+      badge.textContent = open ? TX.open : TX.closed;
       if (!open) badge.classList.add('no');
       badge.hidden = false;
       var row = $('.hours tr[data-day="' + day + '"]');
@@ -56,19 +95,19 @@
       var msg = $('.form-msg', form), btn = $('button[type=submit]', form);
       var data = {};
       $$('input, textarea, select', form).forEach(function (f) { if (f.name) data[f.name] = f.value; });
-      btn.disabled = true; msg.className = 'form-msg'; msg.textContent = 'Wird gesendet …';
+      btn.disabled = true; msg.className = 'form-msg'; msg.textContent = TX.sending;
       fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) })
         .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
         .then(function () {
           form.reset();
           msg.className = 'form-msg ok';
-          msg.textContent = 'Danke! Ihre Nachricht ist angekommen – wir melden uns so schnell wie möglich.';
+          msg.textContent = TX.sent;
         })
         .catch(function (status) {
           msg.className = 'form-msg err';
           msg.textContent = status === 400
-            ? 'Bitte Name, eine gültige E-Mail-Adresse und Ihre Nachricht angeben.'
-            : 'Senden hat leider nicht geklappt. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.';
+            ? TX.invalid
+            : TX.failed;
         })
         .then(function () { btn.disabled = false; });
     });
@@ -107,14 +146,14 @@
     var box = $('.items', drawer);
     box.textContent = '';
     var ids = Object.keys(cart);
-    if (!ids.length) box.appendChild(el('p', { 'class': 'empty' }, 'Ihr Warenkorb ist leer.'));
+    if (!ids.length) box.appendChild(el('p', { 'class': 'empty' }, TX.empty));
     ids.forEach(function (id) {
       var p = C.products[id], line = el('div', { 'class': 'line' });
-      line.appendChild(el('strong', null, p.name));
+      line.appendChild(el('strong', null, tr(p, 'name')));
       line.appendChild(el('span', null, euro(p.price * cart[id])));
       var q = el('div', { 'class': 'qty' });
-      var minus = el('button', { type: 'button', 'aria-label': 'Weniger' }, '−');
-      var plus = el('button', { type: 'button', 'aria-label': 'Mehr' }, '+');
+      var minus = el('button', { type: 'button', 'aria-label': TX.less }, '−');
+      var plus = el('button', { type: 'button', 'aria-label': TX.more }, '+');
       minus.addEventListener('click', function () { if (--cart[id] <= 0) delete cart[id]; save(); });
       plus.addEventListener('click', function () { cart[id] = Math.min(99, cart[id] + 1); save(); });
       q.appendChild(minus); q.appendChild(el('span', null, cart[id])); q.appendChild(plus);
@@ -129,25 +168,25 @@
     var btn = this, err = $('.checkout-msg', drawer);
     btn.disabled = true; err.textContent = '';
     var items = Object.keys(cart).map(function (id) { return { id: id, qty: cart[id] }; });
-    fetch('/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items: items }) })
+    fetch('/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items: items, lang: LANG }) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
       .then(function (res) {
         if (res.ok && res.j.url) { location.href = res.j.url; return; }
         err.textContent = res.status === 503
-          ? 'Die Online-Bezahlung ist noch nicht freigeschaltet. Bitte bestellen Sie telefonisch oder per WhatsApp.'
-          : 'Die Kasse konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.';
+          ? TX.notLive
+          : TX.noCheckout;
         btn.disabled = false;
       })
-      .catch(function () { err.textContent = 'Keine Verbindung. Bitte versuchen Sie es erneut.'; btn.disabled = false; });
+      .catch(function () { err.textContent = TX.offline; btn.disabled = false; });
   });
 
   /* ---------- Produktliste (nur auf /campingshop) ---------- */
   var list = $('#products');
   if (list) {
     var tabs = $('#cat-tabs'), active = 'alle';
-    var all = el('button', { type: 'button', 'aria-pressed': 'true', 'data-cat': 'alle' }, 'Alle');
+    var all = el('button', { type: 'button', 'aria-pressed': 'true', 'data-cat': 'alle' }, TX.all);
     tabs.appendChild(all);
-    C.categories.forEach(function (c) { tabs.appendChild(el('button', { type: 'button', 'aria-pressed': 'false', 'data-cat': c.id }, c.label)); });
+    C.categories.forEach(function (c) { tabs.appendChild(el('button', { type: 'button', 'aria-pressed': 'false', 'data-cat': c.id }, lbl(c.label))); });
     tabs.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       active = b.getAttribute('data-cat');
@@ -163,17 +202,17 @@
         if (active !== 'alle' && p.cat !== active) return;
         var cat = catById[p.cat] || {};
         var card = el('article', { 'class': 'card product' });
-        card.appendChild(el('img', { src: p.img || cat.img, alt: p.name, loading: 'lazy', width: '600', height: '400' }));
+        card.appendChild(el('img', { src: p.img || cat.img, alt: tr(p, 'name'), loading: 'lazy', width: '600', height: '400' }));
         var body = el('div', { 'class': 'body' });
-        body.appendChild(el('span', { 'class': 'tag' }, cat.label || ''));
-        body.appendChild(el('h3', null, p.name));
-        if (p.text) body.appendChild(el('p', null, p.text));
+        body.appendChild(el('span', { 'class': 'tag' }, cat.label ? lbl(cat.label) : ''));
+        body.appendChild(el('h3', null, tr(p, 'name')));
+        if (p.text) body.appendChild(el('p', null, tr(p, 'text')));
         body.appendChild(el('div', { 'class': 'price' }, euro(p.price)));
-        var add = el('button', { type: 'button', 'class': 'btn small' }, 'In den Warenkorb');
+        var add = el('button', { type: 'button', 'class': 'btn small' }, TX.add);
         add.addEventListener('click', function () {
           cart[id] = Math.min(99, (cart[id] || 0) + 1); save();
-          add.textContent = '✓ Hinzugefügt';
-          setTimeout(function () { add.textContent = 'In den Warenkorb'; }, 1400);
+          add.textContent = TX.added;
+          setTimeout(function () { add.textContent = TX.add; }, 1400);
         });
         body.appendChild(add);
         card.appendChild(body);
@@ -186,10 +225,10 @@
     if (q === 'success') {
       cart = {}; save();
       note.className = 'notice ok';
-      note.textContent = 'Vielen Dank für Ihre Bestellung! Sie erhalten eine Bestätigung per E-Mail. Bei Abholung melden wir uns, sobald alles bereitliegt.';
+      note.textContent = TX.success;
       note.hidden = false;
     } else if (q === 'cancel') {
-      note.textContent = 'Die Bezahlung wurde abgebrochen – Ihr Warenkorb ist noch da.';
+      note.textContent = TX.cancel;
       note.hidden = false;
     }
   }

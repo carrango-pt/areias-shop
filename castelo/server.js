@@ -126,9 +126,12 @@ function rateLimit(max, windowMs) {
   };
 }
 
+const SHOP_PATH = { de: '/campingshop', en: '/en/shop', pt: '/pt/loja' };
+
 app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res) {
   if (!stripe) return res.status(503).json({ error: 'not_configured' });
   try {
+    const lang = ['en', 'pt'].indexOf(req.body.lang) >= 0 ? req.body.lang : 'de';
     const items = Array.isArray(req.body.items) ? req.body.items.slice(0, 50) : [];
     if (!items.length) return res.status(400).json({ error: 'empty cart' });
 
@@ -138,9 +141,10 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
       if (!p) throw new Error('unknown product: ' + it.id);
       const qty = Math.max(1, Math.min(99, parseInt(it.qty, 10) || 1));
       subtotal += p.price * qty;
+      const tr = (p.i18n && p.i18n[lang]) || {};
       return {
         quantity: qty,
-        price_data: { currency: CATALOG.currency, unit_amount: p.price, product_data: { name: p.name } }
+        price_data: { currency: CATALOG.currency, unit_amount: p.price, product_data: { name: tr.name || p.name } }
       };
     });
 
@@ -150,7 +154,7 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
         shipping_rate_data: {
           type: 'fixed_amount',
           fixed_amount: { amount: freeOn ? 0 : s.amount, currency: CATALOG.currency },
-          display_name: s.label,
+          display_name: s.label[lang] || s.label.de,
           delivery_estimate: {
             minimum: { unit: 'business_day', value: s.min },
             maximum: { unit: 'business_day', value: s.max }
@@ -160,16 +164,17 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
     });
 
     const origin = req.protocol + '://' + req.get('host');
+    const shopPath = SHOP_PATH[lang];
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: line_items,
-      locale: 'de',
+      locale: lang,
       billing_address_collection: 'auto',
       phone_number_collection: { enabled: true },
       shipping_address_collection: { allowed_countries: CATALOG.allowedCountries },
       shipping_options: shipping_options,
-      success_url: origin + '/campingshop?checkout=success',
-      cancel_url: origin + '/campingshop?checkout=cancel'
+      success_url: origin + shopPath + '?checkout=success',
+      cancel_url: origin + shopPath + '?checkout=cancel'
     });
     res.json({ url: session.url });
   } catch (e) {
@@ -213,7 +218,8 @@ app.get('/api/health', function (_req, res) {
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'], dotfiles: 'deny' }));
 
 app.use(function (_req, res) {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  const lang = /^\/(en|pt)(\/|$)/.exec(_req.path);
+  res.status(404).sendFile(path.join(__dirname, 'public', lang ? lang[1] : '', '404.html'));
 });
 
 app.listen(PORT, function () {
