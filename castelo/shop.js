@@ -15,15 +15,18 @@ const PAGE_SIZE = 24;
 const TX = {
   de: { shop: 'Campingshop', art: 'Artikelnummer', brand: 'Marke', vat: 'inkl. 23 % MwSt., zzgl. Versand',
     add: 'In den Warenkorb', data: 'Produktdaten', back: 'Zurück zum Shop', notfound: 'Artikel nicht gefunden',
-    supply: 'Die Lieferzeit teilen wir Ihnen nach der Bestellung mit. Abholung in der Werkstatt ist kostenlos.',
+    rest: 'Restposten', parcel: 'Versand per Paketdienst', freight: 'Versand per Spedition (ab 109,95 €, bis Bordsteinkante)',
+    free: 'Versandkostenfrei ab 120 € innerhalb Portugals (Festland). Click & Collect: Abholung in der Werkstatt kostenlos.', shipInfo: 'Versand & Lieferung', shipUrl: '/versand',
     ask: 'Fragen zum Artikel?', askText: 'Schreiben Sie uns per WhatsApp oder rufen Sie an.' },
   en: { shop: 'Camping shop', art: 'Item number', brand: 'Brand', vat: 'incl. 23% VAT, plus delivery',
     add: 'Add to basket', data: 'Product data', back: 'Back to the shop', notfound: 'Item not found',
-    supply: 'We will tell you the delivery time after you order. Collection at the workshop is free.',
+    rest: 'Clearance', parcel: 'Shipped by parcel service', freight: 'Shipped by freight carrier (from €109.95, to the kerb)',
+    free: 'Free delivery from €120 within mainland Portugal. Click & Collect: collection at the workshop is free.', shipInfo: 'Shipping & delivery', shipUrl: '/en/shipping',
     ask: 'Questions about this item?', askText: 'Send us a WhatsApp message or give us a call.' },
   pt: { shop: 'Loja de campismo', art: 'Referência', brand: 'Marca', vat: 'IVA de 23 % incluído, portes à parte',
     add: 'Adicionar ao carrinho', data: 'Dados do produto', back: 'Voltar à loja', notfound: 'Artigo não encontrado',
-    supply: 'Indicamos o prazo de entrega após a encomenda. O levantamento na oficina é gratuito.',
+    rest: 'Fim de série', parcel: 'Envio por transportadora', freight: 'Envio por transitário (a partir de 109,95 €, até ao passeio)',
+    free: 'Portes grátis a partir de 120 € em Portugal continental. Click & Collect: levantamento gratuito na oficina.', shipInfo: 'Envio & entrega', shipUrl: '/pt/envio',
     ask: 'Dúvidas sobre este artigo?', askText: 'Envie-nos uma mensagem por WhatsApp ou ligue-nos.' }
 };
 
@@ -95,7 +98,7 @@ function products(req, res) {
     brands: Object.keys(brands).sort(function (a, b) { return brands[b] - brands[a]; }).slice(0, 40).map(function (b) { return [b, brands[b]]; }),
     items: list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map(function (id) {
       const p = P[id];
-      return { id: id, n: p.n, b: p.b, a: p.a, p: p.p, img: imgUrl(p), url: itemUrl(id, lang) };
+      return { id: id, n: p.n, b: p.b, a: p.a, p: p.p, img: imgUrl(p), url: itemUrl(id, lang), r: p.f && p.f.indexOf('R') >= 0 ? 1 : undefined };
     })
   });
 }
@@ -169,11 +172,11 @@ function productPage(lang) {
       '<nav class="crumbs" aria-label="Breadcrumb">' + crumbHtml + '</nav>' +
       '<div class="grid c2 top item">' +
       '<div class="item-img"><img src="' + esc(item.img) + '" alt="' + esc(p.n) + '" width="580" height="280"></div>' +
-      '<div><h1>' + esc(p.n) + '</h1>' +
+      '<div>' + (p.f && p.f.indexOf('R') >= 0 ? '<span class="badge">' + L.rest + '</span>' : '') + '<h1>' + esc(p.n) + '</h1>' +
       '<p class="item-meta">' + (p.b ? L.brand + ': <strong>' + esc(p.b) + '</strong> · ' : '') + (p.a ? L.art + ' ' + esc(p.a) : '') + '</p>' +
       '<p class="item-price">' + euro(p.p, lang) + '</p><p class="note">' + L.vat + '</p>' +
       '<p><button class="btn" type="button" data-add="' + esc(JSON.stringify(item)) + '">' + L.add + '</button></p>' +
-      '<p class="notice">' + L.supply + '</p>' +
+      '<p class="notice"><strong>' + (isBulky(id) ? L.freight : L.parcel) + '.</strong> ' + L.free + ' <a href="' + L.shipUrl + '">' + L.shipInfo + '</a></p>' +
       (rows ? '<h2 class="h3">' + L.data + '</h2><table class="hours specs">' + rows + '</table>' : '') +
       '<p class="mt"><strong>' + L.ask + '</strong> ' + L.askText + '</p>' +
       '<p><a href="' + SHOP_PATH[lang] + '">← ' + L.back + '</a></p>' +
@@ -199,9 +202,36 @@ function sitemap(req, res) {
     rows.join('\n') + '\n</urlset>\n');
 }
 
+// ---------------------------------------------------------------- Versand
+// Sperrig = Spedition: zu schwer, zu lang oder aus einer Speditions-Kategorie (siehe shop-config.js)
+function cm(s) { const m = /([\d.,]+)\s*cm/.exec(s || ''); return m ? parseFloat(m[1].replace(',', '.')) : 0; }
+function isBulky(id) {
+  const p = CAT.products[id], B = CONFIG.bulky, at = p.at || {};
+  if (p.f && p.f.indexOf('S') >= 0) return true;        // von Camping-Profi als Speditionsware markiert
+  if (p.w && p.w > B.maxKg) return true;
+  if (B.maxCm && Math.max(cm(at['Länge']), cm(at['Breite / Tiefe']), cm(at['Höhe'])) > B.maxCm) return true;
+  for (let c = catById[p.c]; c; c = catById[c.parent]) {
+    if (B.categories.indexOf(c.id) >= 0) return true;
+    if (B.heavyCategories[c.id] && p.w && p.w >= B.heavyCategories[c.id]) return true;
+  }
+  return false;
+}
+// Paketdienst: Staffel nach Gewicht; über parcelMaxKg auf mehrere Pakete aufteilen
+function parcelCost(kg) {
+  let extra = 0;
+  while (kg > CONFIG.parcelMaxKg) { extra += CONFIG.extraParcel; kg -= CONFIG.parcelMaxKg; }
+  const t = CONFIG.parcelTiers.find(function (x) { return kg <= x.maxKg; });
+  return extra + t.amount;
+}
+
+function info(_req, res) {
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.json({ freeShippingFrom: CONFIG.freeShippingFrom });
+}
+
 // ---------------------------------------------------------------- Kasse: Positionen + Versand
 function checkoutData(items, lang) {
-  let kg = 0, subtotal = 0;
+  let kg = 0, subtotal = 0, bulky = false;
   const line_items = items.map(function (it) {
     const id = String(it.id);
     const p = Object.prototype.hasOwnProperty.call(CAT.products, id) && CAT.products[id];
@@ -209,6 +239,7 @@ function checkoutData(items, lang) {
     const qty = Math.max(1, Math.min(99, parseInt(it.qty, 10) || 1));
     subtotal += p.p * qty;
     kg += (p.w || CONFIG.unknownWeightKg) * qty;
+    if (isBulky(id)) bulky = true;
     return {
       quantity: qty,
       price_data: { currency: CONFIG.currency, unit_amount: p.p, product_data: { name: p.n + (p.a ? ' (Art. ' + p.a + ')' : '') } }
@@ -219,12 +250,10 @@ function checkoutData(items, lang) {
       delivery_estimate: { minimum: { unit: 'business_day', value: d.min }, maximum: { unit: 'business_day', value: d.max } } } };
   }
   const options = [rate(CONFIG.pickup.label[lang], 0, CONFIG.pickup)];
-  const tier = CONFIG.shippingTiers.find(function (t) { return kg <= t.maxKg; });
-  if (tier) {
-    const free = CONFIG.freeShippingFrom > 0 && subtotal >= CONFIG.freeShippingFrom;
-    options.push(rate(CONFIG.shippingLabel[lang], free ? 0 : tier.amount, CONFIG.shippingDays));
-  }
-  return { line_items: line_items, shipping_options: options, kg: kg };
+  const free = CONFIG.freeShippingFrom > 0 && subtotal >= CONFIG.freeShippingFrom;
+  if (bulky) options.push(rate(CONFIG.freightLabel[lang], free ? 0 : CONFIG.freight, CONFIG.freightDays));
+  else options.push(rate(CONFIG.parcelLabel[lang], free ? 0 : parcelCost(kg), CONFIG.parcelDays));
+  return { line_items: line_items, shipping_options: options, kg: kg, bulky: bulky };
 }
 
-module.exports = { categories, products, image, productPage, sitemap, checkoutData, SHOP_PATH, ITEM_PATH, LANGS, count: ids.length, CONFIG };
+module.exports = { categories, products, image, productPage, sitemap, checkoutData, info, isBulky, parcelCost, SHOP_PATH, ITEM_PATH, LANGS, count: ids.length, CONFIG };

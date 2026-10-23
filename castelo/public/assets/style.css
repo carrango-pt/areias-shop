@@ -244,3 +244,7 @@ footer.site .bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 3
 @media (max-width: 600px) { .notice.partner { flex-direction: column; align-items: flex-start; } }
 .partner-foot { display: flex; align-items: center; gap: 12px; margin: 28px 0 8px; }
 .partner-foot img { width: 120px; height: auto; }
+.badge { display: inline-block; background: var(--sun); color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; margin-bottom: 6px; align-self: flex-start; }
+.ship-table th { text-align: left; padding: 12px 18px; background: var(--navy); color: #fff; font-weight: 600; }
+.ship-table th:last-child, .ship-table td:last-child { text-align: right; }
+.free-left { color: var(--ok); font-weight: 600; margin: 4px 0; }

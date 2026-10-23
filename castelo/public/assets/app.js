@@ -13,7 +13,8 @@
       notLive: 'Die Online-Bezahlung ist noch nicht freigeschaltet. Bitte bestellen Sie telefonisch oder per WhatsApp.',
       noCheckout: 'Die Kasse konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.',
       offline: 'Keine Verbindung. Bitte versuchen Sie es erneut.',
-      add: 'In den Warenkorb', added: '✓ Hinzugefügt', allCats: 'Alle Kategorien', allBrands: 'Alle Marken',
+      freeLeft: 'Noch {x} bis zum kostenlosen Versand (Festland).', freeOk: '✓ Versandkostenfrei innerhalb Portugals (Festland).',
+      rest: 'Restposten', add: 'In den Warenkorb', added: '✓ Hinzugefügt', allCats: 'Alle Kategorien', allBrands: 'Alle Marken',
       count: '{n} Artikel', noResults: 'Keine Artikel gefunden. Fragen Sie uns gern – wir bestellen auch, was nicht im Shop steht.',
       prev: 'Zurück', next: 'Weiter', art: 'Art.-Nr.',
       success: 'Vielen Dank für Ihre Bestellung! Sie erhalten eine Bestätigung per E-Mail. Bei Abholung melden wir uns, sobald alles bereitliegt.',
@@ -26,7 +27,8 @@
       notLive: 'Online payment is not active yet. Please order by phone or WhatsApp.',
       noCheckout: 'The checkout could not be opened. Please try again.',
       offline: 'No connection. Please try again.',
-      add: 'Add to basket', added: '✓ Added', allCats: 'All categories', allBrands: 'All brands',
+      freeLeft: '{x} more for free delivery (mainland).', freeOk: '✓ Free delivery within mainland Portugal.',
+      rest: 'Clearance', add: 'Add to basket', added: '✓ Added', allCats: 'All categories', allBrands: 'All brands',
       count: '{n} items', noResults: 'No items found. Just ask us – we can also order things that are not in the shop.',
       prev: 'Previous', next: 'Next', art: 'Item no.',
       success: 'Thank you for your order! You will receive a confirmation by email. For collection, we will let you know as soon as everything is ready.',
@@ -39,7 +41,8 @@
       notLive: 'O pagamento online ainda não está ativo. Encomende por telefone ou WhatsApp.',
       noCheckout: 'Não foi possível abrir o pagamento. Tente novamente.',
       offline: 'Sem ligação. Tente novamente.',
-      add: 'Adicionar ao carrinho', added: '✓ Adicionado', allCats: 'Todas as categorias', allBrands: 'Todas as marcas',
+      freeLeft: 'Faltam {x} para portes grátis (continente).', freeOk: '✓ Portes grátis em Portugal continental.',
+      rest: 'Fim de série', add: 'Adicionar ao carrinho', added: '✓ Adicionado', allCats: 'Todas as categorias', allBrands: 'Todas as marcas',
       count: '{n} artigos', noResults: 'Nenhum artigo encontrado. Pergunte-nos – também encomendamos o que não está na loja.',
       prev: 'Anterior', next: 'Seguinte', art: 'Ref.',
       success: 'Obrigado pela sua encomenda! Receberá uma confirmação por e-mail. Em caso de levantamento, avisamos quando estiver tudo pronto.',
@@ -127,6 +130,8 @@
     } catch (e) { return {}; }
   }
   var cart = load();
+  var FREE_FROM = 0;   // Grenze für kostenlosen Versand, kommt vom Server (shop-config.js)
+  fetch('/api/shop/info').then(function (r) { return r.json(); }).then(function (d) { FREE_FROM = d.freeShippingFrom || 0; render(); }).catch(function () {});
   function save() {
     try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) { /* privat-Modus: Warenkorb nur für diese Seite */ }
     render();
@@ -172,6 +177,11 @@
       box.appendChild(line);
     });
     $('.sum-value', drawer).textContent = euro(total());
+    var fl = $('.free-left', drawer);
+    if (fl) {
+      fl.hidden = !ids.length || !FREE_FROM;
+      fl.textContent = total() >= FREE_FROM ? TX.freeOk : TX.freeLeft.replace('{x}', euro(FREE_FROM - total()));
+    }
     $('.checkout', drawer).disabled = !ids.length;
   }
 
@@ -273,6 +283,7 @@
             link.appendChild(el('img', { src: p.img, alt: p.n, loading: 'lazy', width: '580', height: '280' }));
             card.appendChild(link);
             var body = el('div', { 'class': 'body' });
+            if (p.r) body.appendChild(el('span', { 'class': 'badge' }, TX.rest));
             if (p.b) body.appendChild(el('span', { 'class': 'tag' }, p.b));
             var h = el('h3'); h.appendChild(el('a', { href: p.url }, p.n)); body.appendChild(h);
             if (p.a) body.appendChild(el('p', { 'class': 'art' }, TX.art + ' ' + p.a));

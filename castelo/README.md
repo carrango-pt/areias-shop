@@ -64,8 +64,11 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
    hinzufügen und beim Domain-Anbieter die angezeigten DNS-Einträge setzen. Erst danach Webador kündigen.
 
 ## Vor dem Livegang prüfen
-1. **Versandkosten** in `shop-config.js` prüfen (Platzhalter: bis 2 kg 5,50 €, bis 10 kg 9,50 €, bis 30 kg 16,90 €;
-   schwerer → nur Abholung). Artikel ohne Gewichtsangabe zählen mit 1 kg.
+1. **Versand** (in `shop-config.js`): Paketdienst nach Gesamtgewicht (13,95 € bis 46,95 €, über 31,5 kg je weiteres
+   Paket 46,95 €), Spedition ab 109,95 € für sperrige Ware, versandkostenfrei ab 120 €, Click & Collect kostenlos,
+   nur Portugal-Festland (Inseln auf Anfrage – Bestell-Mail wird bei PLZ 9xxx markiert). Als Spedition gilt ein Artikel,
+   wenn Camping-Profi ihn mit „(S)“ markiert, er über 31,5 kg wiegt oder in einer Speditions-Kategorie liegt.
+   Artikel ohne Gewichtsangabe zählen mit 1 kg. Texte dazu: Seite „Versand & Lieferung“ (`build.py` → `shipping`).
 2. **Preise** stichprobenartig prüfen (Preisregel oben).
 3. **Adresse:** Überall steht nur „Pêra, Algarve“. Für Impressum und Google bitte Straße + PLZ ergänzen (`build.py` → `place`).
 4. **Telefonnummern:** Telefon + WhatsApp +351 933 917 633 (einzige Nummer) (`build.py` oben).

@@ -12,7 +12,7 @@ const BASE = 'https://www.camping-profi.de';
 const OUT = path.join(__dirname, 'data', 'camping-profi-raw.json');
 const DELAY_MS = 400;
 const UA = 'Mozilla/5.0 (compatible; CasteloMotorhomes-Katalogimport; +https://www.castelomotorhomesandcaravanrepairs.com)';
-// Hauptbereiche des Sortiments. Outlet/Eigenmarken/Monatsangebot/TOP-Marken sind Querschnitte davon und werden übersprungen.
+// Hauptbereiche des Sortiments plus Outlet. Eigenmarken/Monatsangebot/TOP-Marken sind Querschnitte davon und werden übersprungen.
 const ROOTS = [
   '/de/shop/Zelte-und-Markisen~c15702',
   '/de/shop/Campingmoebel~c15732',
@@ -21,7 +21,8 @@ const ROOTS = [
   '/de/shop/Kuehlen-und-Heizen~c15827',
   '/de/shop/Gas--Wasser-und-Sanitaer~c15852',
   '/de/shop/Elektro-und-Multimedia~c15911',
-  '/de/shop/Fahrzeugtechnik~c15945'
+  '/de/shop/Fahrzeugtechnik~c15945',
+  '/de/shop/Outlet~c106241'          // Restposten – gibt es nur hier
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -101,18 +102,20 @@ async function crawlCategory(url, trail, products, stats) {
     for (const k of kids) await crawlCategory(k, here, products, stats);
     return;
   }
-  // Blatt-Kategorie: Seiten durchblättern, bis keine neuen Artikel mehr kommen
+  // Blatt-Kategorie: alle Seiten durchblättern, solange es eine nächste Seite gibt.
+  // (Nicht abbrechen, nur weil eine Seite lauter schon bekannte Artikel enthält – danach können neue kommen.)
   let page = 1, pageHtml = html;
-  while (true) {
+  const seenHere = new Set();
+  while (page <= 300) {
     const cards = parseCards(pageHtml);
-    let fresh = 0;
+    let freshHere = 0;
     for (const c of cards) {
+      if (!seenHere.has(c.id)) { seenHere.add(c.id); freshHere++; }
       if (products[c.id]) continue;
       products[c.id] = Object.assign(c, { cat: here.slice() });
-      fresh++;
     }
     stats.count = Object.keys(products).length;
-    if (!cards.length || !fresh || !new RegExp('[?&;]p=' + (page + 1) + '"').test(pageHtml)) break;
+    if (!cards.length || !freshHere || !new RegExp('[?&;]p=' + (page + 1) + '"').test(pageHtml)) break;
     page++;
     pageHtml = await get(url + '?term=&p=' + page);
     if (!pageHtml) break;

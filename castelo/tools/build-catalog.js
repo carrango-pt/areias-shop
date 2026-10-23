@@ -142,8 +142,12 @@ for (const p of Object.values(raw.products)) {
   }
   const attrs = Object.assign({}, p.attrs);
   const w = kg(attrs['Gewicht']);
+  // Camping-Profi-Kürzel im Namen, z. B. „(S)“ = Speditionsware, „(R)“ = Restposten → als Flags speichern, aus dem Namen entfernen
+  const flags = [];
+  const name = p.name.replace(/\s*\(([A-Z])\)/g, function (_, f) { if (flags.indexOf(f) < 0) flags.push(f); return ''; }).replace(/\s+/g, ' ').trim();
   products[p.id] = {
-    n: p.name,
+    n: name || p.name,
+    f: flags.length ? flags.join('') : undefined,
     b: p.brand || undefined,
     a: p.art || undefined,
     p: price(p.uvp),

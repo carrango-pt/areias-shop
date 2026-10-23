@@ -101,7 +101,8 @@ async function sendOrderEmail(s) {
     '<h3>Adresse</h3><p>' + (addrLines || '—') + '</p>' +
     '<h3>Kontakt</h3><p>E-Mail: ' + esc(cust.email || '—') + '<br>Telefon: ' + esc(cust.phone || '—') + '</p>' +
     '<p style="color:#5b6b78;font-size:12px">Details und Rückerstattung im Stripe-Dashboard.</p></div>';
-  await sendMail('Neue Bestellung – ' + money(s.amount_total), html, cust.email);
+  const island = shop.CONFIG.islandPostcode.test(String(addr.postal_code || '').trim());
+  await sendMail((island ? '⚠ INSEL – Versand klären! ' : '') + 'Neue Bestellung – ' + money(s.amount_total), html, cust.email);
 }
 
 app.use(express.json({ limit: '32kb' }));
@@ -127,10 +128,17 @@ function rateLimit(max, windowMs) {
 }
 
 app.get('/api/shop/categories', shop.categories);
+app.get('/api/shop/info', shop.info);
 app.get('/api/shop/products', rateLimit(300, 60 * 1000), shop.products);
 app.get('/img/cp/*', rateLimit(600, 60 * 1000), shop.image);
 app.get('/sitemap-products.xml', shop.sitemap);
 shop.LANGS.forEach(function (l) { app.get(shop.ITEM_PATH[l] + ':slug', shop.productPage(l)); });
+
+const ISLAND_NOTE = {
+  de: 'Versand nur innerhalb Portugals (Festland). Lieferung auf die Inseln (Madeira, Azoren) bitte vorher anfragen.',
+  en: 'Delivery within mainland Portugal only. For the islands (Madeira, Azores) please ask us first.',
+  pt: 'Envio apenas para Portugal continental. Para as ilhas (Madeira, Açores) contacte-nos primeiro.'
+};
 
 app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res) {
   if (!stripe) return res.status(503).json({ error: 'not_configured' });
@@ -150,6 +158,7 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
       phone_number_collection: { enabled: true },
       shipping_address_collection: { allowed_countries: shop.CONFIG.allowedCountries },
       shipping_options: order.shipping_options,
+      custom_text: { shipping_address: { message: ISLAND_NOTE[lang] } },
       success_url: origin + shopPath + '?checkout=success',
       cancel_url: origin + shopPath + '?checkout=cancel'
     });
