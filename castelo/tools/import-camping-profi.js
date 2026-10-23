@@ -97,12 +97,11 @@ async function crawlCategory(url, trail, products, stats) {
   if (!html) return;
   const title = categoryTitle(html) || decode(catPath(url).split('/').pop().replace(/-/g, ' '));
   const here = trail.concat(title);
-  const kids = childCategories(html, url);
-  if (kids.length) {
-    for (const k of kids) await crawlCategory(k, here, products, stats);
-    return;
-  }
-  // Blatt-Kategorie: alle Seiten durchblättern, solange es eine nächste Seite gibt.
+  // Erst die Unterkategorien (genauere Zuordnung), dann die eigene Artikel-Liste:
+  // Auch Oberkategorien können Artikel direkt enthalten (z. B. „Ersatzteile Fahrzeugtechnik“).
+  for (const k of childCategories(html, url)) await crawlCategory(k, here, products, stats);
+  if (!parseCards(html).length) return;
+  // Alle Seiten durchblättern, solange es eine nächste Seite gibt.
   // (Nicht abbrechen, nur weil eine Seite lauter schon bekannte Artikel enthält – danach können neue kommen.)
   let page = 1, pageHtml = html;
   const seenHere = new Set();
