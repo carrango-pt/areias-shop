@@ -7,7 +7,7 @@ Shop-Artikel und Preise stehen NICHT hier, sondern in public/assets/catalog.js.
 import os
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
-DOMAIN = 'https://www.castelomotorhomesandcaravanrepairs.com'
+DOMAIN = 'https://castelomotorhomesandcaravanrepairs.com'
 
 NAME = 'Castelo Motorhomes and Caravan Repairs'
 TEL_M, TEL_M_H = '+351933917633', '+351 933 917 633'
