@@ -39,10 +39,24 @@
 </div></section>
 <section class="block"><div class="wrap">
   <p id="checkout-note" class="notice" hidden role="status"></p>
-  <div class="notice">Unser Sortiment wächst noch. <strong>Sie suchen etwas Bestimmtes?</strong> Rufen Sie an oder schreiben Sie per <a href="https://wa.me/351933917633">WhatsApp</a> – wir können fast alles bestellen.</div>
-  <div class="tabs" id="cat-tabs" role="group" aria-label="Kategorien"></div>
-  <div class="grid c4" id="products"></div>
-  <p class="note mt">Alle Preise in Euro inkl. MwSt. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Abholung in der Werkstatt kostenlos; Versand innerhalb Portugals siehe Kasse.</p>
+  <div class="notice partner"><img src="/img/camping-profi.svg" alt="CAMPING-PROFI" width="120" height="49"><p><strong>Offizieller Fachhändler von CAMPING-PROFI.</strong> Über 10.000 Artikel unseres Großhändlers Camping-Profi. <strong>Nicht gefunden, was Sie suchen?</strong> Rufen Sie an oder schreiben Sie per <a href="https://wa.me/351933917633">WhatsApp</a> – wir können fast alles bestellen.</p></div>
+  <form class="shop-search" id="shop-search" role="search">
+    <input type="search" id="shop-q" name="q" placeholder="Suchen: Artikel, Marke oder Artikelnummer …" aria-label="Suchen" autocomplete="off">
+    <button class="btn" type="submit">Suchen</button>
+  </form>
+  <div class="shop-layout">
+    <aside class="shop-cats"><h2 class="h3">Kategorien</h2><nav id="cat-tree" aria-label="Kategorien"></nav></aside>
+    <div>
+      <div class="shop-bar">
+        <span id="shop-count" role="status"></span>
+        <select id="shop-brand" aria-label="Alle Marken"><option value="">Alle Marken</option></select>
+        <select id="shop-sort" aria-label="Relevanz"><option value="">Relevanz</option><option value="price">Preis aufsteigend</option><option value="-price">Preis absteigend</option><option value="name">Name A–Z</option></select>
+      </div>
+      <div class="grid c3" id="products"></div>
+      <nav class="pager" id="pager"></nav>
+    </div>
+  </div>
+  <p class="note mt">Alle Preise in Euro inkl. 23 % MwSt., zzgl. Versand. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Abholung in der Werkstatt kostenlos; Versand innerhalb Portugals nach Gewicht, siehe Kasse.</p>
 </div></section>
 <section class="block white"><div class="wrap grid c2">
   <img class="photo" src="/img/shop-zelt.jpg" alt="Unser Campingshop in Pêra" width="798" height="359" loading="lazy">
@@ -60,6 +74,7 @@
     <div><h3>Öffnungszeiten</h3><ul><li>Mo – Do: 10:00 – 17:00</li><li>Fr: 10:00 – 13:00</li><li>Sa, So: geschlossen</li></ul></div>
     <div><h3>Seiten</h3><ul><li><a href="/">Home</a></li><li><a href="/unsere-dienstleistungen">Leistungen</a></li><li><a href="/technik">Technik</a></li><li><a href="/campingshop">Campingshop</a></li><li><a href="/oeffnungszeiten">Öffnungszeiten</a></li><li><a href="/kontakt">Kontakt</a></li><li><a href="/impressum">Impressum &amp; Datenschutz</a></li></ul></div>
   </div>
+  <p class="partner-foot"><span>Offizieller Fachhändler von</span> <a href="/campingshop"><img src="/img/camping-profi-weiss.svg" alt="CAMPING-PROFI" width="120" height="49" loading="lazy"></a></p>
   <p class="towns">Wir betreuen Camper aus der ganzen Algarve: Sagres · Lagos · Aljezur · Alvor · Portimão · Monchique · Lagoa · Carvoeiro · Silves · Armação de Pêra · Albufeira · Vilamoura · Quarteira · Almancil · Loulé · Faro · Olhão · Tavira · Monte Gordo · Vila Real de Santo António · Beja</p>
   <div class="bottom"><span>© <span data-year>2026</span> Castelo Motorhomes and Caravan Repairs</span><span><a href="/impressum">Impressum</a> · <a href="/impressum#datenschutz">Datenschutz</a> · <a href="https://www.livroreclamacoes.pt/">Livro de Reclamações</a></span></div>
 </div></footer>
@@ -76,7 +91,6 @@
     <p class="checkout-msg form-msg err" role="status"></p>
   </footer>
 </aside>
-<script src="/assets/catalog.js"></script>
 <script src="/assets/app.js"></script>
 </body>
 </html>

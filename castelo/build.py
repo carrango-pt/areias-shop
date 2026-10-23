@@ -30,6 +30,8 @@ SLUGS = {
     'hours':    {'de': '/oeffnungszeiten', 'en': '/en/opening-hours', 'pt': '/pt/horario'},
     'contact':  {'de': '/kontakt', 'en': '/en/contact', 'pt': '/pt/contacto'},
     'legal':    {'de': '/impressum', 'en': '/en/legal', 'pt': '/pt/informacao-legal'},
+    # Vorlage für Artikelseiten – der Server setzt {{ID}}, {{TITLE}}, {{DESC}}, {{BODY}} ein
+    'item':     {'de': '/campingshop/artikel/{{ID}}', 'en': '/en/shop/item/{{ID}}', 'pt': '/pt/loja/artigo/{{ID}}'},
 }
 NAV_KEYS = ['home', 'services', 'tech', 'shop', 'hours', 'contact']
 
@@ -45,7 +47,7 @@ T = {
     workshop='Werkstatt', mobile='Mobil', email='E-Mail', location='Standort',
     f_about='Reparatur, Wartung und Umbau von Wohnmobilen und Wohnwagen an der Algarve – seit 20 Jahren.',
     f_contact='Kontakt', f_hours='Öffnungszeiten', f_pages='Seiten', f_legal='Impressum &amp; Datenschutz',
-    f_towns='Wir betreuen Camper aus der ganzen Algarve:', imprint='Impressum', privacy='Datenschutz',
+    f_towns='Wir betreuen Camper aus der ganzen Algarve:', partner='Offizieller Fachhändler von', imprint='Impressum', privacy='Datenschutz',
     hours_short=['Mo – Do: 10:00 – 17:00', 'Fr: 10:00 – 13:00', 'Sa, So: geschlossen'],
     days=['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'], closed='geschlossen',
     wa_label='Per WhatsApp schreiben', close='Schließen', sum='Summe',
@@ -65,7 +67,7 @@ T = {
     workshop='Workshop', mobile='Mobile', email='Email', location='Location',
     f_about='Repair, servicing and conversion of motorhomes and caravans in the Algarve – for 20 years.',
     f_contact='Contact', f_hours='Opening hours', f_pages='Pages', f_legal='Legal notice &amp; privacy',
-    f_towns='We look after campers from all over the Algarve:', imprint='Legal notice', privacy='Privacy',
+    f_towns='We look after campers from all over the Algarve:', partner='Official dealer of', imprint='Legal notice', privacy='Privacy',
     hours_short=['Mon – Thu: 10:00 – 17:00', 'Fri: 10:00 – 13:00', 'Sat, Sun: closed'],
     days=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], closed='closed',
     wa_label='Message us on WhatsApp', close='Close', sum='Total',
@@ -85,7 +87,7 @@ T = {
     workshop='Oficina', mobile='Telemóvel', email='E-mail', location='Localização',
     f_about='Reparação, manutenção e transformação de autocaravanas e caravanas no Algarve – há 20 anos.',
     f_contact='Contacto', f_hours='Horário', f_pages='Páginas', f_legal='Informação legal &amp; privacidade',
-    f_towns='Apoiamos campistas de todo o Algarve:', imprint='Informação legal', privacy='Privacidade',
+    f_towns='Apoiamos campistas de todo o Algarve:', partner='Revendedor oficial', imprint='Informação legal', privacy='Privacidade',
     hours_short=['Seg – Qui: 10:00 – 17:00', 'Sex: 10:00 – 13:00', 'Sáb, Dom: encerrado'],
     days=['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'], closed='encerrado',
     wa_label='Enviar mensagem por WhatsApp', close='Fechar', sum='Total',
@@ -166,6 +168,7 @@ def page(key, lang, title, desc, body):
     <div><h3>{L['f_hours']}</h3><ul>{hours}</ul></div>
     <div><h3>{L['f_pages']}</h3><ul>{nav}<li><a href="{pp}">{L['f_legal']}</a></li></ul></div>
   </div>
+  <p class="partner-foot"><span>{L['partner']}</span> <a href="{url('shop', lang)}"><img src="/img/camping-profi-weiss.svg" alt="CAMPING-PROFI" width="120" height="49" loading="lazy"></a></p>
   <p class="towns">{L['f_towns']} {TOWNS}</p>
   <div class="bottom"><span>© <span data-year>2026</span> {NAME}</span><span><a href="{pp}">{L['imprint']}</a> · <a href="{pp}#datenschutz">{L['privacy']}</a> · <a href="https://www.livroreclamacoes.pt/">Livro de Reclamações</a></span></div>
 </div></footer>
@@ -182,7 +185,6 @@ def page(key, lang, title, desc, body):
     <p class="checkout-msg form-msg err" role="status"></p>
   </footer>
 </aside>
-<script src="/assets/catalog.js"></script>
 <script src="/assets/app.js"></script>
 </body>
 </html>
@@ -463,29 +465,49 @@ def shop(lang):
     C = {
     'de': dict(title='Campingshop', desc='Campingzubehör, Sanitärzusätze, Kühlschranklüfter, Gaswarner und Solarregler – online bestellen oder in der Werkstatt in Pêra abholen.',
         eye='Campingshop', h1='Zubehör für Ihre nächste Tour', lead='Online bestellen und bequem bei uns in der Werkstatt abholen – oder per Post innerhalb Portugals liefern lassen.',
-        notice='Unser Sortiment wächst noch. <strong>Sie suchen etwas Bestimmtes?</strong> Rufen Sie an oder schreiben Sie per <a href="https://wa.me/{wa}">WhatsApp</a> – wir können fast alles bestellen.',
-        cats='Kategorien', fine='Alle Preise in Euro inkl. MwSt. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Abholung in der Werkstatt kostenlos; Versand innerhalb Portugals siehe Kasse.',
+        notice='Über 10.000 Artikel unseres Großhändlers Camping-Profi. <strong>Nicht gefunden, was Sie suchen?</strong> Rufen Sie an oder schreiben Sie per <a href="https://wa.me/{wa}">WhatsApp</a> – wir können fast alles bestellen.',
+        cats='Kategorien', fine='Alle Preise in Euro inkl. 23 % MwSt., zzgl. Versand. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Abholung in der Werkstatt kostenlos; Versand innerhalb Portugals nach Gewicht, siehe Kasse.',
+        q_ph='Suchen: Artikel, Marke oder Artikelnummer …', q_btn='Suchen', all_brands='Alle Marken',
+        sort=['Relevanz', 'Preis aufsteigend', 'Preis absteigend', 'Name A–Z'],
         alt='Unser Campingshop in Pêra', v_eye='Vor Ort', v_h='Unser Shop in der Werkstatt',
         v_p='Zubehör und Sanitär, Küche und Kühlung, Solar und Gas: Vieles haben wir direkt vorrätig. Kommen Sie während der <a href="{hours}">Öffnungszeiten</a> vorbei.'),
     'en': dict(title='Camping shop', desc='Camping accessories, toilet additives, fridge fans, gas alarms and solar controllers – order online or collect at our workshop in Pêra.',
         eye='Camping shop', h1='Accessories for your next trip', lead='Order online and collect at our workshop – or have it delivered by post within Portugal.',
-        notice='Our range is still growing. <strong>Looking for something specific?</strong> Call us or send a <a href="https://wa.me/{wa}">WhatsApp</a> message – we can order almost anything.',
-        cats='Categories', fine='All prices in euros incl. VAT. Secure payment via Stripe (card, Multibanco, MB WAY and more). Collection at the workshop is free; delivery within Portugal see checkout.',
+        notice='More than 10,000 items from our wholesaler Camping-Profi. <strong>Cannot find what you need?</strong> Call us or send a <a href="https://wa.me/{wa}">WhatsApp</a> message – we can order almost anything.',
+        cats='Categories', fine='All prices in euros incl. 23% VAT, plus delivery. Secure payment via Stripe (card, Multibanco, MB WAY and more). Collection at the workshop is free; delivery within Portugal by weight, see checkout.',
+        q_ph='Search: item, brand or item number …', q_btn='Search', all_brands='All brands',
+        sort=['Relevance', 'Price ascending', 'Price descending', 'Name A–Z'],
         alt='Our camping shop in Pêra', v_eye='In store', v_h='Our shop at the workshop',
         v_p='Accessories and sanitary, kitchen and cooling, solar and gas: we keep a lot in stock. Drop in during our <a href="{hours}">opening hours</a>.'),
     'pt': dict(title='Loja de campismo', desc='Acessórios de campismo, aditivos sanitários, ventiladores para frigorífico, detetores de gás e reguladores solares – encomende online ou levante na oficina em Pêra.',
         eye='Loja de campismo', h1='Acessórios para a sua próxima viagem', lead='Encomende online e levante na nossa oficina – ou receba por correio em Portugal.',
-        notice='A nossa gama ainda está a crescer. <strong>Procura algo específico?</strong> Ligue-nos ou envie uma mensagem por <a href="https://wa.me/{wa}">WhatsApp</a> – conseguimos encomendar quase tudo.',
-        cats='Categorias', fine='Todos os preços em euros com IVA incluído. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Levantamento na oficina gratuito; envio em Portugal: ver no pagamento.',
+        notice='Mais de 10 000 artigos do nosso fornecedor Camping-Profi. <strong>Não encontra o que procura?</strong> Ligue-nos ou envie uma mensagem por <a href="https://wa.me/{wa}">WhatsApp</a> – conseguimos encomendar quase tudo.',
+        cats='Categorias', fine='Todos os preços em euros com IVA de 23 % incluído, portes à parte. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Levantamento na oficina gratuito; envio em Portugal conforme o peso, ver no pagamento.',
+        q_ph='Pesquisar: artigo, marca ou referência …', q_btn='Pesquisar', all_brands='Todas as marcas',
+        sort=['Relevância', 'Preço crescente', 'Preço decrescente', 'Nome A–Z'],
         alt='A nossa loja de campismo em Pêra', v_eye='Na loja', v_h='A nossa loja na oficina',
         v_p='Acessórios e sanitários, cozinha e frio, solar e gás: temos muita coisa em stock. Visite-nos dentro do <a href="{hours}">horário</a>.'),
     }[lang]
     body = hero(lang, 'hero-shop', C['eye'], C['h1'], C['lead'], actions=False) + f'''
 <section class="block"><div class="wrap">
   <p id="checkout-note" class="notice" hidden role="status"></p>
-  <div class="notice">{C['notice'].format(wa=WA)}</div>
-  <div class="tabs" id="cat-tabs" role="group" aria-label="{C['cats']}"></div>
-  <div class="grid c4" id="products"></div>
+  <div class="notice partner"><img src="/img/camping-profi.svg" alt="CAMPING-PROFI" width="120" height="49"><p><strong>{T[lang]['partner']} CAMPING-PROFI.</strong> {C['notice'].format(wa=WA)}</p></div>
+  <form class="shop-search" id="shop-search" role="search">
+    <input type="search" id="shop-q" name="q" placeholder="{C['q_ph']}" aria-label="{C['q_btn']}" autocomplete="off">
+    <button class="btn" type="submit">{C['q_btn']}</button>
+  </form>
+  <div class="shop-layout">
+    <aside class="shop-cats"><h2 class="h3">{C['cats']}</h2><nav id="cat-tree" aria-label="{C['cats']}"></nav></aside>
+    <div>
+      <div class="shop-bar">
+        <span id="shop-count" role="status"></span>
+        <select id="shop-brand" aria-label="{C['all_brands']}"><option value="">{C['all_brands']}</option></select>
+        <select id="shop-sort" aria-label="{C['sort'][0]}">{''.join(f'<option value="{v}">{t}</option>' for v, t in zip(['', 'price', '-price', 'name'], C['sort']))}</select>
+      </div>
+      <div class="grid c3" id="products"></div>
+      <nav class="pager" id="pager"></nav>
+    </div>
+  </div>
   <p class="note mt">{C['fine']}</p>
 </div></section>
 ''' + split('shop-zelt.jpg', C['alt'], 798, 359,
@@ -627,7 +649,7 @@ def notfound(lang):
 
 def sitemap():
     rows = []
-    for key in SLUGS:
+    for key in [k for k in SLUGS if k != 'item']:
         for lang in LANGS:
             alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{DOMAIN}{url(key, l)}"/>' for l in LANGS)
             rows.append(f'<url><loc>{DOMAIN}{url(key, lang)}</loc>{alts}</url>')
@@ -648,6 +670,8 @@ if __name__ == '__main__':
                         ('hours', hours), ('contact', contact), ('legal', legal)]:
             write(filepath(key, lang), fn(lang)); n += 1
         write(os.path.join(ROOT, '' if lang == 'de' else lang, '404.html'), notfound(lang)); n += 1
+        write(os.path.join(os.path.dirname(ROOT), 'templates', f'product-{lang}.html'),
+              page('item', lang, '{{TITLE}}', '{{DESC}}', '{{BODY}}')); n += 1
     write(os.path.join(ROOT, 'sitemap.xml'), sitemap())
-    write(os.path.join(ROOT, 'robots.txt'), f'User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n')
+    write(os.path.join(ROOT, 'robots.txt'), f'User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\nSitemap: {DOMAIN}/sitemap-products.xml\n')
     print(n, 'Seiten erzeugt')

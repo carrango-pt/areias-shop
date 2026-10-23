@@ -1,9 +1,9 @@
 /* Castelo Motorhomes – Web-Server: liefert die Seite aus public/, erstellt Stripe-Checkout-Sessions,
    verschickt Kontaktanfragen und Bestell-Mails (via Brevo).
-   Preise stammen ausschließlich aus public/assets/catalog.js (serverseitig, nie aus dem Browser). */
+   Preise stammen ausschließlich aus data/catalog.json (serverseitig, nie aus dem Browser). */
 const path = require('path');
 const express = require('express');
-const CATALOG = require('./public/assets/catalog.js');
+const shop = require('./shop.js');
 
 const app = express();
 const PORT = process.env.PORT || 4600;
@@ -126,7 +126,11 @@ function rateLimit(max, windowMs) {
   };
 }
 
-const SHOP_PATH = { de: '/campingshop', en: '/en/shop', pt: '/pt/loja' };
+app.get('/api/shop/categories', shop.categories);
+app.get('/api/shop/products', rateLimit(300, 60 * 1000), shop.products);
+app.get('/img/cp/*', rateLimit(600, 60 * 1000), shop.image);
+app.get('/sitemap-products.xml', shop.sitemap);
+shop.LANGS.forEach(function (l) { app.get(shop.ITEM_PATH[l] + ':slug', shop.productPage(l)); });
 
 app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res) {
   if (!stripe) return res.status(503).json({ error: 'not_configured' });
@@ -134,45 +138,18 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
     const lang = ['en', 'pt'].indexOf(req.body.lang) >= 0 ? req.body.lang : 'de';
     const items = Array.isArray(req.body.items) ? req.body.items.slice(0, 50) : [];
     if (!items.length) return res.status(400).json({ error: 'empty cart' });
-
-    let subtotal = 0;
-    const line_items = items.map(function (it) {
-      const p = Object.prototype.hasOwnProperty.call(CATALOG.products, it.id) && CATALOG.products[it.id];
-      if (!p) throw new Error('unknown product: ' + it.id);
-      const qty = Math.max(1, Math.min(99, parseInt(it.qty, 10) || 1));
-      subtotal += p.price * qty;
-      const tr = (p.i18n && p.i18n[lang]) || {};
-      return {
-        quantity: qty,
-        price_data: { currency: CATALOG.currency, unit_amount: p.price, product_data: { name: tr.name || p.name } }
-      };
-    });
-
-    const freeOn = CATALOG.freeShippingThreshold > 0 && subtotal >= CATALOG.freeShippingThreshold;
-    const shipping_options = CATALOG.shipping.map(function (s) {
-      return {
-        shipping_rate_data: {
-          type: 'fixed_amount',
-          fixed_amount: { amount: freeOn ? 0 : s.amount, currency: CATALOG.currency },
-          display_name: s.label[lang] || s.label.de,
-          delivery_estimate: {
-            minimum: { unit: 'business_day', value: s.min },
-            maximum: { unit: 'business_day', value: s.max }
-          }
-        }
-      };
-    });
+    const order = shop.checkoutData(items, lang);
 
     const origin = req.protocol + '://' + req.get('host');
-    const shopPath = SHOP_PATH[lang];
+    const shopPath = shop.SHOP_PATH[lang];
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      line_items: line_items,
+      line_items: order.line_items,
       locale: lang,
       billing_address_collection: 'auto',
       phone_number_collection: { enabled: true },
-      shipping_address_collection: { allowed_countries: CATALOG.allowedCountries },
-      shipping_options: shipping_options,
+      shipping_address_collection: { allowed_countries: shop.CONFIG.allowedCountries },
+      shipping_options: order.shipping_options,
       success_url: origin + shopPath + '?checkout=success',
       cancel_url: origin + shopPath + '?checkout=cancel'
     });
@@ -212,7 +189,7 @@ app.post('/api/contact', rateLimit(5, 10 * 60 * 1000), async function (req, res)
 });
 
 app.get('/api/health', function (_req, res) {
-  res.json({ ok: true, stripe: !!stripe, mail: !!BREVO_KEY });
+  res.json({ ok: true, stripe: !!stripe, mail: !!BREVO_KEY, products: shop.count });
 });
 
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'], dotfiles: 'deny' }));

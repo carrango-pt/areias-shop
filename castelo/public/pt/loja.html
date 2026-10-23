@@ -39,10 +39,24 @@
 </div></section>
 <section class="block"><div class="wrap">
   <p id="checkout-note" class="notice" hidden role="status"></p>
-  <div class="notice">A nossa gama ainda está a crescer. <strong>Procura algo específico?</strong> Ligue-nos ou envie uma mensagem por <a href="https://wa.me/351933917633">WhatsApp</a> – conseguimos encomendar quase tudo.</div>
-  <div class="tabs" id="cat-tabs" role="group" aria-label="Categorias"></div>
-  <div class="grid c4" id="products"></div>
-  <p class="note mt">Todos os preços em euros com IVA incluído. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Levantamento na oficina gratuito; envio em Portugal: ver no pagamento.</p>
+  <div class="notice partner"><img src="/img/camping-profi.svg" alt="CAMPING-PROFI" width="120" height="49"><p><strong>Revendedor oficial CAMPING-PROFI.</strong> Mais de 10 000 artigos do nosso fornecedor Camping-Profi. <strong>Não encontra o que procura?</strong> Ligue-nos ou envie uma mensagem por <a href="https://wa.me/351933917633">WhatsApp</a> – conseguimos encomendar quase tudo.</p></div>
+  <form class="shop-search" id="shop-search" role="search">
+    <input type="search" id="shop-q" name="q" placeholder="Pesquisar: artigo, marca ou referência …" aria-label="Pesquisar" autocomplete="off">
+    <button class="btn" type="submit">Pesquisar</button>
+  </form>
+  <div class="shop-layout">
+    <aside class="shop-cats"><h2 class="h3">Categorias</h2><nav id="cat-tree" aria-label="Categorias"></nav></aside>
+    <div>
+      <div class="shop-bar">
+        <span id="shop-count" role="status"></span>
+        <select id="shop-brand" aria-label="Todas as marcas"><option value="">Todas as marcas</option></select>
+        <select id="shop-sort" aria-label="Relevância"><option value="">Relevância</option><option value="price">Preço crescente</option><option value="-price">Preço decrescente</option><option value="name">Nome A–Z</option></select>
+      </div>
+      <div class="grid c3" id="products"></div>
+      <nav class="pager" id="pager"></nav>
+    </div>
+  </div>
+  <p class="note mt">Todos os preços em euros com IVA de 23 % incluído, portes à parte. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Levantamento na oficina gratuito; envio em Portugal conforme o peso, ver no pagamento.</p>
 </div></section>
 <section class="block white"><div class="wrap grid c2">
   <img class="photo" src="/img/shop-zelt.jpg" alt="A nossa loja de campismo em Pêra" width="798" height="359" loading="lazy">
@@ -60,6 +74,7 @@
     <div><h3>Horário</h3><ul><li>Seg – Qui: 10:00 – 17:00</li><li>Sex: 10:00 – 13:00</li><li>Sáb, Dom: encerrado</li></ul></div>
     <div><h3>Páginas</h3><ul><li><a href="/pt/">Início</a></li><li><a href="/pt/servicos">Serviços</a></li><li><a href="/pt/tecnica">Técnica</a></li><li><a href="/pt/loja">Loja de campismo</a></li><li><a href="/pt/horario">Horário</a></li><li><a href="/pt/contacto">Contacto</a></li><li><a href="/pt/informacao-legal">Informação legal &amp; privacidade</a></li></ul></div>
   </div>
+  <p class="partner-foot"><span>Revendedor oficial</span> <a href="/pt/loja"><img src="/img/camping-profi-weiss.svg" alt="CAMPING-PROFI" width="120" height="49" loading="lazy"></a></p>
   <p class="towns">Apoiamos campistas de todo o Algarve: Sagres · Lagos · Aljezur · Alvor · Portimão · Monchique · Lagoa · Carvoeiro · Silves · Armação de Pêra · Albufeira · Vilamoura · Quarteira · Almancil · Loulé · Faro · Olhão · Tavira · Monte Gordo · Vila Real de Santo António · Beja</p>
   <div class="bottom"><span>© <span data-year>2026</span> Castelo Motorhomes and Caravan Repairs</span><span><a href="/pt/informacao-legal">Informação legal</a> · <a href="/pt/informacao-legal#datenschutz">Privacidade</a> · <a href="https://www.livroreclamacoes.pt/">Livro de Reclamações</a></span></div>
 </div></footer>
@@ -76,7 +91,6 @@
     <p class="checkout-msg form-msg err" role="status"></p>
   </footer>
 </aside>
-<script src="/assets/catalog.js"></script>
 <script src="/assets/app.js"></script>
 </body>
 </html>

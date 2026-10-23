@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.castelomotorhomesandcaravanrepairs.com/sitemap.xml
+Sitemap: https://www.castelomotorhomesandcaravanrepairs.com/sitemap-products.xml
