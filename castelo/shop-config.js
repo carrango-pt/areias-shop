@@ -26,10 +26,7 @@ module.exports = {
   parcelDays: { min: 2, max: 7 },
   parcelLabel: { de: 'Paketdienst Portugal (Festland)', en: 'Parcel service Portugal (mainland)', pt: 'Envio por transportadora – Portugal continental' },
 
-  // Spedition für sperrige/schwere Artikel (nach Volumengewicht, ab)
-  freight: 10995,
-  freightDays: { min: 3, max: 10 },
-  freightLabel: { de: 'Spedition Portugal (Festland), bis Bordsteinkante', en: 'Freight delivery Portugal (mainland), to the kerb', pt: 'Transporte por transitário – Portugal continental, até ao passeio' },
+  // Spedition für sperrige/schwere Artikel: Kosten immer auf Anfrage – solche Bestellungen gehen online nur per Click & Collect
   // Wann gilt ein Artikel als sperrig?
   bulky: {
     maxKg: 31.5,                      // Einzelgewicht darüber
@@ -40,5 +37,5 @@ module.exports = {
   },
 
   unknownWeightKg: 1,                 // Artikel ohne Gewichtsangabe zählen so viel
-  freeShippingFrom: 12000             // ab 120 € versandkostenfrei (Festland); 0 = aus
+  freeShippingFrom: 12000             // ab 120 € Paketversand kostenfrei (Festland); 0 = aus
 };

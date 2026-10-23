@@ -51,8 +51,9 @@ T = {
     hours_short=['Mo – Do: 10:00 – 17:00', 'Fr: 10:00 – 13:00', 'Sa, So: geschlossen'],
     days=['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'], closed='geschlossen',
     wa_label='Per WhatsApp schreiben', close='Schließen', sum='Summe',
-    cart_note='inkl. 23 % MwSt., zzgl. Versand – versandkostenfrei ab 120 € (Festland). Click & Collect kostenlos.',
+    cart_note='inkl. 23 % MwSt., zzgl. Versand – Paketversand kostenfrei ab 120 € (Festland). Click & Collect kostenlos.',
     checkout='Zur Kasse', continue_shop='Weiter einkaufen',
+    fr_note='Ihr Warenkorb enthält Speditionsware. Die Versandkosten nennen wir Ihnen auf Anfrage – online ist nur Click &amp; Collect (Abholung) möglich.', fr_btn='Spedition anfragen (WhatsApp)', fr_mail='per E-Mail anfragen', fr_msg='Hallo, bitte um ein Angebot für die Lieferung per Spedition:',
     btn_appt='Termin anfragen', btn_call='Anrufen:',
     cta_t='Ihr Fahrzeug braucht Hilfe?', cta_p='Rufen Sie uns an, schreiben Sie per WhatsApp oder nutzen Sie das Kontaktformular.',
     form=dict(h='Termin oder Frage', name='Name *', email='E-Mail *', phone='Telefon / WhatsApp', vehicle='Fahrzeug',
@@ -71,8 +72,9 @@ T = {
     hours_short=['Mon – Thu: 10:00 – 17:00', 'Fri: 10:00 – 13:00', 'Sat, Sun: closed'],
     days=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], closed='closed',
     wa_label='Message us on WhatsApp', close='Close', sum='Total',
-    cart_note='Incl. 23% VAT, plus delivery – free delivery from €120 (mainland). Click & Collect is free.',
+    cart_note='Incl. 23% VAT, plus delivery – free parcel delivery from €120 (mainland). Click & Collect is free.',
     checkout='Checkout', continue_shop='Continue shopping',
+    fr_note='Your basket contains freight items. We will quote the delivery cost on request – online, only Click &amp; Collect (collection) is available.', fr_btn='Request freight quote (WhatsApp)', fr_mail='ask by email', fr_msg='Hello, please send me a quote for freight delivery of:',
     btn_appt='Request an appointment', btn_call='Call:',
     cta_t='Does your vehicle need help?', cta_p='Give us a call, send a WhatsApp message or use the contact form.',
     form=dict(h='Appointment or question', name='Name *', email='Email *', phone='Phone / WhatsApp', vehicle='Vehicle',
@@ -91,8 +93,9 @@ T = {
     hours_short=['Seg – Qui: 10:00 – 17:00', 'Sex: 10:00 – 13:00', 'Sáb, Dom: encerrado'],
     days=['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'], closed='encerrado',
     wa_label='Enviar mensagem por WhatsApp', close='Fechar', sum='Total',
-    cart_note='IVA de 23 % incluído, portes à parte – grátis a partir de 120 € (continente). Click & Collect gratuito.',
+    cart_note='IVA de 23 % incluído, portes à parte – envio por transportadora grátis a partir de 120 € (continente). Click & Collect gratuito.',
     checkout='Finalizar compra', continue_shop='Continuar a comprar',
+    fr_note='O seu carrinho contém artigos para transitário. Indicamos os portes sob consulta – online só é possível Click &amp; Collect (levantamento).', fr_btn='Pedir orçamento de transporte (WhatsApp)', fr_mail='pedir por e-mail', fr_msg='Olá, gostaria de um orçamento para entrega por transitário de:',
     btn_appt='Pedir marcação', btn_call='Ligar:',
     cta_t='O seu veículo precisa de ajuda?', cta_p='Ligue-nos, envie uma mensagem por WhatsApp ou use o formulário de contacto.',
     form=dict(h='Marcação ou pergunta', name='Nome *', email='E-mail *', phone='Telefone / WhatsApp', vehicle='Veículo',
@@ -178,6 +181,7 @@ def page(key, lang, title, desc, body):
   <div class="items"></div>
   <footer>
     <div class="sum"><span>{L['sum']}</span><span class="sum-value">0,00 €</span></div>
+    <div class="freight-note notice" hidden data-wa="{WA}" data-mail="{MAIL}" data-msg="{L['fr_msg']}"><p>{L['fr_note']}</p><p><a class="btn wa small fr-wa" href="https://wa.me/{WA}">{L['fr_btn']}</a> <a class="fr-mail" href="mailto:{MAIL}">{L['fr_mail']}</a></p></div>
     <p class="free-left note" hidden></p>
     <p class="note">{L['cart_note']} <a href="{url('shipping', lang)}">{L['f_ship']}</a></p>
     <button class="btn checkout" type="button">{L['checkout']}</button>
@@ -642,35 +646,35 @@ def shipping(lang):
     C = {
     'de': dict(title='Versand &amp; Lieferung', desc='Versandkosten und Lieferung von Castelo Motorhomes: Paketdienst und Spedition innerhalb Portugals, versandkostenfrei ab 120 €, Click &amp; Collect.',
         eye='Versand &amp; Lieferung', h1='So kommt Ihre Bestellung zu Ihnen', lead='Versand innerhalb Portugals (Festland) per Paketdienst oder Spedition – oder kostenlos abholen per Click &amp; Collect.',
-        free_h='Versandkostenfrei ab 120 €', free_p='Ab einem Bestellwert von 120 € erfolgt die Lieferung innerhalb Portugals (außer Inseln) versandkostenfrei.',
+        free_h='Versandkostenfrei ab 120 €', free_p='Ab einem Bestellwert von 120 € erfolgt die Lieferung per Paketdienst innerhalb Portugals (außer Inseln) versandkostenfrei.',
         area_h='Liefergebiet', area_p='Wir versenden nur innerhalb Portugals. Lieferungen auf die Inseln (Madeira, Azoren) bitte vorher <a href="{contact}">erfragen</a>.',
-        costs_h='Versandkosten', col=('Versandart', 'Gewicht', 'Preis'), parcel='Paketdienst', freight='Spedition', freight_w='nach Volumengewicht', from_='ab',
+        costs_h='Versandkosten', col=('Versandart', 'Gewicht', 'Preis'), parcel='Paketdienst', freight='Spedition', freight_w='nach Volumengewicht', on_req='auf Anfrage',
         costs_note='Alle Preise inkl. MwSt. Maßgeblich ist das Gesamtgewicht der Bestellung. Die passende Versandart wird an der Kasse automatisch berechnet.',
         small_h='Lieferung von Kleinteilen', small_p='Kleinteile wie zum Beispiel Geschirr, Sanitärmittel, Ladegeräte etc. werden von uns schnell und zuverlässig per Paketdienst versendet.',
-        big_h='Lieferung von Großteilen', big_p='Sperrige oder schwere Produkte wie zum Beispiel Markisen, Lastenträger, große Batterien etc. versenden wir per Spedition. Sobald die Ware versendet wurde, wird sich die ausliefernde Spedition innerhalb von 3 Werktagen telefonisch mit Ihnen in Verbindung setzen, um einen Liefertermin zu vereinbaren. Die Lieferung erfolgt bis Bordsteinkante.',
+        big_h='Lieferung von Großteilen', big_p='Sperrige oder schwere Produkte wie zum Beispiel Markisen, Lastenträger, große Batterien etc. versenden wir per Spedition. Sobald die Ware versendet wurde, wird sich die ausliefernde Spedition innerhalb von 3 Werktagen telefonisch mit Ihnen in Verbindung setzen, um einen Liefertermin zu vereinbaren. Die Lieferung erfolgt bis Bordsteinkante. <strong>Die Speditionskosten nennen wir Ihnen auf Anfrage</strong> – im Onlineshop können Sie Speditionsware mit Click &amp; Collect bestellen oder uns für ein Lieferangebot kontaktieren.',
         cc_h='Click &amp; Collect', cc_p='Bestellungen können bei uns abgeholt werden. Lagernde Artikel sind in der Regel innerhalb von 30–60 Minuten abholbereit. Das spart Zeit und Geld! Wählen Sie dazu an der Kasse „Click &amp; Collect“. Unsere <a href="{hours}">Öffnungszeiten</a>.'),
     'en': dict(title='Shipping &amp; delivery', desc='Shipping costs and delivery at Castelo Motorhomes: parcel service and freight within Portugal, free delivery from €120, Click &amp; Collect.',
         eye='Shipping &amp; delivery', h1='How your order gets to you', lead='Delivery within mainland Portugal by parcel service or freight carrier – or collect free of charge with Click &amp; Collect.',
-        free_h='Free delivery from €120', free_p='From an order value of €120, delivery within Portugal (excluding the islands) is free of charge.',
+        free_h='Free delivery from €120', free_p='From an order value of €120, parcel delivery within Portugal (excluding the islands) is free of charge.',
         area_h='Delivery area', area_p='We only ship within Portugal. For deliveries to the islands (Madeira, Azores) please <a href="{contact}">ask us first</a>.',
-        costs_h='Shipping costs', col=('Method', 'Weight', 'Price'), parcel='Parcel service', freight='Freight carrier', freight_w='by volumetric weight', from_='from',
+        costs_h='Shipping costs', col=('Method', 'Weight', 'Price'), parcel='Parcel service', freight='Freight carrier', freight_w='by volumetric weight', on_req='on request',
         costs_note='All prices incl. VAT. The total weight of the order applies. The right shipping method is calculated automatically at checkout.',
         small_h='Delivery of small items', small_p='Small items such as tableware, toilet chemicals, chargers etc. are shipped quickly and reliably by parcel service.',
-        big_h='Delivery of large items', big_p='Bulky or heavy products such as awnings, load carriers, large batteries etc. are shipped by freight carrier. Once the goods have been dispatched, the carrier will phone you within 3 working days to arrange a delivery date. Delivery is to the kerb.',
+        big_h='Delivery of large items', big_p='Bulky or heavy products such as awnings, load carriers, large batteries etc. are shipped by freight carrier. Once the goods have been dispatched, the carrier will phone you within 3 working days to arrange a delivery date. Delivery is to the kerb. <strong>Freight costs are quoted on request</strong> – in the online shop you can order freight items with Click &amp; Collect or contact us for a delivery quote.',
         cc_h='Click &amp; Collect', cc_p='Orders can be collected from us. Items in stock are usually ready for collection within 30–60 minutes. That saves time and money! Simply choose “Click &amp; Collect” at checkout. Our <a href="{hours}">opening hours</a>.'),
     'pt': dict(title='Envio &amp; entrega', desc='Portes e entrega na Castelo Motorhomes: transportadora e transitário em Portugal, portes grátis a partir de 120 €, Click &amp; Collect.',
         eye='Envio &amp; entrega', h1='Como a sua encomenda chega até si', lead='Envio para Portugal continental por transportadora ou transitário – ou levantamento gratuito com Click &amp; Collect.',
-        free_h='Portes grátis a partir de 120 €', free_p='A partir de um valor de encomenda de 120 €, a entrega em Portugal (exceto ilhas) é gratuita.',
+        free_h='Portes grátis a partir de 120 €', free_p='A partir de um valor de encomenda de 120 €, o envio por transportadora em Portugal (exceto ilhas) é gratuito.',
         area_h='Área de entrega', area_p='Enviamos apenas para Portugal. Para entregas nas ilhas (Madeira, Açores), <a href="{contact}">contacte-nos primeiro</a>.',
-        costs_h='Portes de envio', col=('Modo de envio', 'Peso', 'Preço'), parcel='Transportadora', freight='Transitário', freight_w='conforme o peso volumétrico', from_='a partir de',
+        costs_h='Portes de envio', col=('Modo de envio', 'Peso', 'Preço'), parcel='Transportadora', freight='Transitário', freight_w='conforme o peso volumétrico', on_req='sob consulta',
         costs_note='Todos os preços com IVA incluído. Conta o peso total da encomenda. O modo de envio adequado é calculado automaticamente no pagamento.',
         small_h='Entrega de artigos pequenos', small_p='Artigos pequenos como loiça, produtos sanitários, carregadores, etc. são enviados de forma rápida e fiável por transportadora.',
-        big_h='Entrega de artigos grandes', big_p='Produtos volumosos ou pesados como toldos, porta-cargas, baterias grandes, etc. são enviados por transitário. Após a expedição, o transitário contacta-o por telefone no prazo de 3 dias úteis para combinar a data de entrega. A entrega é feita até ao passeio.',
+        big_h='Entrega de artigos grandes', big_p='Produtos volumosos ou pesados como toldos, porta-cargas, baterias grandes, etc. são enviados por transitário. Após a expedição, o transitário contacta-o por telefone no prazo de 3 dias úteis para combinar a data de entrega. A entrega é feita até ao passeio. <strong>Os portes por transitário são indicados sob consulta</strong> – na loja online pode encomendar estes artigos com Click &amp; Collect ou contactar-nos para um orçamento de entrega.',
         cc_h='Click &amp; Collect', cc_p='As encomendas podem ser levantadas na nossa oficina. Os artigos em stock ficam normalmente prontos para levantamento em 30–60 minutos. Poupa tempo e dinheiro! Basta escolher “Click &amp; Collect” no pagamento. O nosso <a href="{hours}">horário</a>.'),
     }[lang]
     li = {'de': 0, 'en': 1, 'pt': 2}[lang]
     rows = ''.join(f'<tr><td>{C["parcel"]}</td><td>{t[li]}</td><td>{t[3].replace(",", ".") if lang == "en" else t[3]} €</td></tr>' for t in TIERS)
-    rows += f'<tr><td>{C["freight"]}</td><td>{C["freight_w"]}</td><td>{C["from_"]} {"109.95" if lang == "en" else "109,95"} €</td></tr>'
+    rows += f'<tr><td>{C["freight"]}</td><td>{C["freight_w"]}</td><td>{C["on_req"]}</td></tr>'
     body = hero(lang, 'hero-shop', C['eye'], C['h1'], C['lead'], actions=False) + f"""
 <section class="block"><div class="wrap grid c2 top">
   <div>

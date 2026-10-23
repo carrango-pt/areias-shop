@@ -141,7 +141,7 @@
   function addToCart(item) {
     var e = cart[item.id];
     if (e) e.q = Math.min(99, e.q + 1);
-    else cart[item.id] = { q: 1, n: item.n, p: item.p, img: item.img, url: item.url };
+    else cart[item.id] = { q: 1, n: item.n, a: item.a, p: item.p, img: item.img, url: item.url, s: item.s ? 1 : 0 };
     save();
   }
 
@@ -177,9 +177,22 @@
       box.appendChild(line);
     });
     $('.sum-value', drawer).textContent = euro(total());
+    // Speditionsware im Warenkorb: Versand nur auf Anfrage (WhatsApp/E-Mail mit Artikelliste)
+    var fr = $('.freight-note', drawer);
+    var bulky = ids.filter(function (id) { return cart[id].s; });
+    if (fr) {
+      fr.hidden = !bulky.length;
+      if (bulky.length) {
+        var text = fr.getAttribute('data-msg') + '\n' + ids.map(function (id) {
+          var it = cart[id]; return '- ' + it.q + '× ' + it.n + (it.a ? ' (Art. ' + it.a + ')' : '');
+        }).join('\n');
+        $('.fr-wa', fr).href = 'https://wa.me/' + fr.getAttribute('data-wa') + '?text=' + encodeURIComponent(text);
+        $('.fr-mail', fr).href = 'mailto:' + fr.getAttribute('data-mail') + '?subject=' + encodeURIComponent('Spedition / Freight') + '&body=' + encodeURIComponent(text);
+      }
+    }
     var fl = $('.free-left', drawer);
     if (fl) {
-      fl.hidden = !ids.length || !FREE_FROM;
+      fl.hidden = !ids.length || !FREE_FROM || bulky.length > 0;
       fl.textContent = total() >= FREE_FROM ? TX.freeOk : TX.freeLeft.replace('{x}', euro(FREE_FROM - total()));
     }
     $('.checkout', drawer).disabled = !ids.length;

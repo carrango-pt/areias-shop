@@ -65,7 +65,8 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
 
 ## Vor dem Livegang prüfen
 1. **Versand** (in `shop-config.js`): Paketdienst nach Gesamtgewicht (13,95 € bis 46,95 €, über 31,5 kg je weiteres
-   Paket 46,95 €), Spedition ab 109,95 € für sperrige Ware, versandkostenfrei ab 120 €, Click & Collect kostenlos,
+   Paket 46,95 €), Paketversand kostenfrei ab 120 €, Click & Collect kostenlos. Speditionsware: Versandkosten immer auf
+   Anfrage – die Kasse bietet dann nur Click & Collect an, der Warenkorb zeigt einen WhatsApp-/E-Mail-Knopf zur Anfrage,
    nur Portugal-Festland (Inseln auf Anfrage – Bestell-Mail wird bei PLZ 9xxx markiert). Als Spedition gilt ein Artikel,
    wenn Camping-Profi ihn mit „(S)“ markiert, er über 31,5 kg wiegt oder in einer Speditions-Kategorie liegt.
    Artikel ohne Gewichtsangabe zählen mit 1 kg. Texte dazu: Seite „Versand & Lieferung“ (`build.py` → `shipping`).
