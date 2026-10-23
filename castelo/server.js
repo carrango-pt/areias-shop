@@ -156,6 +156,7 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
       locale: lang,
       billing_address_collection: 'auto',
       phone_number_collection: { enabled: true },
+      customer_creation: 'always',       // legt je Kauf einen Stripe-Kunden an → Stammkunden unter Stripe → Kunden, ohne Kundenkonto im Shop
       shipping_address_collection: { allowed_countries: shop.CONFIG.allowedCountries },
       shipping_options: order.shipping_options,
       custom_text: { shipping_address: { message: ISLAND_NOTE[lang] } },
