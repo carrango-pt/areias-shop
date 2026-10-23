@@ -13,7 +13,7 @@ const stripe = process.env.STRIPE_SECRET_KEY
 
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || '';
 const BREVO_KEY = process.env.BREVO_API_KEY || '';
-const SHOP_EMAIL = process.env.SHOP_EMAIL || 'info@castelomotorhomes.com';   // Empfänger für Anfragen + Bestellungen
+const SHOP_EMAIL = process.env.SHOP_EMAIL || 'caravantechnologypera@hotmail.com';   // Empfänger für Anfragen + Bestellungen
 const FROM_EMAIL = process.env.FROM_EMAIL || SHOP_EMAIL;                      // Absender (in Brevo verifiziert)
 
 app.set('trust proxy', 1);

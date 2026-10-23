@@ -17,4 +17,4 @@ services:
       - key: BREVO_API_KEY
         sync: false   # aus Brevo – aktiviert Kontaktformular und Bestell-Mail
       - key: SHOP_EMAIL
-        value: info@castelomotorhomes.com
+        value: caravantechnologypera@hotmail.com

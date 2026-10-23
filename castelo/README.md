@@ -58,7 +58,7 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
    - `STRIPE_WEBHOOK_SECRET` – `whsec_…` aus Stripe → Webhooks, Endpunkt `https://DOMAIN/api/stripe-webhook`,
      Ereignis `checkout.session.completed` (aktiviert die Bestell-Mail)
    - `BREVO_API_KEY` – aktiviert Kontaktformular + Bestell-Mail
-   - `SHOP_EMAIL` – Empfänger (Standard: info@castelomotorhomes.com)
+   - `SHOP_EMAIL` – Empfänger (Standard: caravantechnologypera@hotmail.com)
    - `FROM_EMAIL` – in Brevo verifizierte Absenderadresse
 4. Domain umziehen: In Render unter **Settings → Custom Domains** `www.castelomotorhomesandcaravanrepairs.com`
    hinzufügen und beim Domain-Anbieter die angezeigten DNS-Einträge setzen. Erst danach Webador kündigen.
