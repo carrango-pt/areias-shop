@@ -21,6 +21,7 @@ dieselben wie bei Webador (`/kontakt`, `/campingshop`, `/technik`, `/oeffnungsze
 - `public/assets/style.css` – Design (Farben oben in `:root`).
 - `public/img/` – Bilder (eigene Shop-Fotos + freie Unsplash-Fotos von der alten Seite).
 - `server.js` – liefert die Seite aus, erstellt Stripe-Checkout, verschickt Anfragen/Bestellungen per Mail.
+- `admin.js` – Admin-Seite `/admin`: Besucher (ohne Cookies, IP nur gehasht), Shop-Suchen, Bestellungen live aus Stripe.
 
 ## Sortiment von CAMPING-PROFI aktualisieren
 Wir sind Fachhändler von CAMPING-PROFI und übernehmen deren öffentliches Sortiment (Name, Marke, Artikelnummer,
@@ -70,6 +71,9 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
    - `BREVO_API_KEY` – aktiviert Kontaktformular + Bestell-Mail
    - `SHOP_EMAIL` – Empfänger (Standard: caravantechnologypera@hotmail.com)
    - `FROM_EMAIL` – in Brevo verifizierte Absenderadresse
+   - `ADMIN_PASSWORD` – Passwort für die Admin-Seite `/admin` (Benutzer `admin`, änderbar über `ADMIN_USER`); leer = Admin aus
+   - `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` – dauerhafte Besucherzählung (Upstash, kostenlos; Schlüssel mit
+     Präfix `castelo:`, die Datenbank kann mit dem Areias-Shop geteilt werden). Ohne: Zähler nur bis zum nächsten Neustart
 4. Domain umziehen: In Render unter **Settings → Custom Domains** `www.castelomotorhomesandcaravanrepairs.com`
    hinzufügen und beim Domain-Anbieter die angezeigten DNS-Einträge setzen. Erst danach Webador kündigen.
 

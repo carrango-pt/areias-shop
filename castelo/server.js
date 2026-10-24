@@ -4,6 +4,7 @@
 const path = require('path');
 const express = require('express');
 const shop = require('./shop.js');
+const admin = require('./admin.js');
 
 const app = express();
 const PORT = process.env.PORT || 4600;
@@ -106,6 +107,7 @@ async function sendOrderEmail(s) {
 }
 
 app.use(express.json({ limit: '32kb' }));
+app.use(admin.track);   // Besucherzählung (ohne Cookies, keine Bots)
 
 // Einfaches In-Memory-Rate-Limit pro IP.
 function rateLimit(max, windowMs) {
@@ -130,6 +132,12 @@ function rateLimit(max, windowMs) {
 app.get('/api/shop/categories', shop.categories);
 app.get('/api/shop/info', shop.info);
 app.get('/api/shop/products', rateLimit(300, 60 * 1000), shop.products);
+// Suchbegriff zählen – der Browser meldet ihn erst, wenn der Kunde aufgehört hat zu tippen
+app.post('/api/shop/search-log', rateLimit(60, 60 * 1000), function (req, res) {
+  admin.trackSearch(req.body && req.body.q, 1);
+  res.status(204).end();
+});
+app.get('/admin', rateLimit(30, 5 * 60 * 1000), admin.auth, admin.page(stripe));
 app.get('/img/:src(cp|og)/*', rateLimit(600, 60 * 1000), shop.image);
 app.get('/sitemap-products.xml', shop.sitemap);
 shop.LANGS.forEach(function (l) { app.get(shop.ITEM_PATH[l] + ':slug', shop.productPage(l)); });
@@ -199,7 +207,7 @@ app.post('/api/contact', rateLimit(5, 10 * 60 * 1000), async function (req, res)
 });
 
 app.get('/api/health', function (_req, res) {
-  res.json({ ok: true, stripe: !!stripe, mail: !!BREVO_KEY, products: shop.count });
+  res.json({ ok: true, stripe: !!stripe, mail: !!BREVO_KEY, products: shop.count, admin: admin.enabled(), stats: admin.persistent() });
 });
 
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'], dotfiles: 'deny' }));

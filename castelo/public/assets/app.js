@@ -331,9 +331,20 @@
       btn(TX.next + ' ›', page + 1);
     }
 
-    $('#shop-search').addEventListener('submit', function (e) { e.preventDefault(); go({ q: qInput.value.trim() }); });
+    // Suchbegriff für die Statistik melden – erst nach Tipp-Pause bzw. beim Absenden, nicht jeden Zwischenstand
+    var logged = '', logTimer;
+    function logSearch(q) {
+      if (!q || q === logged) return;
+      logged = q;
+      fetch('/api/shop/search-log', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ q: q }), keepalive: true }).catch(function () {});
+    }
+    $('#shop-search').addEventListener('submit', function (e) { e.preventDefault(); var q = qInput.value.trim(); go({ q: q }); clearTimeout(logTimer); logSearch(q); });
     var typing;
-    qInput.addEventListener('input', function () { clearTimeout(typing); typing = setTimeout(function () { go({ q: qInput.value.trim() }); }, 350); });
+    qInput.addEventListener('input', function () {
+      clearTimeout(typing); clearTimeout(logTimer);
+      typing = setTimeout(function () { go({ q: qInput.value.trim() }); }, 350);
+      logTimer = setTimeout(function () { logSearch(qInput.value.trim()); }, 2000);
+    });
     brandSel.addEventListener('change', function () { go({ brand: brandSel.value }); });
     sortSel.addEventListener('change', function () { go({ sort: sortSel.value }); });
 
