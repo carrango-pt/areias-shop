@@ -131,7 +131,7 @@ function rateLimit(max, windowMs) {
 
 app.get('/api/shop/categories', shop.categories);
 app.get('/api/shop/info', shop.info);
-app.get('/api/shop/products', rateLimit(300, 60 * 1000), shop.products);
+app.get('/api/shop/products', rateLimit(120, 60 * 1000), shop.products);
 // Suchbegriff zählen – der Browser meldet ihn erst, wenn der Kunde aufgehört hat zu tippen
 app.post('/api/shop/search-log', rateLimit(60, 60 * 1000), function (req, res) {
   admin.trackSearch(req.body && req.body.q, 1);
@@ -156,7 +156,8 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
     if (!items.length) return res.status(400).json({ error: 'empty cart' });
     const order = shop.checkoutData(items, lang);
 
-    const origin = req.protocol + '://' + req.get('host');
+    // Rücksprung-Adresse fest vorgeben (Host-Header ist vom Absender fälschbar); lokal zum Testen localhost
+    const origin = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.get('host') || '') ? 'http://' + req.get('host') : shop.SITE;
     const shopPath = shop.SHOP_PATH[lang];
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',

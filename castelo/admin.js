@@ -77,7 +77,8 @@ function trackSearch(q, page) {
   q = String(q || '').trim().toLowerCase().slice(0, 60);
   if (!q || (parseInt(page, 10) || 1) > 1) return;
   bump(mem.search, q);
-  if (UPSTASH_URL) redis([['ZINCRBY', P + 'search', 1, q]]).catch(() => {});
+  // nur die 500 häufigsten Begriffe behalten – Spam-Suchen können die Liste nicht endlos aufblähen
+  if (UPSTASH_URL) redis([['ZINCRBY', P + 'search', 1, q], ['ZREMRANGEBYRANK', P + 'search', 0, -501]]).catch(() => {});
 }
 
 function safeEq(a, b) {

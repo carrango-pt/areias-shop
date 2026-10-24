@@ -18,6 +18,8 @@ const IMG_SOURCES = {
         tries: function (rel) { return [rel.replace(/^media\//, 'thumbnail/').replace(/(\.\w+)$/, '_800x800$1'), rel]; } }
 };
 const PAGE_SIZE = 24;
+// Feste Adresse für Links in Google-Daten, Sitemap und Stripe – nie aus dem Host-Header der Anfrage
+const SITE = (process.env.SITE_URL || 'https://castelomotorhomesandcaravanrepairs.com').replace(/\/$/, '');
 
 const TX = {
   de: { shop: 'Campingshop', art: 'Artikelnummer', brand: 'Marke', vat: 'inkl. 23 % MwSt., zzgl. Versand',
@@ -53,11 +55,15 @@ CAT.categories.forEach(function (c) { catById[c.id] = c; });
 const ids = Object.keys(CAT.products);
 const byCat = {};          // Kategorie-ID → [Artikel-IDs] (inkl. Unterkategorien)
 const haystack = {};       // Artikel-ID → normalisierter Suchtext
+const nameNorm = {};       // Artikel-ID → normalisierter Name (für die Sortierung, einmal vorberechnet)
+const knownImages = new Set();   // Bild-Proxy liefert nur Bilder, die im Katalog stehen
 ids.forEach(function (id) {
   const p = CAT.products[id];
   for (let c = catById[p.c]; c; c = catById[c.parent]) (byCat[c.id] = byCat[c.id] || []).push(id);
   // Suchtext: Name, Marke, Artikelnummer und nur die eigene (unterste) Kategorie –
   // sonst träfe z. B. „Markise“ jeden Artikel unter „Zelte und Markisen“.
+  nameNorm[id] = norm(p.n);
+  if (p.i) knownImages.add(p.i.indexOf('og/') === 0 ? p.i.slice(3) : p.i);
   const h = norm([p.n, p.b, p.a, catById[p.c] ? catById[p.c].name : ''].join(' '));
   haystack[id] = h + ' ' + h.replace(/[^a-z0-9]+/g, '');   // auch ohne Bindestriche/Leerzeichen: „gaswarner“ findet „Gas-Warner“
 });
@@ -94,7 +100,7 @@ function products(req, res) {
   else if (sort === 'name') list.sort(function (a, b) { return P[a].n.localeCompare(P[b].n, 'de'); });
   else if (q.length) {   // Treffer im Namen zuerst
     list.sort(function (a, b) {
-      const na = norm(P[a].n), nb = norm(P[b].n);
+      const na = nameNorm[a], nb = nameNorm[b];
       return q.filter(function (t) { return nb.indexOf(t) >= 0; }).length - q.filter(function (t) { return na.indexOf(t) >= 0; }).length;
     });
   }
@@ -124,7 +130,7 @@ async function fetchImage(src, rel) {
 async function image(req, res) {
   const src = IMG_SOURCES[req.params.src];
   const rel = req.params[0] || '';
-  if (!src || !src.ok.test(rel) || rel.indexOf('..') >= 0 ||
+  if (!src || !src.ok.test(rel) || rel.indexOf('..') >= 0 || !knownImages.has(rel) ||
       !/\.(png|jpe?g|webp|gif)$/i.test(rel)) return res.status(404).end();
   const key = crypto.createHash('sha1').update(req.params.src + '/' + rel).digest('hex');
   const file = path.join(CACHE_DIR, key);
@@ -177,9 +183,9 @@ function productPage(lang) {
     // Strukturierte Daten für Google (Produkt mit Preis); „<“ escapen, damit nichts aus dem Script ausbricht
     const ld = {
       '@context': 'https://schema.org', '@type': 'Product', name: p.n, sku: p.a || id,
-      image: 'https://' + req.get('host') + item.img, brand: p.b ? { '@type': 'Brand', name: p.b } : undefined,
+      image: SITE + item.img, brand: p.b ? { '@type': 'Brand', name: p.b } : undefined,
       offers: { '@type': 'Offer', price: (p.p / 100).toFixed(2), priceCurrency: 'EUR',
-        url: 'https://' + req.get('host') + itemUrl(id, lang), seller: { '@type': 'Organization', name: 'Castelo Motorhomes and Caravan Repairs' } }
+        url: SITE + itemUrl(id, lang), seller: { '@type': 'Organization', name: 'Castelo Motorhomes and Caravan Repairs' } }
     };
     const body =
       '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>' +
@@ -206,7 +212,7 @@ function productPage(lang) {
 }
 
 function sitemap(req, res) {
-  const origin = 'https://' + req.get('host');
+  const origin = SITE;
   const rows = ids.map(function (id) {
     return '<url><loc>' + origin + itemUrl(id, 'de') + '</loc>' + LANGS.map(function (l) {
       return '<xhtml:link rel="alternate" hreflang="' + l + '" href="' + origin + itemUrl(id, l) + '"/>';
@@ -273,4 +279,4 @@ function checkoutData(items, lang) {
   return { line_items: line_items, shipping_options: options, kg: kg, bulky: bulky };
 }
 
-module.exports = { categories, products, image, productPage, sitemap, checkoutData, info, isBulky, parcelCost, SHOP_PATH, ITEM_PATH, LANGS, count: ids.length, CONFIG };
+module.exports = { categories, products, image, productPage, sitemap, checkoutData, info, isBulky, parcelCost, SHOP_PATH, ITEM_PATH, LANGS, count: ids.length, CONFIG, SITE };
