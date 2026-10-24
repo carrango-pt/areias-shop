@@ -28,7 +28,9 @@ function visitorHash(ip, ua) { return crypto.createHash('sha256').update(day() +
 
 function isBot(ua) {
   if (!ua) return true;
-  return /bot|crawl|spider|slurp|mediapartners|facebookexternalhit|preview|monitor|uptime|pingdom|semrush|ahrefs|mj12|dotbot|petalbot|yandex|baidu|duckduck|applebot|scan|feedfetch|curl|wget|python|go-http|java\/|okhttp|axios|node-fetch|headless|phantom|lighthouse|libwww|httpclient|playwright/i.test(ua);
+  if (/bot|crawl|spider|slurp|mediapartners|facebookexternalhit|preview|monitor|uptime|pingdom|semrush|ahrefs|mj12|dotbot|petalbot|yandex|baidu|duckduck|applebot|scan|feedfetch|curl|wget|python|go-http|java\/|okhttp|axios|node-fetch|headless|phantom|lighthouse|libwww|httpclient|playwright/i.test(ua)) return true;
+  // Abrufer, die sich nicht „bot“ nennen: Google-Hilfsdienste (Search Console, Vorschau), KI-/SEO-Crawler, Link-Vorschauen
+  return /googleother|google-inspectiontool|google-extended|google-safety|google-read-aloud|google-site-verification|apis-google|storebot|chrome-lighthouse|bytespider|gptbot|chatgpt|oai-searchbot|claude|anthropic|perplexity|amazonbot|meta-external|ccbot|dataforseo|seznam|ia_archiver|whatsapp|telegram|slack|discord|skype|linkedin|pinterest|qwant|ecosia|mojeek|validator|w3c|checker|wordpress|ruby|php|perl|scrapy|httrack/i.test(ua);
 }
 
 function bump(o, k) { o[k] = (o[k] || 0) + 1; }
