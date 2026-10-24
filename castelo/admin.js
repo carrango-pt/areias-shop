@@ -4,6 +4,8 @@
    Bestellungen: live aus Stripe (Checkout-Sessions). */
 'use strict';
 const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
 
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';      // leer = Admin-Seite deaktiviert
@@ -40,7 +42,9 @@ function track(req, res, next) {
   if (req.method === 'GET') {
     const p = req.path, ua = req.headers['user-agent'] || '';
     const isPage = !/\.(css|js|jpe?g|png|webp|svg|gif|ico|xml|txt|map|woff2?|json)$/i.test(p) && p.indexOf('/api/') !== 0 && p.indexOf('/img/') !== 0;
-    if (isPage && p !== '/admin' && !isBot(ua)) {
+    // erst nach dem Senden zählen, und nur Seiten, die es gibt (200/304) – Scanner, die /wp-config.php & Co. abklappern, bekommen 404
+    if (isPage && p !== '/admin' && !isBot(ua)) res.on('finish', () => {
+      if (res.statusCode !== 200 && res.statusCode !== 304) return;
       const d = day(), h = visitorHash(req.ip, ua);
       const lang = /^\/en(\/|$)/.test(p) ? 'en' : (/^\/pt(\/|$)/.test(p) ? 'pt' : 'de');
       const page = /\/(artikel|item|artigo)\//.test(p) ? p.replace(/^(.*\/(artikel|item|artigo)\/).*/, '$1…') + ' (Artikelseiten)' : p;
@@ -49,9 +53,23 @@ function track(req, res, next) {
         redis([['INCR', P + 'pv:' + d], ['EXPIRE', P + 'pv:' + d, KEEP_SECONDS], ['PFADD', P + 'uv:' + d, h], ['EXPIRE', P + 'uv:' + d, KEEP_SECONDS],
           ['ZINCRBY', P + 'pages', 1, page], ['ZINCRBY', P + 'lang', 1, lang]]).catch(() => {});
       }
-    }
+    });
   }
   next();
+}
+
+// Einmalig beim Start: früher mitgezählte Scanner-Adressen (keine echte Seite) aus „Meistbesuchte Seiten“ entfernen
+function isRealPage(p) {
+  if (/\(Artikelseiten\)$/.test(p)) return true;
+  if (/\.\.|\/\//.test(p)) return false;
+  const base = path.join(__dirname, 'public', p);
+  return [base, base + '.html', path.join(base, 'index.html')].some((f) => { try { return fs.statSync(f).isFile(); } catch (e) { return false; } });
+}
+if (UPSTASH_URL) {
+  redis([['ZRANGE', P + 'pages', 0, -1]]).then((r) => {
+    const junk = (r[0] || []).filter((p) => !isRealPage(p));
+    if (junk.length) return redis([['ZREM', P + 'pages'].concat(junk)]);
+  }).catch(() => {});
 }
 
 // Shop-Suchbegriffe zählen (nur erste Ergebnisseite, damit Blättern nicht doppelt zählt)
