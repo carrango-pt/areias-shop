@@ -37,13 +37,27 @@ function isBot(ua) {
 
 function bump(o, k) { o[k] = (o[k] || 0) + 1; }
 
-// Middleware: echte Seitenaufrufe zählen (keine Bilder/Skripte/API, keine Bots, nicht /admin)
+// Wer sich einmal in /admin angemeldet hat, bekommt dieses Merk-Cookie und wird danach nicht mehr mitgezählt
+const OWNER_COOKIE = 'cm_owner';
+const isOwner = (req) => new RegExp('(^|;\\s*)' + OWNER_COOKIE + '=1(;|$)').test(req.headers.cookie || '');
+
+// Echte Browser schicken beim Seitenaufruf immer Accept: text/html und eine Sprache mit.
+// Getarnte Bots (geben sich als Chrome aus) lassen das oft weg. Vorab-Laden (Prefetch) ist kein Besuch.
+function looksLikeBrowserVisit(req) {
+  const h = req.headers;
+  if (!/text\/html/i.test(h.accept || '')) return false;
+  if (!h['accept-language']) return false;
+  if (/prefetch|prerender/i.test((h['sec-purpose'] || '') + ' ' + (h.purpose || '') + ' ' + (h['x-moz'] || ''))) return false;
+  return true;
+}
+
+// Middleware: echte Seitenaufrufe zählen (keine Bilder/Skripte/API, keine Bots, nicht /admin, nicht der Betreiber)
 function track(req, res, next) {
   if (req.method === 'GET') {
     const p = req.path, ua = req.headers['user-agent'] || '';
     const isPage = !/\.(css|js|jpe?g|png|webp|svg|gif|ico|xml|txt|map|woff2?|json)$/i.test(p) && p.indexOf('/api/') !== 0 && p.indexOf('/img/') !== 0;
     // erst nach dem Senden zählen, und nur Seiten, die es gibt (200/304) – Scanner, die /wp-config.php & Co. abklappern, bekommen 404
-    if (isPage && p !== '/admin' && !isBot(ua)) res.on('finish', () => {
+    if (isPage && p !== '/admin' && !isBot(ua) && !isOwner(req) && looksLikeBrowserVisit(req)) res.on('finish', () => {
       if (res.statusCode !== 200 && res.statusCode !== 304) return;
       const d = day(), h = visitorHash(req.ip, ua);
       const lang = /^\/en(\/|$)/.test(p) ? 'en' : (/^\/pt(\/|$)/.test(p) ? 'pt' : 'de');
@@ -204,13 +218,17 @@ function render(v, o) {
     '<div><h2>Sprachen</h2><div class="box">' + table(v.lang.map((x) => [langName[x[0]] || x[0], x[1]]), 'Noch keine Daten.') + '</div></div></div>' +
     '<h2>Bestellungen (letzte 50)</h2><div class="box"><table><tr><th>Datum</th><th>Kunde</th><th>Artikel</th><th>Lieferung / Adresse</th><th class="n">Betrag</th></tr>' + ord + '</table></div>' +
     '<p class="muted" style="margin-top:24px">Erstattungen und alle Details im <a href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener">Stripe-Dashboard</a>. ' +
-    'Besucher werden ohne Cookies gezählt; IP-Adressen nur als täglich wechselnder Hash.</p></div></body></html>';
+    'Besucher werden ohne Cookies gezählt; IP-Adressen nur als täglich wechselnder Hash. ' +
+    'Geräte, auf denen du dich hier angemeldet hast, zählen nicht mit. ' +
+    'Am 24.10. (Einrichtungstag) sind noch Testaufrufe, Crawler und Scanner enthalten – ab dem 25.10. sind die Zahlen bereinigt.</p></div></body></html>';
 }
 
 function page(stripe) {
   return async function (req, res) {
     try {
       const [v, o] = await Promise.all([visitors(30), orders(stripe)]);
+      // Betreiber-Geräte merken (1 Jahr), damit eigene Aufrufe der Website nicht in der Statistik landen
+      res.append('Set-Cookie', OWNER_COOKIE + '=1; Max-Age=31536000; Path=/; HttpOnly; Secure; SameSite=Lax');
       res.set({ 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow',
         // eigene, engere CSP: nur die eingebetteten Styles dieser Seite erlauben, kein JavaScript
         'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; form-action 'none'; frame-ancestors 'none'; base-uri 'none'" });
@@ -222,4 +240,4 @@ function page(stripe) {
   };
 }
 
-module.exports = { track, trackSearch, auth, page, persistent: () => !!UPSTASH_URL, enabled: () => !!ADMIN_PASSWORD };
+module.exports = { track, trackSearch, isOwner, auth, page, persistent: () => !!UPSTASH_URL, enabled: () => !!ADMIN_PASSWORD };
