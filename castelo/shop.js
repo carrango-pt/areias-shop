@@ -68,6 +68,24 @@ ids.forEach(function (id) {
   haystack[id] = h + ' ' + h.replace(/[^a-z0-9]+/g, '');   // auch ohne Bindestriche/Leerzeichen: „gaswarner“ findet „Gas-Warner“
 });
 
+// Werkstatt-Tipps: stehen in der Standardansicht (ohne Suche/Filter/Sortierung) ganz oben.
+// Alltagsteile, die zu den Arbeiten der Werkstatt passen. Artikel-IDs aus data/catalog.json; fehlende werden übersprungen.
+const FEATURED = [
+  '31142',          // Thetford Aqua Kem Blue 2000 ml
+  '31135',          // Thetford Aqua Kem Green Konzentrat
+  '37287',          // GOK Niederdruckregler 50 mbar mit Manometer
+  '30355',          // Truma DuoControl CS vertikal
+  '32891',          // Thitronik G.A.S.-pro Gaswarnanlage
+  '36980',          // Brunner Kühlschranklüfter VENTO NG 92
+  '41712',          // Sikaflex-522 weiß, 300 ml
+  '39047',          // Micropur Classic MC 1000F
+  '38648',          // Trinkwasserschlauch 12 mm, 5 m
+  'og167011800',    // Victron SmartSolar MPPT 75/15
+  'og167012695',    // Victron SmartShunt 1000A
+  '31353'           // Lippert Booster WA 1208
+].filter(function (id) { return CAT.products[id]; });
+const FEATURED_SET = new Set(FEATURED);
+
 function catName(c, lang) { return (c.i18n && c.i18n[lang]) || c.name; }
 function itemUrl(id, lang) { return ITEM_PATH[lang] + id + '-' + slug(CAT.products[id].n); }
 function imgUrl(p) { return p.i ? (p.i.indexOf('og/') === 0 ? '/img/' + p.i : '/img/cp/' + p.i) : '/img/shop-zubehoer.jpg'; }
@@ -95,6 +113,7 @@ function products(req, res) {
   if (brand) list = list.filter(function (id) { return CAT.products[id].b === brand; });
   list = list.slice();
   const P = CAT.products;
+  if (!cat && !q.length && !brand && !sort) list = FEATURED.concat(list.filter(function (id) { return !FEATURED_SET.has(id); }));
   if (sort === 'price') list.sort(function (a, b) { return P[a].p - P[b].p; });
   else if (sort === '-price') list.sort(function (a, b) { return P[b].p - P[a].p; });
   else if (sort === 'name') list.sort(function (a, b) { return P[a].n.localeCompare(P[b].n, 'de'); });
@@ -111,7 +130,7 @@ function products(req, res) {
     brands: Object.keys(brands).sort(function (a, b) { return brands[b] - brands[a]; }).slice(0, 40).map(function (b) { return [b, brands[b]]; }),
     items: list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map(function (id) {
       const p = P[id];
-      return { id: id, n: p.n, b: p.b, a: p.a, p: p.p, img: imgUrl(p), url: itemUrl(id, lang), r: p.f && p.f.indexOf('R') >= 0 ? 1 : undefined, s: isBulky(id) ? 1 : undefined };
+      return { id: id, n: p.n, b: p.b, a: p.a, p: p.p, img: imgUrl(p), url: itemUrl(id, lang), r: p.f && p.f.indexOf('R') >= 0 ? 1 : undefined, e: FEATURED_SET.has(id) ? 1 : undefined, s: isBulky(id) ? 1 : undefined };
     })
   });
 }

@@ -251,3 +251,38 @@ footer.site .bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 3
 .ship-table th { text-align: left; padding: 12px 18px; background: var(--navy); color: #fff; font-weight: 600; }
 .ship-table th:last-child, .ship-table td:last-child { text-align: right; }
 .free-left { color: var(--ok); font-weight: 600; margin: 4px 0; }
+
+/* Shop: kompakter Kopf, damit Suche und erste Artikel sofort sichtbar sind */
+.hero.compact .wrap { padding-top: 28px; padding-bottom: 28px; }
+.hero.compact h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 6px; }
+.hero.compact p.lead { font-size: 1rem; margin: 0; }
+.hero.compact .eyebrow { display: none; }
+section.block.shop-top { padding-top: 20px; }
+.shop-top .notice.partner { padding: 10px 14px; font-size: .9rem; }
+.shop-top .notice.partner img { width: 90px; }
+.badge.rec { background: var(--navy); }
+/* Links von Werkstatt-Seiten zum Shop */
+.shoplink { margin-top: 14px; font-size: .95rem; }
+.shoplink span { font-weight: 600; }
+.shop-cats summary { list-style: none; cursor: default; }
+.shop-cats summary::-webkit-details-marker { display: none; }
+.shop-cats summary h2 { margin: 0 0 10px; }
+@media (max-width: 900px) {
+  .shop-cats { padding: 12px 16px; }
+  .shop-cats summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .shop-cats summary h2 { margin: 0; }
+  .shop-cats summary::after { content: "▾"; color: var(--muted); }
+  .shop-cats[open] summary::after { content: "▴"; }
+  .shop-cats[open] summary h2 { margin-bottom: 10px; }
+  .shop-top .notice.partner img { display: none; }
+  .shop-top .notice.partner { font-size: .85rem; }
+  .hero.compact p.lead { display: none; }
+  .shop-cats { padding: 8px 14px; }
+  .shop-layout { gap: 16px; }
+  .shop-bar span { flex: 1 0 100%; }
+  .shop-bar select { flex: 1 1 40%; min-width: 0; }
+  /* Händler-Hinweis auf dem Handy unter die Artikel schieben */
+  .shop-top > .wrap { display: flex; flex-direction: column; }
+  .shop-top .notice.partner { order: 5; margin-top: 24px; }
+  .shop-top .note { order: 6; }
+}

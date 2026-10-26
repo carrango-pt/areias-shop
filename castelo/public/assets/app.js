@@ -14,7 +14,7 @@
       noCheckout: 'Die Kasse konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.',
       offline: 'Keine Verbindung. Bitte versuchen Sie es erneut.',
       freeLeft: 'Noch {x} bis zum kostenlosen Versand (Festland).', freeOk: '✓ Versandkostenfrei innerhalb Portugals (Festland).',
-      rest: 'Restposten', add: 'In den Warenkorb', added: '✓ Hinzugefügt', allCats: 'Alle Kategorien', allBrands: 'Alle Marken',
+      rest: 'Restposten', rec: 'Werkstatt-Tipp', add: 'In den Warenkorb', added: '✓ Hinzugefügt', allCats: 'Alle Kategorien', allBrands: 'Alle Marken',
       count: '{n} Artikel', noResults: 'Keine Artikel gefunden. Fragen Sie uns gern – wir bestellen auch, was nicht im Shop steht.',
       prev: 'Zurück', next: 'Weiter', art: 'Art.-Nr.',
       success: 'Vielen Dank für Ihre Bestellung! Sie erhalten eine Bestätigung per E-Mail. Bei Abholung melden wir uns, sobald alles bereitliegt.',
@@ -28,7 +28,7 @@
       noCheckout: 'The checkout could not be opened. Please try again.',
       offline: 'No connection. Please try again.',
       freeLeft: '{x} more for free delivery (mainland).', freeOk: '✓ Free delivery within mainland Portugal.',
-      rest: 'Clearance', add: 'Add to basket', added: '✓ Added', allCats: 'All categories', allBrands: 'All brands',
+      rest: 'Clearance', rec: 'Workshop pick', add: 'Add to basket', added: '✓ Added', allCats: 'All categories', allBrands: 'All brands',
       count: '{n} items', noResults: 'No items found. Just ask us – we can also order things that are not in the shop.',
       prev: 'Previous', next: 'Next', art: 'Item no.',
       success: 'Thank you for your order! You will receive a confirmation by email. For collection, we will let you know as soon as everything is ready.',
@@ -42,7 +42,7 @@
       noCheckout: 'Não foi possível abrir o pagamento. Tente novamente.',
       offline: 'Sem ligação. Tente novamente.',
       freeLeft: 'Faltam {x} para portes grátis (continente).', freeOk: '✓ Portes grátis em Portugal continental.',
-      rest: 'Fim de série', add: 'Adicionar ao carrinho', added: '✓ Adicionado', allCats: 'Todas as categorias', allBrands: 'Todas as marcas',
+      rest: 'Fim de série', rec: 'Escolha da oficina', add: 'Adicionar ao carrinho', added: '✓ Adicionado', allCats: 'Todas as categorias', allBrands: 'Todas as marcas',
       count: '{n} artigos', noResults: 'Nenhum artigo encontrado. Pergunte-nos – também encomendamos o que não está na loja.',
       prev: 'Anterior', next: 'Seguinte', art: 'Ref.',
       success: 'Obrigado pela sua encomenda! Receberá uma confirmação por e-mail. Em caso de levantamento, avisamos quando estiver tudo pronto.',
@@ -231,6 +231,12 @@
     var sp = new URLSearchParams(location.search);
     Object.keys(state).forEach(function (k) { if (sp.get(k)) state[k] = k === 'page' ? parseInt(sp.get(k), 10) || 1 : sp.get(k); });
     var qInput = $('#shop-q'), brandSel = $('#shop-brand'), sortSel = $('#shop-sort'), tree = $('#cat-tree');
+    // Auf dem Handy Kategorien zuklappen, damit die Artikel gleich sichtbar sind
+    var catBox = $('#cat-box');
+    var narrow = window.matchMedia('(max-width: 900px)');
+    if (catBox && narrow.matches) catBox.open = false;
+    // Am Computer bleibt die Liste immer offen
+    if (catBox) catBox.querySelector('summary').addEventListener('click', function (e) { if (!narrow.matches) e.preventDefault(); });
     qInput.value = state.q; sortSel.value = state.sort;
     var cats = [], kids = {};
 
@@ -296,7 +302,8 @@
             link.appendChild(el('img', { src: p.img, alt: p.n, loading: 'lazy', width: '580', height: '280' }));
             card.appendChild(link);
             var body = el('div', { 'class': 'body' });
-            if (p.r) body.appendChild(el('span', { 'class': 'badge' }, TX.rest));
+            if (p.e) body.appendChild(el('span', { 'class': 'badge rec' }, TX.rec));
+            else if (p.r) body.appendChild(el('span', { 'class': 'badge' }, TX.rest));
             if (p.b) body.appendChild(el('span', { 'class': 'tag' }, p.b));
             var h = el('h3'); h.appendChild(el('a', { href: p.url }, p.n)); body.appendChild(h);
             if (p.a) body.appendChild(el('p', { 'class': 'art' }, TX.art + ' ' + p.a));
