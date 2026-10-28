@@ -134,7 +134,7 @@ app.get('/api/shop/info', shop.info);
 app.get('/api/shop/products', rateLimit(120, 60 * 1000), shop.products);
 // Suchbegriff zählen – der Browser meldet ihn erst, wenn der Kunde aufgehört hat zu tippen
 app.post('/api/shop/search-log', rateLimit(60, 60 * 1000), function (req, res) {
-  admin.trackSearch(req.body && req.body.q, 1);
+  if (!admin.isOwner(req)) admin.trackSearch(req.body && req.body.q, 1);
   res.status(204).end();
 });
 app.get('/admin', rateLimit(30, 5 * 60 * 1000), admin.auth, admin.page(stripe));
