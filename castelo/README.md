@@ -14,7 +14,7 @@ dieselben wie bei Webador (`/kontakt`, `/campingshop`, `/technik`, `/oeffnungsze
   Die HTML-Dateien in `public/` deshalb nicht von Hand bearbeiten.
 - `public/*.html`, `public/en/`, `public/pt/` – die erzeugten Seiten.
 - `data/catalog.json` – **der Shop-Katalog** (Artikel, Preise, Kategorien), erzeugt aus dem Camping-Profi-Sortiment, siehe unten.
-- `shop-config.js` – **Versand** (Abholung, Gewichtsstaffel Portugal), Lieferländer.
+- `shop-config.js` – **Versand** (Gewichtsstaffel Portugal, keine Abholung), Lieferländer.
 - `shop.js` – Shop-Logik: Suche/Filter-API, Artikelseiten, Bild-Proxy, Versandberechnung an der Kasse.
 - `templates/` – Vorlagen der Artikelseiten (von `build.py` erzeugt).
 - `public/assets/app.js` – Menü, Warenkorb, „Jetzt geöffnet“-Anzeige, Kontaktformular.
@@ -79,8 +79,8 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
 
 ## Vor dem Livegang prüfen
 1. **Versand** (in `shop-config.js`): Paketdienst nach Gesamtgewicht (13,95 € bis 46,95 €, über 31,5 kg je weiteres
-   Paket 46,95 €), Paketversand kostenfrei ab 120 €, Click & Collect kostenlos. Speditionsware: Versandkosten immer auf
-   Anfrage – die Kasse bietet dann nur Click & Collect an, der Warenkorb zeigt einen WhatsApp-/E-Mail-Knopf zur Anfrage,
+   Paket 46,95 €), Paketversand kostenfrei ab 120 €. Keine Abholung in der Werkstatt. Speditionsware: Versandkosten immer auf
+   Anfrage – solche Artikel sind online nicht bestellbar (Kasse gesperrt), der Warenkorb zeigt einen WhatsApp-/E-Mail-Knopf zur Anfrage,
    nur Portugal-Festland (Inseln auf Anfrage – Bestell-Mail wird bei PLZ 9xxx markiert). Als Spedition gilt ein Artikel,
    wenn Camping-Profi ihn mit „(S)“ markiert, er über 31,5 kg wiegt oder in einer Speditions-Kategorie liegt.
    Artikel ohne Gewichtsangabe zählen mit 1 kg. Texte dazu: Seite „Versand & Lieferung“ (`build.py` → `shipping`).

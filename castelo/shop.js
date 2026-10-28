@@ -24,18 +24,18 @@ const SITE = (process.env.SITE_URL || 'https://castelomotorhomesandcaravanrepair
 const TX = {
   de: { shop: 'Campingshop', art: 'Artikelnummer', brand: 'Marke', vat: 'inkl. 23 % MwSt., zzgl. Versand',
     add: 'In den Warenkorb', data: 'Produktdaten', back: 'Zurück zum Shop', notfound: 'Artikel nicht gefunden',
-    rest: 'Restposten', parcel: 'Versand per Paketdienst', freight: 'Versand per Spedition – Versandkosten auf Anfrage (online nur Click &amp; Collect)',
-    free: 'Paketversand kostenfrei ab 120 € innerhalb Portugals (Festland). Click & Collect: Abholung in der Werkstatt kostenlos.', shipInfo: 'Versand & Lieferung', shipUrl: '/versand',
+    rest: 'Restposten', parcel: 'Versand per Paketdienst', freight: 'Versand per Spedition – Versandkosten auf Anfrage, bitte bei uns anfragen',
+    free: 'Paketversand kostenfrei ab 120 € innerhalb Portugals (Festland).', shipInfo: 'Versand & Lieferung', shipUrl: '/versand',
     ask: 'Fragen zum Artikel?', askText: 'Schreiben Sie uns per WhatsApp oder rufen Sie an.' },
   en: { shop: 'Camping shop', art: 'Item number', brand: 'Brand', vat: 'incl. 23% VAT, plus delivery',
     add: 'Add to basket', data: 'Product data', back: 'Back to the shop', notfound: 'Item not found',
-    rest: 'Clearance', parcel: 'Shipped by parcel service', freight: 'Shipped by freight carrier – delivery cost on request (online: Click &amp; Collect only)',
-    free: 'Free parcel delivery from €120 within mainland Portugal. Click & Collect: collection at the workshop is free.', shipInfo: 'Shipping & delivery', shipUrl: '/en/shipping',
+    rest: 'Clearance', parcel: 'Shipped by parcel service', freight: 'Shipped by freight carrier – delivery cost on request, please ask us',
+    free: 'Free parcel delivery from €120 within mainland Portugal.', shipInfo: 'Shipping & delivery', shipUrl: '/en/shipping',
     ask: 'Questions about this item?', askText: 'Send us a WhatsApp message or give us a call.' },
   pt: { shop: 'Loja de campismo', art: 'Referência', brand: 'Marca', vat: 'IVA de 23 % incluído, portes à parte',
     add: 'Adicionar ao carrinho', data: 'Dados do produto', back: 'Voltar à loja', notfound: 'Artigo não encontrado',
-    rest: 'Fim de série', parcel: 'Envio por transportadora', freight: 'Envio por transitário – portes sob consulta (online: apenas Click &amp; Collect)',
-    free: 'Envio por transportadora grátis a partir de 120 € em Portugal continental. Click & Collect: levantamento gratuito na oficina.', shipInfo: 'Envio & entrega', shipUrl: '/pt/envio',
+    rest: 'Fim de série', parcel: 'Envio por transportadora', freight: 'Envio por transitário – portes sob consulta, peça-nos um orçamento',
+    free: 'Envio por transportadora grátis a partir de 120 € em Portugal continental.', shipInfo: 'Envio & entrega', shipUrl: '/pt/envio',
     ask: 'Dúvidas sobre este artigo?', askText: 'Envie-nos uma mensagem por WhatsApp ou ligue-nos.' }
 };
 
@@ -270,12 +270,11 @@ function checkoutData(items, lang) {
     return { shipping_rate_data: { type: 'fixed_amount', fixed_amount: { amount: amount, currency: CONFIG.currency }, display_name: label,
       delivery_estimate: { minimum: { unit: 'business_day', value: d.min }, maximum: { unit: 'business_day', value: d.max } } } };
   }
-  const options = [rate(CONFIG.pickup.label[lang], 0, CONFIG.pickup)];
-  // Speditionsware: Versandkosten immer auf Anfrage → online nur Click & Collect
-  if (!bulky) {
-    const free = CONFIG.freeShippingFrom > 0 && subtotal >= CONFIG.freeShippingFrom;
-    options.push(rate(CONFIG.parcelLabel[lang], free ? 0 : parcelCost(kg), CONFIG.parcelDays));
-  }
+  // Speditionsware: Versandkosten immer auf Anfrage → nicht online bestellbar (Warenkorb zeigt Anfrage-Knopf)
+  if (bulky) { const e = new Error('freight items need a quote'); e.code = 'freight'; throw e; }
+  // Keine Abholung: Versand wird immer berechnet (außer ab freeShippingFrom)
+  const free = CONFIG.freeShippingFrom > 0 && subtotal >= CONFIG.freeShippingFrom;
+  const options = [rate(CONFIG.parcelLabel[lang], free ? 0 : parcelCost(kg), CONFIG.parcelDays)];
   return { line_items: line_items, shipping_options: options, kg: kg, bulky: bulky };
 }
 

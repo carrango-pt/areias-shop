@@ -5,8 +5,7 @@ module.exports = {
   allowedCountries: ['PT'],           // Versand nur Portugal; Inseln (PLZ 9xxx) auf Anfrage
   islandPostcode: /^9\d{3}/,          // Madeira 9000–9399, Azoren 9500–9999
 
-  // Click & Collect – immer möglich, kostenlos
-  pickup: { min: 1, max: 3, label: { de: 'Click & Collect – Abholung in der Werkstatt (Pêra)', en: 'Click & Collect – collection at the workshop (Pêra)', pt: 'Click & Collect – levantamento na oficina (Pêra)' } },
+  // Keine Abholung in der Werkstatt – Versand wird immer berechnet
 
   // Paketdienst nach Gesamtgewicht: bis maxKg (einschließlich) → amount
   parcelTiers: [
@@ -26,7 +25,7 @@ module.exports = {
   parcelDays: { min: 2, max: 7 },
   parcelLabel: { de: 'Paketdienst Portugal (Festland)', en: 'Parcel service Portugal (mainland)', pt: 'Envio por transportadora – Portugal continental' },
 
-  // Spedition für sperrige/schwere Artikel: Kosten immer auf Anfrage – solche Bestellungen gehen online nur per Click & Collect
+  // Spedition für sperrige/schwere Artikel: Kosten immer auf Anfrage – solche Artikel sind nicht online bestellbar, nur per Anfrage
   // Wann gilt ein Artikel als sperrig?
   bulky: {
     maxKg: 31.5,                      // Einzelgewicht darüber

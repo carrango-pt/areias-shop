@@ -174,6 +174,7 @@ app.post('/api/checkout', rateLimit(40, 5 * 60 * 1000), async function (req, res
     });
     res.json({ url: session.url });
   } catch (e) {
+    if (e.code === 'freight') return res.status(409).json({ error: 'freight' });
     console.error('checkout error:', e.message);
     res.status(400).json({ error: 'checkout_failed' });
   }

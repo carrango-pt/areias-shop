@@ -17,7 +17,7 @@
       rest: 'Restposten', add: 'In den Warenkorb', added: '✓ Hinzugefügt', allCats: 'Alle Kategorien', allBrands: 'Alle Marken',
       count: '{n} Artikel', noResults: 'Keine Artikel gefunden. Fragen Sie uns gern – wir bestellen auch, was nicht im Shop steht.',
       prev: 'Zurück', next: 'Weiter', art: 'Art.-Nr.',
-      success: 'Vielen Dank für Ihre Bestellung! Sie erhalten eine Bestätigung per E-Mail. Bei Abholung melden wir uns, sobald alles bereitliegt.',
+      success: 'Vielen Dank für Ihre Bestellung! Sie erhalten eine Bestätigung per E-Mail. Wir melden uns, sobald die Ware versendet ist.',
       cancel: 'Die Bezahlung wurde abgebrochen – Ihr Warenkorb ist noch da.' },
     en: { open: 'Open now', closed: 'Currently closed', sending: 'Sending …',
       sent: 'Thank you! Your message has arrived – we will get back to you as soon as possible.',
@@ -31,7 +31,7 @@
       rest: 'Clearance', add: 'Add to basket', added: '✓ Added', allCats: 'All categories', allBrands: 'All brands',
       count: '{n} items', noResults: 'No items found. Just ask us – we can also order things that are not in the shop.',
       prev: 'Previous', next: 'Next', art: 'Item no.',
-      success: 'Thank you for your order! You will receive a confirmation by email. For collection, we will let you know as soon as everything is ready.',
+      success: 'Thank you for your order! You will receive a confirmation by email. We will let you know as soon as your order has been dispatched.',
       cancel: 'Payment was cancelled – your basket is still there.' },
     pt: { open: 'Aberto agora', closed: 'Fechado neste momento', sending: 'A enviar …',
       sent: 'Obrigado! A sua mensagem foi recebida – responderemos o mais rapidamente possível.',
@@ -45,7 +45,7 @@
       rest: 'Fim de série', add: 'Adicionar ao carrinho', added: '✓ Adicionado', allCats: 'Todas as categorias', allBrands: 'Todas as marcas',
       count: '{n} artigos', noResults: 'Nenhum artigo encontrado. Pergunte-nos – também encomendamos o que não está na loja.',
       prev: 'Anterior', next: 'Seguinte', art: 'Ref.',
-      success: 'Obrigado pela sua encomenda! Receberá uma confirmação por e-mail. Em caso de levantamento, avisamos quando estiver tudo pronto.',
+      success: 'Obrigado pela sua encomenda! Receberá uma confirmação por e-mail. Avisamos assim que a encomenda for expedida.',
       cancel: 'O pagamento foi cancelado – o seu carrinho continua guardado.' }
   }[LANG];
 
@@ -195,7 +195,7 @@
       fl.hidden = !ids.length || !FREE_FROM || bulky.length > 0;
       fl.textContent = total() >= FREE_FROM ? TX.freeOk : TX.freeLeft.replace('{x}', euro(FREE_FROM - total()));
     }
-    $('.checkout', drawer).disabled = !ids.length;
+    $('.checkout', drawer).disabled = !ids.length || bulky.length > 0;   // Speditionsware nur per Anfrage
   }
 
   if (drawer) $('.checkout', drawer).addEventListener('click', function () {

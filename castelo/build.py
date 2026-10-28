@@ -51,9 +51,9 @@ T = {
     hours_short=['Mo – Do: 10:00 – 17:00', 'Fr: 10:00 – 13:00', 'Sa, So: geschlossen'],
     days=['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'], closed='geschlossen',
     wa_label='Per WhatsApp schreiben', close='Schließen', sum='Summe',
-    cart_note='inkl. 23 % MwSt., zzgl. Versand – Paketversand kostenfrei ab 120 € (Festland). Click & Collect kostenlos.',
+    cart_note='inkl. 23 % MwSt., zzgl. Versand – Paketversand kostenfrei ab 120 € (Festland).',
     checkout='Zur Kasse', continue_shop='Weiter einkaufen',
-    fr_note='Ihr Warenkorb enthält Speditionsware. Die Versandkosten nennen wir Ihnen auf Anfrage – online ist nur Click &amp; Collect (Abholung) möglich.', fr_btn='Spedition anfragen (WhatsApp)', fr_mail='per E-Mail anfragen', fr_msg='Hallo, bitte um ein Angebot für die Lieferung per Spedition:',
+    fr_note='Ihr Warenkorb enthält Speditionsware. Die Versandkosten nennen wir Ihnen auf Anfrage – bitte fragen Sie diese Artikel bei uns an.', fr_btn='Spedition anfragen (WhatsApp)', fr_mail='per E-Mail anfragen', fr_msg='Hallo, bitte um ein Angebot für die Lieferung per Spedition:',
     btn_appt='Termin anfragen', btn_call='Anrufen:',
     cta_t='Ihr Fahrzeug braucht Hilfe?', cta_p='Rufen Sie uns an, schreiben Sie per WhatsApp oder nutzen Sie das Kontaktformular.',
     form=dict(h='Termin oder Frage', name='Name *', email='E-Mail *', phone='Telefon / WhatsApp', vehicle='Fahrzeug',
@@ -72,9 +72,9 @@ T = {
     hours_short=['Mon – Thu: 10:00 – 17:00', 'Fri: 10:00 – 13:00', 'Sat, Sun: closed'],
     days=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], closed='closed',
     wa_label='Message us on WhatsApp', close='Close', sum='Total',
-    cart_note='Incl. 23% VAT, plus delivery – free parcel delivery from €120 (mainland). Click & Collect is free.',
+    cart_note='Incl. 23% VAT, plus delivery – free parcel delivery from €120 (mainland).',
     checkout='Checkout', continue_shop='Continue shopping',
-    fr_note='Your basket contains freight items. We will quote the delivery cost on request – online, only Click &amp; Collect (collection) is available.', fr_btn='Request freight quote (WhatsApp)', fr_mail='ask by email', fr_msg='Hello, please send me a quote for freight delivery of:',
+    fr_note='Your basket contains freight items. We will quote the delivery cost on request – please ask us for these items.', fr_btn='Request freight quote (WhatsApp)', fr_mail='ask by email', fr_msg='Hello, please send me a quote for freight delivery of:',
     btn_appt='Request an appointment', btn_call='Call:',
     cta_t='Does your vehicle need help?', cta_p='Give us a call, send a WhatsApp message or use the contact form.',
     form=dict(h='Appointment or question', name='Name *', email='Email *', phone='Phone / WhatsApp', vehicle='Vehicle',
@@ -93,9 +93,9 @@ T = {
     hours_short=['Seg – Qui: 10:00 – 17:00', 'Sex: 10:00 – 13:00', 'Sáb, Dom: encerrado'],
     days=['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'], closed='encerrado',
     wa_label='Enviar mensagem por WhatsApp', close='Fechar', sum='Total',
-    cart_note='IVA de 23 % incluído, portes à parte – envio por transportadora grátis a partir de 120 € (continente). Click & Collect gratuito.',
+    cart_note='IVA de 23 % incluído, portes à parte – envio por transportadora grátis a partir de 120 € (continente).',
     checkout='Finalizar compra', continue_shop='Continuar a comprar',
-    fr_note='O seu carrinho contém artigos para transitário. Indicamos os portes sob consulta – online só é possível Click &amp; Collect (levantamento).', fr_btn='Pedir orçamento de transporte (WhatsApp)', fr_mail='pedir por e-mail', fr_msg='Olá, gostaria de um orçamento para entrega por transitário de:',
+    fr_note='O seu carrinho contém artigos para transitário. Indicamos os portes sob consulta – peça-nos estes artigos diretamente.', fr_btn='Pedir orçamento de transporte (WhatsApp)', fr_mail='pedir por e-mail', fr_msg='Olá, gostaria de um orçamento para entrega por transitário de:',
     btn_appt='Pedir marcação', btn_call='Ligar:',
     cta_t='O seu veículo precisa de ajuda?', cta_p='Ligue-nos, envie uma mensagem por WhatsApp ou use o formulário de contacto.',
     form=dict(h='Marcação ou pergunta', name='Nome *', email='E-mail *', phone='Telefone / WhatsApp', vehicle='Veículo',
@@ -313,7 +313,7 @@ def home(lang):
         faq=[('Welche Arbeiten übernehmen Sie?', 'Reparaturen an Elektrik, Gas, Wasser und Aufbau, Solaranlagen, Batterieeinbau (AGM und Lithium), Elektrik und individuelle Umbauten. Fragen Sie einfach – wir finden eine Lösung.'),
              ('Wie bekomme ich einen Termin?', f'Per Telefon, WhatsApp oder über unser <a href="{u("contact")}">Kontaktformular</a>. Für größere Reparaturen und Einbauten empfehlen wir einen Termin, damit keine Wartezeit entsteht.'),
              ('Helfen Sie auch Urlaubern mit einer Panne?', 'Ja. Melden Sie sich am besten per WhatsApp mit einer kurzen Beschreibung und einem Foto – wir sagen Ihnen schnell, wann wir helfen können.'),
-             ('Bekomme ich bei Ihnen auch Ersatzteile und Zubehör?', f'Ja, in unserem <a href="{u("shop")}">Onlineshop</a> mit über 13.000 Artikeln. Bestellen Sie online und holen Sie die Ware kostenlos in der Werkstatt ab – oder lassen Sie sie liefern.')],
+             ('Bekomme ich bei Ihnen auch Ersatzteile und Zubehör?', f'Ja, in unserem <a href="{u("shop")}">Onlineshop</a> mit über 13.000 Artikeln. Bestellen Sie online und lassen Sie sich die Ware per Paketdienst innerhalb Portugals liefern.')],
         h_eye='Öffnungszeiten', h_h='Wann wir für Sie da sind',
         h_note=f'Feiertage und Betriebsurlaub geben wir auf der Seite <a href="{u("hours")}">Öffnungszeiten</a> bekannt.'),
     'en': dict(
@@ -338,7 +338,7 @@ def home(lang):
         faq=[('What work do you do?', 'Repairs to electrics, gas, water and bodywork, solar systems, battery installation (AGM and lithium), electrics and custom conversions. Just ask – we will find a solution.'),
              ('How do I book an appointment?', f'By phone, WhatsApp or through our <a href="{u("contact")}">contact form</a>. For larger repairs and installations we recommend booking ahead so you do not have to wait.'),
              ('Do you also help holidaymakers who break down?', 'Yes. Ideally send us a WhatsApp message with a short description and a photo – we will quickly tell you when we can help.'),
-             ('Can I get spare parts and accessories from you?', f'Yes, in our <a href="{u("shop")}">online shop</a> with more than 13,000 items. Order online and collect free of charge at the workshop – or have it delivered.')],
+             ('Can I get spare parts and accessories from you?', f'Yes, in our <a href="{u("shop")}">online shop</a> with more than 13,000 items. Order online and have it delivered by parcel service within Portugal.')],
         h_eye='Opening hours', h_h='When we are here for you',
         h_note=f'Public holidays and closures are announced on our <a href="{u("hours")}">opening hours</a> page.'),
     'pt': dict(
@@ -363,7 +363,7 @@ def home(lang):
         faq=[('Que trabalhos fazem?', 'Reparações de eletricidade, gás, água e carroçaria, sistemas solares, instalação de baterias (AGM e lítio), eletricidade e transformações personalizadas. Pergunte – encontramos uma solução.'),
              ('Como faço uma marcação?', f'Por telefone, WhatsApp ou através do nosso <a href="{u("contact")}">formulário de contacto</a>. Para reparações e instalações maiores recomendamos marcação, para evitar esperas.'),
              ('Também ajudam turistas com uma avaria?', 'Sim. O ideal é enviar uma mensagem por WhatsApp com uma breve descrição e uma fotografia – dizemos-lhe rapidamente quando podemos ajudar.'),
-             ('Também vendem peças e acessórios?', f'Sim, na nossa <a href="{u("shop")}">loja online</a> com mais de 13 000 artigos. Encomende online e levante gratuitamente na oficina – ou receba em casa.')],
+             ('Também vendem peças e acessórios?', f'Sim, na nossa <a href="{u("shop")}">loja online</a> com mais de 13 000 artigos. Encomende online e receba por transportadora em Portugal.')],
         h_eye='Horário', h_h='Quando estamos disponíveis',
         h_note=f'Feriados e férias são anunciados na página <a href="{u("hours")}">Horário</a>.'),
     }[lang]
@@ -488,22 +488,22 @@ def tech(lang):
 
 def shop(lang):
     C = {
-    'de': dict(title='Campingshop', desc='Campingzubehör, Sanitärzusätze, Kühlschranklüfter, Gaswarner und Solarregler – online bestellen oder in der Werkstatt in Pêra abholen.',
-        eye='Campingshop', h1='Zubehör für Ihre nächste Tour', lead='Online bestellen und bequem bei uns in der Werkstatt abholen – oder per Post innerhalb Portugals liefern lassen.',
+    'de': dict(title='Campingshop', desc='Campingzubehör, Sanitärzusätze, Kühlschranklüfter, Gaswarner und Solarregler – online bestellen, Lieferung innerhalb Portugals.',
+        eye='Campingshop', h1='Zubehör für Ihre nächste Tour', lead='Online bestellen und bequem per Paketdienst innerhalb Portugals liefern lassen.',
         notice='Über 13.000 Artikel aus dem Sortiment – vom Sanitärzusatz bis zum Ersatzteil. <strong>Nicht gefunden, was Sie suchen?</strong> Rufen Sie an oder schreiben Sie per <a href="https://wa.me/{wa}">WhatsApp</a> – wir können fast alles bestellen.',
-        cats='Kategorien', fine='Alle Preise in Euro inkl. 23 % MwSt., zzgl. Versand. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Click &amp; Collect kostenlos; versandkostenfrei ab 120 € (Festland). <a href="{ship}">Versand &amp; Lieferung</a>',
+        cats='Kategorien', fine='Alle Preise in Euro inkl. 23 % MwSt., zzgl. Versand. Bezahlung sicher über Stripe (Karte, Multibanco, MB WAY u. a.). Versandkostenfrei ab 120 € (Festland). <a href="{ship}">Versand &amp; Lieferung</a>',
         q_ph='Suchen: Artikel, Marke oder Artikelnummer …', q_btn='Suchen', all_brands='Alle Marken',
         sort=['Relevanz', 'Preis aufsteigend', 'Preis absteigend', 'Name A–Z'],),
-    'en': dict(title='Camping shop', desc='Camping accessories, toilet additives, fridge fans, gas alarms and solar controllers – order online or collect at our workshop in Pêra.',
-        eye='Camping shop', h1='Accessories for your next trip', lead='Order online and collect at our workshop – or have it delivered by post within Portugal.',
+    'en': dict(title='Camping shop', desc='Camping accessories, toilet additives, fridge fans, gas alarms and solar controllers – order online, delivered within Portugal.',
+        eye='Camping shop', h1='Accessories for your next trip', lead='Order online and have it delivered by parcel service within Portugal.',
         notice='More than 13,000 items – from toilet additives to spare parts. <strong>Cannot find what you need?</strong> Call us or send a <a href="https://wa.me/{wa}">WhatsApp</a> message – we can order almost anything.',
-        cats='Categories', fine='All prices in euros incl. 23% VAT, plus delivery. Secure payment via Stripe (card, Multibanco, MB WAY and more). Click &amp; Collect is free; free delivery from €120 (mainland). <a href="{ship}">Shipping &amp; delivery</a>',
+        cats='Categories', fine='All prices in euros incl. 23% VAT, plus delivery. Secure payment via Stripe (card, Multibanco, MB WAY and more). Free delivery from €120 (mainland). <a href="{ship}">Shipping &amp; delivery</a>',
         q_ph='Search: item, brand or item number …', q_btn='Search', all_brands='All brands',
         sort=['Relevance', 'Price ascending', 'Price descending', 'Name A–Z'],),
-    'pt': dict(title='Loja de campismo', desc='Acessórios de campismo, aditivos sanitários, ventiladores para frigorífico, detetores de gás e reguladores solares – encomende online ou levante na oficina em Pêra.',
-        eye='Loja de campismo', h1='Acessórios para a sua próxima viagem', lead='Encomende online e levante na nossa oficina – ou receba por correio em Portugal.',
+    'pt': dict(title='Loja de campismo', desc='Acessórios de campismo, aditivos sanitários, ventiladores para frigorífico, detetores de gás e reguladores solares – encomende online, entrega em Portugal.',
+        eye='Loja de campismo', h1='Acessórios para a sua próxima viagem', lead='Encomende online e receba por transportadora em Portugal.',
         notice='Mais de 13 000 artigos – do aditivo sanitário à peça de substituição. <strong>Não encontra o que procura?</strong> Ligue-nos ou envie uma mensagem por <a href="https://wa.me/{wa}">WhatsApp</a> – conseguimos encomendar quase tudo.',
-        cats='Categorias', fine='Todos os preços em euros com IVA de 23 % incluído, portes à parte. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Click &amp; Collect gratuito; portes grátis a partir de 120 € (continente). <a href="{ship}">Envio &amp; entrega</a>',
+        cats='Categorias', fine='Todos os preços em euros com IVA de 23 % incluído, portes à parte. Pagamento seguro via Stripe (cartão, Multibanco, MB WAY, entre outros). Portes grátis a partir de 120 € (continente). <a href="{ship}">Envio &amp; entrega</a>',
         q_ph='Pesquisar: artigo, marca ou referência …', q_btn='Pesquisar', all_brands='Todas as marcas',
         sort=['Relevância', 'Preço crescente', 'Preço decrescente', 'Nome A–Z'],),
     }[lang]
@@ -665,33 +665,30 @@ TIERS = [('bis 1 kg', 'up to 1 kg', 'até 1 kg', '13,95'), ('ab 1 kg', 'from 1 k
 
 def shipping(lang):
     C = {
-    'de': dict(title='Versand &amp; Lieferung', desc='Versandkosten und Lieferung von Castelo Motorhomes: Paketdienst und Spedition innerhalb Portugals, versandkostenfrei ab 120 €, Click &amp; Collect.',
-        eye='Versand &amp; Lieferung', h1='So kommt Ihre Bestellung zu Ihnen', lead='Versand innerhalb Portugals (Festland) per Paketdienst oder Spedition – oder kostenlos abholen per Click &amp; Collect.',
+    'de': dict(title='Versand &amp; Lieferung', desc='Versandkosten und Lieferung von Castelo Motorhomes: Paketdienst und Spedition innerhalb Portugals, versandkostenfrei ab 120 €.',
+        eye='Versand &amp; Lieferung', h1='So kommt Ihre Bestellung zu Ihnen', lead='Versand innerhalb Portugals (Festland) per Paketdienst oder Spedition.',
         free_h='Versandkostenfrei ab 120 €', free_p='Ab einem Bestellwert von 120 € erfolgt die Lieferung per Paketdienst innerhalb Portugals (außer Inseln) versandkostenfrei.',
         area_h='Liefergebiet', area_p='Wir versenden nur innerhalb Portugals. Lieferungen auf die Inseln (Madeira, Azoren) bitte vorher <a href="{contact}">erfragen</a>.',
         costs_h='Versandkosten', col=('Versandart', 'Gewicht', 'Preis'), parcel='Paketdienst', freight='Spedition', freight_w='nach Volumengewicht', on_req='auf Anfrage',
         costs_note='Alle Preise inkl. MwSt. Maßgeblich ist das Gesamtgewicht der Bestellung. Die passende Versandart wird an der Kasse automatisch berechnet.',
         small_h='Lieferung von Kleinteilen', small_p='Kleinteile wie zum Beispiel Geschirr, Sanitärmittel, Ladegeräte etc. werden von uns schnell und zuverlässig per Paketdienst versendet.',
-        big_h='Lieferung von Großteilen', big_p='Sperrige oder schwere Produkte wie zum Beispiel Markisen, Lastenträger, große Batterien etc. versenden wir per Spedition. Sobald die Ware versendet wurde, wird sich die ausliefernde Spedition innerhalb von 3 Werktagen telefonisch mit Ihnen in Verbindung setzen, um einen Liefertermin zu vereinbaren. Die Lieferung erfolgt bis Bordsteinkante. <strong>Die Speditionskosten nennen wir Ihnen auf Anfrage</strong> – im Onlineshop können Sie Speditionsware mit Click &amp; Collect bestellen oder uns für ein Lieferangebot kontaktieren.',
-        cc_h='Click &amp; Collect', cc_p='Bestellungen können bei uns abgeholt werden. Lagernde Artikel sind in der Regel innerhalb von 30–60 Minuten abholbereit. Das spart Zeit und Geld! Wählen Sie dazu an der Kasse „Click &amp; Collect“. Unsere <a href="{hours}">Öffnungszeiten</a>.'),
-    'en': dict(title='Shipping &amp; delivery', desc='Shipping costs and delivery at Castelo Motorhomes: parcel service and freight within Portugal, free delivery from €120, Click &amp; Collect.',
-        eye='Shipping &amp; delivery', h1='How your order gets to you', lead='Delivery within mainland Portugal by parcel service or freight carrier – or collect free of charge with Click &amp; Collect.',
+        big_h='Lieferung von Großteilen', big_p='Sperrige oder schwere Produkte wie zum Beispiel Markisen, Lastenträger, große Batterien etc. versenden wir per Spedition. Sobald die Ware versendet wurde, wird sich die ausliefernde Spedition innerhalb von 3 Werktagen telefonisch mit Ihnen in Verbindung setzen, um einen Liefertermin zu vereinbaren. Die Lieferung erfolgt bis Bordsteinkante. <strong>Die Speditionskosten nennen wir Ihnen auf Anfrage</strong> – Speditionsware bitte per WhatsApp, Telefon oder E-Mail bei uns anfragen, Sie erhalten ein Lieferangebot.'),
+    'en': dict(title='Shipping &amp; delivery', desc='Shipping costs and delivery at Castelo Motorhomes: parcel service and freight within Portugal, free delivery from €120.',
+        eye='Shipping &amp; delivery', h1='How your order gets to you', lead='Delivery within mainland Portugal by parcel service or freight carrier.',
         free_h='Free delivery from €120', free_p='From an order value of €120, parcel delivery within Portugal (excluding the islands) is free of charge.',
         area_h='Delivery area', area_p='We only ship within Portugal. For deliveries to the islands (Madeira, Azores) please <a href="{contact}">ask us first</a>.',
         costs_h='Shipping costs', col=('Method', 'Weight', 'Price'), parcel='Parcel service', freight='Freight carrier', freight_w='by volumetric weight', on_req='on request',
         costs_note='All prices incl. VAT. The total weight of the order applies. The right shipping method is calculated automatically at checkout.',
         small_h='Delivery of small items', small_p='Small items such as tableware, toilet chemicals, chargers etc. are shipped quickly and reliably by parcel service.',
-        big_h='Delivery of large items', big_p='Bulky or heavy products such as awnings, load carriers, large batteries etc. are shipped by freight carrier. Once the goods have been dispatched, the carrier will phone you within 3 working days to arrange a delivery date. Delivery is to the kerb. <strong>Freight costs are quoted on request</strong> – in the online shop you can order freight items with Click &amp; Collect or contact us for a delivery quote.',
-        cc_h='Click &amp; Collect', cc_p='Orders can be collected from us. Items in stock are usually ready for collection within 30–60 minutes. That saves time and money! Simply choose “Click &amp; Collect” at checkout. Our <a href="{hours}">opening hours</a>.'),
-    'pt': dict(title='Envio &amp; entrega', desc='Portes e entrega na Castelo Motorhomes: transportadora e transitário em Portugal, portes grátis a partir de 120 €, Click &amp; Collect.',
-        eye='Envio &amp; entrega', h1='Como a sua encomenda chega até si', lead='Envio para Portugal continental por transportadora ou transitário – ou levantamento gratuito com Click &amp; Collect.',
+        big_h='Delivery of large items', big_p='Bulky or heavy products such as awnings, load carriers, large batteries etc. are shipped by freight carrier. Once the goods have been dispatched, the carrier will phone you within 3 working days to arrange a delivery date. Delivery is to the kerb. <strong>Freight costs are quoted on request</strong> – please ask us for freight items by WhatsApp, phone or email and we will send you a delivery quote.'),
+    'pt': dict(title='Envio &amp; entrega', desc='Portes e entrega na Castelo Motorhomes: transportadora e transitário em Portugal, portes grátis a partir de 120 €.',
+        eye='Envio &amp; entrega', h1='Como a sua encomenda chega até si', lead='Envio para Portugal continental por transportadora ou transitário.',
         free_h='Portes grátis a partir de 120 €', free_p='A partir de um valor de encomenda de 120 €, o envio por transportadora em Portugal (exceto ilhas) é gratuito.',
         area_h='Área de entrega', area_p='Enviamos apenas para Portugal. Para entregas nas ilhas (Madeira, Açores), <a href="{contact}">contacte-nos primeiro</a>.',
         costs_h='Portes de envio', col=('Modo de envio', 'Peso', 'Preço'), parcel='Transportadora', freight='Transitário', freight_w='conforme o peso volumétrico', on_req='sob consulta',
         costs_note='Todos os preços com IVA incluído. Conta o peso total da encomenda. O modo de envio adequado é calculado automaticamente no pagamento.',
         small_h='Entrega de artigos pequenos', small_p='Artigos pequenos como loiça, produtos sanitários, carregadores, etc. são enviados de forma rápida e fiável por transportadora.',
-        big_h='Entrega de artigos grandes', big_p='Produtos volumosos ou pesados como toldos, porta-cargas, baterias grandes, etc. são enviados por transitário. Após a expedição, o transitário contacta-o por telefone no prazo de 3 dias úteis para combinar a data de entrega. A entrega é feita até ao passeio. <strong>Os portes por transitário são indicados sob consulta</strong> – na loja online pode encomendar estes artigos com Click &amp; Collect ou contactar-nos para um orçamento de entrega.',
-        cc_h='Click &amp; Collect', cc_p='As encomendas podem ser levantadas na nossa oficina. Os artigos em stock ficam normalmente prontos para levantamento em 30–60 minutos. Poupa tempo e dinheiro! Basta escolher “Click &amp; Collect” no pagamento. O nosso <a href="{hours}">horário</a>.'),
+        big_h='Entrega de artigos grandes', big_p='Produtos volumosos ou pesados como toldos, porta-cargas, baterias grandes, etc. são enviados por transitário. Após a expedição, o transitário contacta-o por telefone no prazo de 3 dias úteis para combinar a data de entrega. A entrega é feita até ao passeio. <strong>Os portes por transitário são indicados sob consulta</strong> – peça-nos estes artigos por WhatsApp, telefone ou e-mail e enviamos um orçamento de entrega.'),
     }[lang]
     li = {'de': 0, 'en': 1, 'pt': 2}[lang]
     rows = ''.join(f'<tr><td>{C["parcel"]}</td><td>{t[li]}</td><td>{t[3].replace(",", ".") if lang == "en" else t[3]} €</td></tr>' for t in TIERS)
@@ -708,7 +705,6 @@ def shipping(lang):
     <h2>{C['area_h']}</h2><p>{C['area_p'].format(contact=url('contact', lang))}</p>
     <h3>{C['small_h']}</h3><p>{C['small_p']}</p>
     <h3>{C['big_h']}</h3><p>{C['big_p']}</p>
-    <h3>{C['cc_h']}</h3><p>{C['cc_p'].format(hours=url('hours', lang))}</p>
     <p><a class="btn" href="{url('shop', lang)}">{T[lang]['nav'][3]}</a></p>
   </div>
 </div></section>
