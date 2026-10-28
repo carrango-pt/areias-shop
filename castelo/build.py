@@ -123,7 +123,7 @@ def business_jsonld(lang):
     data = {
         '@context': 'https://schema.org', '@type': 'AutoRepair',
         '@id': DOMAIN + '/#business', 'name': NAME, 'url': DOMAIN + url('home', lang),
-        'image': DOMAIN + '/img/hero-wohnmobil.jpg', 'logo': DOMAIN + '/img/apple-touch-icon.png',
+        'image': DOMAIN + '/img/hero-wohnmobil.jpg', 'logo': DOMAIN + '/img/logo-full.png',
         'telephone': TEL_M, 'email': MAIL, 'vatID': NIF, 'priceRange': '€€',
         'address': {'@type': 'PostalAddress', 'streetAddress': 'Areias de Pera 700A', 'postalCode': '8365-201',
                     'addressLocality': 'Pêra', 'addressRegion': 'Faro', 'addressCountry': 'PT'},
@@ -397,6 +397,7 @@ def home(lang):
   <div class="facts">{facts}</div>
 </div></section>
 ''' + split('bulli.jpg', C['a_alt'], 1000, 665,
+            f'<img class="about-logo" src="/img/logo-full.png" alt="Castelo Motorhome and Caravan Repairs – The workshop with a heart" width="320" height="152" loading="lazy">' +
             f'<span class="eyebrow">{C["a_eye"]}</span><h2>{C["a_h"]}</h2><p>{C["a_p"]}</p>{checks(C["a_checks"])}<a class="btn dark" href="{u("services")}">{C["a_btn"]}</a>',
             cls='block') + f'''
 <section class="block white"><div class="wrap grid c2">

@@ -39,6 +39,7 @@ header.site { background: var(--white); border-bottom: 1px solid var(--line); po
 header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--navy); }
 .brand .logo { width: 28px; height: 56px; flex: none; }
+.about-logo { display: block; width: 100%; max-width: 320px; height: auto; margin: 0 0 18px; }
 .brand b { display: block; font-size: 1.15rem; letter-spacing: .02em; }
 .brand small { display: block; font-size: .78rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
 nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; align-items: center; }
