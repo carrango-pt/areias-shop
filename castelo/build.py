@@ -175,7 +175,10 @@ def page(key, lang, title, desc, body):
 </div></div>
 <header class="site"><div class="wrap">
   <a class="brand" href="{url('home', lang)}">{LOGO}<span><b>Castelo Motorhomes</b><small>{L['tagline']}</small></span></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">{L['menu']}</button>
+  <div class="head-actions">
+    <a class="cart-btn cart-mobile" href="{url('shop', lang)}" data-open-cart aria-label="{L['cart']}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM5.2 4l.4 2H20a1 1 0 0 1 1 1.2l-1.5 7A1 1 0 0 1 18.5 15H8a1 1 0 0 1-1-.8L4.4 3.8 2 3V1l3 .8A1 1 0 0 1 5.2 4z"/></svg><span class="cart-count">0</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">{L['menu']}</button>
+  </div>
   <nav class="main" id="menu" aria-label="{L['mainmenu']}"><ul>{nav}<li><a class="cart-btn" href="{url('shop', lang)}" data-open-cart>{L['cart']} <span class="cart-count">0</span></a></li></ul></nav>
 </div></header>
 <main id="main">
