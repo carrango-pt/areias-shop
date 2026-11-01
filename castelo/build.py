@@ -10,8 +10,8 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 DOMAIN = 'https://castelomotorhomesandcaravanrepairs.com'
 
 NAME = 'Castelo Motorhomes and Caravan Repairs'
-TEL_M, TEL_M_H = '+351933917633', '+351 933 917 633'
-WA, WA_H = '351933917633', '+351 933 917 633'
+TEL_M, TEL_M_H = '+351920323532', '+351 920 323 532'
+WA, WA_H = '351920323532', '+351 920 323 532'
 MAIL = 'caravantechnologypera@hotmail.com'
 NIF = 'PT297662414'
 MAPS = 'https://www.google.com/maps/search/?api=1&query=Areias+de+Pera+700A%2C+8365-201+P%C3%AAra%2C+Portugal'

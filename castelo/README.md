@@ -86,6 +86,6 @@ Ohne Schlüssel läuft alles, nur „Zur Kasse“ und das Formular melden „noc
    Artikel ohne Gewichtsangabe zählen mit 1 kg. Texte dazu: Seite „Versand & Lieferung“ (`build.py` → `shipping`).
 2. **Preise** stichprobenartig prüfen (Preisregel oben).
 3. **Adresse:** Areias de Pera 700A, 8365-201 Pêra (`build.py` → `place`, `MAPS`, `business_jsonld`).
-4. **Telefonnummern:** Telefon + WhatsApp +351 933 917 633 (einzige Nummer) (`build.py` oben).
+4. **Telefonnummern:** Telefon + WhatsApp +351 920 323 532 (einzige Nummer) (`build.py` oben).
 5. **Öffnungszeiten:** Mo–Do 10–17, Fr 10–13 (in `build.py` und in `app.js` → `HOURS`).
 6. **Rechtstexte** im Impressum (Datenschutz, Widerruf) sind eine solide Vorlage, aber keine Rechtsberatung.
