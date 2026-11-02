@@ -95,7 +95,7 @@
   }
 
   /* ---------- Kontaktformular ---------- */
-  $$('form.contact').forEach(function (form) {
+  $$('form.contact:not(.booking)').forEach(function (form) {
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var msg = $('.form-msg', form), btn = $('button[type=submit]', form);
@@ -114,6 +114,57 @@
           msg.textContent = status === 400
             ? TX.invalid
             : TX.failed;
+        })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+
+  /* ---------- Terminbuchung: freie Tage/Zeiten vom Server, Anfrage absenden ---------- */
+  $$('form.booking').forEach(function (form) {
+    var daySel = $('#b-day', form), timeSel = $('#b-time', form), msg = $('.form-msg', form), btn = $('button[type=submit]', form);
+    var M = function (k) { return form.getAttribute('data-' + k); };
+    var days = [];
+    var loc = { de: 'de-DE', en: 'en-GB', pt: 'pt-PT' }[LANG];
+    function label(d) {
+      return new Date(d + 'T12:00:00Z').toLocaleDateString(loc, { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' });
+    }
+    function opt(sel, v, t) { var o = el('option', { value: v }, t); sel.appendChild(o); }
+    function fillTimes() {
+      timeSel.textContent = '';
+      var day = days.filter(function (x) { return x.d === daySel.value; })[0];
+      if (!day) { opt(timeSel, '', M('pick')); timeSel.disabled = true; return; }
+      day.slots.forEach(function (t) { opt(timeSel, t, t + (LANG === 'de' ? ' Uhr' : '')); });
+      timeSel.disabled = false;
+    }
+    function load() {
+      return fetch('/api/termine/slots').then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); }).then(function (j) {
+        days = j.days || [];
+        var keep = daySel.value;
+        daySel.textContent = '';
+        if (!days.length) { opt(daySel, '', M('none')); daySel.disabled = true; fillTimes(); return; }
+        days.forEach(function (x) { opt(daySel, x.d, label(x.d)); });
+        if (keep && days.some(function (x) { return x.d === keep; })) daySel.value = keep;
+        daySel.disabled = false;
+        fillTimes();
+      }).catch(function () { daySel.textContent = ''; opt(daySel, '', M('failed')); });
+    }
+    daySel.addEventListener('change', fillTimes);
+    load();
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var data = { lang: LANG };
+      $$('input, textarea, select', form).forEach(function (f) { if (f.name) data[f.name] = f.value; });
+      if (!data.name || !data.email || !data.date || !data.time) { msg.className = 'form-msg err'; msg.textContent = M('invalid'); return; }
+      btn.disabled = true; msg.className = 'form-msg'; msg.textContent = TX.sending;
+      fetch('/api/termine', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function () {
+          form.reset(); msg.className = 'form-msg ok'; msg.textContent = M('ok'); load();
+        })
+        .catch(function (status) {
+          msg.className = 'form-msg err';
+          msg.textContent = status === 409 ? M('taken') : status === 400 ? M('invalid') : M('failed');
+          if (status === 409) load();
         })
         .then(function () { btn.disabled = false; });
     });

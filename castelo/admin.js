@@ -177,7 +177,7 @@ function table(rows, empty) {
   return rows.length ? '<table>' + rows.map((r) => '<tr><td>' + esc(r[0]) + '</td><td class="n">' + r[1] + '</td></tr>').join('') + '</table>' : '<p class="muted">' + empty + '</p>';
 }
 
-function render(v, o) {
+function render(v, o, pb) {
   const sum = (a, k) => a.reduce((x, y) => x + y[k], 0);
   const today = v.days[v.days.length - 1], last7 = v.days.slice(-7);
   const now = Date.now(), within = (ms, d) => now - ms < d * 86400000;
@@ -200,10 +200,11 @@ function render(v, o) {
     '.box{background:#fff;border:1px solid #e3dccf;border-radius:12px;padding:14px;overflow-x:auto}.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}' +
     'table{width:100%;border-collapse:collapse}td,th{padding:8px 10px;border-bottom:1px solid #eee6d8;vertical-align:top;text-align:left;font-size:14px}' +
     'th{font-size:12px;text-transform:uppercase;color:#5b6b78}.n{text-align:right;white-space:nowrap}.warn{color:#9b2c2c;font-weight:600}.err{color:#9b2c2c}' +
-    'a{color:#1d4a6b}.legend span{display:inline-block;width:10px;height:10px;margin:0 4px 0 12px;vertical-align:middle}</style></head><body><div class="wrap">' +
+    '.termine{margin:14px 0 0;font-size:17px}.termine a{font-weight:700}a{color:#1d4a6b}.legend span{display:inline-block;width:10px;height:10px;margin:0 4px 0 12px;vertical-align:middle}</style></head><body><div class="wrap">' +
     '<h1>Castelo Motorhomes · Admin</h1><p class="muted">Stand ' + dt(Date.now()) + ' · Besucherzähler ' +
     (v.persistent ? 'dauerhaft gespeichert' : '<span class="warn">nur seit dem letzten Neustart</span> (Upstash nicht eingerichtet)') + '</p>' +
     (v.error ? '<p class="err">' + esc(v.error) + '</p>' : '') + (o.error ? '<p class="err">' + esc(o.error) + '</p>' : '') +
+    '<p class="termine"><a href="/admin/termine">📅 Termine verwalten</a>' + (pb ? ' <span class="warn">' + pb + ' neue Anfrage' + (pb > 1 ? 'n' : '') + ' – bitte bestätigen</span>' : '') + '</p>' +
     '<div class="cards">' +
     card('Besucher heute', today.uv, today.pv + ' Seitenaufrufe') +
     card('Besucher 7 Tage', sum(last7, 'uv'), sum(last7, 'pv') + ' Seitenaufrufe') +
@@ -223,16 +224,16 @@ function render(v, o) {
     'Am 24.10. (Einrichtungstag) sind noch Testaufrufe, Crawler und Scanner enthalten – ab dem 25.10. sind die Zahlen bereinigt.</p></div></body></html>';
 }
 
-function page(stripe) {
+function page(stripe, pendingBookings) {
   return async function (req, res) {
     try {
-      const [v, o] = await Promise.all([visitors(30), orders(stripe)]);
+      const [v, o, pb] = await Promise.all([visitors(30), orders(stripe), pendingBookings ? pendingBookings() : 0]);
       // Betreiber-Geräte merken (1 Jahr), damit eigene Aufrufe der Website nicht in der Statistik landen
       res.append('Set-Cookie', OWNER_COOKIE + '=1; Max-Age=31536000; Path=/; HttpOnly; Secure; SameSite=Lax');
       res.set({ 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow',
         // eigene, engere CSP: nur die eingebetteten Styles dieser Seite erlauben, kein JavaScript
         'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; form-action 'none'; frame-ancestors 'none'; base-uri 'none'" });
-      res.type('html').send(render(v, o));
+      res.type('html').send(render(v, o, pb));
     } catch (e) {
       console.error('admin error:', e.message);
       res.status(500).send('Fehler beim Laden der Admin-Daten.');

@@ -30,6 +30,7 @@ SLUGS = {
     'contact':  {'de': '/kontakt', 'en': '/en/contact', 'pt': '/pt/contacto'},
     'legal':    {'de': '/impressum', 'en': '/en/legal', 'pt': '/pt/informacao-legal'},
     'shipping': {'de': '/versand', 'en': '/en/shipping', 'pt': '/pt/envio'},
+    'booking':  {'de': '/termin', 'en': '/en/appointment', 'pt': '/pt/marcacao'},
     # Vorlage für Artikelseiten – der Server setzt {{ID}}, {{TITLE}}, {{DESC}}, {{BODY}} ein
     'item':     {'de': '/campingshop/artikel/{{ID}}', 'en': '/en/shop/item/{{ID}}', 'pt': '/pt/loja/artigo/{{ID}}'},
 }
@@ -222,7 +223,7 @@ def page(key, lang, title, desc, body):
 
 def hero(lang, cls, eyebrow, h1, lead, actions=True, small=True):
     L = T[lang]
-    a = (f'<div class="actions"><a class="btn" href="{url("contact", lang)}">{L["btn_appt"]}</a>'
+    a = (f'<div class="actions"><a class="btn" href="{url("booking", lang)}">{L["btn_appt"]}</a>'
          f'<a class="btn ghost" href="tel:{TEL_M}">{L["btn_call"]} {TEL_M_H}</a></div>') if actions else ''
     return f'''<section class="hero {cls}{' small' if small else ''}"><div class="wrap">
   <span class="eyebrow">{eyebrow}</span>
@@ -236,7 +237,7 @@ def cta(lang, title=None, text=None):
     L = T[lang]
     return f'''<section class="block"><div class="wrap"><div class="cta">
   <div><h2>{title or L['cta_t']}</h2><p>{text or L['cta_p']}</p></div>
-  <div class="actions"><a class="btn" href="{url('contact', lang)}">{L['btn_appt']}</a><a class="btn wa" href="https://wa.me/{WA}">WhatsApp</a></div>
+  <div class="actions"><a class="btn" href="{url('booking', lang)}">{L['btn_appt']}</a><a class="btn wa" href="https://wa.me/{WA}">WhatsApp</a></div>
 </div></div></section>'''
 
 
@@ -559,17 +560,17 @@ def hours(lang):
     'de': dict(title='Öffnungszeiten', desc='Öffnungszeiten der Werkstatt Castelo Motorhomes in Pêra, Algarve: Montag bis Donnerstag 10–17 Uhr, Freitag 10–13 Uhr.',
         eye='Öffnungszeiten', h1='Wann wir für Sie da sind', lead='Kommen Sie während der Öffnungszeiten vorbei – für größere Reparaturen und Einbauten vereinbaren Sie am besten einen Termin.',
         tz='Zeiten in portugiesischer Ortszeit.', a_h='Terminvereinbarung',
-        a_p='Für größere Reparaturen und Einbauten empfehlen wir einen Termin, damit Sie nicht warten müssen. Rufen Sie uns an, schreiben Sie eine E-Mail oder nutzen Sie WhatsApp.',
+        a_p='Für größere Reparaturen und Einbauten empfehlen wir einen Termin, damit Sie nicht warten müssen. Buchen Sie ihn bequem online – wir bestätigen ihn per E-Mail. Oder rufen Sie an bzw. schreiben Sie per WhatsApp.',
         f_h='Feiertage &amp; Betriebsurlaub', f_p='An portugiesischen Feiertagen und über Weihnachten/Neujahr ist die Werkstatt geschlossen. Die genauen Tage stehen rechtzeitig hier.'),
     'en': dict(title='Opening hours', desc='Opening hours of the Castelo Motorhomes workshop in Pêra, Algarve: Monday to Thursday 10:00–17:00, Friday 10:00–13:00.',
         eye='Opening hours', h1='When we are here for you', lead='Drop in during our opening hours – for larger repairs and installations it is best to book an appointment.',
         tz='Times are Portuguese local time.', a_h='Appointments',
-        a_p='For larger repairs and installations we recommend booking an appointment so you do not have to wait. Call us, send an email or use WhatsApp.',
+        a_p='For larger repairs and installations we recommend booking an appointment so you do not have to wait. Book it online – we confirm by email. Or call us or send a WhatsApp message.',
         f_h='Public holidays &amp; closures', f_p='The workshop is closed on Portuguese public holidays and over Christmas/New Year. The exact dates will be posted here in good time.'),
     'pt': dict(title='Horário', desc='Horário da oficina Castelo Motorhomes em Pêra, Algarve: segunda a quinta das 10h às 17h, sexta das 10h às 13h.',
         eye='Horário', h1='Quando estamos disponíveis', lead='Visite-nos dentro do horário – para reparações e instalações maiores, o melhor é fazer marcação.',
         tz='Horário de Portugal continental.', a_h='Marcações',
-        a_p='Para reparações e instalações maiores recomendamos marcação, para não ter de esperar. Ligue-nos, envie um e-mail ou use o WhatsApp.',
+        a_p='Para reparações e instalações maiores recomendamos marcação, para não ter de esperar. Marque online – confirmamos por e-mail. Ou ligue-nos ou envie uma mensagem por WhatsApp.',
         f_h='Feriados &amp; férias', f_p='A oficina está encerrada nos feriados nacionais e no Natal/Ano Novo. As datas exatas serão publicadas aqui com antecedência.'),
     }[lang]
     body = hero(lang, 'hero-zeiten', C['eye'], C['h1'], C['lead']) + f'''
@@ -581,7 +582,7 @@ def hours(lang):
   <p>{C['a_p']}</p>
   <h3>{C['f_h']}</h3>
   <p>{C['f_p']}</p>
-  <p><a class="btn" href="{url('contact', lang)}">{T[lang]['btn_appt']}</a></p></div>
+  <p><a class="btn" href="{url('booking', lang)}">{T[lang]['btn_appt']}</a></p></div>
 </div></section>
 '''
     return page('hours', lang, C['title'], C['desc'], body)
@@ -615,6 +616,79 @@ def contact(lang):
 </div></section>
 '''
     return page('contact', lang, C['title'], C['desc'], body)
+
+
+def booking(lang):
+    L = T[lang]
+    C = {
+    'de': dict(title='Termin buchen', desc='Werkstatt-Termin bei Castelo Motorhomes in Pêra, Algarve online anfragen: Elektrik, Gas, Wasser, Aufbau, Solar und Einbauten.',
+        eye='Termin', h1='Werkstatt-Termin anfragen', lead='Wählen Sie Leistung, Tag und Uhrzeit. Wir bestätigen den Termin per E-Mail – oder schlagen Ihnen einen anderen vor.',
+        h='Ihr Wunschtermin', service='Was sollen wir uns ansehen?', services=['Elektrik 12 V / 230 V', 'Gasanlage', 'Wasser / Sanitär', 'Aufbau / Undichtigkeit', 'Solar / Batterie', 'Einbau Zubehör', 'Sonstiges'],
+        day='Tag', time='Uhrzeit', loading='Freie Termine werden geladen …', none='Zurzeit sind online keine Termine frei. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.',
+        pick='Bitte zuerst einen Tag wählen', msg='Beschreibung (optional)', msg_ph='Was ist das Problem? Gern auch Marke/Modell und Baujahr.',
+        send='Termin anfragen', ok='Danke! Ihre Anfrage ist da. Sie erhalten gleich eine E-Mail – sobald wir den Termin bestätigt haben, noch eine.',
+        taken='Diese Zeit wurde gerade vergeben – bitte eine andere wählen.', invalid='Bitte Name, gültige E-Mail, Tag und Uhrzeit angeben.',
+        failed='Das hat leider nicht geklappt. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.',
+        info_h='So läuft es ab', info=['Sie wählen einen freien Termin und senden die Anfrage.', 'Wir prüfen und bestätigen per E-Mail – meist am selben Werktag.', 'Passt es nicht, schlagen wir einen anderen Termin vor; Sie nehmen ihn mit einem Klick an.'],
+        noscript='Für die Terminauswahl wird JavaScript benötigt. Alternativ rufen Sie uns an.'),
+    'en': dict(title='Book an appointment', desc='Request a workshop appointment at Castelo Motorhomes in Pêra, Algarve online: electrics, gas, water, bodywork, solar and installations.',
+        eye='Appointment', h1='Request a workshop appointment', lead='Choose the service, day and time. We confirm the appointment by email – or suggest another one.',
+        h='Your preferred appointment', service='What should we look at?', services=['Electrics 12 V / 230 V', 'Gas system', 'Water / plumbing', 'Bodywork / leaks', 'Solar / battery', 'Fitting accessories', 'Other'],
+        day='Day', time='Time', loading='Loading free appointments …', none='There are currently no appointments available online. Please call us or send a WhatsApp message.',
+        pick='Please choose a day first', msg='Description (optional)', msg_ph='What is the problem? Make/model and year are helpful too.',
+        send='Request appointment', ok='Thank you! Your request has arrived. You will receive an email shortly – and another one as soon as we have confirmed the appointment.',
+        taken='This time has just been taken – please choose another one.', invalid='Please enter your name, a valid email, day and time.',
+        failed='Sorry, that did not work. Please call us or send a WhatsApp message.',
+        info_h='How it works', info=['Choose a free time and send your request.', 'We check it and confirm by email – usually on the same working day.', 'If it does not suit us, we suggest another time; you accept it with one click.'],
+        noscript='JavaScript is required to choose an appointment. Alternatively, please call us.'),
+    'pt': dict(title='Marcar oficina', desc='Peça uma marcação na oficina Castelo Motorhomes em Pêra, Algarve: eletricidade, gás, água, carroçaria, solar e instalações.',
+        eye='Marcação', h1='Pedir marcação na oficina', lead='Escolha o serviço, o dia e a hora. Confirmamos a marcação por e-mail – ou propomos outra data.',
+        h='A sua data pretendida', service='O que devemos verificar?', services=['Eletricidade 12 V / 230 V', 'Instalação de gás', 'Água / canalização', 'Carroçaria / infiltrações', 'Solar / bateria', 'Montagem de acessórios', 'Outro'],
+        day='Dia', time='Hora', loading='A carregar horários livres …', none='De momento não há horários disponíveis online. Ligue-nos ou envie uma mensagem por WhatsApp.',
+        pick='Escolha primeiro um dia', msg='Descrição (opcional)', msg_ph='Qual é o problema? Marca/modelo e ano também ajudam.',
+        send='Pedir marcação', ok='Obrigado! O seu pedido foi recebido. Vai receber um e-mail – e outro assim que confirmarmos a marcação.',
+        taken='Esta hora acabou de ser ocupada – escolha outra.', invalid='Indique o nome, um e-mail válido, o dia e a hora.',
+        failed='Não foi possível enviar. Ligue-nos ou envie uma mensagem por WhatsApp.',
+        info_h='Como funciona', info=['Escolhe um horário livre e envia o pedido.', 'Verificamos e confirmamos por e-mail – normalmente no mesmo dia útil.', 'Se não for possível, propomos outra data; aceita com um clique.'],
+        noscript='É necessário JavaScript para escolher a data. Em alternativa, ligue-nos.'),
+    }[lang]
+    F = L['form']
+    keys = ['elektrik', 'gas', 'wasser', 'aufbau', 'solar', 'einbau', 'sonstiges']
+    opts = ''.join(f'<option value="{k}">{n}</option>' for k, n in zip(keys, C['services']))
+    msgs = ' '.join(f'data-{k}="{C[k]}"' for k in ('loading', 'none', 'pick', 'ok', 'taken', 'invalid', 'failed'))
+    info = ''.join(f'<li>{x}</li>' for x in C['info'])
+    body = hero(lang, 'hero-zeiten', C['eye'], C['h1'], C['lead'], actions=False) + f"""
+<section class="block"><div class="wrap grid c2 top">
+  <form class="contact booking" novalidate {msgs}>
+    <h2>{C['h']}</h2>
+    <label for="b-service">{C['service']}</label>
+    <select id="b-service" name="service">{opts}</select>
+    <div class="row">
+      <div><label for="b-day">{C['day']}</label><select id="b-day" name="date" required disabled><option value="">{C['loading']}</option></select></div>
+      <div><label for="b-time">{C['time']}</label><select id="b-time" name="time" required disabled><option value="">{C['pick']}</option></select></div>
+    </div>
+    <div class="row">
+      <div><label for="b-name">{F['name']}</label><input id="b-name" name="name" autocomplete="name" required></div>
+      <div><label for="b-email">{F['email']}</label><input id="b-email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <div class="row">
+      <div><label for="b-phone">{F['phone']}</label><input id="b-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div><label for="b-vehicle">{F['vehicle']}</label><input id="b-vehicle" name="vehicle" placeholder="{F['vehicle_ph']}"></div>
+    </div>
+    <label for="b-msg">{C['msg']}</label>
+    <textarea id="b-msg" name="message" placeholder="{C['msg_ph']}"></textarea>
+    <div class="hp" aria-hidden="true"><label for="b-web">{F['hp']}</label><input id="b-web" name="website" tabindex="-1" autocomplete="off"></div>
+    <button class="btn" type="submit">{C['send']}</button>
+    <p class="form-msg" role="status"></p>
+    <noscript><p class="note">{C['noscript']} <a href="tel:{TEL_M}">{TEL_M_H}</a></p></noscript>
+    <p class="note">{F['note']} <a href="{url('legal', lang)}#datenschutz">{L['privacy']}</a>.</p>
+  </form>
+  <div><h2>{C['info_h']}</h2><ol class="steps">{info}</ol>
+  {hours_table(lang)}
+  <p class="mt"><a class="btn wa" href="https://wa.me/{WA}">{L['wa_label']}</a></p></div>
+</div></section>
+"""
+    return page('booking', lang, C['title'], C['desc'], body)
 
 
 def legal(lang):
@@ -762,7 +836,7 @@ if __name__ == '__main__':
     n = 0
     for lang in LANGS:
         for key, fn in [('home', home), ('services', services), ('tech', tech), ('shop', shop),
-                        ('hours', hours), ('contact', contact), ('legal', legal), ('shipping', shipping)]:
+                        ('hours', hours), ('contact', contact), ('legal', legal), ('shipping', shipping), ('booking', booking)]:
             write(filepath(key, lang), fn(lang)); n += 1
         write(os.path.join(ROOT, '' if lang == 'de' else lang, '404.html'), notfound(lang)); n += 1
         write(os.path.join(os.path.dirname(ROOT), 'templates', f'product-{lang}.html'),

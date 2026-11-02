@@ -294,3 +294,9 @@ details.shop-cats summary::after, details.shop-cats[open] summary::after { conte
 }
 
 @media (max-width: 440px) { .brand b { font-size: 1rem; } .brand small { font-size: .66rem; letter-spacing: .02em; } .head-actions { gap: 6px; } }
+
+/* Terminbuchung */
+form.booking select { width: 100%; }
+form.booking select:disabled { opacity: .7; }
+ol.steps { padding-left: 1.2em; margin: 0 0 24px; }
+ol.steps li { margin-bottom: 8px; }

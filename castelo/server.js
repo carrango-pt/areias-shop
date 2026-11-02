@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const shop = require('./shop.js');
 const admin = require('./admin.js');
+const makeBooking = require('./booking.js');
 
 const app = express();
 const PORT = process.env.PORT || 4600;
@@ -39,14 +40,14 @@ function esc(x) {
   });
 }
 
-async function sendMail(subject, html, replyTo) {
+async function sendMail(subject, html, replyTo, to) {
   if (!BREVO_KEY) { console.log('Mail nicht gesendet (kein BREVO_API_KEY):', subject); return false; }
   const r = await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'api-key': BREVO_KEY },
     body: JSON.stringify({
       sender: { email: FROM_EMAIL, name: 'Castelo Motorhomes Website' },
-      to: [{ email: SHOP_EMAIL }],
+      to: [{ email: to || SHOP_EMAIL }],
       replyTo: replyTo ? { email: replyTo } : undefined,
       subject: subject,
       htmlContent: html
@@ -107,6 +108,7 @@ async function sendOrderEmail(s) {
 }
 
 app.use(express.json({ limit: '32kb' }));
+app.use('/admin', express.urlencoded({ extended: false, limit: '16kb' }));
 app.use(admin.track);   // Besucherzählung (ohne Cookies, keine Bots)
 
 // Einfaches In-Memory-Rate-Limit pro IP.
@@ -137,7 +139,16 @@ app.post('/api/shop/search-log', rateLimit(60, 60 * 1000), function (req, res) {
   if (!admin.isOwner(req)) admin.trackSearch(req.body && req.body.q, 1);
   res.status(204).end();
 });
-app.get('/admin', rateLimit(30, 5 * 60 * 1000), admin.auth, admin.page(stripe));
+app.get('/admin', rateLimit(30, 5 * 60 * 1000), admin.auth, admin.page(stripe, function () { return booking.pendingCount(); }));
+
+// Terminbuchung: Kunde fragt an, Betreiber bestätigt / verschiebt / sagt ab (Admin → Termine)
+const booking = makeBooking({ sendMail: function (to, subject, html, replyTo) { return sendMail(subject, html, replyTo || (to ? SHOP_EMAIL : undefined), to); } });
+app.get('/api/termine/slots', rateLimit(120, 60 * 1000), booking.slots);
+app.post('/api/termine', rateLimit(5, 10 * 60 * 1000), booking.create);
+app.get('/termin/ok/:id/:token', rateLimit(20, 10 * 60 * 1000), booking.accept);
+app.get('/termin/absagen/:id/:token', rateLimit(20, 10 * 60 * 1000), booking.cancelByCustomer);
+app.get('/admin/termine', rateLimit(60, 5 * 60 * 1000), admin.auth, booking.adminPage);
+app.post('/admin/termine/:id', rateLimit(60, 5 * 60 * 1000), admin.auth, booking.adminAction);
 app.get('/img/:src(cp|og)/*', rateLimit(600, 60 * 1000), shop.image);
 app.get('/sitemap-products.xml', shop.sitemap);
 shop.LANGS.forEach(function (l) { app.get(shop.ITEM_PATH[l] + ':slug', shop.productPage(l)); });

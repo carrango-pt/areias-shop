@@ -21,6 +21,8 @@ dieselben wie bei Webador (`/kontakt`, `/campingshop`, `/technik`, `/oeffnungsze
 - `public/assets/style.css` – Design (Farben oben in `:root`).
 - `public/img/` – Bilder (eigene Shop-Fotos + freie Unsplash-Fotos von der alten Seite).
 - `server.js` – liefert die Seite aus, erstellt Stripe-Checkout, verschickt Anfragen/Bestellungen per Mail.
+- `booking.js` – Terminbuchung: Seite `/termin` (EN `/en/appointment`, PT `/pt/marcacao`), Verwaltung unter `/admin/termine`
+  (bestätigen, anderen Termin vorschlagen, absagen, Tage sperren). Zeiten/Feiertage oben in `booking.js`; gespeichert in Upstash.
 - `admin.js` – Admin-Seite `/admin`: Besucher (ohne Cookies, IP nur gehasht), Shop-Suchen, Bestellungen live aus Stripe.
 
 ## Sortiment von CAMPING-PROFI aktualisieren
