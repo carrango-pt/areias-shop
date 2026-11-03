@@ -41,35 +41,27 @@ function bump(o, k) { o[k] = (o[k] || 0) + 1; }
 const OWNER_COOKIE = 'cm_owner';
 const isOwner = (req) => new RegExp('(^|;\\s*)' + OWNER_COOKIE + '=1(;|$)').test(req.headers.cookie || '');
 
-// Echte Browser schicken beim Seitenaufruf immer Accept: text/html und eine Sprache mit.
-// Getarnte Bots (geben sich als Chrome aus) lassen das oft weg. Vorab-Laden (Prefetch) ist kein Besuch.
-function looksLikeBrowserVisit(req) {
-  const h = req.headers;
-  if (!/text\/html/i.test(h.accept || '')) return false;
-  if (!h['accept-language']) return false;
-  if (/prefetch|prerender/i.test((h['sec-purpose'] || '') + ' ' + (h.purpose || '') + ' ' + (h['x-moz'] || ''))) return false;
-  return true;
+// Gezählt wird per Signal aus der geladenen Seite (app.js → POST /api/hit), nicht beim Ausliefern:
+// Datensammler, die nur HTML abholen und kein JavaScript ausführen, erscheinen so gar nicht in der Statistik.
+const ITEM_RE = /^\/(campingshop\/artikel|en\/shop\/item|pt\/loja\/artigo)\/[a-z0-9-]{1,120}$/i;
+function sameOrigin(req) {
+  const o = req.headers.origin || req.headers.referer || '';
+  try { return new URL(o).host === req.get('host'); } catch (e) { return false; }
 }
-
-// Middleware: echte Seitenaufrufe zählen (keine Bilder/Skripte/API, keine Bots, nicht /admin, nicht der Betreiber)
-function track(req, res, next) {
-  if (req.method === 'GET') {
-    const p = req.path, ua = req.headers['user-agent'] || '';
-    const isPage = !/\.(css|js|jpe?g|png|webp|svg|gif|ico|xml|txt|map|woff2?|json)$/i.test(p) && p.indexOf('/api/') !== 0 && p.indexOf('/img/') !== 0;
-    // erst nach dem Senden zählen, und nur Seiten, die es gibt (200/304) – Scanner, die /wp-config.php & Co. abklappern, bekommen 404
-    if (isPage && p !== '/admin' && !isBot(ua) && !isOwner(req) && looksLikeBrowserVisit(req)) res.on('finish', () => {
-      if (res.statusCode !== 200 && res.statusCode !== 304) return;
-      const d = day(), h = visitorHash(req.ip, ua);
-      const lang = /^\/en(\/|$)/.test(p) ? 'en' : (/^\/pt(\/|$)/.test(p) ? 'pt' : 'de');
-      const page = /\/(artikel|item|artigo)\//.test(p) ? p.replace(/^(.*\/(artikel|item|artigo)\/).*/, '$1…') + ' (Artikelseiten)' : p;
-      bump(mem.pv, d); (mem.uv[d] = mem.uv[d] || new Set()).add(h); bump(mem.lang, lang); bump(mem.pages, page);
-      if (UPSTASH_URL) {
-        redis([['INCR', P + 'pv:' + d], ['EXPIRE', P + 'pv:' + d, KEEP_SECONDS], ['PFADD', P + 'uv:' + d, h], ['EXPIRE', P + 'uv:' + d, KEEP_SECONDS],
-          ['ZINCRBY', P + 'pages', 1, page], ['ZINCRBY', P + 'lang', 1, lang]]).catch(() => {});
-      }
-    });
+function hit(req, res) {
+  res.status(204).end();
+  const p = String((req.body && req.body.p) || '').slice(0, 200), ua = req.headers['user-agent'] || '';
+  if (!sameOrigin(req) || isBot(ua) || isOwner(req) || p.indexOf('/admin') === 0) return;
+  const isItem = ITEM_RE.test(p);
+  if (!isItem && !isRealPage(p)) return;   // 404-Seiten, Scanner-Adressen
+  const d = day(), h = visitorHash(req.ip, ua);
+  const lang = /^\/en(\/|$)/.test(p) ? 'en' : (/^\/pt(\/|$)/.test(p) ? 'pt' : 'de');
+  const page = isItem ? p.replace(/^(.*\/(artikel|item|artigo)\/).*/, '$1…') + ' (Artikelseiten)' : p;
+  bump(mem.pv, d); (mem.uv[d] = mem.uv[d] || new Set()).add(h); bump(mem.lang, lang); bump(mem.pages, page);
+  if (UPSTASH_URL) {
+    redis([['INCR', P + 'pv:' + d], ['EXPIRE', P + 'pv:' + d, KEEP_SECONDS], ['PFADD', P + 'uv:' + d, h], ['EXPIRE', P + 'uv:' + d, KEEP_SECONDS],
+      ['ZINCRBY', P + 'pages', 1, page], ['ZINCRBY', P + 'lang', 1, lang]]).catch(() => {});
   }
-  next();
 }
 
 // Einmalig beim Start: früher mitgezählte Scanner-Adressen (keine echte Seite) aus „Meistbesuchte Seiten“ entfernen
@@ -78,6 +70,12 @@ function isRealPage(p) {
   if (/\.\.|\/\//.test(p)) return false;
   const base = path.join(__dirname, 'public', p);
   return [base, base + '.html', path.join(base, 'index.html')].some((f) => { try { return fs.statSync(f).isFile(); } catch (e) { return false; } });
+}
+// Einmalig: Seiten- und Sprachsummen enthielten den Datensammler vom 02.11. – mit der neuen Zählung neu beginnen
+if (UPSTASH_URL) {
+  redis([['SET', P + 'reset:beacon', '1', 'NX']]).then((r) => {
+    if (r[0] === 'OK') return redis([['DEL', P + 'pages', P + 'lang']]);
+  }).catch(() => {});
 }
 if (UPSTASH_URL) {
   redis([['ZRANGE', P + 'pages', 0, -1]]).then((r) => {
@@ -241,4 +239,4 @@ function page(stripe, pendingBookings) {
   };
 }
 
-module.exports = { track, trackSearch, isOwner, auth, page, persistent: () => !!UPSTASH_URL, enabled: () => !!ADMIN_PASSWORD };
+module.exports = { hit, trackSearch, isOwner, auth, page, persistent: () => !!UPSTASH_URL, enabled: () => !!ADMIN_PASSWORD };

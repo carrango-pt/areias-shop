@@ -109,7 +109,6 @@ async function sendOrderEmail(s) {
 
 app.use(express.json({ limit: '32kb' }));
 app.use('/admin', express.urlencoded({ extended: false, limit: '16kb' }));
-app.use(admin.track);   // Besucherzählung (ohne Cookies, keine Bots)
 
 // Einfaches In-Memory-Rate-Limit pro IP.
 function rateLimit(max, windowMs) {
@@ -135,6 +134,7 @@ app.get('/api/shop/categories', shop.categories);
 app.get('/api/shop/info', shop.info);
 app.get('/api/shop/products', rateLimit(120, 60 * 1000), shop.products);
 // Suchbegriff zählen – der Browser meldet ihn erst, wenn der Kunde aufgehört hat zu tippen
+app.post('/api/hit', rateLimit(120, 60 * 1000), admin.hit);   // Besucherzählung: Signal aus der geladenen Seite (ohne Cookies, keine Bots)
 app.post('/api/shop/search-log', rateLimit(60, 60 * 1000), function (req, res) {
   if (!admin.isOwner(req)) admin.trackSearch(req.body && req.body.q, 1);
   res.status(204).end();

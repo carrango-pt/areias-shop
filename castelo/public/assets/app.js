@@ -94,6 +94,13 @@
     }
   }
 
+  /* ---------- Besucherzählung: ein Signal pro geladener Seite (ohne Cookies) ---------- */
+  try {
+    var hitBody = JSON.stringify({ p: location.pathname });
+    if (!(navigator.sendBeacon && navigator.sendBeacon('/api/hit', new Blob([hitBody], { type: 'application/json' }))))
+      fetch('/api/hit', { method: 'POST', headers: { 'content-type': 'application/json' }, body: hitBody, keepalive: true }).catch(function () {});
+  } catch (e) { /* Zählung ist nicht wichtig */ }
+
   /* ---------- Kontaktformular ---------- */
   $$('form.contact:not(.booking)').forEach(function (form) {
     form.addEventListener('submit', function (ev) {
