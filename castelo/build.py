@@ -415,6 +415,22 @@ def home(lang):
     return page('home', lang, C['title'], C['desc'], body)
 
 
+def partner_eurocamp(lang):
+    """Awin-Partnerblock Eurocamp DE (nur deutsche Seite; Programm gilt nur für Deutschland)."""
+    if lang != 'de':
+        return ''
+    url = 'https://www.awin1.com/cread.php?awinmid=14888&amp;awinaffid=3141339&amp;clickref=castelo-de'
+    return f'''<section class="block white"><div class="wrap">
+  <aside class="partner-tipp" aria-label="Partner-Empfehlung">
+    <span class="partner-label">Anzeige</span>
+    <h3>Ihr Wohnmobil ist bei uns in der Werkstatt?</h3>
+    <p>Für die Zeit der Reparatur – oder für Camping ganz ohne Aufbau: Eurocamp bietet komplett eingerichtete Mobilheime und Safarizelte auf über 400 Campingplätzen in elf Ländern Europas.</p>
+    <a class="btn partner-btn" href="{url}" target="_blank" rel="sponsored nofollow noopener">Angebote bei Eurocamp ansehen</a>
+  </aside>
+</div></section>
+'''
+
+
 def services(lang):
     C = {
     'de': dict(title='Unsere Leistungen', desc='Wohnmobil-Reparaturen, Gas, Wasser, Aufbau und Spezialanfertigungen an der Algarve – mit 20 Jahren Erfahrung und hochwertigen Ersatzteilen.',
@@ -456,7 +472,8 @@ def services(lang):
     body = (hero(lang, 'hero-leistungen', C['eye'], C['h1'], C['lead']) + '\n' +
             sec(C['r'], 'werkstatt.jpg', 1000, 666, True, 'block white', 'reparatur', ['fahrzeugtechnik']) + '\n' +
             sec(C['w'], 'caravan.jpg', 1000, 667, False, 'block', 'gas-wasser', ['gas-wasser-und-sanitaer', 'kuehlen-und-heizen']) + '\n' +
-            sec(C['m'], 'solar.jpg', 1000, 666, True, 'block white', 'umbau', ['solar-energie']) + f'''
+            sec(C['m'], 'solar.jpg', 1000, 666, True, 'block white', 'umbau', ['solar-energie']) + '\n' +
+            partner_eurocamp(lang) + f'''
 <section class="block"><div class="wrap grid c2">
   <div><span class="eyebrow">{C['t_eye']}</span><h2>{C['t_h']}</h2><p>{C['t_p'].format(tel=TEL_M, telh=TEL_M_H, wa=WA)}</p></div>
   {form(lang)}
