@@ -64,7 +64,9 @@ ids.forEach(function (id) {
   // sonst träfe z. B. „Markise“ jeden Artikel unter „Zelte und Markisen“.
   nameNorm[id] = norm(p.n);
   if (p.i) knownImages.add(p.i.indexOf('og/') === 0 ? p.i.slice(3) : p.i);
-  const h = norm([p.n, p.b, p.a, catById[p.c] ? catById[p.c].name : ''].join(' '));
+  const own = catById[p.c];
+  // eigene Kategorie auch auf Englisch/Portugiesisch – so finden „toilet“ oder „sanita“ die deutschen Artikelnamen
+  const h = norm([p.n, p.b, p.a, own ? own.name : '', own && own.i18n ? own.i18n.en + ' ' + own.i18n.pt : ''].join(' '));
   haystack[id] = h + ' ' + h.replace(/[^a-z0-9]+/g, '');   // auch ohne Bindestriche/Leerzeichen: „gaswarner“ findet „Gas-Warner“
 });
 
@@ -100,14 +102,114 @@ function categories(req, res) {
   }));
 }
 
+// Suchbegriffe auf Englisch/Portugiesisch → deutsche Wortstämme der Artikelnamen (Camping-Profi/Offgridtec sind deutsch)
+const SYN_RAW = {
+  'fridge|refrigerator|frigorifico|frigorífico': 'kühlschrank|kühlbox',
+  'cool box|coolbox|cooler|geleira|mala termica': 'kühlbox|kühltasche',
+  'waste water|wastewater|grey water|gray water|agua residual|aguas residuais|aguas cinzentas|águas cinzentas': 'abwasser',
+  'fresh water|freshwater|drinking water|agua potavel|água potável|agua limpa': 'frischwasser|trinkwasser',
+  'water tank|deposito de agua|depósito de água': 'wassertank|tank',
+  'tank|deposito|depósito': 'tank',
+  'water|agua|água': 'wasser',
+  'pump|bomba': 'pumpe',
+  'tap|faucet|torneira|misturadora': 'armatur|wasserhahn|mischbatterie',
+  'hose|mangueira': 'schlauch',
+  'toilet|sanita|sanitas|wc': 'toilette|wc',
+  'toilet fluid|toilet chemical|chemical|quimico|químico': 'sanitär|toilettenzusatz|sanitärflüssigkeit',
+  'gas bottle|gas cylinder|garrafa de gas|garrafa de gás|botija|bilha': 'gasflasche',
+  'regulator|regulador|redutor': 'regler|druckminderer',
+  'gas alarm|gas detector|gas warner|detetor de gas|detetor de gás|alarme de gas|alarme de gás|gaswarner|gasmelder|gaswarnanlage': 'gaswarn|gasalarm|trigas',
+  'battery|batteries|bateria|baterias': 'batterie|akku',
+  'charger|carregador': 'ladegerät|lader|ladebooster',
+  'solar panel|solar module|painel solar|paineis solares|painéis solares': 'solarmodul|solarpanel|solaranlage|solarkoffer|solartasche',
+  'inverter|inversor': 'wechselrichter|inverter',
+  'cable|cabo|cabos': 'kabel',
+  'socket|tomada': 'steckdose',
+  'light|lamp|lights|luz|luzes|lampada|lâmpada|candeeiro': 'leuchte|lampe|licht',
+  'awning|awnings|toldo|toldos': 'markise',
+  'sun sail|shade sail|toldo vela|vela de sombra': 'sonnensegel',
+  'sun cover|suncover|sunshade|sun shade|windscreen cover|protecao solar|proteção solar|para-sol|parasol': 'sonnenschutz|sonnenblende|thermomatte|isoliermatte',
+  'tarp|lona': 'plane|tarp|sonnensegel',
+  'tent|tenda|tendas': 'zelt',
+  'porch awning|awning tent|avancado|avançado': 'vorzelt|busvorzelt',
+  'chair|chairs|cadeira|cadeiras': 'stuhl|sessel',
+  'table|mesa': 'tisch',
+  'bike rack|bike carrier|bicycle carrier|porta bicicletas|porta-bicicletas': 'fahrradträger',
+  'roof box|caixa de tejadilho': 'dachbox',
+  'lock|locks|fechadura|cadeado': 'schloss',
+  'step|steps|degrau': 'stufe|tritt',
+  'levelling block|leveling block|leveller|leveler|ramp|calco|calço|rampa': 'keil|auffahrkeil|ausgleich',
+  'mattress|colchao|colchão': 'matratze',
+  'heater|heating|aquecedor|aquecimento': 'heizung|heizer',
+  'fan|ventilador|exaustor': 'lüfter|ventilator',
+  'window|janela': 'fenster',
+  'roof vent|skylight|claraboia|clarabóia': 'dachhaube|dachfenster|dachluke',
+  'seal|sealant|sealing|vedante|vedação|silicone': 'dicht|dichtung|dichtmasse',
+  'cleaner|cleaning|limpeza|limpador': 'reiniger|reinigung|pflege',
+  'mosquito net|insect screen|fly screen|mosquiteiro|rede mosquiteira': 'insektenschutz|fliegengitter|moskitonetz',
+  'grill|bbq|barbecue|churrasco|grelhador': 'grill',
+  'stove|cooker|hob|fogao|fogão|placa': 'kocher|kochfeld|herd',
+  'kitchen|cozinha': 'küche|koch',
+  'cutlery|talheres': 'besteck',
+  'dishes|crockery|tableware|louça|loiça|pratos': 'geschirr',
+  'mat|rug|tapete': 'teppich|matte',
+  'peg|pegs|tent peg|estaca|estacas': 'hering',
+  'ladder|escada': 'leiter',
+  'cover|capa|cobertura': 'abdeckung|schutzhülle|haube',
+  'mirror|espelho': 'spiegel',
+  'satellite|satelite|satélite|antena|antenna|aerial': 'sat|antenne',
+  'reversing camera|rear camera|camara de marcha atras|câmara de marcha atrás': 'rückfahrkamera',
+  'fuse|fusivel|fusível': 'sicherung',
+  'tow bar|towbar|engate': 'anhängerkupplung|kupplung',
+  'jack|macaco': 'wagenheber|stütze',
+  'mover|motor mover': 'rangierhilfe|mover',
+  'tyre|tire|tyres|tires|pneu|pneus': 'reifen',
+  'generator|gerador': 'generator|stromerzeuger',
+  'extension cable|extension lead|extensao|extensão': 'verlängerung',
+  'adapter|adaptor|adaptador': 'adapter',
+  'safe|cofre': 'tresor|safe',
+  'shower|duche|chuveiro': 'dusche',
+  'sink|lava-loiça|lava loiça|lavatorio|lavatório': 'spüle|waschbecken',
+  'bed|cama': 'bett',
+  'curtain|blind|cortina|estore': 'vorhang|rollo|verdunkelung',
+  'spare part|spare parts|peça|peças|pecas': 'ersatzteil'
+};
+const SYN = {}, PHRASES = [];
+Object.keys(SYN_RAW).forEach(function (k) {
+  const to = SYN_RAW[k].split('|').map(norm);
+  k.split('|').map(norm).forEach(function (w) {
+    if (w.indexOf(' ') > 0) PHRASES.push([w, to]); else SYN[w] = (SYN[w] || []).concat(to);
+  });
+});
+PHRASES.sort(function (a, b) { return b[0].length - a[0].length; });
+const STOP = new Set(['fur', 'mit', 'und', 'der', 'die', 'das', 'for', 'with', 'and', 'the', 'of', 'de', 'da', 'do', 'dos', 'das', 'para', 'com', 'e', 'a', 'o', 'em']);
+// Suchtext → Liste von Begriffen; jeder Begriff = Liste gleichwertiger Wörter (eins davon muss vorkommen)
+function terms(raw) {
+  let s = ' ' + norm(raw).replace(/[^a-z0-9äöüçãõáéíóúâêô+.-]+/g, ' ') + ' ';
+  const out = [];
+  PHRASES.forEach(function (ph) {
+    if (s.indexOf(' ' + ph[0] + ' ') >= 0) { out.push(ph[1].concat([ph[0].replace(/ /g, '')])); s = s.split(' ' + ph[0] + ' ').join(' '); }
+  });
+  s.split(/\s+/).filter(Boolean).forEach(function (w) {
+    if (STOP.has(w)) return;
+    out.push([w].concat(SYN[w] || []));
+  });
+  return out;
+}
+const hasTerm = function (h, alts) { return alts.some(function (t) { return h.indexOf(t) >= 0; }); };
+
 function products(req, res) {
   const lang = langOf(req.query.lang);
   const cat = String(req.query.cat || '');
-  const q = norm(String(req.query.q || '').slice(0, 100)).split(/\s+/).filter(Boolean);
+  const q = terms(String(req.query.q || '').slice(0, 100));
   const brand = String(req.query.brand || '');
   const sort = String(req.query.sort || '');
   let list = cat && byCat[cat] ? byCat[cat] : ids;
-  if (q.length) list = list.filter(function (id) { const h = haystack[id]; return q.every(function (t) { return h.indexOf(t) >= 0; }); });
+  if (q.length) {
+    const all = list.filter(function (id) { const h = haystack[id]; return q.every(function (t) { return hasTerm(h, t); }); });
+    // nichts gefunden mit allen Begriffen → Artikel zeigen, die möglichst viele davon enthalten
+    list = all.length || q.length < 2 ? all : list.filter(function (id) { const h = haystack[id]; return q.some(function (t) { return hasTerm(h, t); }); });
+  }
   const brands = {};
   list.forEach(function (id) { const b = CAT.products[id].b; if (b) brands[b] = (brands[b] || 0) + 1; });
   if (brand) list = list.filter(function (id) { return CAT.products[id].b === brand; });
@@ -120,7 +222,9 @@ function products(req, res) {
   else if (q.length) {   // Treffer im Namen zuerst
     list.sort(function (a, b) {
       const na = nameNorm[a], nb = nameNorm[b];
-      return q.filter(function (t) { return nb.indexOf(t) >= 0; }).length - q.filter(function (t) { return na.indexOf(t) >= 0; }).length;
+      const ha = haystack[a], hb = haystack[b];
+      const score = function (n, h) { return q.reduce(function (x, t) { return x + (hasTerm(n, t) ? 2 : hasTerm(h, t) ? 1 : 0); }, 0); };
+      return score(nb, hb) - score(na, ha);
     });
   }
   const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
