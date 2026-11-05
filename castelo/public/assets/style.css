@@ -300,3 +300,9 @@ form.booking select { width: 100%; }
 form.booking select:disabled { opacity: .7; }
 ol.steps { padding-left: 1.2em; margin: 0 0 24px; }
 ol.steps li { margin-bottom: 8px; }
+
+/* Partner-Empfehlung (Awin) */
+.partner-tipp { position: relative; max-width: 760px; margin: 0 auto; padding: 22px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #f9fafb; }
+.partner-label { position: absolute; top: 10px; right: 14px; font-size: .72rem; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; }
+.partner-tipp h3 { margin: 0 0 8px; padding-right: 70px; }
+.partner-tipp p { margin: 0 0 16px; }
