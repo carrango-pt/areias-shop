@@ -254,6 +254,9 @@ module.exports = function (opts) {
       else if (f.action === 'cancel') { b.status = 'cancelled'; }
       else if (f.action === 'propose') {
         if (!validSlot(f.date, f.time)) return res.status(400).type('html').send('<p>Ungültiger Termin (nur zu den Öffnungszeiten, nicht an Feiertagen). <a href="/admin/termine">Zurück</a></p>');
+        // nicht doppelt vergeben: Zeit darf weder gebucht noch einem anderen Kunden schon vorgeschlagen sein
+        const others = (await all()).filter((x) => x.id !== b.id);
+        if (taken(others).has(f.date + ' ' + f.time)) return res.status(409).type('html').send('<p>Diese Zeit ist schon vergeben oder einem anderen Kunden vorgeschlagen. Bitte eine andere wählen. <a href="/admin/termine">Zurück</a></p>');
         b.status = 'proposed'; b.pDate = f.date; b.pTime = f.time;
       } else return res.redirect(303, '/admin/termine');
       b.updated = Date.now();
