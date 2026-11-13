@@ -309,6 +309,41 @@ def split(img, alt, w, h, inner, img_left=True, cls='block white', id_=''):
 
 
 # ---------------------------------------------------------------- Inhalte je Seite
+
+# Beliebt im Shop – Kacheln auf der Startseite (danach suchen Besucher am häufigsten)
+POPULAR = [
+    ('sonnensegel', '/img/cp/Artikelabbildungen/1665/image-thumb__1665__KartenbildBreitVolleProduktansicht/33186.a60ea44f.png',
+     {'de': ('Sonnensegel', 'Schatten für Stellplatz und Terrasse – Rechteck, Dreieck, verschiedene Größen.'),
+      'en': ('Sun sails', 'Shade for your pitch or terrace – rectangular, triangular, various sizes.'),
+      'pt': ('Velas de sombra', 'Sombra para o lugar de campismo ou terraço – retangulares, triangulares, vários tamanhos.')}),
+    ('trenntoilette', '/img/cp/Artikelabbildungen/29171/image-thumb__29171__KartenbildBreitVolleProduktansicht/75180.93d11fa0.jpg',
+     {'de': ('Trenntoiletten', 'Clesana, OGO &amp; Co. – ohne Chemie, ideal für autarkes Reisen. Einbau auf Wunsch bei uns.'),
+      'en': ('Separating toilets', 'Clesana, OGO and more – no chemicals, ideal for off-grid travel. Fitting available in our workshop.'),
+      'pt': ('Sanitas separadoras', 'Clesana, OGO e outras – sem químicos, ideais para viajar com autonomia. Instalação na nossa oficina.')}),
+    ('abwassertank', '/img/cp/Artikelabbildungen/5101/image-thumb__5101__KartenbildBreitVolleProduktansicht/74382.f30a35a9.png',
+     {'de': ('Frisch- &amp; Abwasser', 'Tanks, Pumpen, Schläuche und Zubehör für die Wasserversorgung im Wohnmobil.'),
+      'en': ('Fresh &amp; waste water', 'Tanks, pumps, hoses and accessories for the water supply in your motorhome.'),
+      'pt': ('Água limpa &amp; residual', 'Depósitos, bombas, mangueiras e acessórios para a água da autocaravana.')}),
+    ('solaranlage', '/img/og/media/e1/25/f0/1741941412/unbekannt_38b118fec3a23855.jpg',
+     {'de': ('Solar &amp; Batterien', 'Komplette Solaranlagen, Module, Laderegler und Lithium-Batterien – auch mit Einbau.'),
+      'en': ('Solar &amp; batteries', 'Complete solar kits, panels, charge controllers and lithium batteries – installation available.'),
+      'pt': ('Solar &amp; baterias', 'Kits solares completos, painéis, reguladores e baterias de lítio – com instalação.')}),
+]
+POPULAR_HEAD = {'de': ('Campingshop', 'Beliebt im Shop', 'Danach suchen unsere Kunden gerade am häufigsten – Lieferung in ganz Portugal.', 'Ansehen'),
+                'en': ('Camping shop', 'Popular in our shop', 'What our customers are looking for right now – delivered all over Portugal.', 'View'),
+                'pt': ('Loja de campismo', 'Mais procurados na loja', 'O que os nossos clientes mais procuram – entrega em todo o Portugal.', 'Ver')}
+
+
+def popular(lang):
+    eye, h, p, more = POPULAR_HEAD[lang]
+    cards = ''.join(
+        f'<article class="card pop"><a href="{url("shop", lang)}?q={q}" tabindex="-1" aria-hidden="true"><img src="{img}" alt="" width="400" height="300" loading="lazy"></a>'
+        f'<div class="body"><h3>{t[lang][0]}</h3><p>{t[lang][1]}</p><a class="more" href="{url("shop", lang)}?q={q}">{more} →</a></div></article>'
+        for q, img, t in POPULAR)
+    return ('<section class="block"><div class="wrap">\n'
+            f'  <div class="section-head"><span class="eyebrow">{eye}</span><h2>{h}</h2><p>{p}</p></div>\n'
+            f'  <div class="grid c4">{cards}</div>\n</div></section>\n')
+
 def home(lang):
     u = lambda k: url(k, lang)
     C = {
@@ -396,7 +431,7 @@ def home(lang):
   <div class="section-head"><span class="eyebrow">{C['s_eye']}</span><h2>{C['s_h']}</h2><p>{C['s_p']}</p></div>
   <div class="grid c3">{cards}</div>
 </div></section>
-<section class="block navy"><div class="wrap">
+''' + popular(lang) + f'''<section class="block navy"><div class="wrap">
   <div class="section-head"><span class="eyebrow">{C['w_eye']}</span><h2>{C['w_h']}</h2></div>
   <div class="facts">{facts}</div>
 </div></section>
