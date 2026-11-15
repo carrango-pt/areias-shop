@@ -446,24 +446,43 @@ def home(lang):
   {hours_table(lang)}
   <p class="note mt">{C['h_note']}</p></div>
 </div></section>
-''' + cta(lang)
+''' + partner_eurocamp(lang, 'castelo-de-home', 'block') + cta(lang)
     return page('home', lang, C['title'], C['desc'], body)
 
 
-def partner_eurocamp(lang):
-    """Awin-Partnerblock Eurocamp DE (nur deutsche Seite; Programm gilt nur für Deutschland)."""
-    if lang != 'de':
-        return ''
-    url = 'https://www.awin1.com/cread.php?awinmid=14888&amp;awinaffid=3141339&amp;clickref=castelo-de'
-    return f'''<section class="block white"><div class="wrap">
+def partner_box(title, text, btn, url, cls='block white'):
+    """Awin-Partnerkasten mit Kennzeichnung "Anzeige" (rel=sponsored)."""
+    return f'''<section class="{cls}"><div class="wrap">
   <aside class="partner-tipp" aria-label="Partner-Empfehlung">
     <span class="partner-label">Anzeige</span>
-    <h3>Ihr Wohnmobil ist bei uns in der Werkstatt?</h3>
-    <p>Für die Zeit der Reparatur – oder für Camping ganz ohne Aufbau: Eurocamp bietet komplett eingerichtete Mobilheime und Safarizelte auf über 400 Campingplätzen in elf Ländern Europas.</p>
-    <a class="btn partner-btn" href="{url}" target="_blank" rel="sponsored nofollow noopener">Angebote bei Eurocamp ansehen</a>
+    <h3>{title}</h3>
+    <p>{text}</p>
+    <a class="btn partner-btn" href="{url}" target="_blank" rel="sponsored nofollow noopener">{btn}</a>
   </aside>
 </div></section>
 '''
+
+
+def awin(mid, ref):
+    return f'https://www.awin1.com/cread.php?awinmid={mid}&amp;awinaffid=3141339&amp;clickref={ref}'
+
+
+def partner_eurocamp(lang, ref='castelo-de', cls='block white'):
+    """Eurocamp DE (Awin 14888) – nur deutsche Seiten; Programm gilt nur für Deutschland."""
+    if lang != 'de':
+        return ''
+    return partner_box('Ihr Wohnmobil ist bei uns in der Werkstatt?',
+                       'Für die Zeit der Reparatur – oder für Camping ganz ohne Aufbau: Eurocamp bietet komplett eingerichtete Mobilheime und Safarizelte auf über 400 Campingplätzen in elf Ländern Europas.',
+                       'Angebote bei Eurocamp ansehen', awin(14888, ref), cls)
+
+
+def partner_camperdays(lang, ref='castelo-de-termin', cls='block white'):
+    """Camperdays DE (Awin 52889) – nur deutsche Seiten; Programm gilt für Deutschland und Österreich."""
+    if lang != 'de':
+        return ''
+    return partner_box('Während der Reparatur weiter unterwegs sein?',
+                       'Wenn Ihr Wohnmobil länger bei uns bleibt – oder Sie die nächste Tour ohne eigenes Fahrzeug planen: Bei Camperdays vergleichen Sie Mietwohnmobile verschiedener Vermieter in Europa und weltweit.',
+                       'Mietwohnmobile bei Camperdays vergleichen', awin(52889, ref), cls)
 
 
 def services(lang):
@@ -739,7 +758,7 @@ def booking(lang):
   {hours_table(lang)}
   <p class="mt"><a class="btn wa" href="https://wa.me/{WA}">{L['wa_label']}</a></p></div>
 </div></section>
-"""
+""" + partner_camperdays(lang)
     return page('booking', lang, C['title'], C['desc'], body)
 
 
