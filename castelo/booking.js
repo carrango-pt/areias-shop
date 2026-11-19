@@ -267,14 +267,49 @@ module.exports = function (opts) {
     } catch (e) { console.error('booking admin:', e.message); res.status(503).send('Fehler: ' + esc(e.message)); }
   }
 
-  async function adminPage(_req, res) {
+  // Monatskalender: alle aktiven Termine (bestätigt, angefragt, vorgeschlagen) im Raster Mo–So
+  const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  function monthCalendar(list, blocked, today, m) {
+    const y = +m.slice(0, 4), mo = +m.slice(5, 7);
+    const first = m + '-01', days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+    const prev = mo === 1 ? (y - 1) + '-12' : y + '-' + String(mo - 1).padStart(2, '0');
+    const next = mo === 12 ? (y + 1) + '-01' : y + '-' + String(mo + 1).padStart(2, '0');
+    const byDay = {};
+    list.forEach((b) => {
+      if (ACTIVE.indexOf(b.status) < 0) return;
+      const d = b.status === 'proposed' ? b.pDate : b.date, t = b.status === 'proposed' ? b.pTime : b.time;
+      if (d && d.slice(0, 7) === m) (byDay[d] = byDay[d] || []).push({ t: t, b: b });
+    });
+    const bl = new Set(blocked);
+    let cells = '', count = 0;
+    for (let i = 0; i < (weekday(first) + 6) % 7; i++) cells += '<td class="empty"></td>';
+    for (let d = 1; d <= days; d++) {
+      const ds = m + '-' + String(d).padStart(2, '0'), wd = weekday(ds);
+      const closed = !SLOTS[wd] || holiday(ds) || bl.has(ds);
+      const items = (byDay[ds] || []).sort((a, b) => a.t < b.t ? -1 : 1);
+      count += items.length;
+      cells += '<td class="' + (closed ? 'closed' : '') + (ds === today ? ' today' : '') + '"><div class="dn">' + d + '</div>' +
+        items.map((x) => '<a class="ev ' + x.b.status + '" href="#b-' + x.b.id + '" title="' + esc(SERVICE_DE[x.b.service] + (x.b.vehicle ? ' · ' + x.b.vehicle : '')) + '">' +
+          x.t + ' ' + esc(x.b.name.split(' ')[0]) + '</a>').join('') + '</td>';
+      if ((wd + 6) % 7 === 6 && d < days) cells += '</tr><tr>';
+    }
+    const lastWd = (weekday(m + '-' + String(days).padStart(2, '0')) + 6) % 7;
+    for (let i = lastWd; i < 6; i++) cells += '<td class="empty"></td>';
+    return '<h2>Kalender ' + MONTHS[mo - 1] + ' ' + y + ' <span class="muted">(' + count + ' Termin' + (count === 1 ? '' : 'e') + ')</span></h2>' +
+      '<p class="calnav"><a href="?m=' + prev + '">← ' + MONTHS[(mo + 10) % 12] + '</a> · <a href="?m=' + today.slice(0, 7) + '">Heute</a> · <a href="?m=' + next + '">' + MONTHS[mo % 12] + ' →</a></p>' +
+      '<div class="box"><table class="cal"><tr><th>Mo</th><th>Di</th><th>Mi</th><th>Do</th><th>Fr</th><th>Sa</th><th>So</th></tr><tr>' + cells + '</tr></table>' +
+      '<p class="muted legend"><span class="ev confirmed">bestätigt</span> <span class="ev pending">Anfrage offen</span> <span class="ev proposed">vorgeschlagen</span> <span class="sw closed"></span>geschlossen/gesperrt</p></div>';
+  }
+
+  async function adminPage(req, res) {
     try {
       const [list, blocked] = await Promise.all([all(), blockedDays()]);
       const today = lisbonToday();
       const sortKey = (b) => (b.status === 'proposed' ? b.pDate + b.pTime : b.date + b.time);
       list.sort((a, b) => sortKey(a) < sortKey(b) ? -1 : 1);
+      const mq = /^\d{4}-(0[1-9]|1[0-2])$/.test(String((req.query && req.query.m) || '')) ? req.query.m : today.slice(0, 7);
       const timeOpts = [...new Set(Object.values(SLOTS).flat())].sort().map((t) => '<option>' + t + '</option>').join('');
-      const row = (b, actions) => '<tr><td><strong>' + esc(when('de', b.date, b.time)) + '</strong>' +
+      const row = (b, actions) => '<tr id="b-' + b.id + '"><td><strong>' + esc(when('de', b.date, b.time)) + '</strong>' +
         (b.status === 'proposed' ? '<br><span class="warn">Vorgeschlagen: ' + esc(when('de', b.pDate, b.pTime)) + '</span><br><span class="muted">wartet auf Antwort des Kunden</span>' : '') +
         (b.byCustomer ? '<br><span class="muted">vom Kunden abgesagt</span>' : '') + '</td>' +
         '<td>' + esc(SERVICE_DE[b.service]) + (b.vehicle ? '<br><span class="muted">' + esc(b.vehicle) + '</span>' : '') +
@@ -299,9 +334,16 @@ module.exports = function (opts) {
         'table{width:100%;border-collapse:collapse}td,th{padding:8px 10px;border-bottom:1px solid #eee6d8;vertical-align:top;text-align:left;font-size:14px}' +
         'th{font-size:12px;text-transform:uppercase;color:#5b6b78}form{margin:0 0 6px}button{font:inherit;padding:6px 12px;border-radius:7px;border:1px solid #c9bfae;background:#fff;cursor:pointer;margin:2px 4px 2px 0}' +
         'button.ok{background:#1f7a46;border-color:#1f7a46;color:#fff}button.no{color:#9b2c2c}input,select,textarea{font:inherit;padding:5px 6px;border:1px solid #c9bfae;border-radius:6px}' +
-        'textarea{width:100%;min-height:38px;margin:4px 0}details{margin-top:4px}a{color:#1d4a6b}</style></head><body><div class="wrap">' +
+        'textarea{width:100%;min-height:38px;margin:4px 0}details{margin-top:4px}a{color:#1d4a6b}' +
+        'table.cal{table-layout:fixed;min-width:640px}table.cal td{height:88px;border:1px solid #eee6d8;padding:4px 5px}table.cal th{text-align:center}' +
+        'table.cal td.empty{background:#faf8f4;border-color:#f3efe7}table.cal td.closed{background:#f1ede6}table.cal td.today{outline:2px solid #e8762c;outline-offset:-2px}' +
+        '.dn{font-size:12px;color:#5b6b78;font-weight:600}.ev{display:block;font-size:12px;line-height:1.3;padding:2px 5px;margin:2px 0;border-radius:5px;text-decoration:none;color:#14212b;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}' +
+        '.ev.confirmed{background:#d6efe0}.ev.pending{background:#fde2c4}.ev.proposed{background:#e2e8f3}.legend .ev{display:inline-block;margin-right:8px}' +
+        '.sw{display:inline-block;width:12px;height:12px;vertical-align:middle;margin-right:4px;border:1px solid #ddd}.sw.closed{background:#f1ede6}.calnav{margin:0 0 8px}' +
+        'tr:target td{background:#fff6e5}</style></head><body><div class="wrap">' +
         '<h1>Termine</h1><p class="muted"><a href="/admin">← Zur Übersicht</a> · Uhrzeiten in portugiesischer Zeit · ' +
         (UPSTASH_URL ? 'dauerhaft gespeichert' : '<span class="warn">nur im Speicher (Upstash fehlt)</span>') + '</p>' +
+        monthCalendar(list, blocked, today, mq) +
         section('Neue Anfragen – bitte bestätigen', pending, 'Keine offenen Anfragen.', true) +
         section('Vorgeschlagen – wartet auf den Kunden', proposed, 'Keine.', true) +
         section('Bestätigte Termine', confirmed, 'Keine kommenden Termine.', true) +
