@@ -485,6 +485,15 @@ def partner_camperdays(lang, ref='castelo-de-termin', cls='block white'):
                        'Mietwohnmobile bei Camperdays vergleichen', awin(52889, ref), cls)
 
 
+def partner_poferries(lang, ref='castelo-de-zeiten', cls='block white'):
+    """P&O Ferries DE (Awin 113124, 4 %) – nur deutsche Seiten; Programm gilt nur für Deutschland."""
+    if lang != 'de':
+        return ''
+    return partner_box('Nächste Tour nach England, Schottland oder Irland?',
+                       'Mit dem Wohnmobil auf die Fähre: P&amp;O Ferries fährt von Calais nach Dover, von Rotterdam nach Hull und von Cairnryan nach Larne in Nordirland.',
+                       'Fährverbindungen bei P&amp;O Ferries ansehen', awin(113124, ref), cls)
+
+
 def services(lang):
     C = {
     'de': dict(title='Unsere Leistungen', desc='Wohnmobil-Reparaturen, Gas, Wasser, Aufbau und Spezialanfertigungen an der Algarve – mit 20 Jahren Erfahrung und hochwertigen Ersatzteilen.',
@@ -655,7 +664,7 @@ def hours(lang):
   <p>{C['f_p']}</p>
   <p><a class="btn" href="{url('booking', lang)}">{T[lang]['btn_appt']}</a></p></div>
 </div></section>
-'''
+''' + partner_poferries(lang)
     return page('hours', lang, C['title'], C['desc'], body)
 
 
