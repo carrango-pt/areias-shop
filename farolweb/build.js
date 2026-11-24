@@ -34,14 +34,14 @@ const ART = {
 // Standard-Leistungen, wenn ein Lead keine eigenen hat (allgemein, keine Tatsachenbehauptungen)
 const DEFAULT_ITEMS = {
   restaurant: [
-    { i: '📞', pt: 'Reservas', en: 'Bookings', dpt: 'Ligue e reserve a sua mesa em segundos.', den: 'Call and book your table in seconds.' },
-    { i: '🍽️', pt: 'Prato do dia', en: 'Dish of the day', dpt: 'Pergunte pelas sugestões da casa.', den: 'Ask for the house suggestions.' },
-    { i: '📍', pt: 'Fácil de encontrar', en: 'Easy to find', dpt: 'Veja o mapa e venha visitar-nos.', den: 'Check the map and come and visit.' },
+    { i: '📞', pt: 'Reservas', en: 'Bookings', de: 'Reservierung', dpt: 'Ligue e reserve a sua mesa em segundos.', den: 'Call and book your table in seconds.', dde: 'Rufen Sie an und reservieren Sie Ihren Tisch.' },
+    { i: '🍽️', pt: 'Prato do dia', en: 'Dish of the day', de: 'Tagesgericht', dpt: 'Pergunte pelas sugestões da casa.', den: 'Ask for the house suggestions.', dde: 'Fragen Sie nach den Empfehlungen des Hauses.' },
+    { i: '📍', pt: 'Fácil de encontrar', en: 'Easy to find', de: 'Leicht zu finden', dpt: 'Veja o mapa e venha visitar-nos.', den: 'Check the map and come and visit.', dde: 'Schauen Sie auf die Karte und besuchen Sie uns.' },
   ],
   auto: [
-    { i: '🛠️', pt: 'Revisões', en: 'Servicing', dpt: 'Manutenção regular do seu carro.', den: 'Regular maintenance for your car.' },
-    { i: '⚙️', pt: 'Mecânica', en: 'Mechanics', dpt: 'Reparações e diagnóstico.', den: 'Repairs and diagnostics.' },
-    { i: '📞', pt: 'Marcações', en: 'Bookings', dpt: 'Ligue e marque já a sua visita.', den: 'Call to book your visit.' },
+    { i: '🛠️', pt: 'Revisões', en: 'Servicing', de: 'Inspektion', dpt: 'Manutenção regular do seu carro.', den: 'Regular maintenance for your car.', dde: 'Regelmäßige Wartung für Ihr Auto.' },
+    { i: '⚙️', pt: 'Mecânica', en: 'Mechanics', de: 'Mechanik', dpt: 'Reparações e diagnóstico.', den: 'Repairs and diagnostics.', dde: 'Reparaturen und Diagnose.' },
+    { i: '📞', pt: 'Marcações', en: 'Bookings', de: 'Termine', dpt: 'Ligue e marque já a sua visita.', den: 'Call to book your visit.', dde: 'Rufen Sie an und vereinbaren Sie einen Termin.' },
   ],
 };
 const ICONS = { auto: ['🛠️', '⚙️', '🔍'], beauty: ['✂️', '🎨', '💆'], home: ['🔧', '🛡️', '📋'], restaurant: ['🍽️', '🍷', '🥘'], cafe: ['☕', '🥐', '🍰'] };
@@ -53,7 +53,7 @@ const TXT = {
     svcK: { restaurant: 'Bem-vindo', cafe: 'Bem-vindo', other: 'Serviços' },
     svcH: { restaurant: 'À sua mesa', cafe: 'O que servimos', other: 'Como podemos ajudar' },
     galK: 'Galeria', galH: 'Fotografias', galP: 'Aqui entram as vossas fotografias — tiramo-las nós, no local.',
-    contactK: 'Contacto', contactH: 'Fale connosco', langs: 'PT · EN',
+    contactK: 'Contacto', contactH: 'Fale connosco', langs: 'PT · EN · DE',
     hours: 'Horário', foot: 'Página de exemplo criada por FarolWeb · farolweb.pt', bCall: 'Ligar', bMap: 'Mapa', bMail: 'Email',
   },
   en: {
@@ -62,8 +62,17 @@ const TXT = {
     svcK: { restaurant: 'Welcome', cafe: 'Welcome', other: 'Services' },
     svcH: { restaurant: 'At your table', cafe: 'What we serve', other: 'How we can help' },
     galK: 'Gallery', galH: 'Photos', galP: 'Your photos go here — we take them on site.',
-    contactK: 'Contact', contactH: 'Get in touch', langs: 'PT · EN',
+    contactK: 'Contact', contactH: 'Get in touch', langs: 'PT · EN · DE',
     hours: 'Opening hours', foot: 'Example page created by FarolWeb · farolweb.pt', bCall: 'Call', bMap: 'Map', bMail: 'Email',
+  },
+  de: {
+    demo: 'Demo · Website-Vorschlag von <b>FarolWeb</b> — nicht die offizielle Seite',
+    call: 'Jetzt anrufen', mail: 'E-Mail senden', find: 'Anfahrt',
+    svcK: { restaurant: 'Willkommen', cafe: 'Willkommen', other: 'Leistungen' },
+    svcH: { restaurant: 'An Ihrem Tisch', cafe: 'Unser Angebot', other: 'So helfen wir Ihnen' },
+    galK: 'Galerie', galH: 'Fotos', galP: 'Hier kommen Ihre Fotos hin — wir machen sie vor Ort.',
+    contactK: 'Kontakt', contactH: 'Schreiben Sie uns', langs: 'PT · EN · DE',
+    hours: 'Öffnungszeiten', foot: 'Beispielseite erstellt von FarolWeb · farolweb.pt', bCall: 'Anrufen', bMap: 'Karte', bMail: 'E-Mail',
   },
 };
 
@@ -87,9 +96,9 @@ function page(L) {
   const q = encodeURIComponent([L.name, L.address, L.city].filter(Boolean).join(', '));
   const t = l => JSON.stringify(TXT[l]).replace(/</g, '\\u003c');
   const icons = ICONS[L.theme] || ICONS.home;
-  const items = (L.items && L.items.length ? L.items.map((x, n) => ({ i: icons[n % 3], pt: x.pt, en: x.en, dpt: x.descPt, den: x.descEn }))
+  const items = (L.items && L.items.length ? L.items.map((x, n) => ({ i: icons[n % 3], pt: x.pt, en: x.en, de: x.de, dpt: x.descPt, den: x.descEn, dde: x.descDe }))
     : DEFAULT_ITEMS[L.theme] || DEFAULT_ITEMS.restaurant);
-  const cards = items.map(i => `<div class="card"><div class="ci">${i.i}</div><h3 data-pt="${esc(i.pt)}" data-en="${esc(i.en || i.pt)}"></h3>${i.dpt ? `<p data-pt="${esc(i.dpt)}" data-en="${esc(i.den || i.dpt)}"></p>` : ''}</div>`).join('');
+  const cards = items.map(i => `<div class="card"><div class="ci">${i.i}</div><h3 data-pt="${esc(i.pt)}" data-en="${esc(i.en || i.pt)}" data-de="${esc(i.de || i.en || i.pt)}"></h3>${i.dpt ? `<p data-pt="${esc(i.dpt)}" data-en="${esc(i.den || i.dpt)}" data-de="${esc(i.dde || i.den || i.dpt)}"></p>` : ''}</div>`).join('');
   const hours = (L.hours || []).map(h => `<div><span data-pt="${esc(h.pt)}" data-en="${esc(h.en || h.pt)}"></span><span data-pt="${esc(h.timePt)}" data-en="${esc(h.timeEn || h.timePt)}"></span></div>`).join('');
   const city = esc(String(L.city).split('(')[0].trim());
   return `<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -140,12 +149,12 @@ footer{background:#111;color:#aab;padding:30px 0 100px;font-size:14px}footer b{c
 </style></head><body>
 <div class="demo" data-t="demo"></div>
 <div style="position:relative"><header><div class="w"><div class="logo">${esc(L.name)}</div>
-<div class="lg"><button data-l="pt">PT</button> <button data-l="en">EN</button></div></div></header>
+<div class="lg"><button data-l="pt">PT</button> <button data-l="en">EN</button> <button data-l="de">DE</button></div></div></header>
 <div class="hero"><div class="w"><div>
 <span class="tag">📍 ${esc(L.category || '')} · ${city}</span>
 <h1>${esc(L.name)}</h1>
-<h2 data-pt="${esc(L.headlinePt)}" data-en="${esc(L.headlineEn || L.headlinePt)}"></h2>
-<p data-pt="${esc(L.leadPt)}" data-en="${esc(L.leadEn || L.leadPt)}"></p>
+<h2 data-pt="${esc(L.headlinePt)}" data-en="${esc(L.headlineEn || L.headlinePt)}" data-de="${esc(L.headlineDe || L.headlineEn || L.headlinePt)}"></h2>
+<p data-pt="${esc(L.leadPt)}" data-en="${esc(L.leadEn || L.leadPt)}" data-de="${esc(L.leadDe || L.leadEn || L.leadPt)}"></p>
 <div class="btns">${L.phone ? `<a class="btn p" href="tel:${tel(L.phone)}">📞 <span data-t="call"></span></a>` : ''}<a class="btn s" href="#contacto">📍 <span data-t="find"></span></a></div></div>
 <div class="art">${ART[artKey(L)]}</div></div>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 60 C360 0 1080 0 1440 60Z" fill="${th.bg}"/></svg></div></div>
@@ -166,13 +175,13 @@ ${L.phone ? `<a class="btn p" href="tel:${tel(L.phone)}">📞 <span data-t="call
 <footer><div class="w"><b>${esc(L.name)}</b> · ${esc(L.city)}<br><span data-t="foot"></span></div></footer>
 <nav class="bar">${L.phone ? `<a href="tel:${tel(L.phone)}" data-t="bCall"></a>` : `<a href="mailto:${esc(L.email)}" data-t="bMail"></a>`}<a href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener" data-t="bMap"></a>${L.email && L.phone ? `<a href="mailto:${esc(L.email)}" data-t="bMail"></a>` : '<a href="#contacto" data-t="contactK"></a>'}</nav>
 <script>
-const T={pt:${t('pt')},en:${t('en')}};
+const T={pt:${t('pt')},en:${t('en')},de:${t('de')}};
 function set(l){document.documentElement.lang=l;const t=T[l];
 document.querySelectorAll('[data-t]').forEach(e=>{e.innerHTML=e.dataset.t.split('.').reduce((o,k)=>o[k],t)});
 document.querySelectorAll('[data-pt]').forEach(e=>{e.textContent=e.dataset[l]||e.dataset.pt});
 document.querySelectorAll('.lg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l))}
 document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>set(b.dataset.l));
-set((navigator.language||'pt').startsWith('pt')?'pt':'en');
+const n=(navigator.language||'pt').slice(0,2);set(T[n]?n:'en');
 </script></body></html>`;
 }
 

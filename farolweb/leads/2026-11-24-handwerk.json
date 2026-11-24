@@ -13,17 +13,22 @@
   "items": [
    {
     "pt": "Montagem de redes de gás",
-    "en": "Gas network installation"
+    "en": "Gas network installation",
+    "de": "Montage von Gasleitungen"
    },
    {
     "pt": "Reparações",
-    "en": "Repairs"
+    "en": "Repairs",
+    "de": "Reparaturen"
    },
    {
     "pt": "Orçamentos",
-    "en": "Quotes"
+    "en": "Quotes",
+    "de": "Angebote"
    }
-  ]
+  ],
+  "headlineDe": "Gasleitungen & Sanitär in Braga",
+  "leadDe": "Montage und Reparatur von Gasleitungen. Rufen Sie an für ein Angebot."
  },
  {
   "name": "Chic Cabeleireiros",
@@ -39,17 +44,22 @@
   "items": [
    {
     "pt": "Cortes",
-    "en": "Haircuts"
+    "en": "Haircuts",
+    "de": "Haarschnitt"
    },
    {
     "pt": "Coloração",
-    "en": "Colour"
+    "en": "Colour",
+    "de": "Färben"
    },
    {
     "pt": "Tratamentos",
-    "en": "Treatments"
+    "en": "Treatments",
+    "de": "Pflege"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Friseur in Porto",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
  },
  {
   "name": "Auto Vera Cruz",
@@ -65,17 +75,22 @@
   "items": [
    {
     "pt": "Revisões e manutenção",
-    "en": "Servicing & maintenance"
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
    },
    {
     "pt": "Mecânica geral",
-    "en": "General mechanics"
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
    },
    {
     "pt": "Diagnóstico",
-    "en": "Diagnostics"
+    "en": "Diagnostics",
+    "de": "Diagnose"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Auto in guten Händen in Aveiro",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
  },
  {
   "name": "Socielma",
@@ -91,17 +106,22 @@
   "items": [
    {
     "pt": "Instalações novas",
-    "en": "New installations"
+    "en": "New installations",
+    "de": "Neuinstallationen"
    },
    {
     "pt": "Manutenção",
-    "en": "Maintenance"
+    "en": "Maintenance",
+    "de": "Wartung"
    },
    {
     "pt": "Reparações",
-    "en": "Repairs"
+    "en": "Repairs",
+    "de": "Reparaturen"
    }
-  ]
+  ],
+  "headlineDe": "Elektroinstallationen in Coimbra",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
  },
  {
   "name": "Polaridade",
@@ -117,17 +137,22 @@
   "items": [
    {
     "pt": "Instalações novas",
-    "en": "New installations"
+    "en": "New installations",
+    "de": "Neuinstallationen"
    },
    {
     "pt": "Manutenção",
-    "en": "Maintenance"
+    "en": "Maintenance",
+    "de": "Wartung"
    },
    {
     "pt": "Reparações",
-    "en": "Repairs"
+    "en": "Repairs",
+    "de": "Reparaturen"
    }
-  ]
+  ],
+  "headlineDe": "Elektroinstallationen in Coimbra",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
  },
  {
   "name": "Auto Ideal da Fonte Nova",
@@ -143,17 +168,22 @@
   "items": [
    {
     "pt": "Revisões e manutenção",
-    "en": "Servicing & maintenance"
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
    },
    {
     "pt": "Mecânica geral",
-    "en": "General mechanics"
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
    },
    {
     "pt": "Diagnóstico",
-    "en": "Diagnostics"
+    "en": "Diagnostics",
+    "de": "Diagnose"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Auto in guten Händen in Leiria",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
  },
  {
   "name": "Serviços Joaninha",
@@ -169,17 +199,22 @@
   "items": [
    {
     "pt": "Limpeza de casas",
-    "en": "Home cleaning"
+    "en": "Home cleaning",
+    "de": "Wohnungsreinigung"
    },
    {
     "pt": "Limpeza de empresas",
-    "en": "Office cleaning"
+    "en": "Office cleaning",
+    "de": "Büroreinigung"
    },
    {
     "pt": "Orçamentos",
-    "en": "Quotes"
+    "en": "Quotes",
+    "de": "Angebote"
    }
-  ]
+  ],
+  "headlineDe": "Reinigungsservice in Vale de Santarém",
+  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an."
  },
  {
   "name": "Minutework Canalizações",
@@ -195,17 +230,22 @@
   "items": [
    {
     "pt": "Instalação de canalizações",
-    "en": "Plumbing installation"
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
    },
    {
     "pt": "Reparações e fugas",
-    "en": "Repairs & leaks"
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
    },
    {
     "pt": "Orçamentos",
-    "en": "Quotes"
+    "en": "Quotes",
+    "de": "Angebote"
    }
-  ]
+  ],
+  "headlineDe": "Sanitär in Setúbal",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
  },
  {
   "name": "Vitacli",
@@ -221,17 +261,22 @@
   "items": [
    {
     "pt": "Instalação de canalizações",
-    "en": "Plumbing installation"
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
    },
    {
     "pt": "Reparações e fugas",
-    "en": "Repairs & leaks"
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
    },
    {
     "pt": "Orçamentos",
-    "en": "Quotes"
+    "en": "Quotes",
+    "de": "Angebote"
    }
-  ]
+  ],
+  "headlineDe": "Sanitär in Setúbal",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
  },
  {
   "name": "Oficina José Barrigó",
@@ -247,17 +292,22 @@
   "items": [
    {
     "pt": "Revisões e manutenção",
-    "en": "Servicing & maintenance"
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
    },
    {
     "pt": "Mecânica geral",
-    "en": "General mechanics"
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
    },
    {
     "pt": "Diagnóstico",
-    "en": "Diagnostics"
+    "en": "Diagnostics",
+    "de": "Diagnose"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Auto in guten Händen in Évora",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
  },
  {
   "name": "A.J. Salvadinha",
@@ -273,17 +323,22 @@
   "items": [
    {
     "pt": "Revisões e manutenção",
-    "en": "Servicing & maintenance"
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
    },
    {
     "pt": "Mecânica geral",
-    "en": "General mechanics"
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
    },
    {
     "pt": "Diagnóstico",
-    "en": "Diagnostics"
+    "en": "Diagnostics",
+    "de": "Diagnose"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Auto in guten Händen in Évora",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
  },
  {
   "name": "Le Figaro",
@@ -299,17 +354,22 @@
   "items": [
    {
     "pt": "Cortes",
-    "en": "Haircuts"
+    "en": "Haircuts",
+    "de": "Haarschnitt"
    },
    {
     "pt": "Coloração",
-    "en": "Colour"
+    "en": "Colour",
+    "de": "Färben"
    },
    {
     "pt": "Tratamentos",
-    "en": "Treatments"
+    "en": "Treatments",
+    "de": "Pflege"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Friseur in Faro",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
  },
  {
   "name": "Veneauto",
@@ -325,17 +385,22 @@
   "items": [
    {
     "pt": "Revisões e manutenção",
-    "en": "Servicing & maintenance"
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
    },
    {
     "pt": "Mecânica geral",
-    "en": "General mechanics"
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
    },
    {
     "pt": "Diagnóstico",
-    "en": "Diagnostics"
+    "en": "Diagnostics",
+    "de": "Diagnose"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Auto in guten Händen in Funchal",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
  },
  {
   "name": "Ricardo Ramos Automecânica",
@@ -351,16 +416,21 @@
   "items": [
    {
     "pt": "Revisões e manutenção",
-    "en": "Servicing & maintenance"
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
    },
    {
     "pt": "Mecânica geral",
-    "en": "General mechanics"
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
    },
    {
     "pt": "Diagnóstico",
-    "en": "Diagnostics"
+    "en": "Diagnostics",
+    "de": "Diagnose"
    }
-  ]
+  ],
+  "headlineDe": "Ihr Auto in guten Händen in Funchal",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
  }
 ]

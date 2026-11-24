@@ -10,7 +10,9 @@
   "headlineEn": "Welcome to our table in Porto",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Porto",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Restaurante Mil-Homens",
@@ -23,7 +25,9 @@
   "headlineEn": "Welcome to our table in Marvão, since 1967",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Marvão, seit 1967",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Cá Te Espero",
@@ -36,7 +40,9 @@
   "headlineEn": "Welcome to our table in Funchal",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Funchal",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Fora d'Oras",
@@ -49,7 +55,9 @@
   "headlineEn": "Welcome to our table in Funchal",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Funchal",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Alecrim",
@@ -65,9 +73,12 @@
   "items": [
    {
     "pt": "Petiscos",
-    "en": "Petiscos"
+    "en": "Petiscos",
+    "de": "Petiscos (Häppchen)"
    }
-  ]
+  ],
+  "headlineDe": "Willkommen an unserem Tisch in Estremoz",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Dona Laura Vinhos e Petiscos",
@@ -83,13 +94,17 @@
   "items": [
    {
     "pt": "Petiscos",
-    "en": "Petiscos"
+    "en": "Petiscos",
+    "de": "Petiscos (Häppchen)"
    },
    {
     "pt": "Vinhos",
-    "en": "Wines"
+    "en": "Wines",
+    "de": "Weine"
    }
-  ]
+  ],
+  "headlineDe": "Willkommen an unserem Tisch in Évora",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "O Brinquinho",
@@ -102,7 +117,9 @@
   "headlineEn": "Welcome to our table in Funchal",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Funchal",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Refeitro da Baixa",
@@ -115,7 +132,9 @@
   "headlineEn": "Welcome to our table in Coimbra",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Coimbra",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Restaurante Dom Espeto",
@@ -128,7 +147,9 @@
   "headlineEn": "Welcome to our table in Coimbra",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Coimbra",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Marisqueira Munich",
@@ -144,9 +165,12 @@
   "items": [
    {
     "pt": "Marisco",
-    "en": "Seafood"
+    "en": "Seafood",
+    "de": "Meeresfrüchte"
    }
-  ]
+  ],
+  "headlineDe": "Willkommen an unserem Tisch in Coimbra",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Casa Velha",
@@ -162,9 +186,12 @@
   "items": [
    {
     "pt": "Chanfana",
-    "en": "Chanfana (goat stew)"
+    "en": "Chanfana (goat stew)",
+    "de": "Chanfana (Ziegenschmorgericht)"
    }
-  ]
+  ],
+  "headlineDe": "Willkommen an unserem Tisch in Lousã",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  },
  {
   "name": "Bijou",
@@ -177,6 +204,8 @@
   "headlineEn": "Welcome to our table in Figueira da Foz, since 1912",
   "leadPt": "Ligue para reservar ou apareça. Estamos à sua espera.",
   "leadEn": "Call to book a table or just drop by. We look forward to seeing you.",
-  "items": []
+  "items": [],
+  "headlineDe": "Willkommen an unserem Tisch in Figueira da Foz, seit 1912",
+  "leadDe": "Rufen Sie an und reservieren Sie, oder kommen Sie einfach vorbei."
  }
 ]
