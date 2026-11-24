@@ -15,8 +15,7 @@ e horário. Se gostar, ponho-o online com o vosso nome em poucos dias.
 Se não, não há qualquer compromisso.
 
 Cumprimentos,
-{{TEU_NOME}}
-FarolWeb · {{TEU_TELEFONE}}
+FarolWeb · +351 933 917 633 · farolweb.pt
 
 ---
 Recebeu este email por ser {{TIPO}} em Portugal sem site próprio (contacto
