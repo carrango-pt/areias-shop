@@ -1,7 +1,7 @@
 # FarolWeb Reel – „Exemplo grátis“ (21 s, 1080×1920)
 
-Datei: `farolweb-reel.mp4`. Ohne Musik: Musik direkt in der App hinzufügen (Instagram/TikTok-Bibliothek),
-dann ist sie lizenziert. Die gezeigten Betriebe sind erfunden (Tasca do Farol, Auto Serra, Salão Maré, Luz & Watt).
+Datei: `farolweb-reel.mp4`. Mit eigener, selbst komponierter Musik (Summer-Groove, 120 BPM, erzeugt mit `musik.py`)
+– keine Lizenzrechte Dritter, überall nutzbar (auch YouTube/LinkedIn). Lautheit -14 LUFS. Die gezeigten Betriebe sind erfunden (Tasca do Farol, Auto Serra, Salão Maré, Luz & Watt).
 
 ## Instagram Reels / Facebook Reels
 O seu negócio ainda não tem site? 🤔
