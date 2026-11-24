@@ -19,14 +19,14 @@ Cumprimentos,
 FarolWeb · {{TEU_TELEFONE}}
 
 ---
-Recebeu este email porque o vosso contacto está publicado em {{FONTE}}.
-Se não quiser receber mais mensagens, responda com **REMOVER** e o seu
-endereço será apagado da nossa lista de imediato.
+Recebeu este email por ser {{TIPO}} em Portugal sem site próprio (contacto
+publicado em {{FONTE}}). Se não pretende receber mais mensagens, responda com
+«remover» e deixamos de o contactar.
 
 ---
 
-## Abmelde-Regeln (intern)
-1. Antwortet jemand mit REMOVER / NÃO / „não quero“ → E-Mail sofort in
+## Abmelde-Regeln (intern, wie bei Carrango)
+1. Antwortet jemand mit «remover» / NÃO / „não quero“ → E-Mail sofort in
    `leads/abmeldungen.csv` eintragen und nie wieder anschreiben.
 2. Die tägliche Lead-Suche gleicht jede neue Adresse gegen
    `abmeldungen.csv` und `alle-leads.csv` ab (keine Doppelten).
