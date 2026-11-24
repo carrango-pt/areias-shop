@@ -1,0 +1,182 @@
+[
+ {
+  "name": "Tasca do Bairro",
+  "city": "Porto (Foz)",
+  "category": "Tasca",
+  "theme": "restaurant",
+  "email": "tascabairro@gmail.com",
+  "phone": "226 182 079",
+  "headlinePt": "Tasca em Porto",
+  "headlineEn": "Tasca in Porto",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Restaurante Mil-Homens",
+  "city": "Marvão (Portagem)",
+  "category": "Restaurante regional",
+  "theme": "restaurant",
+  "email": "restaurantemilhomens@gmail.com",
+  "phone": "245 993 122",
+  "headlinePt": "Restaurante regional em Marvão, desde 1967",
+  "headlineEn": "Restaurant in Marvão, since 1967",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Cá Te Espero",
+  "city": "Funchal",
+  "category": "Restaurante madeirense",
+  "theme": "restaurant",
+  "email": "cateespero1976@hotmail.com",
+  "phone": "291 765 096",
+  "headlinePt": "Restaurante madeirense em Funchal",
+  "headlineEn": "Restaurant in Funchal",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Fora d'Oras",
+  "city": "Funchal",
+  "category": "Gastrobar",
+  "theme": "restaurant",
+  "email": "restaurante.foradoras@gmail.com",
+  "phone": "291 772 122",
+  "headlinePt": "Gastrobar em Funchal",
+  "headlineEn": "Gastrobar in Funchal",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Alecrim",
+  "city": "Estremoz",
+  "category": "Restaurante e petiscos",
+  "theme": "restaurant",
+  "email": "alecrimestremoz@gmail.com",
+  "phone": "268 324 189",
+  "headlinePt": "Restaurante e petiscos em Estremoz",
+  "headlineEn": "Restaurant in Estremoz",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": [
+   {
+    "pt": "Petiscos",
+    "en": "Petiscos"
+   }
+  ]
+ },
+ {
+  "name": "Dona Laura Vinhos e Petiscos",
+  "city": "Évora",
+  "category": "Petiscos e vinhos",
+  "theme": "restaurant",
+  "email": "restaurantedonalaura1@gmail.com",
+  "phone": "266 755 040",
+  "headlinePt": "Petiscos e vinhos em Évora",
+  "headlineEn": "Restaurant in Évora",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": [
+   {
+    "pt": "Petiscos",
+    "en": "Petiscos"
+   },
+   {
+    "pt": "Vinhos",
+    "en": "Wines"
+   }
+  ]
+ },
+ {
+  "name": "O Brinquinho",
+  "city": "Funchal",
+  "category": "Restaurante típico",
+  "theme": "restaurant",
+  "email": "obrinquinhorestaurante@hotmail.com",
+  "phone": "291 282 357",
+  "headlinePt": "Restaurante típico em Funchal",
+  "headlineEn": "Restaurant in Funchal",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Refeitro da Baixa",
+  "city": "Coimbra",
+  "category": "Restaurante",
+  "theme": "restaurant",
+  "email": "refeitrorestaurante@gmail.com",
+  "phone": "239 820 080",
+  "headlinePt": "Restaurante em Coimbra",
+  "headlineEn": "Restaurant in Coimbra",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Restaurante Dom Espeto",
+  "city": "Coimbra",
+  "category": "Restaurante tradicional",
+  "theme": "restaurant",
+  "email": "dom.espeto@gmail.com",
+  "phone": "239 840 002",
+  "headlinePt": "Restaurante tradicional em Coimbra",
+  "headlineEn": "Restaurant in Coimbra",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ },
+ {
+  "name": "Marisqueira Munich",
+  "city": "Coimbra",
+  "category": "Marisqueira",
+  "theme": "restaurant",
+  "email": "marisqueiramunich@gmail.com",
+  "phone": "239 701 577",
+  "headlinePt": "Marisqueira em Coimbra",
+  "headlineEn": "Seafood restaurant in Coimbra",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": [
+   {
+    "pt": "Marisco",
+    "en": "Seafood"
+   }
+  ]
+ },
+ {
+  "name": "Casa Velha",
+  "city": "Lousã",
+  "category": "Restaurante regional",
+  "theme": "restaurant",
+  "email": "restaurantecasavelha@gmail.com",
+  "phone": "239 991 555",
+  "headlinePt": "Restaurante regional em Lousã",
+  "headlineEn": "Restaurant in Lousã",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": [
+   {
+    "pt": "Chanfana",
+    "en": "Chanfana (goat stew)"
+   }
+  ]
+ },
+ {
+  "name": "Bijou",
+  "city": "Figueira da Foz",
+  "category": "Restaurante familiar",
+  "theme": "restaurant",
+  "email": "bijoufigfoz@gmail.com",
+  "phone": "233 434 447",
+  "headlinePt": "Restaurante familiar em Figueira da Foz, desde 1912",
+  "headlineEn": "Restaurant in Figueira da Foz, since 1912",
+  "leadPt": "Ligue para reservar ou passe por cá. Veja abaixo como nos encontrar.",
+  "leadEn": "Call to book a table or just drop by. See below how to find us.",
+  "items": []
+ }
+]
