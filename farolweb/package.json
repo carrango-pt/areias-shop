@@ -1,0 +1,8 @@
+{
+  "name": "farolweb-demos",
+  "private": true,
+  "description": "FarolWeb Demo-Server und Kalt-Akquise",
+  "main": "server.js",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node server.js" }
+}

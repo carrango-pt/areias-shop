@@ -31,3 +31,8 @@ publicado em {{FONTE}}). Se não pretende receber mais mensagens, responda com
    `abmeldungen.csv` und `alle-leads.csv` ab (keine Doppelten).
 3. Jede Mail einzeln und persönlich senden, nicht als Massen-BCC.
 4. Pro Firma höchstens 1 Erst-Mail + 1 Nachfass-Mail nach ~7 Tagen.
+
+## Automatischer Versand (wie Carrango)
+Der Server `farolweb/server.js` verschickt die Einladung automatisch (HTML-Version
+dieses Textes) mit privatem Demo-Link `https://demo.farolweb.pt/d/<token>`.
+Die Liste `leads/JJJJ-MM-TT.md` dient nur noch zum Nachlesen bzw. für Handversand.

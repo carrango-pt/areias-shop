@@ -1,7 +1,6 @@
 // FarolWeb Demo-Generator: node build.js  → liest leads.json, schreibt out/<slug>.html
 // Nur echte Daten eintragen. Felder ohne Wert werden auf der Seite einfach weggelassen.
 const fs = require('fs'), path = require('path');
-const leads = JSON.parse(fs.readFileSync(process.argv[2] || path.join(__dirname, 'leads.json'), 'utf8'));
 
 const THEMES = {
   restaurant: { a: '#1d4e89', b: '#b5502b', bg: '#fbf6ec', icon: '🍽️' },
@@ -92,8 +91,12 @@ set((navigator.language||'pt').startsWith('pt')?'pt':'en');
 </script></body></html>`;
 }
 
+module.exports = { page, slug };
+if (require.main === module) {
+const leads = JSON.parse(fs.readFileSync(process.argv[2] || path.join(__dirname, 'leads.json'), 'utf8'));
 for (const L of leads) {
   const f = path.join(__dirname, 'demos', slug(L.name + '-' + L.city) + '.html');
   fs.writeFileSync(f, page(L));
   console.log('✔', path.basename(f));
+}
 }
