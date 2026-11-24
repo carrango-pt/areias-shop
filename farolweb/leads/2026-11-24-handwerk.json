@@ -1,0 +1,366 @@
+[
+ {
+  "name": "Lordgás",
+  "city": "Adaúfe, Braga",
+  "category": "Gás e canalização",
+  "theme": "home",
+  "email": "lordgas@sapo.pt",
+  "phone": "253 287 564",
+  "headlinePt": "Redes de gás e canalização em Braga",
+  "headlineEn": "Gas networks & plumbing in Braga",
+  "leadPt": "Montagem e reparação de redes de gás. Ligue e peça o seu orçamento.",
+  "leadEn": "Installation and repair of gas networks. Call for a quote.",
+  "items": [
+   {
+    "pt": "Montagem de redes de gás",
+    "en": "Gas network installation"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes"
+   }
+  ]
+ },
+ {
+  "name": "Chic Cabeleireiros",
+  "city": "Porto",
+  "category": "Cabeleireiro",
+  "theme": "beauty",
+  "email": "clequeiroz@hotmail.com",
+  "phone": "912 089 808",
+  "headlinePt": "O seu cabeleireiro em Porto",
+  "headlineEn": "Your hair salon in Porto",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments"
+   }
+  ]
+ },
+ {
+  "name": "Auto Vera Cruz",
+  "city": "Aveiro",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "autoveracruz@gmail.com",
+  "phone": "234 425 081",
+  "headlinePt": "O seu carro em boas mãos em Aveiro",
+  "headlineEn": "Your car in good hands in Aveiro",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics"
+   }
+  ]
+ },
+ {
+  "name": "Socielma",
+  "city": "Coimbra",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "socielma@gmail.com",
+  "phone": "916 880 664",
+  "headlinePt": "Instalações elétricas em Coimbra",
+  "headlineEn": "Electrical installations in Coimbra",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs"
+   }
+  ]
+ },
+ {
+  "name": "Polaridade",
+  "city": "Coimbra",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "polaridade.carlos@hotmail.com",
+  "phone": "239 431 371",
+  "headlinePt": "Instalações elétricas em Coimbra",
+  "headlineEn": "Electrical installations in Coimbra",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs"
+   }
+  ]
+ },
+ {
+  "name": "Auto Ideal da Fonte Nova",
+  "city": "Leiria",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "aifnleiria@gmail.com",
+  "phone": "244 723 542",
+  "headlinePt": "O seu carro em boas mãos em Leiria",
+  "headlineEn": "Your car in good hands in Leiria",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics"
+   }
+  ]
+ },
+ {
+  "name": "Serviços Joaninha",
+  "city": "Vale de Santarém",
+  "category": "Limpezas",
+  "theme": "home",
+  "email": "servicos-joaninha@hotmail.com",
+  "phone": "243 760 768",
+  "headlinePt": "Serviços de limpeza em Vale de Santarém",
+  "headlineEn": "Cleaning services in Vale de Santarém",
+  "leadPt": "Limpezas para casas e empresas. Peça o seu orçamento sem compromisso.",
+  "leadEn": "Cleaning for homes and businesses. Ask for a free quote.",
+  "items": [
+   {
+    "pt": "Limpeza de casas",
+    "en": "Home cleaning"
+   },
+   {
+    "pt": "Limpeza de empresas",
+    "en": "Office cleaning"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes"
+   }
+  ]
+ },
+ {
+  "name": "Minutework Canalizações",
+  "city": "Setúbal",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "mwcanalizacoes@gmail.com",
+  "phone": "265 241 236",
+  "headlinePt": "Canalizador em Setúbal",
+  "headlineEn": "Plumber in Setúbal",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes"
+   }
+  ]
+ },
+ {
+  "name": "Vitacli",
+  "city": "Setúbal",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "vitacli@hotmail.com",
+  "phone": "265 230 117",
+  "headlinePt": "Canalizador em Setúbal",
+  "headlineEn": "Plumber in Setúbal",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes"
+   }
+  ]
+ },
+ {
+  "name": "Oficina José Barrigó",
+  "city": "Évora",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "josebarrigo@hotmail.com",
+  "phone": "266 752 285",
+  "headlinePt": "O seu carro em boas mãos em Évora",
+  "headlineEn": "Your car in good hands in Évora",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics"
+   }
+  ]
+ },
+ {
+  "name": "A.J. Salvadinha",
+  "city": "Évora",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "a.j.salvadinha@live.com.pt",
+  "phone": "266 967 016",
+  "headlinePt": "O seu carro em boas mãos em Évora",
+  "headlineEn": "Your car in good hands in Évora",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics"
+   }
+  ]
+ },
+ {
+  "name": "Le Figaro",
+  "city": "Faro",
+  "category": "Cabeleireiro e estética",
+  "theme": "beauty",
+  "email": "lurdes_lefigaro@hotmail.com",
+  "phone": "289 821 149",
+  "headlinePt": "O seu cabeleireiro em Faro",
+  "headlineEn": "Your hair salon in Faro",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments"
+   }
+  ]
+ },
+ {
+  "name": "Veneauto",
+  "city": "Funchal",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "veneauto.lda@hotmail.com",
+  "phone": "291 782 159",
+  "headlinePt": "O seu carro em boas mãos em Funchal",
+  "headlineEn": "Your car in good hands in Funchal",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics"
+   }
+  ]
+ },
+ {
+  "name": "Ricardo Ramos Automecânica",
+  "city": "Funchal",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "ricardoramosautomecanica@gmail.com",
+  "phone": "291 221 593",
+  "headlinePt": "O seu carro em boas mãos em Funchal",
+  "headlineEn": "Your car in good hands in Funchal",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics"
+   }
+  ]
+ }
+]
