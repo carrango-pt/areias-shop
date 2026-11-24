@@ -75,7 +75,7 @@ function inviteEmail(x) {
 <p style="line-height:1.6">Reparei que ${n} ainda não tem um site próprio — quem procura no Google encontra apenas diretórios e redes sociais.</p>
 <p style="line-height:1.6">Por isso preparámos um exemplo gratuito de como poderia ficar. É <strong>privado</strong> — nada está publicado sem o seu “sim”.</p>
 <p style="text-align:center;margin:24px 0"><a href="${link}" style="background:#1d4e89;color:#fff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:9px;display:inline-block">Ver a minha página →</a></p>
-<p style="line-height:1.6">Funciona no telemóvel, em português e inglês, com botão para ligar, email e mapa. Se gostar, pomos o site online com o vosso nome em poucos dias. Se não, não há qualquer compromisso — basta responder a este email com dúvidas.</p>
+<p style="line-height:1.6">Funciona no telemóvel, em português, inglês e alemão, com botão para ligar, email e mapa. Se gostar, pomos o site online com o vosso nome em poucos dias. Se não, não há qualquer compromisso — basta responder a este email com dúvidas.</p>
 <p style="color:#555;font-size:14px;margin-top:20px">Cumprimentos,<br>FarolWeb · ${PHONE} · <a href="https://farolweb.pt" style="color:#1d4e89">farolweb.pt</a></p>
 <p style="color:#9aa7b4;font-size:11px;margin-top:18px;border-top:1px solid #eee;padding-top:12px">Recebeu este email por ser ${rest ? 'um restaurante' : 'uma empresa local'} em Portugal sem site próprio (contacto publicado em ${esc(host)}). Se não pretende receber mais mensagens, responda com «remover» e deixamos de o contactar.</p>
 </div></div></body></html>`;
