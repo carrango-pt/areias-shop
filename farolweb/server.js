@@ -9,17 +9,17 @@ const http = require('http'), fs = require('fs'), path = require('path'), crypto
 const { page } = require('./build.js');
 
 const PORT = process.env.PORT || 4700;
-const BASE_URL = (process.env.BASE_URL || 'https://demo.farolweb.pt').replace(/\/$/, '');
-const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const BASE_URL = String(process.env.BASE_URL || 'https://demo.farolweb.pt').trim().replace(/\/$/, '');
+const RESEND_API_KEY = String(process.env.RESEND_API_KEY || '').trim();
 const EMAIL_FROM = process.env.EMAIL_FROM || 'FarolWeb <ola@farolweb.pt>';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || '';          // bekommt Antworten (reply_to) + Hinweise
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';    // leer = Admin deaktiviert
-const TOKEN_SECRET = process.env.TOKEN_SECRET || '';        // nötig für stabile Demo-Links
+const TOKEN_SECRET = String(process.env.TOKEN_SECRET || '').trim();        // nötig für stabile Demo-Links
 const MAIL_ECHT = process.env.MAIL_ECHT === '1';
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || '20', 10);
-const UP_URL = (process.env.UPSTASH_REDIS_REST_URL || '').replace(/\/$/, '');
-const UP_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || '';
+const UP_URL = String(process.env.UPSTASH_REDIS_REST_URL || '').trim().replace(/\/$/, '');
+const UP_TOKEN = String(process.env.UPSTASH_REDIS_REST_TOKEN || '').trim();
 const PHONE = '+351 933 917 633', WA = '351933917633';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
