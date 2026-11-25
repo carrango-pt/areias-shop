@@ -1,0 +1,307 @@
+[
+ {
+  "name": "Pichelaria Picoutos",
+  "city": "Matosinhos",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "pichelariapicoutos@sapo.pt",
+  "phone": "229 020 556",
+  "headlinePt": "Canalizador em Matosinhos",
+  "headlineEn": "Plumber in Matosinhos",
+  "headlineDe": "Sanitär in Matosinhos",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ]
+ },
+ {
+  "name": "Aquecimonte",
+  "city": "Viseu",
+  "category": "Canalização e climatização",
+  "theme": "home",
+  "email": "aquecimonte@gmail.com",
+  "phone": "232 911 938",
+  "headlinePt": "Canalizador em Viseu",
+  "headlineEn": "Plumber in Viseu",
+  "headlineDe": "Sanitär in Viseu",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ]
+ },
+ {
+  "name": "Mecanifoz",
+  "city": "Viana do Castelo",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "mecanifoz@sapo.pt",
+  "phone": "258 971 286",
+  "headlinePt": "O seu carro em boas mãos em Viana do Castelo",
+  "headlineEn": "Your car in good hands in Viana do Castelo",
+  "headlineDe": "Ihr Auto in guten Händen in Viana do Castelo",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ]
+ },
+ {
+  "name": "Auto Sidnei",
+  "city": "Olhão",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "autosidney@sapo.pt",
+  "phone": "289 701 244",
+  "headlinePt": "O seu carro em boas mãos em Olhão",
+  "headlineEn": "Your car in good hands in Olhão",
+  "headlineDe": "Ihr Auto in guten Händen in Olhão",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ]
+ },
+ {
+  "name": "Canalizadora da Granja",
+  "city": "Vila Nova de Gaia",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "canalizadoragranja@sapo.pt",
+  "phone": "227 624 226",
+  "headlinePt": "Canalizador em Vila Nova de Gaia",
+  "headlineEn": "Plumber in Vila Nova de Gaia",
+  "headlineDe": "Sanitär in Vila Nova de Gaia",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ]
+ },
+ {
+  "name": "Serralharia A.S. Cardoso",
+  "city": "Vila Nova de Gaia",
+  "category": "Serralharia e caixilharia",
+  "theme": "home",
+  "email": "serralharia.ascardoso@gmail.com",
+  "phone": "227 828 986",
+  "headlinePt": "Serralharia em Vila Nova de Gaia",
+  "headlineEn": "Metalwork in Vila Nova de Gaia",
+  "headlineDe": "Schlosserei in Vila Nova de Gaia",
+  "leadPt": "Portões, grades, caixilharia e trabalhos à medida. Peça o seu orçamento.",
+  "leadEn": "Gates, railings, window frames and custom work. Ask for a quote.",
+  "leadDe": "Tore, Geländer, Fensterrahmen und Maßarbeit. Fragen Sie nach einem Angebot.",
+  "items": [
+   {
+    "pt": "Portões e grades",
+    "en": "Gates & railings",
+    "de": "Tore & Gitter"
+   },
+   {
+    "pt": "Caixilharia",
+    "en": "Window frames",
+    "de": "Fensterrahmen"
+   },
+   {
+    "pt": "Trabalhos à medida",
+    "en": "Custom work",
+    "de": "Maßanfertigung"
+   }
+  ]
+ },
+ {
+  "name": "Pereira Diniz & Santos",
+  "city": "Beja",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "pereiradinizesantoscanalizacoes@hotmail.com",
+  "phone": "962 987 604",
+  "headlinePt": "Canalizador em Beja",
+  "headlineEn": "Plumber in Beja",
+  "headlineDe": "Sanitär in Beja",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ]
+ },
+ {
+  "name": "Horalimpa",
+  "city": "Matosinhos",
+  "category": "Limpezas",
+  "theme": "home",
+  "email": "horalimpa@sapo.pt",
+  "phone": "229 552 162",
+  "headlinePt": "Serviços de limpeza em Matosinhos",
+  "headlineEn": "Cleaning services in Matosinhos",
+  "headlineDe": "Reinigungsservice in Matosinhos",
+  "leadPt": "Limpezas para casas e empresas. Peça o seu orçamento sem compromisso.",
+  "leadEn": "Cleaning for homes and businesses. Ask for a free quote.",
+  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an.",
+  "items": [
+   {
+    "pt": "Limpeza de casas",
+    "en": "Home cleaning",
+    "de": "Wohnungsreinigung"
+   },
+   {
+    "pt": "Limpeza de empresas",
+    "en": "Office cleaning",
+    "de": "Büroreinigung"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ]
+ },
+ {
+  "name": "Mimolava",
+  "city": "Almancil",
+  "category": "Lavandaria",
+  "theme": "home",
+  "email": "mimolava@gmail.com",
+  "phone": "289 355 730",
+  "headlinePt": "Lavandaria em Almancil",
+  "headlineEn": "Laundry in Almancil",
+  "headlineDe": "Wäscherei in Almancil",
+  "leadPt": "Lavagem e engomadoria. Ligue para saber mais.",
+  "leadEn": "Washing and ironing. Call to find out more.",
+  "leadDe": "Waschen und Bügeln. Rufen Sie an für mehr Infos.",
+  "items": [
+   {
+    "pt": "Lavagem",
+    "en": "Washing",
+    "de": "Waschen"
+   },
+   {
+    "pt": "Engomadoria",
+    "en": "Ironing",
+    "de": "Bügeln"
+   }
+  ]
+ },
+ {
+  "name": "Electrodinâmicaçor",
+  "city": "Ponta Delgada",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "electrodinamicacor@gmail.com",
+  "phone": "296 916 944",
+  "headlinePt": "Instalações elétricas em Ponta Delgada",
+  "headlineEn": "Electrical installations in Ponta Delgada",
+  "headlineDe": "Elektroinstallationen in Ponta Delgada",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ]
+ }
+]
