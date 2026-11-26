@@ -1,0 +1,312 @@
+[
+ {
+  "name": "Garagem Cernache",
+  "city": "Maia",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "garagemcernache@hotmail.com",
+  "phone": "229 028 003",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Maia",
+  "headlineEn": "Your car in good hands in Maia",
+  "headlineDe": "Ihr Auto in guten Händen in Maia",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ },
+ {
+  "name": "Joaquim Furtado",
+  "city": "Lagos",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "furtado_joaquim@hotmail.com",
+  "phone": "282 798 084",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Canalizador em Lagos",
+  "headlineEn": "Plumber in Lagos",
+  "headlineDe": "Sanitär in Lagos",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+ },
+ {
+  "name": "Elonogueira",
+  "city": "Maia",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "elonogueira@sapo.pt",
+  "phone": "229 439 010",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Maia",
+  "headlineEn": "Your car in good hands in Maia",
+  "headlineDe": "Ihr Auto in guten Händen in Maia",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ },
+ {
+  "name": "Carepairs",
+  "city": "Viana do Castelo",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "carepairs_lda@hotmail.com",
+  "phone": "258 915 071",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Viana do Castelo",
+  "headlineEn": "Your car in good hands in Viana do Castelo",
+  "headlineDe": "Ihr Auto in guten Händen in Viana do Castelo",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ },
+ {
+  "name": "Martins & Felgueira",
+  "city": "Viseu",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "martinsefelgueira@hotmail.com",
+  "phone": "232 422 060",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Viseu",
+  "headlineEn": "Your car in good hands in Viseu",
+  "headlineDe": "Ihr Auto in guten Händen in Viseu",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ },
+ {
+  "name": "Canocalor",
+  "city": "Leiria",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "canocalor@sapo.pt",
+  "phone": "244 722 581",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Canalizador em Leiria",
+  "headlineEn": "Plumber in Leiria",
+  "headlineDe": "Sanitär in Leiria",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+ },
+ {
+  "name": "Leiricontrol",
+  "city": "Leiria",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "leiricontrol@gmail.com",
+  "phone": "919 265 988",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ],
+  "headlinePt": "Instalações elétricas em Leiria",
+  "headlineEn": "Electrical installations in Leiria",
+  "headlineDe": "Elektroinstallationen in Leiria",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+ },
+ {
+  "name": "Marinheiros Auto",
+  "city": "Marinha Grande",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "marinheirosauto.lda@gmail.com",
+  "phone": "244 541 668",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Marinha Grande",
+  "headlineEn": "Your car in good hands in Marinha Grande",
+  "headlineDe": "Ihr Auto in guten Händen in Marinha Grande",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ },
+ {
+  "name": "Muniauto",
+  "city": "Alcanede",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "alcanedemuniauto@gmail.com",
+  "phone": "243 400 327",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Alcanede",
+  "headlineEn": "Your car in good hands in Alcanede",
+  "headlineDe": "Ihr Auto in guten Händen in Alcanede",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ },
+ {
+  "name": "Miranda & Antunes",
+  "city": "Torres Vedras",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "mirandaeantuneslda@gmail.com",
+  "phone": "261 951 233",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "headlinePt": "O seu carro em boas mãos em Torres Vedras",
+  "headlineEn": "Your car in good hands in Torres Vedras",
+  "headlineDe": "Ihr Auto in guten Händen in Torres Vedras",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+ }
+]
