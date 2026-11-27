@@ -18,6 +18,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';    // leer = Admin deak
 const TOKEN_SECRET = String(process.env.TOKEN_SECRET || '').trim();        // nötig für stabile Demo-Links
 const MAIL_ECHT = process.env.MAIL_ECHT === '1';
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || '20', 10);
+const FOLLOW_SIZE = parseInt(process.env.FOLLOW_SIZE || '20', 10);   // Nachfass-Mails pro Tag
 const UP_URL = String(process.env.UPSTASH_REDIS_REST_URL || '').trim().replace(/\/$/, '');
 const UP_TOKEN = String(process.env.UPSTASH_REDIS_REST_TOKEN || '').trim();
 const PHONE = '+351 933 917 633', WA = '351933917633';
@@ -63,22 +64,31 @@ async function sendEmail(to, subject, html) {
   return true;
 }
 
-function inviteEmail(x) {
-  const n = esc(x.L.name), link = `${BASE_URL}/d/${x.token}`;
+function footer(x) {
   const rest = x.L.theme === 'restaurant' || x.L.theme === 'cafe';
   const host = (() => { try { return new URL(x.quelle).hostname.replace(/^www\./, ''); } catch { return 'diretórios online'; } })();
-  return `<!doctype html><html><body style="margin:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#222">
-<div style="max-width:560px;margin:0 auto;padding:24px 16px"><div style="background:#fff;border-radius:12px;padding:26px 24px">
-<p style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#b5502b;margin:0 0 6px;font-weight:bold">FarolWeb</p>
-<h1 style="font-size:20px;margin:0 0 14px;color:#12345e">Já preparámos uma página para ${n} 👀</h1>
-<p style="line-height:1.6">Olá ${n},</p>
-<p style="line-height:1.6">Reparei que ${n} ainda não tem um site próprio — quem procura no Google encontra apenas diretórios e redes sociais.</p>
-<p style="line-height:1.6">Por isso preparámos um exemplo gratuito de como poderia ficar. É <strong>privado</strong> — nada está publicado sem o seu “sim”.</p>
-<p style="text-align:center;margin:24px 0"><a href="${link}" style="background:#1d4e89;color:#fff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:9px;display:inline-block">Ver a minha página →</a></p>
-<p style="line-height:1.6">Funciona no telemóvel, em português, inglês e alemão, com botão para ligar, email e mapa. Se gostar, pomos o site online com o vosso nome em poucos dias. Se não, não há qualquer compromisso — basta responder a este email com dúvidas.</p>
-<p style="color:#555;font-size:14px;margin-top:20px">Cumprimentos,<br>FarolWeb · ${PHONE} · <a href="https://farolweb.pt" style="color:#1d4e89">farolweb.pt</a></p>
-<p style="color:#9aa7b4;font-size:11px;margin-top:18px;border-top:1px solid #eee;padding-top:12px">Recebeu este email por ser ${rest ? 'um restaurante' : 'uma empresa local'} em Portugal sem site próprio (contacto publicado em ${esc(host)}). Se não pretende receber mais mensagens, responda com «remover» e deixamos de o contactar.</p>
-</div></div></body></html>`;
+  return `<p style="color:#9aa7b4;font-size:11px;margin-top:22px;border-top:1px solid #eee;padding-top:10px">Recebeu este email por ser ${rest ? 'um restaurante' : 'uma empresa local'} em Portugal sem site próprio (contacto publicado em ${esc(host)}). Se não pretende receber mais mensagens, responda com «remover» e deixamos de o contactar.</p>`;
+}
+const SIGN = `<p style="margin-top:18px">Cumprimentos,<br>Carsten<br>FarolWeb · ${PHONE} · <a href="https://farolweb.pt">farolweb.pt</a></p>`;
+const WRAP = b => `<!doctype html><html><body style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#222;max-width:560px">${b}</body></html>`;
+
+function inviteSubject(x) { return `${x.L.name}: fiz-lhe um site de exemplo (grátis)`; }
+function inviteEmail(x) {
+  const n = esc(x.L.name), link = `${BASE_URL}/d/${x.token}`;
+  return WRAP(`<p>Olá,</p>
+<p>Procurei ${n} no Google e só encontrei diretórios e redes sociais — ainda não há um site próprio.</p>
+<p>Por isso fiz-lhe um exemplo, já com o vosso nome, telefone e mapa:<br>
+👉 <a href="${link}" style="font-weight:bold">${link.replace(/^https:\/\//, '')}</a></p>
+<p>É privado e gratuito. Funciona no telemóvel, em português, inglês e alemão. Se gostar, ponho-o online em poucos dias; se não, não há compromisso nenhum.</p>
+<p>Basta responder a este email ou ligar.</p>${SIGN}${footer(x)}`);
+}
+function followSubject(x) { return `Re: ${inviteSubject(x)}`; }
+function followEmail(x) {
+  const n = esc(x.L.name), link = `${BASE_URL}/d/${x.token}`;
+  return WRAP(`<p>Olá,</p>
+<p>Só para confirmar se recebeu o exemplo de site que fiz para ${n} há uns dias:<br>
+👉 <a href="${link}" style="font-weight:bold">${link.replace(/^https:\/\//, '')}</a></p>
+<p>Demora 30 segundos a ver no telemóvel. Se não tiver interesse, sem problema — não volto a escrever.</p>${SIGN}${footer(x)}`);
 }
 
 // ---------- Warteschlange (1 Schub pro Tag, Mo–Fr 9–18 h Lissabon) ----------
@@ -100,14 +110,27 @@ async function processQueue() {
       if (sent >= BATCH_SIZE) break;
       if (DATA.blocked.has(x.email) || await redis('SISMEMBER', 'fw:blocked', x.email)) continue;
       if (await redis('SISMEMBER', 'fw:sent', x.email)) continue;
-      const ok = await sendEmail(x.email, `Uma página para ${x.L.name} — já fizemos um exemplo`, inviteEmail(x));
+      const ok = await sendEmail(x.email, inviteSubject(x), inviteEmail(x));
       if (ok && MAIL_ECHT) { await redis('SADD', 'fw:sent', x.email); await redis('HSET', 'fw:sent_at', x.email, Date.now()); sent++; }
+      await new Promise(r => setTimeout(r, 400));
+    }
+    // Nachfass-Mail: einmalig, frühestens 4 Tage nach der Einladung, nur wenn die Demo nicht geöffnet wurde
+    let follow = 0;
+    for (const x of DATA.leads) {
+      if (follow >= FOLLOW_SIZE) break;
+      const at = parseInt(await redis('HGET', 'fw:sent_at', x.email) || '0', 10);
+      if (!at || Date.now() - at < 4 * 86400000) continue;
+      if (DATA.blocked.has(x.email) || await redis('SISMEMBER', 'fw:blocked', x.email)) continue;
+      if (await redis('SISMEMBER', 'fw:followed', x.email)) continue;
+      if (await redis('HGET', 'fw:views', x.email)) continue;
+      const ok = await sendEmail(x.email, followSubject(x), followEmail(x));
+      if (ok && MAIL_ECHT) { await redis('SADD', 'fw:followed', x.email); follow++; }
       await new Promise(r => setTimeout(r, 400));
     }
     await redis('SET', 'fw:last_batch_day', t.day);
     const left = DATA.leads.length - (await redis('SCARD', 'fw:sent'));
-    console.log(`Schub: ${sent} gesendet, noch ca. ${left} offen`);
-    if (sent && ADMIN_EMAIL) await sendEmail(ADMIN_EMAIL, `📤 FarolWeb: ${sent} Einladung(en) gesendet`, `<p>Heute automatisch gesendet: <b>${sent}</b>. Noch ca. <b>${left}</b> in der Warteschlange.</p><p><a href="${BASE_URL}/admin">Übersicht</a></p>`);
+    console.log(`Schub: ${sent} gesendet, ${follow} nachgefasst, noch ca. ${left} offen`);
+    if ((sent || follow) && ADMIN_EMAIL) await sendEmail(ADMIN_EMAIL, `📤 FarolWeb: ${sent} Einladung(en), ${follow} Nachfass-Mail(s)`, `<p>Heute automatisch gesendet: <b>${sent}</b> Einladungen, <b>${follow}</b> Nachfass-Mails. Noch ca. <b>${left}</b> in der Warteschlange.</p><p><a href="${BASE_URL}/admin">Übersicht</a></p>`);
   } catch (e) { console.error('Warteschlange:', e.message); } finally { running = false; }
 }
 setInterval(() => processQueue(), 30 * 60 * 1000).unref();
