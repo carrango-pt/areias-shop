@@ -1,0 +1,281 @@
+[
+ {
+  "name": "Asseio",
+  "city": "Aveiro",
+  "category": "Limpezas",
+  "theme": "home",
+  "email": "asseio@sapo.pt",
+  "phone": "234 342 815",
+  "items": [
+   {
+    "pt": "Limpeza de casas",
+    "en": "Home cleaning",
+    "de": "Wohnungsreinigung"
+   },
+   {
+    "pt": "Limpeza de empresas",
+    "en": "Office cleaning",
+    "de": "Büroreinigung"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Serviços de limpeza em Aveiro",
+  "headlineEn": "Cleaning services in Aveiro",
+  "headlineDe": "Reinigungsservice in Aveiro",
+  "leadPt": "Limpezas para casas e empresas. Peça o seu orçamento sem compromisso.",
+  "leadEn": "Cleaning for homes and businesses. Ask for a free quote.",
+  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an."
+ },
+ {
+  "name": "Cruzamétodo",
+  "city": "Setúbal",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "cruzametodo@gmail.com",
+  "phone": "967 096 659",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Canalizador em Setúbal",
+  "headlineEn": "Plumber in Setúbal",
+  "headlineDe": "Sanitär in Setúbal",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+ },
+ {
+  "name": "Leiriléctrica",
+  "city": "Leiria",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "leirilectrica@gmail.com",
+  "phone": "244 826 755",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ],
+  "headlinePt": "Instalações elétricas em Leiria",
+  "headlineEn": "Electrical installations in Leiria",
+  "headlineDe": "Elektroinstallationen in Leiria",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+ },
+ {
+  "name": "Pimenta & Rui",
+  "city": "Seixal",
+  "category": "Cabeleireiro",
+  "theme": "beauty",
+  "email": "pimenta.ruicabeleireiro@gmail.com",
+  "phone": "212 249 889",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts",
+    "de": "Haarschnitt"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour",
+    "de": "Färben"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments",
+    "de": "Pflege"
+   }
+  ],
+  "headlinePt": "O seu cabeleireiro em Seixal",
+  "headlineEn": "Your hair salon in Seixal",
+  "headlineDe": "Ihr Friseur in Seixal",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
+ },
+ {
+  "name": "Mafalda Cabeleireiros",
+  "city": "Seixal",
+  "category": "Cabeleireiro",
+  "theme": "beauty",
+  "email": "mccabeleireiroslda@hotmail.com",
+  "phone": "212 532 972",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts",
+    "de": "Haarschnitt"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour",
+    "de": "Färben"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments",
+    "de": "Pflege"
+   }
+  ],
+  "headlinePt": "O seu cabeleireiro em Seixal",
+  "headlineEn": "Your hair salon in Seixal",
+  "headlineDe": "Ihr Friseur in Seixal",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
+ },
+ {
+  "name": "Monta",
+  "city": "Palmela",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "comercial.monta@gmail.com",
+  "phone": "212 871 258",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ],
+  "headlinePt": "Instalações elétricas em Palmela",
+  "headlineEn": "Electrical installations in Palmela",
+  "headlineDe": "Elektroinstallationen in Palmela",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+ },
+ {
+  "name": "Pinhal Fase",
+  "city": "Pinhal Novo",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "pinhalfase@gmail.com",
+  "phone": "210 878 542",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ],
+  "headlinePt": "Instalações elétricas em Pinhal Novo",
+  "headlineEn": "Electrical installations in Pinhal Novo",
+  "headlineDe": "Elektroinstallationen in Pinhal Novo",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+ },
+ {
+  "name": "Jardins da Boavista",
+  "city": "Loures",
+  "category": "Jardinagem",
+  "theme": "home",
+  "email": "jardinsdaboavista@sapo.pt",
+  "phone": "210 446 267",
+  "items": [
+   {
+    "pt": "Manutenção de jardins",
+    "en": "Garden maintenance",
+    "de": "Gartenpflege"
+   },
+   {
+    "pt": "Corte de relva",
+    "en": "Lawn mowing",
+    "de": "Rasenmähen"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Jardinagem em Loures",
+  "headlineEn": "Gardening in Loures",
+  "headlineDe": "Gartenpflege in Loures",
+  "leadPt": "Manutenção de jardins para casas e empresas. Peça o seu orçamento.",
+  "leadEn": "Garden maintenance for homes and businesses. Ask for a quote.",
+  "leadDe": "Gartenpflege für Privat und Gewerbe. Fragen Sie nach einem Angebot."
+ },
+ {
+  "name": "Waternow",
+  "city": "Portimão",
+  "category": "Canalizador",
+  "theme": "home",
+  "email": "geralwaternow@gmail.com",
+  "phone": "212 101 332",
+  "items": [
+   {
+    "pt": "Instalação de canalizações",
+    "en": "Plumbing installation",
+    "de": "Leitungsinstallation"
+   },
+   {
+    "pt": "Reparações e fugas",
+    "en": "Repairs & leaks",
+    "de": "Reparaturen & Lecks"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Canalizador em Portimão",
+  "headlineEn": "Plumber in Portimão",
+  "headlineDe": "Sanitär in Portimão",
+  "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
+  "leadEn": "Plumbing installation and repairs. Call for a quote.",
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+ }
+]
