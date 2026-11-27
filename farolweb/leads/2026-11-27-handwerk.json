@@ -28,7 +28,8 @@
   "headlineDe": "Reinigungsservice in Aveiro",
   "leadPt": "Limpezas para casas e empresas. Peça o seu orçamento sem compromisso.",
   "leadEn": "Cleaning for homes and businesses. Ask for a free quote.",
-  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an."
+  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an.",
+  "since": 1988
  },
  {
   "name": "Cruzamétodo",
@@ -59,7 +60,8 @@
   "headlineDe": "Sanitär in Setúbal",
   "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
   "leadEn": "Plumbing installation and repairs. Call for a quote.",
-  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "since": 2011
  },
  {
   "name": "Leiriléctrica",
@@ -90,7 +92,8 @@
   "headlineDe": "Elektroinstallationen in Leiria",
   "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
   "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
-  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 1979
  },
  {
   "name": "Pimenta & Rui",
@@ -121,7 +124,8 @@
   "headlineDe": "Ihr Friseur in Seixal",
   "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
   "leadEn": "Cuts, colour and treatments. Call to book.",
-  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 1997
  },
  {
   "name": "Mafalda Cabeleireiros",
@@ -152,7 +156,8 @@
   "headlineDe": "Ihr Friseur in Seixal",
   "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
   "leadEn": "Cuts, colour and treatments. Call to book.",
-  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 1988
  },
  {
   "name": "Monta",
@@ -183,7 +188,8 @@
   "headlineDe": "Elektroinstallationen in Palmela",
   "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
   "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
-  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 1990
  },
  {
   "name": "Pinhal Fase",
@@ -214,7 +220,8 @@
   "headlineDe": "Elektroinstallationen in Pinhal Novo",
   "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
   "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
-  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 2004
  },
  {
   "name": "Jardins da Boavista",
@@ -245,7 +252,8 @@
   "headlineDe": "Gartenpflege in Loures",
   "leadPt": "Manutenção de jardins para casas e empresas. Peça o seu orçamento.",
   "leadEn": "Garden maintenance for homes and businesses. Ask for a quote.",
-  "leadDe": "Gartenpflege für Privat und Gewerbe. Fragen Sie nach einem Angebot."
+  "leadDe": "Gartenpflege für Privat und Gewerbe. Fragen Sie nach einem Angebot.",
+  "since": 2002
  },
  {
   "name": "Waternow",
@@ -276,6 +284,7 @@
   "headlineDe": "Sanitär in Portimão",
   "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
   "leadEn": "Plumbing installation and repairs. Call for a quote.",
-  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "since": 2010
  }
 ]

@@ -28,7 +28,8 @@
    }
   ],
   "headlineDe": "Gasleitungen & Sanitär in Braga",
-  "leadDe": "Montage und Reparatur von Gasleitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Montage und Reparatur von Gasleitungen. Rufen Sie an für ein Angebot.",
+  "since": 1998
  },
  {
   "name": "Chic Cabeleireiros",
@@ -59,7 +60,8 @@
    }
   ],
   "headlineDe": "Ihr Friseur in Porto",
-  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 2008
  },
  {
   "name": "Auto Vera Cruz",
@@ -90,7 +92,8 @@
    }
   ],
   "headlineDe": "Ihr Auto in guten Händen in Aveiro",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2004
  },
  {
   "name": "Socielma",
@@ -121,7 +124,8 @@
    }
   ],
   "headlineDe": "Elektroinstallationen in Coimbra",
-  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 1990
  },
  {
   "name": "Polaridade",
@@ -152,7 +156,8 @@
    }
   ],
   "headlineDe": "Elektroinstallationen in Coimbra",
-  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 2001
  },
  {
   "name": "Auto Ideal da Fonte Nova",
@@ -183,7 +188,8 @@
    }
   ],
   "headlineDe": "Ihr Auto in guten Händen in Leiria",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 1956
  },
  {
   "name": "Serviços Joaninha",
@@ -214,7 +220,8 @@
    }
   ],
   "headlineDe": "Reinigungsservice in Vale de Santarém",
-  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an."
+  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an.",
+  "since": 2010
  },
  {
   "name": "Minutework Canalizações",
@@ -245,7 +252,8 @@
    }
   ],
   "headlineDe": "Sanitär in Setúbal",
-  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "since": 2008
  },
  {
   "name": "Vitacli",
@@ -276,7 +284,8 @@
    }
   ],
   "headlineDe": "Sanitär in Setúbal",
-  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "since": 2001
  },
  {
   "name": "Oficina José Barrigó",
@@ -307,7 +316,8 @@
    }
   ],
   "headlineDe": "Ihr Auto in guten Händen in Évora",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2007
  },
  {
   "name": "A.J. Salvadinha",
@@ -338,7 +348,8 @@
    }
   ],
   "headlineDe": "Ihr Auto in guten Händen in Évora",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2010
  },
  {
   "name": "Le Figaro",
@@ -369,7 +380,8 @@
    }
   ],
   "headlineDe": "Ihr Friseur in Faro",
-  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin."
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 1986
  },
  {
   "name": "Veneauto",
@@ -400,7 +412,8 @@
    }
   ],
   "headlineDe": "Ihr Auto in guten Händen in Funchal",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2010
  },
  {
   "name": "Ricardo Ramos Automecânica",
@@ -431,6 +444,7 @@
    }
   ],
   "headlineDe": "Ihr Auto in guten Händen in Funchal",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2004
  }
 ]

@@ -151,6 +151,13 @@ http.createServer(async (req, res) => {
     if (url.pathname === '/health') return send(200, 'ok', 'text/plain');
     if (url.pathname === '/robots.txt') return send(200, 'User-agent: *\nDisallow: /\n', 'text/plain');
     if (url.pathname === '/') return send(302, '', 'text/plain', { location: 'https://farolweb.pt' });
+    const im = url.pathname.match(/^\/img\/([a-z0-9-]+\.(jpg|png|webp))$/);
+    if (im) {
+      const f = path.join(__dirname, 'img', im[1]);
+      if (!fs.existsSync(f)) return send(404, 'not found', 'text/plain');
+      res.writeHead(200, { 'content-type': im[2] === 'jpg' ? 'image/jpeg' : 'image/' + im[2], 'cache-control': 'public, max-age=604800' });
+      return fs.createReadStream(f).pipe(res);
+    }
 
     const m = url.pathname.match(/^\/d\/([a-f0-9]{20})$/);
     if (m) {

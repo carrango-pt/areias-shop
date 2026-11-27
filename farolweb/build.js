@@ -16,6 +16,8 @@ const PAT = {
   dots: `<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><circle cx='3' cy='3' r='1.6' fill='white' fill-opacity='.14'/></svg>`,
   grid: `<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M40 0H0v40' fill='none' stroke='white' stroke-opacity='.08' stroke-width='1.5'/></svg>`,
 };
+const IMG = 'https://demo.farolweb.pt/img/';
+const PHOTOS = { restaurant: ['restaurant-1.jpg', 'restaurant-2.jpg'], plumb: ['plumb-1.jpg', 'plumb-2.jpg'], gas: ['plumb-2.jpg', 'plumb-1.jpg'], clean: ['clean-1.jpg'], beauty: ['beauty-1.jpg'] };
 const patUrl = s => `url("data:image/svg+xml,${encodeURIComponent(s)}")`;
 
 // Große Illustrationen je Branche (eigene, einfache Vektorgrafiken)
@@ -53,7 +55,7 @@ const TXT = {
     svcK: { restaurant: 'Bem-vindo', cafe: 'Bem-vindo', other: 'Serviços' },
     svcH: { restaurant: 'À sua mesa', cafe: 'O que servimos', other: 'Como podemos ajudar' },
     galK: 'Galeria', galH: 'Fotografias', galP: 'Aqui entram as vossas fotografias — tiramo-las nós, no local.',
-    contactK: 'Contacto', contactH: 'Fale connosco', langs: 'PT · EN · DE',
+    since: 'Desde', years: 'anos de experiência', illu: 'Imagem ilustrativa', galP2: 'Imagens ilustrativas — aqui entram as vossas fotografias, tiradas no local.', contactK: 'Contacto', contactH: 'Fale connosco', langs: 'PT · EN · DE',
     hours: 'Horário', foot: 'Página de exemplo criada por FarolWeb · farolweb.pt', bCall: 'Ligar', bMap: 'Mapa', bMail: 'Email',
   },
   en: {
@@ -62,7 +64,7 @@ const TXT = {
     svcK: { restaurant: 'Welcome', cafe: 'Welcome', other: 'Services' },
     svcH: { restaurant: 'At your table', cafe: 'What we serve', other: 'How we can help' },
     galK: 'Gallery', galH: 'Photos', galP: 'Your photos go here — we take them on site.',
-    contactK: 'Contact', contactH: 'Get in touch', langs: 'PT · EN · DE',
+    since: 'Since', years: 'years of experience', illu: 'Illustrative image', galP2: 'Illustrative images — your own photos go here, taken on site.', contactK: 'Contact', contactH: 'Get in touch', langs: 'PT · EN · DE',
     hours: 'Opening hours', foot: 'Example page created by FarolWeb · farolweb.pt', bCall: 'Call', bMap: 'Map', bMail: 'Email',
   },
   de: {
@@ -71,7 +73,7 @@ const TXT = {
     svcK: { restaurant: 'Willkommen', cafe: 'Willkommen', other: 'Leistungen' },
     svcH: { restaurant: 'An Ihrem Tisch', cafe: 'Unser Angebot', other: 'So helfen wir Ihnen' },
     galK: 'Galerie', galH: 'Fotos', galP: 'Hier kommen Ihre Fotos hin — wir machen sie vor Ort.',
-    contactK: 'Kontakt', contactH: 'Schreiben Sie uns', langs: 'PT · EN · DE',
+    since: 'Seit', years: 'Jahre Erfahrung', illu: 'Beispielbild', galP2: 'Beispielbilder — hier kommen Ihre eigenen Fotos hin, vor Ort aufgenommen.', contactK: 'Kontakt', contactH: 'Schreiben Sie uns', langs: 'PT · EN · DE',
     hours: 'Öffnungszeiten', foot: 'Beispielseite erstellt von FarolWeb · farolweb.pt', bCall: 'Anrufen', bMap: 'Karte', bMail: 'E-Mail',
   },
 };
@@ -101,6 +103,17 @@ function page(L) {
   const cards = items.map(i => `<div class="card"><div class="ci">${i.i}</div><h3 data-pt="${esc(i.pt)}" data-en="${esc(i.en || i.pt)}" data-de="${esc(i.de || i.en || i.pt)}"></h3>${i.dpt ? `<p data-pt="${esc(i.dpt)}" data-en="${esc(i.den || i.dpt)}" data-de="${esc(i.dde || i.den || i.dpt)}"></p>` : ''}</div>`).join('');
   const hours = (L.hours || []).map(h => `<div><span data-pt="${esc(h.pt)}" data-en="${esc(h.en || h.pt)}"></span><span data-pt="${esc(h.timePt)}" data-en="${esc(h.timeEn || h.timePt)}"></span></div>`).join('');
   const city = esc(String(L.city).split('(')[0].trim());
+  const ak = artKey(L), photos = PHOTOS[ak] || PHOTOS[L.theme] || [];
+  const hero = photos[0] ? IMG + photos[0] : '';
+  const yrs = L.since ? new Date().getFullYear() - L.since : 0;
+  const sinceTxt = L.since ? `<span data-t="since"></span> ${L.since}` : '';
+  const heroRight = hero
+    ? (yrs ? `<div class="badge"><div><span data-t="since"></span><b>${L.since}</b><span>${yrs} <span data-t="years"></span></span></div></div>` : '<div></div>')
+    : `<div class="art">${ART[ak]}</div>`;
+  const chip3 = L.since
+    ? `<div class="chip"><span>📅</span><div>${sinceTxt}<small>${yrs} <span data-t="years"></span></small></div></div>`
+    : '<div class="chip"><span>🌍</span><div data-t="langs"></div></div>';
+  const gal = [...photos.map(f => `<div class="ph gp" style="background-image:url('${IMG}${f}')"></div>`), ...Array(5).fill('<div class="ph">📷</div>')].slice(0, 5).join('');
   return `<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(L.name)} · ${esc(L.city)}</title><meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -121,6 +134,12 @@ header{position:absolute;left:0;right:0;z-index:5}header .w{display:flex;justify
 .hero p{color:rgba(255,255,255,.7);max-width:34em;margin-bottom:28px}
 .btns{display:flex;flex-wrap:wrap;gap:12px}.btn{text-decoration:none;font-weight:700;border-radius:12px;padding:14px 22px;font-size:15px}
 .p{background:var(--b);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.25)}.s{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff}
+.hero.ph1{background:#111 url('${hero}') center/cover no-repeat}.hero.ph1:before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.3) 100%)}
+.hero .w{position:relative;z-index:1}.illu{position:absolute;right:14px;bottom:72px;z-index:2;font-size:11px;color:rgba(255,255,255,.65)}
+.badge{justify-self:center;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);display:grid;place-items:center;text-align:center;color:#fff}
+.badge b{display:block;font:800 64px/1.05 Fraunces,serif}.badge span{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.gp{background-color:#ccc!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+@media(max-width:820px){.badge{width:150px;height:150px}.badge b{font-size:40px}}
 .art{width:100%;max-width:380px;justify-self:center;filter:drop-shadow(0 25px 40px rgba(0,0,0,.35))}
 .wave{display:block;width:100%;height:60px;margin-top:-1px}
 .strip{margin-top:-34px;position:relative;z-index:2}.strip .w{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -150,21 +169,21 @@ footer{background:#111;color:#aab;padding:30px 0 100px;font-size:14px}footer b{c
 <div class="demo" data-t="demo"></div>
 <div style="position:relative"><header><div class="w"><div class="logo">${esc(L.name)}</div>
 <div class="lg"><button data-l="pt">PT</button> <button data-l="en">EN</button> <button data-l="de">DE</button></div></div></header>
-<div class="hero"><div class="w"><div>
+<div class="hero${hero ? ' ph1' : ''}"><div class="w"><div>
 <span class="tag">📍 ${esc(L.category || '')} · ${city}</span>
 <h1>${esc(L.name)}</h1>
 <h2 data-pt="${esc(L.headlinePt)}" data-en="${esc(L.headlineEn || L.headlinePt)}" data-de="${esc(L.headlineDe || L.headlineEn || L.headlinePt)}"></h2>
 <p data-pt="${esc(L.leadPt)}" data-en="${esc(L.leadEn || L.leadPt)}" data-de="${esc(L.leadDe || L.leadEn || L.leadPt)}"></p>
 <div class="btns">${L.phone ? `<a class="btn p" href="tel:${tel(L.phone)}">📞 <span data-t="call"></span></a>` : ''}<a class="btn s" href="#contacto">📍 <span data-t="find"></span></a></div></div>
-<div class="art">${ART[artKey(L)]}</div></div>
+${heroRight}</div>${hero ? '<div class="illu" data-t="illu"></div>' : ''}
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 60 C360 0 1080 0 1440 60Z" fill="${th.bg}"/></svg></div></div>
 <div class="strip"><div class="w">
 ${L.phone ? `<a class="chip" href="tel:${tel(L.phone)}" style="text-decoration:none;color:inherit"><span>📞</span><div>${esc(L.phone)}<small data-t="bCall"></small></div></a>` : ''}
 <div class="chip"><span>📍</span><div>${city}<small>${esc(L.category || '')}</small></div></div>
-<div class="chip"><span>🌍</span><div data-t="langs"></div></div></div></div>
+${chip3}</div></div>
 <section><div class="w"><p class="k" data-t="svcK.${kind}"></p><h2 data-t="svcH.${kind}"></h2><div class="cards">${cards}</div></div></section>
-<section class="gal"><div class="w"><p class="k" data-t="galK"></p><h2 data-t="galH"></h2><p class="galp" data-t="galP"></p>
-<div class="grid"><div class="ph">📷</div><div class="ph">📷</div><div class="ph">📷</div><div class="ph">📷</div><div class="ph">📷</div></div></div></section>
+<section class="gal"><div class="w"><p class="k" data-t="galK"></p><h2 data-t="galH"></h2><p class="galp" data-t="${photos.length ? 'galP2' : 'galP'}"></p>
+<div class="grid">${gal}</div></div></section>
 <section id="contacto"><div class="w"><p class="k" data-t="contactK"></p><h2 data-t="contactH"></h2><div class="ct"><div class="box"><h3>${esc(L.name)}</h3>
 <div class="row"><span>📍</span><div>${L.address ? esc(L.address) + ', ' : ''}${esc(L.city)}</div></div>
 ${L.phone ? `<div class="row"><span>📞</span><a href="tel:${tel(L.phone)}">${esc(L.phone)}</a></div>` : ''}

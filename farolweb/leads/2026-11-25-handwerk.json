@@ -28,7 +28,8 @@
     "en": "Quotes",
     "de": "Angebote"
    }
-  ]
+  ],
+  "since": 2008
  },
  {
   "name": "Aquecimonte",
@@ -59,7 +60,8 @@
     "en": "Quotes",
     "de": "Angebote"
    }
-  ]
+  ],
+  "since": 2002
  },
  {
   "name": "Mecanifoz",
@@ -90,7 +92,8 @@
     "en": "Diagnostics",
     "de": "Diagnose"
    }
-  ]
+  ],
+  "since": 1989
  },
  {
   "name": "Auto Sidnei",
@@ -121,7 +124,8 @@
     "en": "Diagnostics",
     "de": "Diagnose"
    }
-  ]
+  ],
+  "since": 1994
  },
  {
   "name": "Canalizadora da Granja",
@@ -152,7 +156,8 @@
     "en": "Quotes",
     "de": "Angebote"
    }
-  ]
+  ],
+  "since": 2001
  },
  {
   "name": "Serralharia A.S. Cardoso",
@@ -183,7 +188,8 @@
     "en": "Custom work",
     "de": "Maßanfertigung"
    }
-  ]
+  ],
+  "since": 2001
  },
  {
   "name": "Pereira Diniz & Santos",
@@ -214,7 +220,8 @@
     "en": "Quotes",
     "de": "Angebote"
    }
-  ]
+  ],
+  "since": 2007
  },
  {
   "name": "Horalimpa",
@@ -245,7 +252,8 @@
     "en": "Quotes",
     "de": "Angebote"
    }
-  ]
+  ],
+  "since": 1994
  },
  {
   "name": "Mimolava",
@@ -271,7 +279,8 @@
     "en": "Ironing",
     "de": "Bügeln"
    }
-  ]
+  ],
+  "since": 2006
  },
  {
   "name": "Electrodinâmicaçor",
@@ -302,6 +311,7 @@
     "en": "Repairs",
     "de": "Reparaturen"
    }
-  ]
+  ],
+  "since": 2001
  }
 ]

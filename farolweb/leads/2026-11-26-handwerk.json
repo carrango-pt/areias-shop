@@ -28,7 +28,8 @@
   "headlineDe": "Ihr Auto in guten Händen in Maia",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2005
  },
  {
   "name": "Joaquim Furtado",
@@ -59,7 +60,8 @@
   "headlineDe": "Sanitär in Lagos",
   "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
   "leadEn": "Plumbing installation and repairs. Call for a quote.",
-  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "since": 2001
  },
  {
   "name": "Elonogueira",
@@ -90,7 +92,8 @@
   "headlineDe": "Ihr Auto in guten Händen in Maia",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2001
  },
  {
   "name": "Carepairs",
@@ -121,7 +124,8 @@
   "headlineDe": "Ihr Auto in guten Händen in Viana do Castelo",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2010
  },
  {
   "name": "Martins & Felgueira",
@@ -152,7 +156,8 @@
   "headlineDe": "Ihr Auto in guten Händen in Viseu",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 1975
  },
  {
   "name": "Canocalor",
@@ -183,7 +188,8 @@
   "headlineDe": "Sanitär in Leiria",
   "leadPt": "Instalação e reparação de canalizações. Ligue e peça o seu orçamento.",
   "leadEn": "Plumbing installation and repairs. Call for a quote.",
-  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot."
+  "leadDe": "Installation und Reparatur von Leitungen. Rufen Sie an für ein Angebot.",
+  "since": 1986
  },
  {
   "name": "Leiricontrol",
@@ -214,7 +220,8 @@
   "headlineDe": "Elektroinstallationen in Leiria",
   "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
   "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
-  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb."
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 2010
  },
  {
   "name": "Marinheiros Auto",
@@ -245,7 +252,8 @@
   "headlineDe": "Ihr Auto in guten Händen in Marinha Grande",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 1995
  },
  {
   "name": "Muniauto",
@@ -276,7 +284,8 @@
   "headlineDe": "Ihr Auto in guten Händen in Alcanede",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 1978
  },
  {
   "name": "Miranda & Antunes",
@@ -307,6 +316,7 @@
   "headlineDe": "Ihr Auto in guten Händen in Torres Vedras",
   "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
   "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
-  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin."
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2001
  }
 ]
