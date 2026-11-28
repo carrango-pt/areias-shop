@@ -163,7 +163,7 @@ http.createServer(async (req, res) => {
     if (m) {
       const x = DATA.byToken[m[1]];
       if (!x) return send(404, '<!doctype html><meta charset="utf-8"><p style="font-family:sans-serif;padding:30px">Esta pré-visualização já não está disponível. <a href="https://farolweb.pt">FarolWeb</a></p>');
-      if (!authed(req) && UP_URL) {
+      if (!authed(req) && UP_URL && url.searchParams.get('p') !== '1') {
         redis('HINCRBY', 'fw:views', x.email, 1).then(async n => {
           if (n === 1 && ADMIN_EMAIL) await sendEmail(ADMIN_EMAIL, `👀 ${x.L.name} abriu a pré-visualização`, `<p><b>${esc(x.L.name)}</b> (${esc(x.L.city)}) abriu agora a sua página de exemplo.</p><p>Bom momento para ligar${x.L.phone ? ': <b>' + esc(x.L.phone) + '</b>' : ''}.</p><p><a href="${BASE_URL}/d/${x.token}">Ver página</a></p>`);
         }).catch(() => {});
@@ -183,7 +183,7 @@ http.createServer(async (req, res) => {
       const [sent, blocked, views] = UP_URL ? await Promise.all([redis('SMEMBERS', 'fw:sent'), redis('SMEMBERS', 'fw:blocked'), redis('HGETALL', 'fw:views')]) : [[], [], []];
       const S = new Set(sent), B = new Set([...blocked, ...DATA.blocked]), V = {};
       for (let i = 0; i < views.length; i += 2) V[views[i]] = views[i + 1];
-      const rows = DATA.leads.map(x => `<tr><td>${esc(x.L.name)}</td><td>${esc(x.L.city)}</td><td>${esc(x.email)}</td><td>${x.hoch ? 'hoch' : 'mittel'}</td><td>${B.has(x.email) ? '⛔ abgemeldet' : S.has(x.email) ? '✅ gesendet' : '⏳ wartet'}</td><td>${V[x.email] || 0}</td><td><a href="/d/${x.token}" target="_blank">Demo</a></td></tr>`).join('');
+      const rows = DATA.leads.map(x => `<tr><td>${esc(x.L.name)}</td><td>${esc(x.L.city)}</td><td>${esc(x.email)}</td><td>${x.hoch ? 'hoch' : 'mittel'}</td><td>${B.has(x.email) ? '⛔ abgemeldet' : S.has(x.email) ? '✅ gesendet' : '⏳ wartet'}</td><td>${V[x.email] || 0}</td><td><a href="/d/${x.token}?p=1" target="_blank">Demo</a></td></tr>`).join('');
       return send(200, `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FarolWeb Admin</title>
 <style>body{font-family:system-ui,sans-serif;margin:20px;color:#222}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left}.s{background:#f4f1ea;padding:10px 14px;border-radius:8px;margin-bottom:16px}</style>
 <h1>FarolWeb · Akquise</h1><div class="s">Modus: <b>${MAIL_ECHT ? 'ECHT – Mails werden gesendet' : 'Testbetrieb – nichts wird gesendet'}</b> · ${BATCH_SIZE}/Tag (Mo–Fr 9–18 h) · Leads: ${DATA.leads.length} · gesendet: ${S.size} · abgemeldet: ${B.size}${UP_URL ? '' : ' · ⚠️ Upstash fehlt: Versand aus'}${TOKEN_SECRET ? '' : ' · ⚠️ TOKEN_SECRET fehlt'}</div>
