@@ -1,0 +1,321 @@
+[
+ {
+  "name": "Planeta do Glamour",
+  "city": "Seixal",
+  "category": "Cabeleireiro",
+  "theme": "beauty",
+  "email": "bela.musa@hotmail.com",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts",
+    "de": "Haarschnitt"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour",
+    "de": "Färben"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments",
+    "de": "Pflege"
+   }
+  ],
+  "phone": "212 225 323",
+  "headlinePt": "O seu cabeleireiro em Seixal",
+  "headlineEn": "Your hair salon in Seixal",
+  "headlineDe": "Ihr Friseur in Seixal",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 2011
+ },
+ {
+  "name": "D.R. Patrício",
+  "city": "Palmela",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "drpatricio.lda@gmail.com",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ],
+  "phone": "926 060 526",
+  "headlinePt": "Instalações elétricas em Palmela",
+  "headlineEn": "Electrical installations in Palmela",
+  "headlineDe": "Elektroinstallationen in Palmela",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 2010
+ },
+ {
+  "name": "Bajancauto",
+  "city": "Leiria",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "bajanca.auto@gmail.com",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "phone": "244 697 923",
+  "headlinePt": "O seu carro em boas mãos em Leiria",
+  "headlineEn": "Your car in good hands in Leiria",
+  "headlineDe": "Ihr Auto in guten Händen in Leiria",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2001
+ },
+ {
+  "name": "Torresdiesel",
+  "city": "Torres Vedras",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "torresdiesel@gmail.com",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "phone": "261 324 488",
+  "headlinePt": "O seu carro em boas mãos em Torres Vedras",
+  "headlineEn": "Your car in good hands in Torres Vedras",
+  "headlineDe": "Ihr Auto in guten Händen in Torres Vedras",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2001
+ },
+ {
+  "name": "Auto R&S",
+  "city": "Funchal",
+  "category": "Oficina auto",
+  "theme": "auto",
+  "email": "autors.funchal@gmail.com",
+  "items": [
+   {
+    "pt": "Revisões e manutenção",
+    "en": "Servicing & maintenance",
+    "de": "Inspektion & Wartung"
+   },
+   {
+    "pt": "Mecânica geral",
+    "en": "General mechanics",
+    "de": "Allgemeine Mechanik"
+   },
+   {
+    "pt": "Diagnóstico",
+    "en": "Diagnostics",
+    "de": "Diagnose"
+   }
+  ],
+  "phone": "291 618 642",
+  "headlinePt": "O seu carro em boas mãos em Funchal",
+  "headlineEn": "Your car in good hands in Funchal",
+  "headlineDe": "Ihr Auto in guten Händen in Funchal",
+  "leadPt": "Mecânica, manutenção e reparação automóvel. Ligue e marque a sua revisão.",
+  "leadEn": "Car mechanics, servicing and repairs. Call to book your service.",
+  "leadDe": "Kfz-Mechanik, Wartung und Reparatur. Rufen Sie an und vereinbaren Sie Ihren Termin.",
+  "since": 2011
+ },
+ {
+  "name": "Salão de Beleza Nair",
+  "city": "Bragança",
+  "category": "Cabeleireiro",
+  "theme": "beauty",
+  "email": "salaobelezanair@gmail.com",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts",
+    "de": "Haarschnitt"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour",
+    "de": "Färben"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments",
+    "de": "Pflege"
+   }
+  ],
+  "phone": "273 325 805",
+  "headlinePt": "O seu cabeleireiro em Bragança",
+  "headlineEn": "Your hair salon in Bragança",
+  "headlineDe": "Ihr Friseur in Bragança",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 1996
+ },
+ {
+  "name": "Libelinha GST",
+  "city": "Bragança",
+  "category": "Limpezas",
+  "theme": "home",
+  "email": "libelinha.gst@sapo.pt",
+  "items": [
+   {
+    "pt": "Limpeza de casas",
+    "en": "Home cleaning",
+    "de": "Wohnungsreinigung"
+   },
+   {
+    "pt": "Limpeza de empresas",
+    "en": "Office cleaning",
+    "de": "Büroreinigung"
+   },
+   {
+    "pt": "Orçamentos",
+    "en": "Quotes",
+    "de": "Angebote"
+   }
+  ],
+  "headlinePt": "Serviços de limpeza em Bragança",
+  "headlineEn": "Cleaning services in Bragança",
+  "headlineDe": "Reinigungsservice in Bragança",
+  "leadPt": "Limpezas para casas e empresas. Peça o seu orçamento sem compromisso.",
+  "leadEn": "Cleaning for homes and businesses. Ask for a free quote.",
+  "leadDe": "Reinigung für Wohnungen und Betriebe. Fragen Sie unverbindlich an.",
+  "since": 2010
+ },
+ {
+  "name": "Duarte & Mendonça Cabeleireiros",
+  "city": "Covilhã",
+  "category": "Cabeleireiro",
+  "theme": "beauty",
+  "email": "oficinacabelo.fd@gmail.com",
+  "items": [
+   {
+    "pt": "Cortes",
+    "en": "Haircuts",
+    "de": "Haarschnitt"
+   },
+   {
+    "pt": "Coloração",
+    "en": "Colour",
+    "de": "Färben"
+   },
+   {
+    "pt": "Tratamentos",
+    "en": "Treatments",
+    "de": "Pflege"
+   }
+  ],
+  "phone": "275 087 781",
+  "headlinePt": "O seu cabeleireiro em Covilhã",
+  "headlineEn": "Your hair salon in Covilhã",
+  "headlineDe": "Ihr Friseur in Covilhã",
+  "leadPt": "Cortes, cor e tratamentos. Ligue para marcar.",
+  "leadEn": "Cuts, colour and treatments. Call to book.",
+  "leadDe": "Schnitt, Farbe und Pflege. Rufen Sie an für einen Termin.",
+  "since": 2003
+ },
+ {
+  "name": "Isabel Curveira",
+  "city": "Covilhã",
+  "category": "Estética",
+  "theme": "beauty",
+  "email": "geralisabelcurveira@outlook.pt",
+  "items": [
+   {
+    "pt": "Tratamentos de rosto",
+    "en": "Facial treatments",
+    "de": "Gesichtsbehandlungen"
+   },
+   {
+    "pt": "Massagens",
+    "en": "Massages",
+    "de": "Massagen"
+   },
+   {
+    "pt": "Depilação",
+    "en": "Hair removal",
+    "de": "Haarentfernung"
+   }
+  ],
+  "phone": "275 334 446",
+  "headlinePt": "Estética e bem-estar em Covilhã",
+  "headlineEn": "Beauty & wellbeing in Covilhã",
+  "headlineDe": "Kosmetik & Wohlbefinden in Covilhã",
+  "leadPt": "Tratamentos de beleza e bem-estar. Ligue para marcar.",
+  "leadEn": "Beauty and wellbeing treatments. Call to book.",
+  "leadDe": "Kosmetik- und Wohlfühlbehandlungen. Rufen Sie an für einen Termin.",
+  "since": 2013
+ },
+ {
+  "name": "Electrolamego",
+  "city": "Lamego",
+  "category": "Instalações elétricas",
+  "theme": "home",
+  "email": "electrolamego@hotmail.com",
+  "items": [
+   {
+    "pt": "Instalações novas",
+    "en": "New installations",
+    "de": "Neuinstallationen"
+   },
+   {
+    "pt": "Manutenção",
+    "en": "Maintenance",
+    "de": "Wartung"
+   },
+   {
+    "pt": "Reparações",
+    "en": "Repairs",
+    "de": "Reparaturen"
+   }
+  ],
+  "phone": "966 096 137",
+  "headlinePt": "Instalações elétricas em Lamego",
+  "headlineEn": "Electrical installations in Lamego",
+  "headlineDe": "Elektroinstallationen in Lamego",
+  "leadPt": "Montagem, manutenção e reparação de instalações elétricas para casas e empresas.",
+  "leadEn": "Installation, maintenance and repair of electrical systems for homes and businesses.",
+  "leadDe": "Installation, Wartung und Reparatur von Elektroanlagen für Haus und Betrieb.",
+  "since": 1994
+ }
+]
